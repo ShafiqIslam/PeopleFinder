@@ -80,16 +80,17 @@
 	border-radius: 7px;
 	margin-top: 20px;
     margin-bottom: 20px;
+    height: 430px;
 }
 .search_pill h2{
 	text-align: center;
 	font-weight: bold;
-	margin: 7% 0%;
+	margin: 3% 0%;
 }
 .search_pill h3{
 	text-align: center;
 	//font-weight: bold;
-	padding: 20% 0% 3% 0%;
+	padding: 11% 0% 3% 0%;
 }
 
 .search_pill .nav-pills>li {
@@ -110,7 +111,11 @@
 
 .search_pill .control-label{
 	text-align: left;
-	font-size: 14px;
+	font-size: 17px;
+}
+.search_pill .control-label p{
+	text-align: right;
+    margin-right: 6%;
 }
 
 .search_pill .lable_text{

@@ -91,10 +91,10 @@
         <div class="container-fluid banner_wrapper">
                 <!--Nav Tab/ Nav Pill-->
                 <div class="container">
-                    <div class=" col-sm-offset-2 col-sm-4 search_pill">
+                    <div class="col-sm-8 search_pill">
                         <h2>Search Here</h2>
                         <hprimaryr>
-                        <div class=" col-sm-12">
+                        <div class="col-sm-12">
                             <ul class="nav nav-pills">
                                 <li class="active"><a class="btn btn-primary" data-toggle="pill" href="#name">Name</a></li>
                                 <li><a class="btn btn-primary" data-toggle="pill" href="#photos">Photos</a></li>
@@ -109,28 +109,28 @@
                                 <h3>Search By Name</h3>
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-4 control-label">First Name</label>
-                                        <div class="col-sm-8">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">First Name</label>
+                                        <div class="col-sm-4">
                                             <input type="text" class="form-control" id="" placeholder="First Name">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="" class="col-sm-4 control-label">Second Name</label>
-                                        <div class="col-sm-8">
+                                        <label for="" class="col-sm-offset-2 col-sm-3 control-label"><p>Second Name</p></label>
+                                        <div class="col-sm-4">
                                             <input type="text" class="form-control" id="" placeholder="Second Name">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="" class="col-sm-4 control-label">Last Name</label>
-                                        <div class="col-sm-8">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">Last Name</label>
+                                        <div class="col-sm-4">
                                             <input type="text" class="form-control" id="" placeholder="Last Name">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="col-sm-offset-4 col-sm-8">
+                                        <div class="col-sm-offset-5 col-sm-8">
                                             <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
                                     </div>
@@ -141,14 +141,14 @@
                                 <h3>Search By Photos</h3>
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-4 control-label lable_text">Photos</label>
-                                        <div class="col-sm-8">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Photos</label>
+                                        <div class="col-sm-4">
                                             <input type="file" class="form-control" id="" formenctype="multipart/form-data">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="col-sm-offset-4 col-sm-8">
+                                        <div class="col-sm-offset-5 col-sm-8">
                                             <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
                                     </div>
@@ -158,8 +158,8 @@
                                 <h3>Search By Country</h3>
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-4 control-label lable_text">Country</label>
-                                        <div class="col-sm-8">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Country</label>
+                                        <div class="col-sm-4">
                                             <!--<select class="input-medium bfh-countries" data-country="BD"></select>-->
                                 
                                             <div class="bfh-selectbox bfh-countries" data-country="BD" data-flags="true">
@@ -178,9 +178,21 @@
                              
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">City</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="" placeholder="City">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Street</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="" placeholder="Street">
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
-                                        <div class="col-sm-offset-4 col-sm-8">
+                                        <div class="col-sm-offset-5 col-sm-8">
                                             <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
                                     </div>
@@ -190,14 +202,14 @@
                                 <h3>Search By ID</h3>
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-4 control-label lable_text">ID No.</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">ID No.</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="" placeholder="id">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="col-sm-offset-4 col-sm-8">
+                                        <div class="col-sm-offset-5 col-sm-8">
                                             <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
                                     </div>
