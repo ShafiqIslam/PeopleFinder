@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-sm-9 col-sm-offset-1">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="index.html">Home</a></li>
+                                <li class="active"><a href="home">Home</a></li>
                                 <li><a href="search.html">Search</a></li>
                                 <li><a href="report.html">Report</a></li> 
                                 <li><a href="signup.html" class="btn btn-primary">Sign up</a></li> 
@@ -51,31 +51,31 @@
             <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content">
+                    <div class="modal-content col-sm-8">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Login</h4>
+                            <h3 class="modal-title">Login</h3>
                         </div>
                         <!--Modal Body Start-->
                         <div class="modal-body">
                             <form class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="" class="col-sm-3 control-label">User Name/Mail</label>
+                                    <label for="" class="col-sm-4 control-label">User Name</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="" placeholder="First Name">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="" class="col-sm-3 control-label">Passward</label>
+                                    <label for="" class="col-sm-4 control-label">Passward</label>
                                     <div class="col-sm-8">
                                         <input type="password" class="form-control" id="inputPassword3" placeholder="passward">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-10">
-                                        <button type="submit" class="btn btn-default">Sign in</button>
+                                    <div class="col-sm-offset-4 col-sm-8">
+                                        <button type="submit" class="btn btn-default">Login</button>
                                     </div>
                                 </div>
                             </form>
@@ -286,7 +286,7 @@
         <div class="container-fluid contact_wrapper">
             <div class="container">
                 <h1>Contact Us</h1>
-                <div class="row">
+                <div class="row contact_body">
                     <div class="col-sm-4 contact_address slideanim slide">
                         <address>
                             <strong style="font-size:18px;">XorCoder Software Ltd.</strong><br>
@@ -296,7 +296,8 @@
                             <p><span><i class="fa fa-envelope-o"></i></span> : <a href="mailto:#">mailus@xorcoder.com</a></p>
                         </address>    
                     </div>
-                    <div class="col-sm-offset-3 col-sm-5 Contact_mail slideanim slide">
+                    <div class="col-sm-2 vdivide"></div>
+                    <div class="col-sm-offset-2 col-sm-4 Contact_mail slideanim slide">
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="control-label col-sm-3" for="email">Name:</label>
@@ -326,6 +327,70 @@
                 </div>
             </div>
         </div>
+        <!--Carousel-->
+        <!--<div class="container-fluid slider_wrapper">-->
+
+            <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+                
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                    <h2>Client's Tesimonial</h2>
+
+                <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-2">
+                                    <img src="img/01.jpg" class="img-responsive" alt="New York">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-2">
+                                    <img src="img/01.jpg" class="img-responsive" alt="New York">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-2">
+                                    <img src="img/01.jpg" class="img-responsive" alt="New York">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        <!--</div>-->
 
 
         <!--footer section-->
