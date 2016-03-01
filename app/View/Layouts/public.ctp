@@ -221,51 +221,17 @@
                 <!--Nav Tab/ Nav Pill End-->
         </div>
 
-        <div id="first_result" class="container-fluid result_wrapper">
+        <div id="first_result" class="container-fluid count_wrapper">
             <div class="container">
-                <h1>Your Search Result Here</h1>
-                <ul class="col-sm-offset-2 col-sm-8">
-                    <li class="col-sm-12">
-                        <div class="col-sm-4 img_secton">
-                            <img class="img-thumbnail" src="img/01.jpg">
-                        </div>
-                        <div class="col-sm-6 img_desc">
-                            <h3>Name</h3>
-                            <span>Country</span>
-                            <span>Nationality</span>
-                            <span>Designation</span>
-                            <span>Age</span>
-                            <span>Blood Group</span>
-                            <span>Email</span>
-                            <span>Phone</span>
-                            <p><a href="#">Click</a>Here to know more about this person</p>
-                        </div>
-                    </li>
-                     <li class="col-sm-12">
-                        <div class="col-sm-4 img_secton">
-                            <img class="img-thumbnail" src="img/01.jpg">
-                        </div>
-                        <div class="col-sm-6 img_desc">
-                            <h3>Name</h3>
-                            <span>Country</span>
-                            <span>Nationality</span>
-                            <span>Designation</span>
-                            <span>Age</span>
-                            <span>Blood Group</span>
-                            <span>Email</span>
-                            <span>Phone</span>
-                            <p><a href="#">Click</a>Here to know more about this person</p>
-                        </div>
-                    </li>
-                </ul>
+                <div class="col-sm-4 counter_bg">
+                    <h3>Number of Found People</h3>
+                    <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
+                </div>
+                <div class="col-sm-offset-4 col-sm-4 counter_bg">
+                    <h3>Number of added people</h3>
+                    <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
+                </div>
             </div>
-        </div>
-        <!--Pagination-->
-        <div class="container">                 
-            <ul class="pager">
-                <li class="previous active"><a href="#first_result"><span><i class="fa fa-arrow-left fa-2x"></i></span></a></li>
-                <li class="next"><a href="#second_result"><span><i class="fa fa-arrow-right fa-2x"></i></span></a></li>
-            </ul>
         </div>
 
         <!--About Section-->
@@ -431,6 +397,7 @@
         <script type="text/javascript" src="js/jquery-ui.js"></script>
         <script type="text/javascript" src="js/bootstrap-formhelpers.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-formhelpers-countries.js"></script>
+        <script type="text/javascript" src="js/count.js"></script>
         <script type="text/javascript">
 
         </script>

@@ -127,22 +127,24 @@
 
 
 /*---------------Result Section---------*/
-.result_wrapper{
+.count_wrapper{
 	background-color: rgba(239, 239, 239, 0.59);
 	padding-bottom: 4%;
+	padding-top: 4%;
 }
-.result_wrapper h1{
+.count_wrapper h3{
 	text-align: center;
-    margin-top: 4%;
-    margin-bottom: 4%;
-    font-weight: bold;
+	font-weight: bold;
 }
-.result_wrapper ul li{
-	list-style: none;
-	margin-top: 20px;
+.count_wrapper h2{
+	text-align: center;
+	color: green;
+	font-weight: bold;
 }
-.result_wrapper ul li img{
-	float: left;
+
+.counter_bg{
+	background-color: #fff;
+	border-radius: 7px;
 }
 
 
@@ -178,8 +180,8 @@
     font-size: 18px;
 }
 .contact_wrapper .Contact_mail{
-    padding: 40px 38px 10px 38px;
-    font-size: 18px;
+    padding: 40px 20px 10px 23px;
+    font-size: 16px;
 }
 .contact_body{
 	    border: 1px dotted rgba(95, 91, 91, 0.39);
@@ -193,6 +195,9 @@
 	border-right: 1px dotted rgba(95, 91, 91, 0.39);
     height: 200px;
     margin-top: 4%;
+}
+.Contact_mail .form-horizontal .control-label{
+	text-align: left;
 }
 
 
