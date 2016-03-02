@@ -31,16 +31,16 @@
                     <div class="row">
                         <div class="col-sm-2">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="index.html">WebSiteName</a>
+                                <a class="navbar-brand" href="index.html">People Finder</a>
                             </div>  
                         </div>
                         <div class="col-sm-9 col-sm-offset-1">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="home">Home</a></li>
-                                <li><a href="search.html">Search</a></li>
-                                <li><a href="report.html">Report</a></li> 
-                                <li><a href="signup.html" class="btn btn-primary">Sign up</a></li> 
-                                <li><a href="#" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Login</a></li> 
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="btn active"><a href="home">Home</a></li>
+                                <li class="btn"><a href="search.html">Search</a></li>
+                                <li class="btn"><a href="report.html">Report</a></li> 
+                                <li class="btn"><a href="signup.html">Sign up</a></li> 
+                                <li class="btn"><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li> 
                             </ul>
                         </div>   
                     </div>
@@ -93,13 +93,12 @@
                 <div class="container">
                     <div class="col-sm-8 search_pill">
                         <h2>Search Here</h2>
-                        <hprimaryr>
                         <div class="col-sm-12">
                             <ul class="nav nav-pills">
-                                <li class="active"><a class="btn btn-primary" data-toggle="pill" href="#name">Name</a></li>
-                                <li><a class="btn btn-primary" data-toggle="pill" href="#photos">Photos</a></li>
-                                <li><a class="btn btn-primary" data-toggle="pill" href="#country">Country</a></li>
-                                <li><a class="btn btn-primary" data-toggle="pill" href="#id_search">ID</a></li>
+                                <li class="active"><a data-toggle="pill" href="#name">Name</a></li>
+                                <li><a data-toggle="pill" href="#photos">Photos</a></li>
+                                <li><a data-toggle="pill" href="#country">Country</a></li>
+                                <li><a data-toggle="pill" href="#id_search">ID</a></li>
                             </ul>
                         </div>
 
@@ -228,7 +227,7 @@
                     <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
                 </div>
                 <div class="col-sm-offset-4 col-sm-4 counter_bg">
-                    <h3>Number of added people</h3>
+                    <h3>Number of added Profile</h3>
                     <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
                 </div>
             </div>
@@ -238,12 +237,8 @@
         <div class="container-fluid about_wrapper slideanim slide">
             <div class="container">
                 <h1>What we serve/Our Service</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>People Finder is a free people search website.</p>
+                <p>Here users can search people by inputting a single data and can store their pictures</p>
                 <h2><q>Here may use Image instead of Text</q></h2>
             </div>
         </div>
@@ -255,11 +250,11 @@
                 <div class="row contact_body">
                     <div class="col-sm-4 contact_address slideanim slide">
                         <address>
-                            <strong style="font-size:18px;">XorCoder Software Ltd.</strong><br>
+                            <strong style="font-size:18px;">People Finder</strong><br>
                             Lower Jessore Road, Daulatpur<br>
                             Bangladesh, Khulna-9000<br>
                             <p><span><i class="fa fa-phone"></i></span> : <a>456-7890</a></p>
-                            <p><span><i class="fa fa-envelope-o"></i></span> : <a href="mailto:#">mailus@xorcoder.com</a></p>
+                            <p><span><i class="fa fa-envelope-o"></i></span> : <a href="mailto:#">mailus@peoplefinder.com</a></p>
                         </address>    
                     </div>
                     <div class="col-sm-2 vdivide"></div>
@@ -304,7 +299,7 @@
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ol>
-                    <h2>Client's Tesimonial</h2>
+                    <h2>Client's Testimonial</h2>
 
                 <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
@@ -382,8 +377,8 @@
                 <div class="col-sm-4 pull-left">
                     <p>&copy; 2016 People Finder. All Rights Reserved.</p>
                 </div>
-                <div class="col-sm-2 pull-right">
-                    <p><a href="http//:www.xorcoder.com" target="_blank">www.xorcoder.com</a></p>
+                <div class="col-sm-4 pull-right">
+                    <p class="pull-right"><a href="http//:www.xorcoder.com" target="_blank">Design&developed by www.xorcoder.com</a></p>
                 </div>
             </div>
         </div>
