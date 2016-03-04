@@ -1,23 +1,4 @@
-/*----------Bootstrap Code Channge----------------*/
-
-.btn-primary.focus, .btn-primary:focus{
-	//border: none;
-}
-
-/*------------------Header Section CSS-----------------------*/
-.header_top{
-	height: 50px;
-	background: -webkit-radial-gradient(farthest-corner at 49% 290%,#F6F6F7,#CED2CE,#E8E8E2,#A5A2A2); /* Safari 5.1 to 6.0 */
-    background: -o-radial-gradient(farthest-corner at 49% 290%,#F6F6F7,#CED2CE,#E8E8E2,#A5A2A2); /* For Opera 11.6 to 12.0 */
-    background: -moz-radial-gradient(farthest-corner at 49% 290%,#F6F6F7,#CED2CE,#E8E8E2,#A5A2A2); /* For Firefox 3.6 to 15 */
-    background: radial-gradient(farthest-corner at 49% 290%,#F6F6F7,#CED2CE,#E8E8E2,#A5A2A2); /* Standard syntax (must be last) */
-}
-.navbar-inverse .navbar-brand{
-	color: #fff;
-}
-.navbar-inverse .navbar-brand:hover{
-	color:#cfcfcf;
-}
+/*-------Menu bar Css------*/
 
 .navbar{
 	margin-bottom: 0px;
@@ -32,10 +13,11 @@
 .navbar-nav li{
 	//padding: 0px 5px;
 	margin: 0px 5px;
+	//margin-left: 5%;
 }
 
 .navbar-nav .btn{
-	width: 150px;
+	width: 120px;
 }
 
 .navbar-inverse .navbar-nav>li>a{
@@ -43,19 +25,62 @@
 	font-size: 20px;
 	font-weight: 600;
 }
+
+.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:hover{
+	background-color: rgba(0, 0, 255, 0.67);
+}
+
+.navbar-inverse .navbar-nav>li{
+	transition: all 1s ease-out;
+}
+.navbar-inverse .navbar-nav>li:hover{
+	background-color: rgba(0, 0, 255, 0.67);
+	border-radius: 4px;
+}
+
 .navbar-inverse {
 	border-color: rgba(28, 39, 66, 0.51);
 }
 
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+.navbar-inverse .navbar-nav>.active>a{
     color: #fff;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: blue;
+}
+.btn-primary {
+    color: #fff;
+     background-color: rgba(255, 255, 255, 0); 
+     border:none;
 }
 
-.bdr_btm_header{
-	height: 20px;
-	background-color: #337ab7;
+
+/*---------Menubar Shrink Css-----------------*/
+/* Sizes for the bigger menu */
+header.large{ height: 120px; }
+header.large img{ width: 315px; height: 113px; }
+header.large li{ margin-top: 40px; }
+
+/* Sizes for the smaller menu */
+header.small{ height: 50px; }
+header.small img{ width: 230px; height: 69px; margin-top: -10px; }
+header.small li{ margin-top: 10px; }
+
+
+header nav, header img{
+  transition: all 1s;
+  -moz-transition: all 1s; /* Firefox 4 */
+  -webkit-transition: all 1s; /* Safari and Chrome */
+  -o-transition: all 1s; /* Opera */
 }
+header ul li a{
+	transition: all .8s;
+  -moz-transition: all .8s; /* Firefox 4 */
+  -webkit-transition: all .8s; /* Safari and Chrome */
+  -o-transition: all .8s; /* Opera */
+  display: block;
+}
+
+
+/*----------Bootstrap Code Channge----------------*/
 
 /*-------Modal class-----------*/
 .modal{
@@ -73,7 +98,7 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 562px;
-	margin-top: 6.85%;
+	margin-top: 1.5%;
 }
 
 .search_pill{
@@ -146,6 +171,7 @@
 	text-align: center;
 	color: green;
 	font-weight: bold;
+	font-size: 45px;
 }
 
 .counter_bg{

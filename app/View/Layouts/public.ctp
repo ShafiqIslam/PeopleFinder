@@ -23,24 +23,24 @@
     </head>
     <body>
 
-        <header>
+        <header class="large">
             <!--<div class="container-fluid header_top"></div>-->
 
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-sm-2">
+                        <div class="col-sm-4">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="index.html">People Finder</a>
+                                <img class="logo" src="img/logo.png"/>
                             </div>  
                         </div>
-                        <div class="col-sm-9 col-sm-offset-1">
+                        <div class="col-sm-8">
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="btn active"><a href="home">Home</a></li>
-                                <li class="btn"><a href="search.html">Search</a></li>
-                                <li class="btn"><a href="report.html">Report</a></li> 
-                                <li class="btn"><a href="signup.html">Sign up</a></li> 
-                                <li class="btn"><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li> 
+                                <li class="active"><a class="btn btn-primary" href="home">Home</a></li>
+                                <li class=""><a class="btn btn-primary" href="search.html">Search</a></li>
+                                <li class=""><a class="btn btn-primary" href="report.html">Report</a></li> 
+                                <li class=""><a class="btn btn-primary" href="signup.html">Sign up</a></li> 
+                                <li class=""><a class="btn btn-primary" href="#" data-toggle="modal" data-target="#myModal">Login</a></li> 
                             </ul>
                         </div>   
                     </div>
@@ -220,6 +220,17 @@
                 <!--Nav Tab/ Nav Pill End-->
         </div>
 
+        <!--About Section-->
+        <div class="container-fluid about_wrapper slideanim slide">
+            <div class="container">
+                <h1>What we serve/Our Service</h1>
+                <p>People Finder is a free people search website.</p>
+                <p>Here users can search people by inputting a single data and can store their pictures</p>
+                <h2><q>Here may use Image instead of Text</q></h2>
+            </div>
+        </div>
+
+        <!--===========Counter Section=============-->
         <div id="first_result" class="container-fluid count_wrapper">
             <div class="container">
                 <div class="col-sm-4 counter_bg">
@@ -233,15 +244,70 @@
             </div>
         </div>
 
-        <!--About Section-->
-        <div class="container-fluid about_wrapper slideanim slide">
-            <div class="container">
-                <h1>What we serve/Our Service</h1>
-                <p>People Finder is a free people search website.</p>
-                <p>Here users can search people by inputting a single data and can store their pictures</p>
-                <h2><q>Here may use Image instead of Text</q></h2>
+         <!--Carousel-->
+        <!--<div class="container-fluid slider_wrapper">-->
+
+            <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+                
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                    <h2>Client's Testimonial</h2>
+
+                <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-2">
+                                    <img src="img/01.jpg" class="img-responsive img-circle" alt="New York">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-2">
+                                    <img src="img/01.jpg" class="img-responsive img-circle" alt="New York">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-2">
+                                    <img src="img/01.jpg" class="img-responsive img-circle" alt="New York">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-        </div>
+        <!--</div>-->
 
         <!--Contact Section-->
         <div class="container-fluid contact_wrapper">
@@ -288,72 +354,7 @@
                 </div>
             </div>
         </div>
-        <!--Carousel-->
-        <!--<div class="container-fluid slider_wrapper">-->
-
-            <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-                
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-                    <h2>Client's Testimonial</h2>
-
-                <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <div class="row">
-                                <div class="col-sm-offset-5 col-sm-2">
-                                    <img src="img/01.jpg" class="img-responsive" alt="New York">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-offset-2 col-sm-8">
-                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-sm-offset-5 col-sm-2">
-                                    <img src="img/01.jpg" class="img-responsive" alt="New York">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-offset-2 col-sm-8">
-                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-sm-offset-5 col-sm-2">
-                                    <img src="img/01.jpg" class="img-responsive" alt="New York">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-offset-2 col-sm-8">
-                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        <!--</div>-->
-
-
+       
         <!--footer section-->
         <div class="container-fluid footer_wrapper">
             <h2>Follow Us on Social Links</h2>
@@ -394,7 +395,13 @@
         <script type="text/javascript" src="js/bootstrap-formhelpers-countries.js"></script>
         <script type="text/javascript" src="js/count.js"></script>
         <script type="text/javascript">
-
+            $(document).on("scroll",function(){
+                if($(document).scrollTop()>100){
+                    $("header").removeClass("large").addClass("small");
+                } else{
+                    $("header").removeClass("small").addClass("large");
+                }
+            });
         </script>
     </body>
 </html>
