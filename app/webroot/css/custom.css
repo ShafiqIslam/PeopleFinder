@@ -56,7 +56,7 @@
 /*---------Menubar Shrink Css-----------------*/
 /* Sizes for the bigger menu */
 header.large{ height: 120px; }
-header.large img{ width: 315px; height: 113px; }
+header.large img{ width: 315px; height: 93px; }
 header.large li{ margin-top: 40px; }
 
 /* Sizes for the smaller menu */

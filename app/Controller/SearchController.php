@@ -1,10 +1,9 @@
-
-
 <?php
 /**
- * Static content controller.
+ * Application level Controller
  *
- * This file will render views from views/pages/
+ * This file is application-wide controller file. You can put all
+ * application-wide controller-related methods here.
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -20,60 +19,24 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('AppController', 'Controller');
+App::uses('Controller', 'Controller');
 
 /**
- * Static content controller
+ * Application Controller
  *
- * Override this controller by placing a copy in controllers directory of an application
+ * Add your application-wide methods in the class below, your controllers
+ * will inherit them.
  *
- * @package       app.Controller
- * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
+ * @package		app.Controller
+ * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class SearchController extends AppController {
+class SearchController extends Controller {
+	public function search() {
+        $search = $this->pages->search();
+        if (!empty($this->request->params['requested'])) {
+            return $search;
+        }
+        $this->set('search', $search);
+    }
 
-/**
- * This controller does not use a model
- *
- * @var array
- */
-	public $uses = array();
-
-/**
- * Displays a view
- *
- * @return void
- * @throws NotFoundException When the view file could not be found
- *	or MissingViewException in debug mode.
- */
-	public function display() {
-		$this->layout = "search";
-		$path = func_get_args();
-
-		$count = count($path);
-		if (!$count) {
-			return $this->redirect('/');
-		}
-		$page = $subpage = $title_for_layout = null;
-
-		if (!empty($path[0])) {
-			$page = $path[0];
-		}
-		if (!empty($path[1])) {
-			$subpage = $path[1];
-		}
-		if (!empty($path[$count - 1])) {
-			$title_for_layout = Inflector::humanize($path[$count - 1]);
-		}
-		$this->set(compact('page', 'title_for_layout'));
-
-		try {
-			$this->render(implode('/', $path));
-		} catch (MissingViewException $e) {
-			if (Configure::read('debug')) {
-				throw $e;
-			}
-			throw new NotFoundException();
-		}
-	}
 }
