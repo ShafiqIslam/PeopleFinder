@@ -24,12 +24,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="" class="col-sm-offset-3 col-sm-2 control-label">Email</label>
-            <div class="col-sm-3">
-                <input type="email" class="form-control" id="" placeholder="Email">
-            </div>
-        </div>
 
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Nationality</label>

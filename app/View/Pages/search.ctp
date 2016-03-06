@@ -1,3 +1,4 @@
+<!--==================Sign Up Section========================-->
 <div class="container-fluid sign_up_page">
     <h1>Search</h1>
     <hr>

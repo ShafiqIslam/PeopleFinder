@@ -1,4 +1,4 @@
-<!--==================Report Up Section========================-->
+<!--==================Sign Up Section========================-->
 <div class="container-fluid sign_up_page">
     <h1>Report</h1>
     <hr>
@@ -50,22 +50,10 @@
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-3 col-sm-2 control-label">Person's Status</label>
-            <div class="col-sm-3">
-                <select class="form-control">
-                    <option>Select Person's Status</option>
-                    <option>Missing</option>
-                    <option>Found</option>
-                    <option>May be Found</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Nationality</label>
             <div class="col-sm-3">
                 <!--<select class="input-medium bfh-countries" data-country="BD"></select>-->
-    
+
                 <div class="bfh-selectbox bfh-countries" data-country="BD" data-flags="true">
                     <input type="hidden" value="">
                     <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
@@ -92,6 +80,19 @@
                 </select>
             </div>
         </div>
+
+        <div class="form-group">
+            <label for="" class="col-sm-offset-3 col-sm-2 control-label">Person's Status</label>
+            <div class="col-sm-3">
+                <select class="form-control">
+                    <option>Select Person's Status</option>
+                    <option>Missing</option>
+                    <option>Found</option>
+                    <option>May be Found</option>
+                </select>
+            </div>
+        </div>
+
 
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Resident Country</label>
@@ -221,9 +222,16 @@
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-3 col-sm-2 control-label">Email(s)</label>
+            <label for="" class="col-sm-offset-3 col-sm-2 control-label">Profile ID</label>
             <div class="col-sm-3">
-                <input type="email" class="form-control" id="">
+                <input type="text" class="form-control" id="" placeholder="Profile Id No.">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-sm-offset-3 col-sm-2 control-label">Description</label>
+            <div class="col-sm-3">
+                <textarea type="text" class="form-control"></textarea>
             </div>
         </div>
 
