@@ -31,10 +31,15 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="navbar-header">
-                                <img class="logo" src="img/logo.png"/>
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span> 
+                                </button>
+                                <img class="logo" src="img/logo_2.png"/>
                             </div>  
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="active"><a class="btn btn-primary" href="home">Home</a></li>
                                 <li class=""><a class="btn btn-primary" href="search.html">Search</a></li>
@@ -75,7 +80,7 @@
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-4 col-sm-8">
-                                        <button type="submit" class="btn btn-default">Login</button>
+                                        <button type="submit" class="btn btn-primary btn_search">Login</button>
                                     </div>
                                 </div>
                             </form>
@@ -129,8 +134,19 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">Gender</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control">
+                                                <option>Select Gender</option>
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <div class="col-sm-offset-5 col-sm-8">
-                                            <button type="submit" class="btn btn-primary">Search</button>
+                                            <button type="submit" class="btn btn-primary btn_search">Search</button>
                                         </div>
                                     </div>
                                 </form>
@@ -148,7 +164,7 @@
 
                                     <div class="form-group">
                                         <div class="col-sm-offset-5 col-sm-8">
-                                            <button type="submit" class="btn btn-primary">Search</button>
+                                            <button type="submit" class="btn btn-primary btn_search">Search</button>
                                         </div>
                                     </div>
                                 </form>
@@ -192,7 +208,7 @@
 
                                     <div class="form-group">
                                         <div class="col-sm-offset-5 col-sm-8">
-                                            <button type="submit" class="btn btn-primary">Search</button>
+                                            <button type="submit" class="btn btn-primary btn_search">Search</button>
                                         </div>
                                     </div>
                                 </form>
@@ -201,15 +217,15 @@
                                 <h3>Search By ID</h3>
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">ID No.</label>
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Profile ID No.</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="" placeholder="id">
+                                            <input type="text" class="form-control" id="" placeholder="Profile id">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-sm-offset-5 col-sm-8">
-                                            <button type="submit" class="btn btn-primary">Search</button>
+                                            <button type="submit" class="btn btn-primary btn_search">Search</button>
                                         </div>
                                     </div>
                                 </form>
@@ -231,8 +247,8 @@
         </div>
 
         <!--===========Counter Section=============-->
-        <div id="first_result" class="container-fluid count_wrapper">
-            <div class="container">
+        <div id="first_result" class="container-fluid count_wrapper parallax">
+            <div class="container count_wrapper_body">
                 <div class="col-sm-4 counter_bg">
                     <h3>Number of Found People</h3>
                     <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
@@ -255,7 +271,7 @@
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ol>
-                    <h2>Client's Testimonial</h2>
+                    <h2>User's Testimonial</h2>
 
                 <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
@@ -346,7 +362,7 @@
                             </div>
                             <div class="form-group"> 
                             <div class="col-sm-offset-3 col-sm-9">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-primary btn_search">Submit</button>
                             </div>
                             </div>
                         </form>    
