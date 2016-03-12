@@ -1,228 +1,277 @@
-<?php
-/**
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Pages
- * @since         CakePHP(tm) v 0.10.0.1076
- */
+<div class="container-fluid banner_wrapper">
+                <!--Nav Tab/ Nav Pill-->
+                <div class="container">
+                    <div class="col-sm-8 search_pill">
+                        <h2>Search Here</h2>
+                        <div class="col-sm-12">
+                            <ul class="nav nav-pills">
+                                <li class="active"><a data-toggle="pill" href="#name">Name</a></li>
+                                <li><a data-toggle="pill" href="#photos">Photos</a></li>
+                                <li><a data-toggle="pill" href="#country">Country</a></li>
+                                <li><a data-toggle="pill" href="#id_search">ID</a></li>
+                            </ul>
+                        </div>
 
-if (!Configure::read('debug')):
-	throw new NotFoundException();
-endif;
+                        <div class="tab-content">
 
-App::uses('Debugger', 'Utility');
-?>
-<h2><?php echo __d('cake_dev', 'Release Notes for CakePHP %s.', Configure::version()); ?></h2>
-<p>
-	<?php echo $this->Html->link(__d('cake_dev', 'Read the changelog'), 'http://cakephp.org/changelogs/' . Configure::version()); ?>
-</p>
-<?php
-if (Configure::read('debug') > 0):
-	Debugger::checkSecurityKeys();
-endif;
-?>
-<?php if (file_exists(WWW_ROOT . 'css' . DS . 'cake.generic.css')): ?>
-	<p id="url-rewriting-warning" style="background-color:#e32; color:#fff;">
-		<?php echo __d('cake_dev', 'URL rewriting is not properly configured on your server.'); ?>
-		1) <a target="_blank" href="http://book.cakephp.org/2.0/en/installation/url-rewriting.html" style="color:#fff;">Help me configure it</a>
-		2) <a target="_blank" href="http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration" style="color:#fff;">I don't / can't use URL rewriting</a>
-	</p>
-<?php endif; ?>
-<p>
-<?php
-if (version_compare(PHP_VERSION, '5.2.8', '>=')):
-	echo '<span class="notice success">';
-		echo __d('cake_dev', 'Your version of PHP is 5.2.8 or higher.');
-	echo '</span>';
-else:
-	echo '<span class="notice">';
-		echo __d('cake_dev', 'Your version of PHP is too low. You need PHP 5.2.8 or higher to use CakePHP.');
-	echo '</span>';
-endif;
-?>
-</p>
-<p>
-	<?php
-	if (is_writable(TMP)):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your tmp directory is writable.');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your tmp directory is NOT writable.');
-		echo '</span>';
-	endif;
-	?>
-</p>
-<p>
-	<?php
-	$settings = Cache::settings();
-	if (!empty($settings)):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'The %s is being used for core caching. To change the config edit %s', '<em>' . $settings['engine'] . 'Engine</em>', 'APP/Config/core.php');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your cache is NOT working. Please check the settings in %s', 'APP/Config/core.php');
-		echo '</span>';
-	endif;
-	?>
-</p>
-<p>
-	<?php
-	$filePresent = null;
-	if (file_exists(APP . 'Config' . DS . 'database.php')):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your database configuration file is present.');
-			$filePresent = true;
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your database configuration file is NOT present.');
-			echo '<br/>';
-			echo __d('cake_dev', 'Rename %s to %s', 'APP/Config/database.php.default', 'APP/Config/database.php');
-		echo '</span>';
-	endif;
-	?>
-</p>
-<?php
-if (isset($filePresent)):
-	App::uses('ConnectionManager', 'Model');
-	try {
-		$connected = ConnectionManager::getDataSource('default');
-	} catch (Exception $connectionError) {
-		$connected = false;
-		$errorMsg = $connectionError->getMessage();
-		if (method_exists($connectionError, 'getAttributes')):
-			$attributes = $connectionError->getAttributes();
-			if (isset($errorMsg['message'])):
-				$errorMsg .= '<br />' . $attributes['message'];
-			endif;
-		endif;
-	}
-	?>
-	<p>
-		<?php
-			if ($connected && $connected->isConnected()):
-				echo '<span class="notice success">';
-					echo __d('cake_dev', 'CakePHP is able to connect to the database.');
-				echo '</span>';
-			else:
-				echo '<span class="notice">';
-					echo __d('cake_dev', 'CakePHP is NOT able to connect to the database.');
-					echo '<br /><br />';
-					echo $errorMsg;
-				echo '</span>';
-			endif;
-		?>
-	</p>
-<?php
-endif;
+                            <div id="name" class="tab-pane fade in active">
+                                <h3>Search By Name</h3>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">First Name</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="" placeholder="First Name">
+                                        </div>
+                                    </div>
 
-App::uses('Validation', 'Utility');
-if (!Validation::alphaNumeric('cakephp')):
-	echo '<p><span class="notice">';
-		echo __d('cake_dev', 'PCRE has not been compiled with Unicode support.');
-		echo '<br/>';
-		echo __d('cake_dev', 'Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring');
-	echo '</span></p>';
-endif;
-?>
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-2 col-sm-3 control-label"><p>Second Name</p></label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="" placeholder="Second Name">
+                                        </div>
+                                    </div>
 
-<p>
-	<?php
-	if (CakePlugin::loaded('DebugKit')):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'DebugKit plugin is present');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'DebugKit is not installed. It will help you inspect and debug different aspects of your application.');
-			echo '<br/>';
-			echo __d('cake_dev', 'You can install it from %s', $this->Html->link('GitHub', 'https://github.com/cakephp/debug_kit'));
-		echo '</span>';
-	endif;
-	?>
-</p>
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">Last Name</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="" placeholder="Last Name">
+                                        </div>
+                                    </div>
 
-<h3><?php echo __d('cake_dev', 'Editing this Page'); ?></h3>
-<p>
-<?php
-echo __d('cake_dev', 'To change the content of this page, edit: %s.<br />
-To change its layout, edit: %s.<br />
-You can also add some CSS styles for your pages at: %s.',
-	'APP/View/Pages/home.ctp', 'APP/View/Layouts/default.ctp', 'APP/webroot/css');
-?>
-</p>
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">Gender</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control">
+                                                <option>Select Gender</option>
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
-<h3><?php echo __d('cake_dev', 'Getting Started'); ?></h3>
-<p>
-	<?php
-	echo $this->Html->link(
-		sprintf('<strong>%s</strong> %s', __d('cake_dev', 'New'), __d('cake_dev', 'CakePHP 2.0 Docs')),
-		'http://book.cakephp.org/2.0/en/',
-		array('target' => '_blank', 'escape' => false)
-	);
-	?>
-</p>
-<p>
-	<?php
-	echo $this->Html->link(
-		__d('cake_dev', 'The 15 min Blog Tutorial'),
-		'http://book.cakephp.org/2.0/en/tutorials-and-examples/blog/blog.html',
-		array('target' => '_blank', 'escape' => false)
-	);
-	?>
-</p>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-5 col-sm-8">
+                                            <button type="submit" class="btn btn-primary btn_search">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
 
-<h3><?php echo __d('cake_dev', 'Official Plugins'); ?></h3>
-<p>
-<ul>
-	<li>
-		<?php echo $this->Html->link('DebugKit', 'https://github.com/cakephp/debug_kit') ?>:
-		<?php echo __d('cake_dev', 'provides a debugging toolbar and enhanced debugging tools for CakePHP applications.'); ?>
-	</li>
-	<li>
-		<?php echo $this->Html->link('Localized', 'https://github.com/cakephp/localized') ?>:
-		<?php echo __d('cake_dev', 'contains various localized validation classes and translations for specific countries'); ?>
-	</li>
-</ul>
-</p>
+                            <div id="photos" class="tab-pane fade">
+                                <h3>Search By Photos</h3>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Photos</label>
+                                        <div class="col-sm-4">
+                                            <input type="file" class="form-control" id="" formenctype="multipart/form-data">
+                                        </div>
+                                    </div>
 
-<h3><?php echo __d('cake_dev', 'More about CakePHP'); ?></h3>
-<p>
-<?php echo __d('cake_dev', 'CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC.'); ?>
-</p>
-<p>
-<?php echo __d('cake_dev', 'Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.'); ?>
-</p>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-5 col-sm-8">
+                                            <button type="submit" class="btn btn-primary btn_search">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="country" class="tab-pane fade">
+                                <h3>Search By Country</h3>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Country</label>
+                                        <div class="col-sm-4">
+                                            <!--<select class="input-medium bfh-countries" data-country="BD"></select>-->
+                                
+                                            <div class="bfh-selectbox bfh-countries" data-country="BD" data-flags="true">
+                                                <input type="hidden" value="">
+                                                <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+                                                    <span class="bfh-selectbox-option input-medium" data-option=""></span>
+                                                    <b class="caret"></b>
+                                                </a>
+                                                <div class="bfh-selectbox-options">
+                                                    <input type="text" class="bfh-selectbox-filter">
+                                                    <div role="listbox">
+                                                        <ul role="option"></ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                             
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">City</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="" placeholder="City">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Street</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="" placeholder="Street">
+                                        </div>
+                                    </div>
 
-<ul>
-	<li><a href="http://cakephp.org">CakePHP</a>
-	<ul><li><?php echo __d('cake_dev', 'The Rapid Development Framework'); ?></li></ul></li>
-	<li><a href="http://book.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Documentation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Your Rapid Development Cookbook'); ?></li></ul></li>
-	<li><a href="http://api.cakephp.org"><?php echo __d('cake_dev', 'CakePHP API'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Quick API Reference'); ?></li></ul></li>
-	<li><a href="http://bakery.cakephp.org"><?php echo __d('cake_dev', 'The Bakery'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Everything CakePHP'); ?></li></ul></li>
-	<li><a href="http://plugins.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Plugins'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'A comprehensive list of all CakePHP plugins created by the community'); ?></li></ul></li>
-	<li><a href="http://community.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Community Center'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Everything related to the CakePHP community in one place'); ?></li></ul></li>
-	<li><a href="https://groups.google.com/group/cake-php"><?php echo __d('cake_dev', 'CakePHP Google Group'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Community mailing list'); ?></li></ul></li>
-	<li><a href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
-	<ul><li><?php echo __d('cake_dev', 'Live chat about CakePHP'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/"><?php echo __d('cake_dev', 'CakePHP Code'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Find the CakePHP code on GitHub and contribute to the framework'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/cakephp/issues"><?php echo __d('cake_dev', 'CakePHP Issues'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP Issues'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/cakephp/wiki#roadmaps"><?php echo __d('cake_dev', 'CakePHP Roadmaps'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP Roadmaps'); ?></li></ul></li>
-	<li><a href="http://training.cakephp.org"><?php echo __d('cake_dev', 'Training'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Join a live session and get skilled with the framework'); ?></li></ul></li>
-	<li><a href="http://cakefest.org"><?php echo __d('cake_dev', 'CakeFest'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Don\'t miss our annual CakePHP conference'); ?></li></ul></li>
-	<li><a href="http://cakefoundation.org"><?php echo __d('cake_dev', 'Cake Software Foundation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Promoting development related to CakePHP'); ?></li></ul></li>
-</ul>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-5 col-sm-8">
+                                            <button type="submit" class="btn btn-primary btn_search">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="id_search" class="tab-pane fade">
+                                <h3>Search By ID</h3>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Profile ID No.</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="" placeholder="Profile id">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-5 col-sm-8">
+                                            <button type="submit" class="btn btn-primary btn_search">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Nav Tab/ Nav Pill End-->
+        </div>
+
+        <!--About Section-->
+        <div class="container-fluid about_wrapper slideanim slide">
+            <div class="container">
+                <h1>What we serve/Our Service</h1>
+                <p>People Finder is a free people search website.</p>
+                <p>Here users can search people by inputting a single data and can store their pictures</p>
+                <h2><q>Here may use Image instead of Text</q></h2>
+            </div>
+        </div>
+
+        <!--===========Counter Section=============-->
+        <div id="first_result" class="container-fluid count_wrapper parallax">
+            <div class="container count_wrapper_body">
+                <div class="col-sm-4 counter_bg">
+                    <h3>Number of Found People</h3>
+                    <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
+                </div>
+                <div class="col-sm-offset-4 col-sm-4 counter_bg">
+                    <h3>Number of added Profile</h3>
+                    <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
+                </div>
+            </div>
+        </div>
+
+         <!--Carousel-->
+        <!--<div class="container-fluid slider_wrapper">-->
+
+            <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+                
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                    <h2>User's Testimonial</h2>
+
+                <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-2">
+                                    <img src="img/01.jpg" class="img-responsive img-circle" alt="New York">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-2">
+                                    <img src="img/01.jpg" class="img-responsive img-circle" alt="New York">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-2">
+                                    <img src="img/01.jpg" class="img-responsive img-circle" alt="New York">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        <!--</div>-->
+
+        <!--Contact Section-->
+        <div class="container-fluid contact_wrapper">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <div class="row contact_body">
+                    <div class="col-sm-4 contact_address slideanim slide">
+                        <address>
+                            <strong style="font-size:18px;">People Finder</strong><br>
+                            Lower Jessore Road, Daulatpur<br>
+                            Bangladesh, Khulna-9000<br>
+                            <p><span><i class="fa fa-phone"></i></span> : <a>456-7890</a></p>
+                            <p><span><i class="fa fa-envelope-o"></i></span> : <a href="mailto:#">mailus@peoplefinder.com</a></p>
+                        </address>    
+                    </div>
+                    <div class="col-sm-2 vdivide"></div>
+                    <div class="col-sm-offset-2 col-sm-4 Contact_mail slideanim slide">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="email">Name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="name" placeholder="Enter email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="email">Email:</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="email">Comment:</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group"> 
+                            <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-primary btn_search">Submit</button>
+                            </div>
+                            </div>
+                        </form>    
+                    </div>
+                </div>
+            </div>
+        </div>

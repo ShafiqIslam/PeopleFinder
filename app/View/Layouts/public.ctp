@@ -98,7 +98,7 @@
            <!-- <div class="container-fluid bdr_btm_header"></div>-->
         </header><!--Menubar End-->
 
-
+        <?php echo $this->fetch('content'); ?>
        
         <!--footer section-->
         <footer class="container-fluid footer_wrapper">
