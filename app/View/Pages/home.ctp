@@ -90,7 +90,7 @@
                                 <form class="form-horizontal">
                                     <div class="form-group">
                                         <label for="" class="col-sm-offset-3 col-sm-2 control-label">Country</label>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-4 country_selection_box">
                                             <!--<select class="input-medium bfh-countries" data-country="BD"></select>-->
                                 
                                             <div class="bfh-selectbox bfh-countries" data-country="BD" data-flags="true">

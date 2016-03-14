@@ -156,6 +156,11 @@ header ul li a{
 	text-align: right;
 }
 
+/* this is for country selection box.*/
+.search_pill .country_selection_box .bfh-selectbox .bfh-selectbox-options ul{
+	max-width: 222px;
+}
+
 
 
 /*---------------Result Section---------*/
@@ -330,6 +335,10 @@ header ul li a{
 	margin-left: 5%;
     margin-top: 4%;
 } 
+/* this is for country selection box*/
+.sign_up_page .country_selection_box .bfh-selectbox .bfh-selectbox-options ul{
+	max-width: 288px;
+}
 .btn_search{
 	background-color: rgba(0, 0, 255, 0.68);
     padding: 9px 30px;
