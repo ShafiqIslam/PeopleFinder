@@ -271,7 +271,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-3" for="email">Comment:</label>
+                                <label class="control-label col-sm-3" for="email">Message:</label>
                                 <div class="col-sm-9">
                                     <textarea class="form-control" rows="4"></textarea>
                                 </div>
