@@ -18,28 +18,28 @@
                                 <h3>Search By Name</h3>
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">First Name</label>
+                                        <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" id="" placeholder="First Name">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="" class="col-sm-offset-2 col-sm-3 control-label"><p>Second Name</p></label>
+                                        <label for="" class="col-sm-offset-2 col-sm-3 control-label">Second Name</label>
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" id="" placeholder="Second Name">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">Last Name</label>
+                                        <label for="" class="col-sm-offset-2 col-sm-3 control-label">Last Name</label>
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" id="" placeholder="Last Name">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">Gender</label>
+                                        <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
                                         <div class="col-sm-4">
                                             <select class="form-control">
                                                 <option>Select Gender</option>
@@ -61,9 +61,20 @@
                                 <h3>Search By Photos</h3>
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Photos</label>
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">Photos</label>
                                         <div class="col-sm-4">
                                             <input type="file" class="form-control" id="" formenctype="multipart/form-data">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">Gender</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control">
+                                                <option>Select Gender</option>
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -78,7 +89,7 @@
                                 <h3>Search By Country</h3>
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Country</label>
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">Country</label>
                                         <div class="col-sm-4">
                                             <!--<select class="input-medium bfh-countries" data-country="BD"></select>-->
                                 
@@ -99,13 +110,13 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">City</label>
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">City</label>
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" id="" placeholder="City">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Street</label>
+                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label">Street</label>
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" id="" placeholder="Street">
                                         </div>
@@ -122,7 +133,7 @@
                                 <h3>Search By ID</h3>
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-offset-3 col-sm-2 control-label lable_text">Profile ID No.</label>
+                                        <label for="" class="col-sm-offset-2 col-sm-3 control-label">Profile ID No.</label>
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" id="" placeholder="Profile id">
                                         </div>
