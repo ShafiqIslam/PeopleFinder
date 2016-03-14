@@ -365,6 +365,15 @@ input, textarea{
 	max-width: 120px;
 }
 
+/*-------------Result details page CSS----------------*/
+.search_result_details_wrapper{
+	margin-top: 2% ;
+	margin-bottom: 2%;
+}
+.left_side h1{
+	font-size: 45px;
+}
+
 
 /*---------------------Social link----------------*/
 .footer_wrapper{
