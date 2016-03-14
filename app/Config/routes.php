@@ -29,6 +29,8 @@
 	Router::connect('/search', array('controller' => 'pages', 'action' => 'display', 'search'));
 	Router::connect('/report', array('controller' => 'pages', 'action' => 'display', 'report'));
 	Router::connect('/signup', array('controller' => 'pages', 'action' => 'display', 'signup'));
+	Router::connect('/search_result', array('controller' => 'pages', 'action' => 'display', 'search_result'));
+	Router::connect('/search_result_details', array('controller' => 'pages', 'action' => 'display', 'search_result_details'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

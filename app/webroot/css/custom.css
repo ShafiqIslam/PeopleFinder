@@ -302,7 +302,7 @@ header ul li a{
 /*--------------Search Page-------------*/
 .sign_up_page{
 	background-color: #ededed;
-	margin-top: 1.5%;
+	margin-top: 0%;
 	padding-bottom: 3.5%;
 }
 .sign_up_page h1{
@@ -344,6 +344,18 @@ input, textarea{
 	background: -webkit-linear-gradient(top, #EEE 0px, #FFF 25px);
 	background: -moz-linear-gradient(top, #EEE 0px, #FFF 25px);
 }
+
+
+/*------Search result page CSS---------------*/
+.result_body ul li{
+	list-style: none;
+	padding: 10px 0px;
+}
+
+.result_body ul li .img_result{
+	max-width: 120px;
+}
+
 
 /*---------------------Social link----------------*/
 .footer_wrapper{
