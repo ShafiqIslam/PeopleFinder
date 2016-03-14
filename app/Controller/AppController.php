@@ -1,34 +1,48 @@
 <?php
-/**
- * Application level Controller
- *
- * This file is application-wide controller file. You can put all
- * application-wide controller-related methods here.
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.Controller
- * @since         CakePHP(tm) v 0.2.9
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
 
 App::uses('Controller', 'Controller');
+App::uses('AuthComponent', 'Controller/Component');
 
-/**
- * Application Controller
- *
- * Add your application-wide methods in the class below, your controllers
- * will inherit them.
- *
- * @package		app.Controller
- * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
- */
 class AppController extends Controller {
+	public $components = array(
+        'Session', 'RequestHandler','Cookie',
+        'Auth' => array(
+            'loginAction' => array('controller' => 'users', 'action' => 'login', 'admin' => true),
+            'loginRedirect' => array('controller' => 'users', 'action' => 'dashboard', 'admin' => true),
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'login', 'admin' => true),
+            'authError' => 'You are not allowed',
+            'authenticate' => array(
+                'Form' => array(
+                    'fields' => array('username' => 'email', 'password' => 'password')
+                )
+            )
+        )
+    );
+    
+    public function beforeFilter(){
+        // set cookie options
+        /*$this->Cookie->key = 'klgjs&*(#fsdfsdfsdf%(54646tqwdsuhf&*^Hjhsdgf5465464';
+        $this->Cookie->httpOnly = true;*/
+        
+        if($this->params['admin']){
+            $this->layout =  'admin';
+        }
+        if (!$this->Auth->loggedIn() && $this->Cookie->read('remember_me_cookie')) {
+            $cookie = $this->Cookie->read('remember_me_cookie');
+            //print_r($cookie); exit;
+            $this->loadModel('User');
+            $user = $this->User->find('first', array(
+                'conditions' => array(
+                    'User.username' => $cookie['username'],
+                    'User.password' => $cookie['password'],
+                    //'User.role' => 'admin'
+                )
+            ));
+
+            if ($user && !$this->Auth->login($user['User'])) {
+                $this->redirect('/users/logout'); // destroy session & cookie
+            }
+        }
+        $this->Auth->allow('display');
+    }
 }
