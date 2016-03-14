@@ -9,8 +9,8 @@
                         <span>Profiles</span>
 
                         <div class="all-desc">
-                            <div class="pull-right dshbrd_img">
-                                <?php echo $this->Html->image('player.png') ?>
+                            <div class="pull-right">
+                                <span><i class="fa fa-users fa-5x"></i></span>
                             </div>
                             <p class="count-num"><?php //echo $players;?></p>
                         </div>
@@ -24,8 +24,8 @@
                         <span>Reporters</span>
 
                         <div class="all-desc">
-                            <div class="pull-right dshbrd_img">
-                                <?php echo $this->Html->image('player.png') ?>
+                            <div class="pull-right">
+                                <span><i class="fa fa-user-plus fa-5x"></i></span>
                             </div>
                             <p class="count-num"><?php //echo $players;?></p>
                         </div>
@@ -39,8 +39,8 @@
                         <span>Logs</span>
 
                         <div class="all-desc">
-                            <div class="pull-right dshbrd_img">
-                                <?php echo $this->Html->image('player.png') ?>
+                            <div class="pull-right">
+                                <span><i class="fa fa-sign-in fa-5x"></i></span>
                             </div>
                             <p class="count-num"><?php //echo $players;?></p>
                         </div>
@@ -54,8 +54,8 @@
                         <span>Admin Settings</span>
 
                         <div class="all-desc">
-                            <div class="pull-right dshbrd_img">
-                                <?php echo $this->Html->image('admin-settings-icon.png') ?>
+                            <div class="pull-right">
+                                <span><i class="fa fa-wrench fa-5x"></i></span>
                             </div>
                             <p class="count-num"><?php //echo $cms_user; ?></p>
                         </div>

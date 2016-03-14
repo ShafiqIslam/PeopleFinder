@@ -11,7 +11,7 @@
         <?php
             echo $this->Html->meta('icon');
             //echo $this->Html->css('cake.generic');
-            echo $this->Html->css(array('bootstrap', 'bootstrap-datetimepicker.css', 'jquery-ui.css', 'bootstrap-formhelpers.min.css', 'custom.css'));
+            echo $this->Html->css(array('bootstrap', 'bootstrap-datetimepicker.css', 'jquery-ui.css', 'bootstrap-formhelpers.min.css','../font-awesome/css/font-awesome.min.css', 'custom.css'));
             echo $this->Html->script(array('jquery-1.11.3', 'bootstrap.min', 'jquery-ui.js', 'bootstrap-formhelpers.min.js', 'bootstrap-formhelpers-countries.js', 'count.js'));
 
             echo $this->fetch('meta');
