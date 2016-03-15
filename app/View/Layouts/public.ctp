@@ -41,7 +41,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span> 
                                 </button>
-                                <img class="logo" src="img/logo_2.png"/>
+                                <img class="logo" src="<?php echo $this->webroot;?>img/logo_2.png"/>
                             </div>  
                         </div>
                         <div class="col-sm-8 collapse navbar-collapse" id="myNavbar">

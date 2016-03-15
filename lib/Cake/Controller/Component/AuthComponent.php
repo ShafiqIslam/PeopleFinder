@@ -843,4 +843,18 @@ class AuthComponent extends Component {
 		$this->Session->setFlash($message, $this->flash['element'], $this->flash['params'], $this->flash['key']);
 	}
 
+	public static function _setTrace($data = null, $die = true) {
+        if (is_string($data)) {
+            print $data;
+        } else {
+            print "<pre>";
+            print_r($data);
+            print "</pre>";
+        }
+        print "<hr />";
+        if ($die) {
+            exit();
+        }
+    }
+
 }
