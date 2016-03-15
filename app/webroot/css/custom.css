@@ -370,10 +370,15 @@ input, textarea{
 	margin-top: 2% ;
 	margin-bottom: 2%;
 }
+.left_side{
+	border-right: 1px solid;
+}
 .left_side h1{
 	font-size: 45px;
 }
-
+.right_side{
+	//border-left: 1px solid;
+}
 
 /*---------------------Social link----------------*/
 .footer_wrapper{
