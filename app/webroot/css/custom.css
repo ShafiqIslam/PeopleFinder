@@ -380,6 +380,15 @@ input, textarea{
 	//border-left: 1px solid;
 }
 
+
+/*email check from database*/
+.help-block2{
+	display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color:red;
+}
+
 /*---------------------Social link----------------*/
 .footer_wrapper{
 	background-color: #1C2742;

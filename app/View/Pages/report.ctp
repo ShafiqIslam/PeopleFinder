@@ -2,11 +2,11 @@
 <div class="container-fluid sign_up_page">
     <h1>Report</h1>
     <hr>
-    <form class="form-horizontal">
+    <form role="form" data-toggle="validator" novalidate="true" class="form-horizontal">
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">First Name</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="" placeholder="First Name">
+                <input type="text" class="form-control" id="" placeholder="First Name" required="">
             </div>
         </div>
 
@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Last Name</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="" placeholder="Last Name">
+                <input type="text" class="form-control" id="" placeholder="Last Name" required="">
             </div>
         </div>
 
@@ -55,7 +55,7 @@
                 <!--<select class="input-medium bfh-countries" data-country="BD"></select>-->
 
                 <div class="bfh-selectbox bfh-countries" data-country="BD" data-flags="true">
-                    <input type="hidden" value="">
+                    <!--<input type="hidden" value="">
                     <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
                         <span class="bfh-selectbox-option input-medium" data-option=""></span>
                         <b class="caret"></b>
@@ -65,7 +65,7 @@
                         <div role="listbox">
                             <ul role="option"></ul>
                         </div>
-                    </div>
+                    </div>-->
                 </div>        
             </div>
         </div>
@@ -73,10 +73,10 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Gender</label>
             <div class="col-sm-3">
-                <select class="form-control">
-                    <option>Select Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
+                <select class="form-control" required="">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                 </select>
             </div>
         </div>
@@ -84,11 +84,11 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Person's Status</label>
             <div class="col-sm-3">
-                <select class="form-control">
-                    <option>Select Person's Status</option>
-                    <option>Missing</option>
-                    <option>Found</option>
-                    <option>May be Found</option>
+                <select class="form-control" required="">
+                    <option value="">Select Person's Status</option>
+                    <option value="missing">Missing</option>
+                    <option value="found">Found</option>
+                    <option value="may be found">May be Found</option>
                 </select>
             </div>
         </div>
@@ -97,10 +97,8 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Resident Country</label>
             <div class="col-sm-3">
-                <select class="input-medium bfh-countries form-control" data-country="BD"></select>
-               <!--
-                <div class="bfh-selectbox bfh-countries" data-country="US" data-flags="true">
-                    <input type="hidden" value="">
+                <div class="bfh-selectbox bfh-countries" data-country="BD" data-flags="true">
+                    <!--<input type="hidden" value="">
                     <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
                         <span class="bfh-selectbox-option input-medium" data-option=""></span>
                         <b class="caret"></b>
@@ -110,9 +108,8 @@
                         <div role="listbox">
                             <ul role="option"></ul>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
-                -->
             </div>
         </div>
 
@@ -133,10 +130,9 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Missing Country</label>
             <div class="col-sm-3">
-                <select class="input-medium bfh-countries form-control" data-country="BD"></select>
-               <!--
-                <div class="bfh-selectbox bfh-countries" data-country="US" data-flags="true">
-                    <input type="hidden" value="">
+                <!--<select class="input-medium bfh-countries form-control" data-country="BD"></select>-->
+                <div class="bfh-selectbox bfh-countries" data-country="BD" data-flags="true">
+                    <!--<input type="hidden" value="">
                     <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
                         <span class="bfh-selectbox-option input-medium" data-option=""></span>
                         <b class="caret"></b>
@@ -146,9 +142,8 @@
                         <div role="listbox">
                             <ul role="option"></ul>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
-                -->
             </div>
         </div>
 
@@ -169,11 +164,11 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Mental illness</label>
             <div class="col-sm-3">
-                <select class="form-control">
-                    <option>Select Mental illness</option>
-                    <option>Yes</option>
-                    <option>No</option>
-                    <option>NA</option>
+                <select class="form-control" required="">
+                    <option value="">Select Mental illness</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="NA">NA</option>
                 </select>
             </div>
         </div>
@@ -181,11 +176,11 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Status</label>
             <div class="col-sm-3">
-                <select class="form-control">
-                    <option>Select Status</option>
-                    <option>Alive</option>
-                    <option>Death</option>
-                    <option>NA</option>
+                <select class="form-control" required="">
+                    <option value="">Select Status</option>
+                    <option value="alive">Alive</option>
+                    <option value="death">Death</option>
+                    <option value="NA">NA</option>
                 </select>
             </div>
         </div>
@@ -205,11 +200,11 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Physical illness</label>
             <div class="col-sm-3">
-                <select class="form-control">
-                    <option>Select Physical illness</option>
-                    <option>Yes</option>
-                    <option>No</option>
-                    <option>NA</option>
+                <select class="form-control" required="">
+                    <option value="">Select Physical illness</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="NA">NA</option>
                 </select>
             </div>
         </div>
@@ -224,7 +219,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Profile ID</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="" placeholder="Profile Id No.">
+                <input type="text" class="form-control" id="" placeholder="Profile Id No." required="">
             </div>
         </div>
 

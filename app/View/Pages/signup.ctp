@@ -2,7 +2,7 @@
 <div class="container-fluid sign_up_page">
     <h1>Sign Up</h1>
     <hr>
-    <form role="form" data-toggle="validator" novalidate="true" enctype="multipart/form-data" class="form-horizontal" method="post" action="<?php echo $this->webroot;?>reporters/signup">
+    <form role="form" data-toggle="validator" id="signup_form" novalidate="true" enctype="multipart/form-data" class="form-horizontal" method="post" action="<?php echo $this->webroot;?>reporters/signup">
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">First Name</label>
             <div class="col-sm-3">
@@ -60,8 +60,9 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Email</label>
             <div class="col-sm-3">
-                <input type="email" name="data[Reporter][email]" class="form-control" id="" data-error="Bruh, that email address is invalid" required="">
+                <input type="email" name="data[Reporter][email]" class="form-control" id="email_db_check" data-error="Bruh, that email address is invalid" required="">
                 <div class="help-block with-errors"></div>
+                <!--<div class="help-block2 with-errors"></div>-->
             </div>
         </div>
 
@@ -82,9 +83,9 @@
         </div>
 
         <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-10">
-                <button type="submit" class="btn btn-primary btn_search">Sign Up</button>
+            <div class="col-sm-offset-5 col-sm-7">
+                <button type="submit" id="signup_btn" class="btn btn-primary btn_search">Sign Up</button>
             </div>
         </div>
-    </form>
+    </form>       
 </div>
