@@ -59,6 +59,7 @@
 
             <!-- Modal -->
             <div id="myModal" class="modal fade" role="dialog">
+                <span><i class="fa fa-caret-up fa-3x"></i></span>
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content col-sm-6">
