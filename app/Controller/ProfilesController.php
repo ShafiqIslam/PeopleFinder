@@ -1,38 +1,20 @@
 <?php
 App::uses('AppController', 'Controller');
-/**
- * Profiles Controller
- *
- * @property Profile $Profile
- * @property PaginatorComponent $Paginator
- * @property SessionComponent $Session
- */
+
 class ProfilesController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
 	public $components = array('Paginator', 'Session');
 
-/**
- * admin_index method
- *
- * @return void
- */
+	public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('report');
+    }
+
 	public function admin_index() {
 		$this->Profile->recursive = 0;
 		$this->set('profiles', $this->Paginator->paginate());
 	}
 
-/**
- * admin_view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function admin_view($id = null) {
 		if (!$this->Profile->exists($id)) {
 			throw new NotFoundException(__('Invalid profile'));
@@ -41,11 +23,6 @@ class ProfilesController extends AppController {
 		$this->set('profile', $this->Profile->find('first', $options));
 	}
 
-/**
- * admin_add method
- *
- * @return void
- */
 	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Profile->create();
@@ -61,13 +38,6 @@ class ProfilesController extends AppController {
 		$this->set(compact('reporters', 'users'));
 	}
 
-/**
- * admin_edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function admin_edit($id = null) {
 		if (!$this->Profile->exists($id)) {
 			throw new NotFoundException(__('Invalid profile'));
@@ -88,13 +58,6 @@ class ProfilesController extends AppController {
 		$this->set(compact('reporters', 'users'));
 	}
 
-/**
- * admin_delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function admin_delete($id = null) {
 		$this->Profile->id = $id;
 		if (!$this->Profile->exists()) {
@@ -107,5 +70,20 @@ class ProfilesController extends AppController {
 			$this->Session->setFlash(__('The profile could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+	public function report() {
+		$logged_user = $this->Session->read('logged_user');
+		if(empty($logged_user)) {
+			return $this->redirect(array('controller'=>'reporters', 'action' => 'login'));
+		}
+
+		if($this->request->is('post')) {
+			AuthComponent::_setTrace($this->request->data);
+		}
+
+		$page = $subpage = $title_for_layout = "report";
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->layout = 'public';
 	}
 }

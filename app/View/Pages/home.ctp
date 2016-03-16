@@ -6,7 +6,7 @@ if(!empty($logged)) {
 
 ?>
 
-<div class="container-fluid count_wrapper banner_wrapper parallax">
+<div class="container-fluid banner_wrapper parallax">
     <!--Nav Tab/ Nav Pill-->
     <div class="container">
         <div class="col-sm-8 search_pill">

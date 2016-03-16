@@ -7,7 +7,7 @@ class ReportersController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password');
+        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout');
     }
 
 	public function admin_index() {
@@ -96,6 +96,11 @@ class ReportersController extends AppController {
 				return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
 			}	
 		}
+	}
+
+	public function logout() {
+		$this->Session->delete('logged_user');
+		return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
 	}
 
 	public function forgot_password() {

@@ -130,7 +130,9 @@ class UsersController extends AppController {
                     $this->request->data['User']['password'] = $this->Auth->password($this->request->data['User']['password']);
                     $this->Cookie->write('remember_me_cookie', $this->request->data['User'], true, '2 weeks');
                 }*/
-
+                $data['id'] = $is_exist['User']['id'];
+				$data['is_admin'] = true;
+				$this->Session->write('logged_user', $data);
                 $this->redirect(array('action' => 'dashboard','admin' => true));
             } else {
                 $this->Auth->logout();
