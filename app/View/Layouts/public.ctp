@@ -68,7 +68,7 @@
                         </div>
                         <!--Modal Body Start-->
                         <div class="modal-body">
-                            <form name="login_form" id="login_form" method="post" action="<?php $this->webroot;?>reporters/login" class="form-horizontal">
+                            <form name="login_form" id="login_form" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
                                 <div class="form-group">
                                     <label for="" class="col-sm-4 control-label">Email</label>
                                     <div class="col-sm-8">
