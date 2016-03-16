@@ -102,10 +102,10 @@ header nav, header img{
   -o-transition: all 1s; /* Opera */
 }
 header ul li a{
-	transition: all .8s;
-  -moz-transition: all .8s; /* Firefox 4 */
-  -webkit-transition: all .8s; /* Safari and Chrome */
-  -o-transition: all .8s; /* Opera */
+	transition: all .3s;
+  -moz-transition: all .3s; /* Firefox 4 */
+  -webkit-transition: all .3s; /* Safari and Chrome */
+  -o-transition: all .3s; /* Opera */
   display: block;
 }
 
@@ -114,7 +114,7 @@ header ul li a{
 
 /*-------Modal class-----------*/
 .modal{
-	margin-top: 7%;
+	margin-top: 5.4%;
     margin-left: 76%;
 }
 .modal h3{
@@ -122,6 +122,8 @@ header ul li a{
 }
 .modal .form-horizontal .control-label{
 	text-align: left;
+	font-size: 17px;
+    margin-bottom: 2%;
 }
 
 
@@ -232,8 +234,6 @@ header ul li a{
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	
-
 }
 .count_wrapper{
 	background-color: rgba(237, 237, 237, 0.34);

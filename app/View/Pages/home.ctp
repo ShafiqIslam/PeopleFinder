@@ -171,18 +171,18 @@ if(!empty($logged)) {
 </div>
 
         <!--===========Counter Section=============-->
-        <div id="first_result" class="container-fluid count_wrapper parallax">
-            <div class="container count_wrapper_body">
-                <div class="col-sm-4 counter_bg">
-                    <h3>Number of Found People</h3>
-                    <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
-                </div>
-                <div class="col-sm-offset-4 col-sm-4 counter_bg">
-                    <h3>Number of added Profile</h3>
-                    <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
-                </div>
-            </div>
+<div id="first_result" class="container-fluid count_wrapper parallax">
+    <div class="container count_wrapper_body">
+        <div class="col-sm-4 counter_bg">
+            <h3>Number of Found People</h3>
+            <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
         </div>
+        <div class="col-sm-offset-4 col-sm-4 counter_bg">
+            <h3>Number of added Profile</h3>
+            <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
+        </div>
+    </div>
+</div>
 
 <!--Carousel-->
 <!--<div class="container-fluid slider_wrapper">-->
