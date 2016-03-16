@@ -53,9 +53,12 @@
 			<!--Search Images of the Result Details-->
 			<div class="search_result_img">
 				<h1>Images of John Doe</h1>
-				<img class=" img-thumbnail" src="img/01.jpg">
-				<img class="img-responsive img-thumbnail" src="img/01.jpg">
-				<img class="img-responsive img-thumbnail" src="img/01.jpg">
+				<div class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="img/01.jpg"></div>
+				<div class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="img/01.jpg"></div>
+				<div class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="img/01.jpg"></div>
+				<div class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="img/01.jpg"></div>
+				<div class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="img/01.jpg"></div>
+				<div class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="img/01.jpg"></div>
 			</div>
 			<!--=========Related result=============-->
 			<div class="related_search"></div>
