@@ -44,12 +44,12 @@
                                 <img class="logo" src="<?php echo $this->webroot;?>img/logo_2.png"/>
                             </div>  
                         </div>
-                        <div class="col-sm-8 collapse navbar-collapse" id="myNavbar">
-                            <ul class="nav navbar-nav navbar-right">
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="col-sm-6 nav navbar-nav navbar-right">
                                 <li class="<?php if($page=='home') echo 'active';?>"><a href="<?php echo $this->webroot;?>home">Home</a></li>
-                                <li class=""><a class="btn btn-primary" href="<?php echo $this->webroot;?>search">Search</a></li>
-                                <li class=""><a class="btn btn-primary" href="<?php echo $this->webroot;?>report">Report</a></li> 
-                                <li class=""><a class="btn btn-primary" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
+                                <li class="<?php if($page=='search') echo 'active';?>"><a class="btn btn-primary" href="<?php echo $this->webroot;?>search">Search</a></li>
+                                <li class="<?php if($page=='report') echo 'active';?>"><a class="btn btn-primary" href="<?php echo $this->webroot;?>report">Report</a></li> 
+                                <li class="<?php if($page=='signup') echo 'active';?>"><a class="btn btn-primary" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
                                 <li class=""><a class="btn btn-primary" href="#" data-toggle="modal" data-target="#myModal">Login</a></li> 
                             </ul>
                         </div>   
