@@ -47,10 +47,10 @@
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="col-sm-6 nav navbar-nav navbar-right">
                                 <li class="<?php if($page=='home') echo 'active';?>"><a href="<?php echo $this->webroot;?>home">Home</a></li>
-                                <li class="<?php if($page=='search') echo 'active';?>"><a class="btn btn-primary" href="<?php echo $this->webroot;?>search">Search</a></li>
-                                <li class="<?php if($page=='report') echo 'active';?>"><a class="btn btn-primary" href="<?php echo $this->webroot;?>report">Report</a></li> 
-                                <li class="<?php if($page=='signup') echo 'active';?>"><a class="btn btn-primary" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
-                                <li class=""><a class="btn btn-primary" href="#" data-toggle="modal" data-target="#myModal">Login</a></li> 
+                                <li class="<?php if($page=='search') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>search">Search</a></li>
+                                <li class="<?php if($page=='report') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>report">Report</a></li> 
+                                <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
+                                <li class=""><a class="" href="#" data-toggle="modal" data-target="#myModal">Login</a></li> 
                             </ul>
                         </div>   
                     </div>
@@ -61,7 +61,7 @@
             <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content col-sm-8">
+                    <div class="modal-content col-sm-6">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h3 class="modal-title">Login</h3>
@@ -70,21 +70,21 @@
                         <div class="modal-body">
                             <form name="login_form" id="login_form" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="" class="col-sm-4 control-label">Email</label>
-                                    <div class="col-sm-8">
+                                    <label for="" class="col-sm-12 control-label">Email</label>
+                                    <div class="col-sm-12">
                                         <input type="text" name="data[Reporter][email]" class="form-control" id="" placeholder="First Name">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="" class="col-sm-4 control-label">Password</label>
-                                    <div class="col-sm-8">
+                                    <label for="" class="col-sm-12 control-label">Password</label>
+                                    <div class="col-sm-12">
                                         <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-sm-offset-4 col-sm-8">
+                                    <div class="col-sm-offset-6 col-sm-6">
                                         <button type="submit" class="btn btn-primary btn_search">Login</button>
                                     </div>
                                 </div>

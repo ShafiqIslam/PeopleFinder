@@ -3,21 +3,26 @@
 .navbar{
 	margin-bottom: 0px;
 	background-color: #1C2742;
+	border-bottom-color: #fff;
+}
+
+.navbar-nav{
+	margin-top: 1%;
 }
 
 .navbar-inverse{
-	padding: 1% 0;
+	padding: 0%;
 	border-radius: 0;
 }
 
 .navbar-nav li{
-	//padding: 0px 5px;
-	margin: 0px 5px;
-	//margin-left: 5%;
+	width: 20%;
+    text-align: center;
 }
 
 .navbar-nav .btn{
 	width: 120px;
+	border-radius: none;
 }
 
 .navbar-inverse .navbar-nav>li>a{
@@ -35,11 +40,11 @@
 }
 .navbar-inverse .navbar-nav>li:hover{
 	background-color: rgba(0, 0, 255, 0.67);
-	border-radius: 4px;
+	//border-radius: 4px;
 }
 
-.navbar-inverse {
-	border-color: rgba(28, 39, 66, 0.51);
+.navbar-inverse .navbar-collapse {
+	border-color: #fff;
 }
 
 .navbar-inverse .navbar-nav>.active>a{
@@ -53,16 +58,41 @@
 }
 
 
+
 /*---------Menubar Shrink Css-----------------*/
 /* Sizes for the bigger menu */
-header.large{ height: 120px; }
-header.large img{ width: 315px; height: 93px; }
-header.large li{ margin-top: 40px; }
+header.large{ 
+	height: 120px; 
+}
+header img{
+	//margin-top: 2%;
+}
+header.large img{ 
+	width: 315px; 
+	height: 93px;
+	margin-top: 1%; 
+}
+header.large li{
+	margin-top: 40px; 
+}
 
 /* Sizes for the smaller menu */
-header.small{ height: 50px; }
-header.small img{ width: 230px; height: 69px; margin-top: -10px; }
-header.small li{ margin-top: 10px; }
+header.small{ 
+	height: 50px; 
+}
+header.small img{ 
+	width: 230px; 
+	height: 69px; 
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+/*header.small li{ 
+	margin-top: 10px; 
+}*/
+header.small .navbar-nav {
+    margin-top: 2.1%;
+}
+
 
 
 header nav, header img{
@@ -85,10 +115,13 @@ header ul li a{
 /*-------Modal class-----------*/
 .modal{
 	margin-top: 7%;
-    margin-left: 69%;
+    margin-left: 76%;
 }
 .modal h3{
 	text-align: center;
+}
+.modal .form-horizontal .control-label{
+	text-align: left;
 }
 
 
