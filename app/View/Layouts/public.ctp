@@ -50,7 +50,7 @@
                                 <li class="<?php if($page=='search') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>search">Search</a></li>
                                 <li class="<?php if($page=='report') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>report">Report</a></li> 
                                 <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
-                                <li class=""><a class="" href="#" data-toggle="modal" data-target="#myModal">Login</a></li> 
+                                <li class=""><a class="" href="#" data-toggle="modal" data-target="#login1">Login</a></li> 
                             </ul>
                         </div>   
                     </div>
@@ -58,8 +58,8 @@
             </nav>
 
             <!-- Modal -->
-            <div id="myModal" class="modal fade" role="dialog">
-                <span><i class="fa fa-caret-up fa-3x"></i></span>
+            <div id="login1" class="modal modal_lage fade" role="dialog">
+                <span><i class=" login1 fa fa-caret-up fa_large fa-3x"></i></span>
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content col-sm-6">

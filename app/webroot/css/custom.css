@@ -119,9 +119,16 @@ header ul li a{
 /*----------Bootstrap Code Channge----------------*/
 
 /*-------Modal class-----------*/
-.modal{
+.modal_lage{
 	margin-top: 6%;
     margin-left: 76%;
+}
+.modal_small{
+	margin-top: 2.2%;
+    margin-left: 76%;
+}
+.fa_small{
+    margin-top: 6px;
 }
 .modal h3{
 	text-align: center;
@@ -135,7 +142,9 @@ header ul li a{
 	color: #fff;
 	position: fixed;
     margin-left: 256px;
-    margin-top: 2px;
+}
+.fa_large{
+	margin-top: 2px;
 }
 .modal-content {
     position: relative;
@@ -153,9 +162,9 @@ header ul li a{
 /*-----------------------Container Section CSS---------------------------*/
 /*-------------Banner Section--------------*/
 .banner_wrapper{
-	//background-image: url(../img/banner.png);
-	//background-repeat: no-repeat;
-	//background-size: cover;
+	background-image: url(../img/banner.png);
+	background-repeat: no-repeat;
+	background-size: cover;
 	height: 582px;
 	margin-top: 0%;
 }
@@ -164,7 +173,7 @@ header ul li a{
 	color:#fff;
 	background-color: rgba(0, 0, 0, 0.28);
 	border-radius: 7px;
-	margin-top: -2%;
+	margin-top: 2%;
     margin-bottom: 20px;
     height: 500px;
 }
@@ -255,13 +264,13 @@ header ul li a{
 /*-----------Parallax-----------------*/
 .parallax{
 	background-attachment: fixed;
+	background-position: right 110px;
 }
 .count_wrapper{
 	//background-color: rgba(237, 237, 237, 0.34);
 	background-image: url(../img/banner.png);
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: right 110px;
 	//height: 450px;
 }
 

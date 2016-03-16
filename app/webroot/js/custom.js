@@ -2,8 +2,14 @@
 $(document).on("scroll",function(){
     if($(document).scrollTop()>100){
         $("header").removeClass("large").addClass("small");
+        $("#login1").removeClass("modal_lage").addClass("modal_small");
+        $(".login1").removeClass("fa_large").addClass("fa_small");
+
     } else{
         $("header").removeClass("small").addClass("large");
+        $("#login1").removeClass("modal_small").addClass("modal_lage");
+        $(".login1").removeClass("fa_small").addClass("fa_large");
+
     }
 });
 
