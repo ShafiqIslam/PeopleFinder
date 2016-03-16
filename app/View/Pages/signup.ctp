@@ -62,7 +62,6 @@
             <div class="col-sm-3">
                 <input type="email" name="data[Reporter][email]" class="form-control" id="email_db_check" data-error="Bruh, that email address is invalid" required="">
                 <div class="help-block with-errors"></div>
-                <!--<div class="help-block2 with-errors"></div>-->
             </div>
         </div>
 
