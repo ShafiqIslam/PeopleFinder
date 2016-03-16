@@ -121,7 +121,7 @@
             </div>
             <div class="container developer_link">
                 <div class="col-sm-4 pull-left">
-                    <p>&copy; 2016 People Finder. All Rights Reserved.</p>
+                    <p>&copy; 2016 Face Finder. All Rights Reserved.</p>
                 </div>
                 <div class="col-sm-4 pull-right">
                     <p class="pull-right"><a href="http//:www.xorcoder.com" target="_blank">Design&developed by www.xorcoder.com</a></p>
