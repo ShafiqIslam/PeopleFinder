@@ -454,6 +454,31 @@ input, textarea{
     color:red;
 }
 
+/*---------- Sign Up thanks Page CSS--------*/
+.simple_msg_page h2{
+	letter-spacing: 2px;
+}
+.simple_msg_page .success{
+	color: #339E33;
+}
+.simple_msg_page .wrong{
+	color: red;
+}
+.simple_msg_page h2, .simple_msg_page p{
+	text-align: center;
+    margin: 4.8% 0% 3% 0%;
+}
+
+.simple_msg_page p{
+	font-size: 17px;
+}
+.simple_msg_page p i{
+	font-size: 20px;
+	color:blue;
+	cursor: pointer;
+}
+
+
 /*---------------------Social link----------------*/
 .footer_wrapper{
 	background-color: #1C2742;

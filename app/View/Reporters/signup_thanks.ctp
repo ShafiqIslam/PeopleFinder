@@ -1,18 +1,14 @@
 <div class="container-fluid simple_msg_page">
-	<h2>
 		<?php
-			if($success) 
-				echo "THANKS!!";
-			else
-				echo "OOPS!!";
-		?>
-	</h2>
+			if($success){ ?>
+				<h2 class="success"> <?php echo "THANKS!!"; ?></h2>
+			<?php }else{ ?>
+				<h2 class="wrong"> <?php echo "OOPS!!"; ?></h2>
+			<?php } ?>
 	<hr>
-	<p>
 		<?php if($success) { ?>
-			Thanks for using our service. An e-mail has been send to <?php echo $email;?>. Please follow the mail to verify your mail.
+			<p class="success">Thanks for using our service. An e-mail has been send to <i><?php echo $email;?></i>. Please follow the mail to verify your mail.</p>
 		<?php } else { ?>
-			Sorry, email can't be send to <?php echo $email;?>. Please check your input again.
+			<p class="wrong">Sorry, email can't be send to <i><?php echo $email;?></i>. Please check your input again.</p>
 		<?php } ?>
-	</p>
 </div>
