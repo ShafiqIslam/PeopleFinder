@@ -50,6 +50,7 @@
 .navbar-inverse .navbar-nav>.active>a{
     color: #fff;
     background-color: blue;
+    border-bottom-color: rgba(255, 255, 255, 0);
 }
 .btn-primary {
     color: #fff;
@@ -62,7 +63,7 @@
 /*---------Menubar Shrink Css-----------------*/
 /* Sizes for the bigger menu */
 header.large{ 
-	height: 120px; 
+	height: 104px; 
 }
 header img{
 	//margin-top: 2%;
