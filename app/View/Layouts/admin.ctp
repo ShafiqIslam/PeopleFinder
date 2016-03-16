@@ -5,6 +5,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Face Finder Admin Panel</title>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>font-awesome/css/font-awesome.min.css">
     <?php echo $this->Html->charset(); ?>
     <?php

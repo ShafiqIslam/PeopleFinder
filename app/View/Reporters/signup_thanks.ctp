@@ -1,4 +1,4 @@
-<div class="container-fluid sign_up_page">
+<div class="container-fluid simple_msg_page">
 	<h2>
 		<?php
 			if($success) 
@@ -7,6 +7,7 @@
 				echo "OOPS!!";
 		?>
 	</h2>
+	<hr>
 	<p>
 		<?php if($success) { ?>
 			Thanks for using our service. An e-mail has been send to <?php echo $email;?>. Please follow the mail to verify your mail.

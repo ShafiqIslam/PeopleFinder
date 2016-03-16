@@ -504,3 +504,9 @@ input, textarea{
 .developer_link p, .developer_link a{
 	color:#fff;
 }
+
+
+header ul li a:active, header ul li a:focus {
+	border: none !important;
+	outline: none !important;
+}
