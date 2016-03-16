@@ -379,6 +379,9 @@ input, textarea{
 .right_side{
 	//border-left: 1px solid;
 }
+.search_result_Details_img{
+	margin-top: 4%;
+}
 
 
 /*email check from database*/
