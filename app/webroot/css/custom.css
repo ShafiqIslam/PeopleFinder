@@ -85,6 +85,7 @@ header ul li a{
 /*-------Modal class-----------*/
 .modal{
 	margin-top: 7%;
+    margin-left: 69%;
 }
 .modal h3{
 	text-align: center;
@@ -370,17 +371,44 @@ input, textarea{
 	margin-top: 2% ;
 	margin-bottom: 2%;
 }
-.left_side{
-	border-right: 1px solid;
-}
+
 .left_side h1{
 	font-size: 45px;
 }
+
+.right_side{
+	border-left: 1px solid rgba(153, 153, 153, 0.72);
+}
+
 .right_side{
 	//border-left: 1px solid;
 }
+.search_result_img h1{
+	text-align: center;
+}
+.search_result_img ul li{
+	list-style: none;
+}
 .search_result_Details_img{
 	margin-top: 4%;
+}
+.border_top{
+	border-top: 1px solid rgba(153, 153, 153, 0.72);
+    margin: 7% 12% 1% -2.4%;
+    padding: 0% 59.1%;
+}
+.related_search{
+	margin-top: 2%;
+}
+.related_search h1{
+	text-align: center;
+}
+.related_search ul li{
+	list-style: none;
+	margin: 5%;
+}
+.related_search ul li p{
+	//margin-left: 5%;
 }
 
 
