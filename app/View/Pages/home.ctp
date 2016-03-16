@@ -6,7 +6,7 @@ if(!empty($logged)) {
 
 ?>
 
-<div class="container-fluid banner_wrapper">
+<div class="container-fluid count_wrapper banner_wrapper parallax">
     <!--Nav Tab/ Nav Pill-->
     <div class="container">
         <div class="col-sm-8 search_pill">
@@ -159,6 +159,7 @@ if(!empty($logged)) {
     </div>
     <!--Nav Tab/ Nav Pill End-->
 </div>
+<div style="clear:both"></div>
 
 <!--About Section-->
 <div class="container-fluid about_wrapper slideanim slide">
