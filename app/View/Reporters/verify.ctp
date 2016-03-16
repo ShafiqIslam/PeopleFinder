@@ -9,9 +9,9 @@
 	</h2>
 	<p>
 		<?php if($success) { ?>
-			Thanks for using our service. An e-mail has been send to <?php echo $email;?>. Please follow the mail to verify your mail.
+			Your mail has been verified. You can <a href="<?php echo $this->webroot;?>login">login now</a>.
 		<?php } else { ?>
-			Sorry, email can't be send to <?php echo $email;?>. Please check your input again.
+			Something daunting has been happened. So, GTFO...
 		<?php } ?>
 	</p>
 </div>

@@ -72,6 +72,31 @@ class ReportersController extends AppController {
 	*
 	*/
 
+	public function login() {
+		$page = $subpage = $title_for_layout = "login";
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->layout = 'public';
+
+		if($this->request->is('post')) {
+			$options = array(
+				'conditions' => array(
+					'Reporter.email' => $this->request->data['Reporter']['email'], 
+					'Reporter.password' => $this->Auth->password($this->request->data['Reporter']['password'])
+				)
+			);
+			$reporter = $this->Reporter->find('first', $options);
+			if(empty($reporter)) {
+				$login_fail = true;
+				$this->set(compact('login_fail'));
+			} else {
+				$data['id'] = $reporter['Reporter']['id'];
+				$data['is_admin'] = false;
+				$this->Session->write('logged_user', $data);
+				return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
+			}	
+		}
+	}
+
 	public function signup() {
 		if(!$this->request->is('post')) {
 			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "signup"));
@@ -167,7 +192,27 @@ class ReportersController extends AppController {
 		}
 	} 
 
-	public function verify($id, $token) {
-		AuthComponent::_setTrace(array($id,$token));
+	public function verify($id=null, $token=null) {
+		if($id==null || $token==null) {
+			$this->Session->setFlash(__('Bad Request.'), 'default', array('class' => 'error'));
+			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
+		}
+
+		$options = array('conditions' => array('Reporter.id' => $id, 'Reporter.email_verification_token' => $token));
+		$reporter = $this->Reporter->find('first', $options);
+		if(empty($reporter)) {
+			$success = false;
+		} else {
+			$success = true;
+			$this->Reporter->id = $id;
+			$data['Reporter']['email_verified'] = true;
+			$this->Reporter->save($data);
+		}
+
+		$page = $subpage = $title_for_layout = null;
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->set(compact('success'));
+
+		$this->layout = 'public';
 	}
 }

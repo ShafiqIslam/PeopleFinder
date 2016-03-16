@@ -11,8 +11,8 @@
         <?php
             echo $this->Html->meta('icon');
             //echo $this->Html->css('cake.generic');
-            echo $this->Html->css(array('bootstrap', 'bootstrap-datetimepicker.css', 'jquery-ui.css', 'bootstrap-formhelpers.min.css','../font-awesome/css/font-awesome.min.css', 'custom.css'));
-            echo $this->Html->script(array('jquery-1.11.3', 'bootstrap.min', 'jquery-ui.js', 'bootstrap-formhelpers.min.js', 'bootstrap-formhelpers-countries.js', 'validator.min.js', 'count.js'));
+            echo $this->Html->css(array('bootstrap', 'bootstrap-datetimepicker', 'jquery-ui', 'bootstrap-formhelpers.min', 'custom'));
+            echo $this->Html->script(array('jquery-1.11.3', 'bootstrap.min', 'jquery-ui', 'bootstrap-formhelpers.min', 'bootstrap-formhelpers-countries', 'validator.min', 'count'));
 
             echo $this->fetch('meta');
             echo $this->fetch('css');
@@ -68,18 +68,18 @@
                         </div>
                         <!--Modal Body Start-->
                         <div class="modal-body">
-                            <form class="form-horizontal">
+                            <form name="login_form" id="login_form" method="post" action="<?php $this->webroot;?>reporters/login" class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="" class="col-sm-4 control-label">User Name</label>
+                                    <label for="" class="col-sm-4 control-label">Email</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="" placeholder="First Name">
+                                        <input type="text" name="data[Reporter][email]" class="form-control" id="" placeholder="First Name">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="" class="col-sm-4 control-label">Passward</label>
+                                    <label for="" class="col-sm-4 control-label">Password</label>
                                     <div class="col-sm-8">
-                                        <input type="password" class="form-control" id="inputPassword3" placeholder="passward">
+                                        <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward">
                                     </div>
                                 </div>
 
@@ -128,10 +128,7 @@
                 </div>
             </div>
         </footer>
-        
 
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <?php echo $this->Html->script(array('custom')); ?>
     </body>
 </html>
