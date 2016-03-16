@@ -7,7 +7,7 @@ class ReportersController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist');
+        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password');
     }
 
 	public function admin_index() {
@@ -81,7 +81,8 @@ class ReportersController extends AppController {
 			$options = array(
 				'conditions' => array(
 					'Reporter.email' => $this->request->data['Reporter']['email'], 
-					'Reporter.password' => $this->Auth->password($this->request->data['Reporter']['password'])
+					'Reporter.password' => $this->Auth->password($this->request->data['Reporter']['password']),
+					'Reporter.email_verified' => 1
 				)
 			);
 			$reporter = $this->Reporter->find('first', $options);
@@ -97,12 +98,50 @@ class ReportersController extends AppController {
 		}
 	}
 
+	public function forgot_password() {
+		$page = $subpage = $title_for_layout = "login";
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->layout = 'public';
+
+		if($this->request->is('post')) {
+			$options = array(
+				'conditions' => array(
+					'Reporter.email' => $this->request->data['Reporter']['email'],
+					'Reporter.email_verified' => 1
+				)
+			);
+			$reporter = $this->Reporter->find('first', $options);
+
+			if(empty($reporter)) {
+				$email_exist = false;
+				$email = null;
+			} else {
+				$email_exist = true;
+				$id = $reporter['Reporter']['id'];
+				$email = $reporter['Reporter']['email'];
+				$first_name = !empty($reporter['Reporter']['first_name']) ? $reporter['Reporter']['first_name'] : "";
+				$second_name = !empty($reporter['Reporter']['second_name']) ? $reporter['Reporter']['second_name'] : "";
+				$last_name = !empty($reporter['Reporter']['last_name']) ? $reporter['Reporter']['last_name'] : "";
+				$name = $first_name . " " . $second_name . " " . $last_name;
+
+				// generate new token and save it to database
+				$data['Reporter']['email_verification_token'] = $token = $this->random_string(16,1,1);
+				$this->Reporter->id = $id;
+				$this->Reporter->save($data);
+
+				$this->_send_recovery_mail($email, $token, $id, $name);
+			}
+			$this->set(compact('email_exist','email'));
+		}
+	}
+
 	public function signup() {
 		if(!$this->request->is('post')) {
 			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "signup"));
 		}
 
 		if (!empty($this->request->data['Reporter']['document_id']['name'])) {
+            //upload to picasa
             $file_name = $this->_upload($this->request->data['Reporter']['document_id'], 'uploads');
             $this->request->data['Reporter']['document_id'] = $file_name;            
 
@@ -143,6 +182,39 @@ class ReportersController extends AppController {
 			$this->Session->setFlash(__('The reporter could not be saved. Please, try again.'), 'default', array('class' => 'error'));
 			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "signup"));
 		}
+	}
+
+	private function _send_recovery_mail($mail, $token, $id, $name) {
+		$verification_link = "http://" . $_SERVER['HTTP_HOST'] . $this->webroot . "reporters/recover_password/" . $id . "/" . $token;
+		$subject = "Face Finder Password Recovery Mail";
+		$body = "";
+
+		$body .= '<html>';
+		$body .= '	<body>';
+        $body .= '		<h2>Thanks for using FaceFinder.</h2>';
+        $body .= '		<strong>Hello, ' . $name . ' </strong>';
+        $body .= '		<br><br>';
+        $body .= '		<p>Please, click on the link below to reset your password.</p>';
+        $body .= '		<a href="' . $verification_link . '">' . $verification_link . '</a>';
+        $body .= '		<br><br>';
+        $body .= '		<p>If you don\'t know anything about this email. Please just ignore it.';
+        $body .= '		<br><br><br>';
+        $body .= '		<p>Cordially,<br/>';
+        $body .= '		<strong>Face Finder Team</strong>';
+        $body .= '		<br>';
+        $body .= '		<img src="' . $this->webroot . 'img/logo_2.png" alt="Logo" />';
+        $body .= '		<br><br>';
+        $body .= '	</body>';
+        $body .= '</html>';
+
+        $plain_body = "Thanks for using FaceFinder. Please, click on the link below to verify your mail.";
+        $plain_body .= "<a href=\"$verification_link\">$verification_link</a>";
+
+        if($this->send_mail($mail, $name, $subject, $body, $plain_body)) {
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	private function _send_verification_mail($mail, $token, $id, $name) {
@@ -212,6 +284,40 @@ class ReportersController extends AppController {
 		$page = $subpage = $title_for_layout = null;
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->set(compact('success'));
+
+		$this->layout = 'public';
+	}
+
+	public function recover_password($id=null, $token=null) {
+		if($id==null || $token==null) {
+			$this->Session->setFlash(__('Bad Request.'), 'default', array('class' => 'error'));
+			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
+		}
+
+		$options = array('conditions' => array('Reporter.id' => $id, 'Reporter.email_verification_token' => $token));
+		$reporter = $this->Reporter->find('first', $options);
+		if(empty($reporter)) {
+			$this->Session->setFlash(__('Bad Request.'), 'default', array('class' => 'error'));
+			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
+		} else {
+			if($this->request->is('post')) {
+				$this->request->data['Reporter']['password'] = $this->Auth->password($this->request->data['Reporter']['password']);
+				$this->Reporter->id = $id;
+				if($this->Reporter->save($this->request->data)) {
+					$success = true;
+				} else {
+					$success = false;
+				}
+				$is_post = true;
+			} else {
+				$success = false;
+				$is_post = false;
+			}
+		}
+
+		$page = $subpage = $title_for_layout = null;
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->set(compact('success', 'is_post'));
 
 		$this->layout = 'public';
 	}

@@ -7,6 +7,7 @@
 				echo "OOPS!!";
 		?>
 	</h2>
+	<hr>
 	<p>
 		<?php if($success) { ?>
 			Thanks for using our service. An e-mail has been send to <?php echo $email;?>. Please follow the mail to verify your mail.
