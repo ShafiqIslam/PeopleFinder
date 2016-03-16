@@ -196,10 +196,10 @@ class ReportersController extends AppController {
         $body .= '			<div style="padding: 20px;">';
         $body .= '				<strong style="font-size: 20px;">Hello, ' . $name . ' </strong>';
         $body .= '				<br><br>';
-        $body .= '				<p style="font-size: 17px;">Please, click on the link below to reset your password.</p>';
-        $body .= '				<a style="font-size: 20px;" href="' . $verification_link . '">' . $verification_link . '</a>';
+        $body .= '				<p style="font-size: 15px;">Please, click on the link below to reset your password.</p>';
+        $body .= '				<a style="font-size: 15px;" href="' . $verification_link . '">' . $verification_link . '</a>';
         $body .= '				<br><br>';
-        $body .= '				<p style="font-size: 17px;">If you don\'t know anything about this email. Please just ignore it.';
+        $body .= '				<p style="font-size: 15px;">If you don\'t know anything about this email. Please just ignore it.';
         $body .= '				<br><br><br>';
         $body .= '				<p style="font-size: 20px;">Cordially,<br/>';
         $body .= '				<strong style="font-size: 17px;">Face Finder Team</strong>';
@@ -233,10 +233,10 @@ class ReportersController extends AppController {
         $body .= '			<div style="padding: 20px;">';
         $body .= '				<strong style="font-size: 20px;">Hello, ' . $name . ' </strong>';
         $body .= '				<br><br>';
-        $body .= '				<p style="font-size: 17px;">We are very glad to have a member like you in our community. Please, click on the link below to verify your mail.</p>';
-        $body .= '				<a style="font-size: 20px;" href="' . $verification_link . '">' . $verification_link . '</a>';
+        $body .= '				<p style="font-size: 15px;">We are very glad to have a member like you in our community. Please, click on the link below to verify your mail.</p>';
+        $body .= '				<a style="font-size: 15px;" href="' . $verification_link . '">' . $verification_link . '</a>';
         $body .= '				<br><br>';
-        $body .= '				<p style="font-size: 17px;">If you don\'t know anything about this email. Please just ignore it.';
+        $body .= '				<p style="font-size: 15px;">If you don\'t know anything about this email. Please just ignore it.';
         $body .= '				<br><br><br>';
         $body .= '				<p style="font-size: 20px;">Cordially,<br/>';
         $body .= '				<strong style="font-size: 17px;">Face Finder Team</strong>';
