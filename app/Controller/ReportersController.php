@@ -192,7 +192,7 @@ class ReportersController extends AppController {
 		$body .= '<html>';
 		$body .= '	<body>';
 		$body .= '		<div style="width: 700px; margin:0 auto; border: 2px solid #ededed; border-radius: 7px;">';
-        $body .= '			<h2  style="font-size: 30px;text-align: center;background-color: #cdcdcd;padding: 20px 0px;margin-top: 0px;">Thanks for using FaceFinder</h2>';
+        $body .= '			<h2  style="font-size: 30px;text-align: center;background-color: #ededed;padding: 20px 0px;margin-top: 0px;">Thanks for using FaceFinder</h2>';
         $body .= '			<div style="padding: 20px;">';
         $body .= '				<strong style="font-size: 20px;">Hello, ' . $name . ' </strong>';
         $body .= '				<br><br>';
@@ -208,6 +208,7 @@ class ReportersController extends AppController {
         $body .= '				<br><br>';
         $body .= '			</div>';
         $body .= '		</div>';
+        $body .= '	</body>';
         $body .= '</html>';
 
         $plain_body = "Thanks for using FaceFinder. Please, click on the link below to verify your mail.";
@@ -227,19 +228,21 @@ class ReportersController extends AppController {
 
 		$body .= '<html>';
 		$body .= '	<body>';
-        $body .= '		<h2>Thanks for using FaceFinder.</h2>';
-        $body .= '		<strong>Hello, ' . $name . ' </strong>';
-        $body .= '		<br><br>';
-        $body .= '		<p>We are very glad to have a member like you in our community. Please, click on the link below to verify your mail.</p>';
-        $body .= '		<a href="' . $verification_link . '">' . $verification_link . '</a>';
-        $body .= '		<br><br>';
-        $body .= '		<p>If you don\'t know anything about this email. Please just ignore it.';
-        $body .= '		<br><br><br>';
-        $body .= '		<p>Cordially,<br/>';
-        $body .= '		<strong>Face Finder Team</strong>';
-        $body .= '		<br>';
-        $body .= '		<img src="' . $this->webroot . 'img/logo_2.png" alt="Logo" />';
-        $body .= '		<br><br>';
+		$body .= '		<div style="width: 700px; margin:0 auto; border: 2px solid #ededed; border-radius: 7px;">';
+        $body .= '			<h2 style="font-size: 30px;text-align: center;background-color: #ededed;padding: 20px 0px;margin-top: 0px;">Thanks for using FaceFinder</h2>';
+        $body .= '			<strong style="font-size: 20px;">Hello, ' . $name . ' </strong>';
+        $body .= '			<br><br>';
+        $body .= '			<p style="font-size: 17px;">We are very glad to have a member like you in our community. Please, click on the link below to verify your mail.</p>';
+        $body .= '			<a style="font-size: 20px;" href="' . $verification_link . '">' . $verification_link . '</a>';
+        $body .= '			<br><br>';
+        $body .= '			<p style="font-size: 17px;">If you don\'t know anything about this email. Please just ignore it.';
+        $body .= '			<br><br><br>';
+        $body .= '			<p style="font-size: 20px;">Cordially,<br/>';
+        $body .= '			<strong style="font-size: 17px;">Face Finder Team</strong>';
+        $body .= '			<br><br>';
+        $body .= '			<img src="' . $this->webroot . 'img/logo_2.png" alt="Logo" />';
+        $body .= '			<br><br>';
+        $body .= '		</div>';
         $body .= '	</body>';
         $body .= '</html>';
 
