@@ -4,11 +4,13 @@ $(document).on("scroll",function(){
         $("header").removeClass("large").addClass("small");
         $("#login1").removeClass("modal_lage").addClass("modal_small");
         $(".login1").removeClass("fa_large").addClass("fa_small");
+        $("#myaccount").removeClass("modal_lage").addClass("modal_small");
 
     } else{
         $("header").removeClass("small").addClass("large");
         $("#login1").removeClass("modal_small").addClass("modal_lage");
         $(".login1").removeClass("fa_small").addClass("fa_large");
+        $("#myaccount").removeClass("modal_small").addClass("modal_lage")
 
     }
 });
