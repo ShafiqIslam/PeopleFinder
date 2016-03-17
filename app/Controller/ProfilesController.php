@@ -10,9 +10,12 @@ class ProfilesController extends AppController {
         parent::beforeFilter();
         $this->Auth->allow('report_missing', 'report_found', 'blacklisted');
 
-		$page = $subpage = $title_for_layout = "report";
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->layout = 'public';
+        if(!$this->params['admin']){
+            $page = $subpage = $title_for_layout = "report";
+			$this->set(compact('page', 'subpage', 'title_for_layout'));
+			$this->layout = 'public';
+        }
+		
     }
 
 	public function admin_index() {

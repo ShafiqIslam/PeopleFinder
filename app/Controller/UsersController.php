@@ -1,38 +1,42 @@
 <?php
 App::uses('AppController', 'Controller');
-/**
- * Users Controller
- *
- * @property User $User
- * @property PaginatorComponent $Paginator
- * @property SessionComponent $Session
- */
+
 class UsersController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
 	public $components = array('Paginator', 'Session');
 
-/**
- * admin_index method
- *
- * @return void
- */
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('admin_forgot_password');
+        
+    }
+
 	public function admin_index() {
-		$this->User->recursive = 0;
-		$this->set('users', $this->Paginator->paginate());
+        $conditions = array();
+        $keyword = null;
+        if(!empty($this->request->params['named']['keyword'])) {
+            $keyword = $this->request->params['named']['keyword'];
+            if (!empty($keyword)) {
+                $conditions = am($conditions, array(
+                        'OR' =>array(
+                            'User.email LIKE' => '%' . $keyword . '%',
+                            'User.role LIKE' => '%' . $keyword . '%'
+                        )
+                    )
+                );
+            } 
+        }
+               
+        $this->User->recursive = 0;
+        $this->paginate = array('all',
+            'limit' => 10,
+            'conditions' => $conditions,
+        );
+
+        $this->set('users', $this->Paginator->paginate());
+        $this->set('keyword', $keyword);
 	}
 
-/**
- * admin_view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function admin_view($id = null) {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
@@ -41,11 +45,6 @@ class UsersController extends AppController {
 		$this->set('user', $this->User->find('first', $options));
 	}
 
-/**
- * admin_add method
- *
- * @return void
- */
 	public function admin_add() {
 		if ($this->request->is('post')) {
 			if(!empty($this->request->data['User']['simple_pwd'])){
@@ -62,13 +61,6 @@ class UsersController extends AppController {
 		}
 	}
 
-/**
- * admin_edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function admin_edit($id = null) {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
@@ -91,13 +83,6 @@ class UsersController extends AppController {
 		}
 	}
 
-/**
- * admin_delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function admin_delete($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
@@ -141,45 +126,81 @@ class UsersController extends AppController {
         }
     }
 
-    public function admin_dashboard(){
+    public function admin_dashboard() {
         $user = $this->User->find('count');
         $this->set(compact('user'));
     }
 
-    /*public function admin_forgot_password(){
-        header('Content-Type: application/json');
-        App::import('Vendor', 'ses', array('file' => 'ses' . DS . 'ses.php'));
-        $ses = new SimpleEmailService('AKIAJG4VGASZ32MSUDKA', 'B2ITddLtTxm1V92YEs7fUzz+SQ/JEYvKMC6gmRMZ', 'email.eu-west-1.amazonaws.com');
-        //$this -> autoLayout = false;
-        if($this->request->is('post')){
-            $mail = $this->request->data['User']['email'];
-            $user = $this->User->findByEmail($mail);
-            if(!empty($user)){
-                $password = $user['User']['simple_password'];
-                $m = new SimpleEmailServiceMessage();
-                $m->addTo($this->request->data['User']['email']);
-                $m->setFrom('hello@tradecarlink.com');
-                $m->setSubject('Capptain\'s Ritches - Password Request');
-                $body = $password;
-                $plainTextBody = '';
+    public function admin_forgot_password() {
+        if($this->request->is('post')) {
+            $options = array(
+                'conditions' => array(
+                    'User.email' => $this->request->data['User']['email']
+                )
+            );
+            $user = $this->User->find('first', $options);
 
-                $m->setMessageFromString($plainTextBody,$body);
-                //$ses->sendEmail($m);
-                //try{
-                //    if($ses->sendEmail($m)){
-                //        $this->Session->setFlash(__('Your password has been sent to '. $mail), 'default', array('class' => 'valid'));
-                //    }
-                //} catch(Exception $e){
-                //
-                //}
-            } else {
+            if(empty($user)) {
                 $this->Session->setFlash(__('Email address not found.'), 'default', array('class' => 'error'));
+            } else {
+                $email_exist = true;
+                $email = $user['User']['email'];
+                $password = $user['User']['simple_pwd'];
+
+                if($this->_send_recovery_mail($email, $password)) {
+                    $this->Session->setFlash(__('Your password has been sent to '. $email), 'default', array('class' => 'valid'));
+                }
             }
         }
-    }*/
+    }
 
-    public function admin_logout()
-    {
+
+    public function admin_logout() {
+        $this->Session->delete('logged_user');
         return $this->redirect($this->Auth->logout());
+    }
+
+    /*
+    *
+    *   Internal use functions
+    *
+    */
+
+    private function _send_recovery_mail($mail, $password) {
+        $login_link = "http://" . $_SERVER['HTTP_HOST'] . $this->webroot . "admin";
+        $subject = "Face Finder Admin Password Recovery Mail";
+        $body = "";
+        $name = "admin";
+
+        $body .= '<html>';
+        $body .= '  <body>';
+        $body .= '      <div style="width: 700px; margin:0 auto; border: 2px solid #ededed; border-radius: 7px;">';
+        $body .= '          <h2  style="font-size: 30px;text-align: center;background-color: #ededed;padding: 20px 0px;margin-top: 0px;">Thanks for using FaceFinder</h2>';
+        $body .= '          <div style="padding: 20px;">';
+        $body .= '              <strong style="font-size: 20px;">Hello, ' . $name . ' </strong>';
+        $body .= '              <br><br>';
+        $body .= '              <p style="font-size: 15px;">Your password is: <strong>' .  $password . '</strong> .</p>';
+        $body .= '              <a style="font-size: 15px;" href="' . $login_link . '">Login now</a>';
+        $body .= '              <br><br>';
+        $body .= '              <p style="font-size: 15px;">If you don\'t know anything about this email. Please just ignore it.';
+        $body .= '              <br><br><br>';
+        $body .= '              <p style="font-size: 20px;">Cordially,<br/>';
+        $body .= '              <strong style="font-size: 17px;">Face Finder Team</strong>';
+        $body .= '              <br><br>';
+        $body .= '              <img src="' . $this->webroot . 'img/logo_2.png" alt="Logo" />';
+        $body .= '              <br><br>';
+        $body .= '          </div>';
+        $body .= '      </div>';
+        $body .= '  </body>';
+        $body .= '</html>';
+
+        $plain_body = "Your password is: $password. ";
+        $plain_body .= "<a target=\"_blank\" href=\"$login_link\">Login now</a>";
+
+        if($this->send_mail($mail, $name, $subject, $body, $plain_body)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

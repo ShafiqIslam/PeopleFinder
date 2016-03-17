@@ -8,6 +8,12 @@ class ReportersController extends AppController {
 	public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout');
+    
+        if(!$this->params['admin']){
+            $page = $subpage = $title_for_layout = "report";
+			$this->set(compact('page', 'subpage', 'title_for_layout'));
+			$this->layout = 'public';
+        }
     }
 
 	public function admin_index() {
@@ -73,10 +79,6 @@ class ReportersController extends AppController {
 	*/
 
 	public function login() {
-		$page = $subpage = $title_for_layout = "login";
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->layout = 'public';
-
 		if($this->request->is('post')) {
 			$options = array(
 				'conditions' => array(
@@ -104,10 +106,6 @@ class ReportersController extends AppController {
 	}
 
 	public function forgot_password() {
-		$page = $subpage = $title_for_layout = "login";
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->layout = 'public';
-
 		if($this->request->is('post')) {
 			$options = array(
 				'conditions' => array(
@@ -177,12 +175,7 @@ class ReportersController extends AppController {
 			/*if(!$success) {
 				$this->Reporter->delete();
 			}*/			
-
-			$page = $subpage = $title_for_layout = null;
-			$this->set(compact('page', 'subpage', 'title_for_layout'));
 			$this->set(compact('email', 'success'));
-
-			$this->layout = 'public';
 			$this->render('signup_thanks');
 		} else {
 			$this->Session->setFlash(__('The reporter could not be saved. Please, try again.'), 'default', array('class' => 'error'));
@@ -220,12 +213,7 @@ class ReportersController extends AppController {
 			$data['Reporter']['email_verified'] = true;
 			$this->Reporter->save($data);
 		}
-
-		$page = $subpage = $title_for_layout = null;
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->set(compact('success'));
-
-		$this->layout = 'public';
 	}
 
 	public function recover_password($id=null, $token=null) {

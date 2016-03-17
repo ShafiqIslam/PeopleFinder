@@ -10,15 +10,11 @@
         <li  class="node <?php if($controller == 'reporters') echo 'selected';?>"><?php echo $this->Html->link(__('Reporters'), array('controller' => 'reporters' ,'action' => 'index', 'admin' => true)); ?></li>
         <li  class="node <?php if($controller == 'logs') echo 'selected';?>"><?php echo $this->Html->link(__('Logs'), array('controller' => 'logs' ,'action' => 'index', 'admin' => true)); ?></li>
 
-        <li class="logout"><?php echo $this->Html->link(__('CMS Users'), array('controller' => 'users', 'action' => 'index')); ?>
+        <li class="node <?php if($controller == 'users') echo 'selected';?>"><?php echo $this->Html->link(__('CMS Users'), array('controller' => 'users', 'action' => 'index')); ?>
         </li>
-        <?php
-        if($controller == 'users' && ($action == 'admin_add' || $action == 'admin_index' || $action == 'admin_edit')){
-            ?>
+        <?php if($controller == 'users') { ?>
             <li class="add a-s <?php if($controller == 'users' && $action == 'admin_add') echo 'selected';?>"><?php echo $this->Html->link(__('Add New Cms User'), array('controller' => 'users', 'action' => 'add', 'admin' => true)); ?></li>
-        <?php
-        }
-        ?>
+        <?php } ?>
 
         <li class="logout"><?php echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); ?>
 		</li>

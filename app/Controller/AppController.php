@@ -112,7 +112,7 @@ class AppController extends Controller {
         return $rand_string;
     }
 
-    public function send_mail($receiver, $name, $subject,$body,$plain_body){
+    public function send_mail($receiver, $name, $subject, $body, $plain_body){
         App::import('Vendor', 'PHPMailer', array('file' => 'PHPMailer' . DS . 'class.phpmailer.php'));
         $mail = new PHPMailer;
 
