@@ -12,13 +12,18 @@ class UsersController extends AppController {
     }
 
 	public function admin_index() {
+        $logged_user = $this->Session->read('logged_user');
+        if($logged_user['role'] != 'admin') {
+            return $this->redirect(array('action' => 'dashboard'));
+        }
+
         $conditions = array();
         $keyword = null;
         if(!empty($this->request->params['named']['keyword'])) {
             $keyword = $this->request->params['named']['keyword'];
             if (!empty($keyword)) {
                 $conditions = am($conditions, array(
-                        'OR' =>array(
+                        'OR' => array(
                             'User.email LIKE' => '%' . $keyword . '%',
                             'User.role LIKE' => '%' . $keyword . '%'
                         )
@@ -37,15 +42,12 @@ class UsersController extends AppController {
         $this->set('keyword', $keyword);
 	}
 
-	public function admin_view($id = null) {
-		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-		$this->set('user', $this->User->find('first', $options));
-	}
-
 	public function admin_add() {
+        $logged_user = $this->Session->read('logged_user');
+        if($logged_user['role'] != 'admin') {
+            return $this->redirect(array('action' => 'dashboard'));
+        }
+
 		if ($this->request->is('post')) {
 			if(!empty($this->request->data['User']['simple_pwd'])){
                 $this->request->data['User']['simple_pwd'] = $this->request->data['User']['simple_pwd'];
@@ -62,9 +64,18 @@ class UsersController extends AppController {
 	}
 
 	public function admin_edit($id = null) {
+        $logged_user = $this->Session->read('logged_user');
+        if($logged_user['role'] != 'admin') {
+            if($logged_user['id'] != $id) {
+                return $this->redirect(array('action' => 'dashboard'));
+            }
+        }
+        $this->set(compact('logged_user', 'id'));
+
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
-		}
+		}        
+
 		if ($this->request->is(array('post', 'put'))) {
 			if(!empty($this->request->data['User']['simple_pwd'])){
                 $this->request->data['User']['simple_pwd'] = $this->request->data['User']['simple_pwd'];
@@ -79,13 +90,27 @@ class UsersController extends AppController {
 			}
 		} else {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-			$this->request->data = $this->User->find('first', $options);
+            $this->request->data = $this->User->find('first', $options);
 		}
 	}
 
 	public function admin_delete($id = null) {
+        $logged_user = $this->Session->read('logged_user');
+        if($logged_user['role'] != 'admin') {
+            if($logged_user['id'] != $id) {
+                return $this->redirect(array('action' => 'dashboard'));
+            }
+            $this->User->id = $id;
+            if ($this->User->delete()) {
+                $this->Session->setFlash(__('The user has been deleted.'));
+            } else {
+                $this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
+            }
+            return $this->redirect(array('action' => 'logout'));
+        }
+
 		$this->User->id = $id;
-		if (!$this->User->exists()) {
+		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		$this->request->allowMethod('post', 'delete');
@@ -117,6 +142,7 @@ class UsersController extends AppController {
                 }*/
                 $data['id'] = $is_exist['User']['id'];
 				$data['is_admin'] = true;
+                $data['role'] = $is_exist['User']['role'];
 				$this->Session->write('logged_user', $data);
                 $this->redirect(array('action' => 'dashboard','admin' => true));
             } else {

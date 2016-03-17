@@ -157,7 +157,7 @@ img{
 .actions li a{
 	color: #fff;
 	display: block;
-	padding: 3px;
+	padding: 5px;
 	text-transform: uppercase;
 }
 .actions li.node a{
@@ -217,8 +217,8 @@ img{
 	
 }
  .actions li.a-s{
- 	margin-left: 10px;
- 	padding: 5px 0
+ 	margin-left: 25px;
+ 	padding: 5px;
  } 
 /*.actions li.users{
 	background-image: url(../img/users2.png);	

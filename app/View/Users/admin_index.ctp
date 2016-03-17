@@ -32,7 +32,7 @@
             </p>
         </div>
 	    <h2><?php echo __('Users'); ?></h2>
-	    
+
         <div class="form-horizontal">
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-1 control-label">Keyword</label>
@@ -64,7 +64,7 @@
                     <td><?php echo date_format(date_create($user['User']['created']),'d M Y'); ?>&nbsp;</td>
                     <td class="actions">                        
                         <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id']), array( 'class' => 'btn btn-info')); ?>
-                        <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), array( 'class' => 'btn btn-info'), __('Are you sure you want to delete # %s?', $user['User']['id'])); ?>
+                        <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), array( 'class' => 'btn btn-info'), __('Are you sure you want to delete # %s?', $user['User']['email'])); ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

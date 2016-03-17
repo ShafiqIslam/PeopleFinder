@@ -1,25 +1,37 @@
-<div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Admin Add User'); ?></legend>
-	<?php
-		echo $this->Form->input('email');
-		echo $this->Form->input('password');
-		echo $this->Form->input('simple_pwd');
-		echo $this->Form->input('email_verification_token');
-		echo $this->Form->input('role');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php echo $this->element('menu');?>
+<div class="index col-md-10 col-sm-10">
+    <div class="white">
+        <?php echo $this->Form->create('User',array('class'=>'form-horizontal col-md-6')); ?>
+        <fieldset>
+            <legend><?php echo __('Admin Edit CMS User'); ?></legend>
+            
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('email',array('label' => false, 'class'=>'form-control')); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('simple_pwd',array('label' => false,'class'=>'form-control', 'type'=>'password')); ?>
+                </div>
+            </div>
 
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Logs'), array('controller' => 'logs', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Log'), array('controller' => 'logs', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Profiles'), array('controller' => 'profiles', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Profile'), array('controller' => 'profiles', 'action' => 'add')); ?> </li>
-	</ul>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Role</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('role',array('label' => false,'class'=>'form-control', 'options'=>array('admin'=>'Admin', 'subadmin'=>'Sub Admin'))); ?>
+                </div>
+            </div>
+
+            <div class="form-group">
+            	<label for="inputEmail3" class="col-sm-3 control-label"></label>
+                <div class="col-sm-9">
+                    <button type="submit" class="btn submit-green s-c">Submit</button>
+                </div>
+            </div>
+        </fieldset>
+        <?php echo $this->Form->end(); ?>
+    </div>
 </div>

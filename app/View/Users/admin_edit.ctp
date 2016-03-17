@@ -1,27 +1,55 @@
-<div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Admin Edit User'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('email');
-		echo $this->Form->input('password');
-		echo $this->Form->input('simple_pwd');
-		echo $this->Form->input('email_verification_token');
-		echo $this->Form->input('role');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php echo $this->element('menu');?>
+<div class="index col-md-10 col-sm-10">
+    <div class="white">
+        <?php echo $this->Form->create('User',array('class'=>'form-horizontal col-md-6')); ?>
+        <fieldset>
+            <legend><?php echo __('Admin Edit CMS User'); ?></legend>
+            
+            <?php if($logged_user['id'] == $id) { ?>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('email',array('label' => false, 'class'=>'form-control')); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('simple_pwd',array('label' => false,'class'=>'form-control', 'type'=>'password')); ?>
+                </div>
+            </div>
+            <?php } ?>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('User.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('User.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Logs'), array('controller' => 'logs', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Log'), array('controller' => 'logs', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Profiles'), array('controller' => 'profiles', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Profile'), array('controller' => 'profiles', 'action' => 'add')); ?> </li>
-	</ul>
+            <?php if($logged_user['role'] == 'admin') { ?>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Role</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('role',array('label' => false,'class'=>'form-control', 'options'=>array('admin'=>'Admin', 'subadmin'=>'Sub Admin'), 'default'=>$this->request->data['User']['role'])); ?>
+                </div>
+            </div>
+            <?php } ?>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label"></label>
+                <div class="col-sm-9">
+                    <button type="submit" class="btn submit-green s-c">Submit</button>
+                    <?php if($logged_user['role'] == 'subadmin') { ?>
+		            	<?php echo $this->Html->Link(__('Delete'), array('action' => 'delete', $this->request->data['User']['id']), array('class' => 'btn btn-danger', 'id'=>'account_del_btn')); ?>
+		            	<script type="text/javascript">
+		            	$(document).ready(function(){
+		            		$('#account_del_btn').click(function(e){
+		            			e.preventDefault();
+		            			if (confirm("Are you sure you want to delete your account?") == true) {
+							        window.location = "<?php echo $this->webroot.'admin/users/delete/'.$this->request->data['User']['id'];?>";
+							    }
+		            		});
+		            	});
+		            	</script>
+		            <?php } ?>
+                </div>
+            </div>
+
+        </fieldset>
+        <?php echo $this->Form->end(); ?>
+    </div>
 </div>
