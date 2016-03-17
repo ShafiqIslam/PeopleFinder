@@ -58,3 +58,15 @@ $(document).ready(function(){
 		}
 	}
 });
+
+/*--------------Images Upload Js Code is Here-------------------*/
+$(document).ready(function(){
+	$("#images_upload").fileinput({
+        uploadUrl: "/file-upload-batch/2",//need to change the upload url.
+        previewFileIcon: '<i class="fa fa-file"></i>',
+        allowedPreviewTypes: ['image'], // allow only preview of image files
+        uploadAsync : true,
+        maxFileCount : 3,
+        overwriteInitial : false,
+    });
+});

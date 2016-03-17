@@ -53,6 +53,9 @@
 	color: #695959;
 	//border-radius: 4px;
 }
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #190404;
+}
 
 .navbar-inverse .navbar-collapse {
 	border-color: #fff;
@@ -237,7 +240,51 @@ header ul li a{
 	max-width: 222px;
 }
 
+/*========= Drag & Drop images upload css customization========*/
+.file-drop-zone-title {
+    padding: 20px 10px;
+}
 
+.file-input{
+	margin-top: 10px;
+}
+
+.file-drop-zone {
+    margin: 7px 15px 10px 12px;
+    padding: 0px;
+}
+.file-error-message {
+    position: absolute;
+    z-index: 3;
+    top: 52%;
+    left: 30%;
+}
+
+.text-success{
+	 position: absolute;
+    z-index: 3;
+    top: 52%;
+    left: 30%;
+}
+.file-preview {
+    width: 90.5%;
+    margin-left: 4.5%;
+}
+
+.file-input .input-group {
+	width: 90.5%;
+    margin-left: 4.5%;
+}
+
+.file-input .btn-primary {
+    background-color: #337ab7;;;
+    border: none;
+}
+.file-input .btn-primary:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
 
 /*---------------Result Section---------*/
 .count_wrapper{

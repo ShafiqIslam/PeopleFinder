@@ -66,12 +66,11 @@ if(!empty($logged)) {
                 </div>
 
                 <div id="photos" class="tab-pane fade">
-                    <h3>Search By Photos</h3>
-                    <form class="form-horizontal">
+                    <!--<h3>Search By Photos</h3>-->
+                    <form class="form-horizontal" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="" class="col-sm-offset-3 col-sm-2 control-label">Photos</label>
-                            <div class="col-sm-4">
-                                <input type="file" class="form-control" id="" formenctype="multipart/form-data">
+                            <div class="col-sm-12">
+                                <input id="images_upload" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-min-file-count="3">
                             </div>
                         </div>
 
