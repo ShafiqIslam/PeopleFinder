@@ -50,14 +50,15 @@
                                 <li class="<?php if($page=='search') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>search">Search</a></li>
                                 <li class="<?php if($page=='report') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>report_missing">Report</a></li> 
                                 <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
-                                <li class=""><a class="" href="#" data-toggle="modal" data-target="#login1">Login</a></li> 
+                                <li class=""><a class="" href="#" data-toggle="modal" data-target="#login1">Login</a></li>
+                                <li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li> 
                             </ul>
                         </div>   
                     </div>
                 </div>
             </nav>
 
-            <!-- Modal -->
+            <!-- Modal login -->
             <div id="login1" class="modal modal_lage fade" role="dialog">
                 <span><i class=" login1 fa fa-caret-up fa_large fa-3x"></i></span>
                 <div class="modal-dialog">
@@ -90,6 +91,25 @@
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                        <!--Modal Body End-->
+                    </div>
+                </div>
+            </div><!-- Modal End-->
+
+            <!-- Modal My Account -->
+            <div id="myaccount" class="modal modal_lage fade" role="dialog">
+                <span><i class=" login1 fa fa-caret-up fa_large fa-3x"></i></span>
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content col-sm-6">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3 class="modal-title">My Account</h3>
+                        </div>
+                        <!--Modal Body Start-->
+                        <div class="modal-body">
+                            <a href="#" class="btn btn-primary">Signout</a>
                         </div>
                         <!--Modal Body End-->
                     </div>
