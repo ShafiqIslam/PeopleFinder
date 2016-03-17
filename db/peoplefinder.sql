@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2016-03-15 22:35:52
+Date: 2016-03-18 02:19:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,15 +49,15 @@ CREATE TABLE `profiles` (
   `nationality` varchar(100) DEFAULT NULL,
   `gender` varchar(10) DEFAULT NULL,
   `person_status` varchar(15) DEFAULT NULL,
-  `resident_country ` varchar(100) DEFAULT NULL,
-  `resident_city ` varchar(100) DEFAULT NULL,
+  `resident_country` varchar(100) DEFAULT NULL,
+  `resident_city` varchar(100) DEFAULT NULL,
   `resident_street` varchar(100) DEFAULT NULL,
-  `missing_country ` varchar(100) DEFAULT NULL,
+  `missing_country` varchar(100) DEFAULT NULL,
   `missing_city` varchar(100) DEFAULT NULL,
   `personal_photos` int(11) DEFAULT NULL,
   `mental_illness` varchar(5) DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL,
-  `kidnapped ` varchar(5) DEFAULT NULL,
+  `kidnapped` varchar(5) DEFAULT NULL,
   `physical_illness` varchar(5) DEFAULT NULL,
   `document_id` int(11) DEFAULT NULL,
   `verified_profile` tinyint(1) DEFAULT NULL,
@@ -92,29 +92,16 @@ CREATE TABLE `reporters` (
   `email_verified` tinyint(1) DEFAULT NULL,
   `email_verification_token` varchar(255) DEFAULT NULL,
   `account_type` varchar(25) DEFAULT NULL,
+  `is_blacklisted` tinyint(1) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of reporters
 -- ----------------------------
-INSERT INTO `reporters` VALUES ('1', 'asdf', 'asdf', 'asdf', 'BD', 'Male', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'vkeIpthXGO7Oxq01', 'Normal', '2016-03-15 12:54:21', '2016-03-15 12:54:21');
-INSERT INTO `reporters` VALUES ('2', 'test', 'test', 'test', 'BD', 'Male', 'BD', null, 'shafiq.xor@gmail.com', '30beba2a442a48986adf3d09ad5a360a7f53ca80', '0', 'cDPrWgnvC4AARP5U', 'Normal', '2016-03-15 12:55:47', '2016-03-15 12:55:47');
-INSERT INTO `reporters` VALUES ('3', 'asdf', 'asdf', 'asdf', 'BD', 'Male', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'gaKx4PJpMZZuLF3x', 'Normal', '2016-03-15 14:02:32', '2016-03-15 14:02:32');
-INSERT INTO `reporters` VALUES ('4', 'asdf', 'asdf', 'asdf', 'BD', 'Male', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'o8mI9KyiSnXgMJ7X', 'Normal', '2016-03-15 14:03:56', '2016-03-15 14:03:56');
-INSERT INTO `reporters` VALUES ('5', 'asdf', 'asdf', 'asdf', 'BD', 'Select Gen', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'JBlVeShcBJuNhJyX', 'Normal', '2016-03-15 14:06:15', '2016-03-15 14:06:15');
-INSERT INTO `reporters` VALUES ('6', 'asdf', 'asdf', 'asdf', 'BD', 'Select Gen', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', '2HfxfukTdV5it7gK', 'Normal', '2016-03-15 14:10:30', '2016-03-15 14:10:30');
-INSERT INTO `reporters` VALUES ('7', 'asdf', 'asdf', 'asdf', 'BD', 'Select Gen', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'PABQzUOqQ31LTaNj', 'Normal', '2016-03-15 14:12:55', '2016-03-15 14:12:55');
-INSERT INTO `reporters` VALUES ('8', 'asdf', 'asdf', 'asdf', 'BD', 'Select Gen', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'gVTJl7UJuL1lIvmu', 'Normal', '2016-03-15 14:12:59', '2016-03-15 14:12:59');
-INSERT INTO `reporters` VALUES ('9', 'asdf', 'asdf', 'asdf', 'BD', 'Select Gen', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'TZlrnnjn2rMSodqs', 'Normal', '2016-03-15 14:13:14', '2016-03-15 14:13:14');
-INSERT INTO `reporters` VALUES ('10', 'asdf', 'asdf', 'asdf', 'BD', 'Select Gen', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'S1OMMFNqlbZqCwDr', 'Normal', '2016-03-15 14:14:57', '2016-03-15 14:14:57');
-INSERT INTO `reporters` VALUES ('11', 'asdf', 'asdf', 'asdf', 'BD', 'Select Gen', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'epmeQtZvCexK3xJD', 'Normal', '2016-03-15 14:19:26', '2016-03-15 14:19:26');
-INSERT INTO `reporters` VALUES ('12', 'asdf', 'asdf', 'asdf', 'BD', 'Select Gen', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'ZslX6BGvTe8MhOQS', 'Normal', '2016-03-15 14:23:01', '2016-03-15 14:23:01');
-INSERT INTO `reporters` VALUES ('13', 'asdf', 'asdf', 'asdf', 'BD', 'Select Gen', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'SM0tNJT7EvjUFNNy', 'Normal', '2016-03-15 14:31:20', '2016-03-15 14:31:20');
-INSERT INTO `reporters` VALUES ('14', 'asdf', 'asdf', 'asdf', 'BD', 'Select Gen', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'RY9MnzViWoNYRSMI', 'Normal', '2016-03-15 14:43:07', '2016-03-15 14:43:07');
-INSERT INTO `reporters` VALUES ('15', 'asdf', 'asdf', 'asdf', 'BD', 'Select Gen', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '0', 'ytJ5GCvI0XXZ5GRR', 'Normal', '2016-03-15 14:49:18', '2016-03-15 14:49:18');
+INSERT INTO `reporters` VALUES ('1', 'asdf', 'asdf', 'asdf', 'BD', 'Male', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '1', 'mjRguRvNCgr8kBHq', 'Normal', '0', '2016-03-15 12:54:21', '2016-03-16 07:34:52');
 
 -- ----------------------------
 -- Table structure for `users`
@@ -130,7 +117,7 @@ CREATE TABLE `users` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
