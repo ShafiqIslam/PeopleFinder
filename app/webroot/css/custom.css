@@ -7,7 +7,8 @@
 }
 
 .navbar-nav{
-	margin-top: 1%;
+	// margin-top: 1%;
+	//margin-bottom: -1%;
 }
 
 .navbar-inverse{
@@ -29,6 +30,10 @@
 	color:#fff;
 	font-size: 20px;
 	font-weight: 600;
+}
+.navbar-nav > li > a{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:hover{
@@ -74,7 +79,7 @@ header.large img{
 	margin-top: 1%; 
 }
 header.large li{
-	margin-top: 40px; 
+	margin-top: 8%; 
 }
 
 /* Sizes for the smaller menu */
@@ -83,7 +88,7 @@ header.small{
 }
 header.small img{ 
 	width: 230px; 
-	height: 69px; 
+	height: 40px; 
 	margin-top: 2%;
 	margin-bottom: 2%;
 }
@@ -91,7 +96,7 @@ header.small img{
 	margin-top: 10px; 
 }*/
 header.small .navbar-nav {
-    margin-top: 2.1%;
+    //margin-top: 2.1%;
 }
 
 
@@ -114,9 +119,16 @@ header ul li a{
 /*----------Bootstrap Code Channge----------------*/
 
 /*-------Modal class-----------*/
-.modal{
-	margin-top: 5.4%;
+.modal_lage{
+	margin-top: 6%;
     margin-left: 76%;
+}
+.modal_small{
+	margin-top: 2.2%;
+    margin-left: 76%;
+}
+.fa_small{
+    margin-top: 6px;
 }
 .modal h3{
 	text-align: center;
@@ -125,6 +137,25 @@ header ul li a{
 	text-align: left;
 	font-size: 17px;
     margin-bottom: 2%;
+}
+.fa-caret-up{
+	color: #fff;
+	position: fixed;
+    margin-left: 256px;
+}
+.fa_large{
+	margin-top: 2px;
+}
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: none;
+    border-radius: 6px;
+    outline: 0;
+    webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 
@@ -140,9 +171,9 @@ header ul li a{
 
 .search_pill{
 	color:#fff;
-	background-color: rgba(218, 216, 216, 0.34);
+	background-color: rgba(0, 0, 0, 0.28);
 	border-radius: 7px;
-	margin-top: 5%;
+	margin-top: 2%;
     margin-bottom: 20px;
     height: 500px;
 }
@@ -182,7 +213,7 @@ header ul li a{
 
 .search_pill .control-label{
 	text-align: left;
-	font-size: 17px;
+	font-size: 20px;
 }
 .search_pill .control-label p{
 	text-align: right;
@@ -202,7 +233,7 @@ header ul li a{
 
 /*---------------Result Section---------*/
 .count_wrapper{
-	background-color: rgba(239, 239, 239, 0.59);
+	//background-color: rgba(239, 239, 239, 0.59);
 	padding-bottom: 4%;
 	padding-top: 4%;
 }
@@ -210,14 +241,14 @@ header ul li a{
 	text-align: center;
     font-weight: bold;
     font-size: 28px;
-    padding: 20px 3px;
+    //padding: 20px 3px;
 }
 .count_wrapper h2{
 	text-align: center;
 	color: green;
 	font-weight: bold;
 	font-size: 45px;
-	padding-bottom: 28px;
+	//padding-bottom: 28px;
 }
 
 .counter_bg{
@@ -232,16 +263,15 @@ header ul li a{
 
 /*-----------Parallax-----------------*/
 .parallax{
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
 	background-attachment: fixed;
+	background-position: right 110px;
 }
 .count_wrapper{
-	background-color: rgba(237, 237, 237, 0.34);
+	//background-color: rgba(237, 237, 237, 0.34);
 	background-image: url(../img/banner.png);
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 450px;
+	//height: 450px;
 }
 
 
