@@ -180,8 +180,6 @@
             </div>
         </div>
 
-
-
         <div class="form-group">
             <div class="col-sm-offset-5 col-sm-7">
                 <button type="submit" class="btn btn-primary btn_search">Submit</button>
