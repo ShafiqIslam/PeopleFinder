@@ -1,8 +1,8 @@
 <!--==================Sign Up Section========================-->
 <div class="container-fluid sign_up_page">
-    <h1>Report</h1>
+    <h1>REPORT A MISSING PERSON</h1>
     <hr>
-    <form role="form" data-toggle="validator" novalidate="true" class="form-horizontal" enctype="multipart/form-data">
+    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" enctype="multipart/form-data">
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">First Name</label>
             <div class="col-sm-3">
@@ -52,7 +52,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Nationality</label>
             <div class="col-sm-3 country_selection_box">
-                <div class="bfh-selectbox bfh-countries" data-name="data[Reporter][nationality]"  data-country="BD" data-flags="true">
+                <div class="bfh-selectbox bfh-countries" data-name="data[Profile][nationality]"  data-country="BD" data-flags="true">
                 </div>        
             </div>
         </div>
@@ -68,23 +68,13 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="" class="col-sm-offset-3 col-sm-2 control-label">Person's Status</label>
-            <div class="col-sm-3">
-                <select name="data[Profile][person_status]" class="form-control" required="">
-                    <option value="">Select Person's Status</option>
-                    <option value="missing">Missing</option>
-                    <option value="found">Found</option>
-                    <option value="may be found">May be Found</option>
-                </select>
-            </div>
-        </div>
+        <input type="hidden" name="data[Profile][person_status]" value="Missing">
 
 
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Resident Country</label>
             <div class="col-sm-3">
-                <div class="bfh-selectbox bfh-countries" data-name="data[Reporter][resident_country]" data-country="BD" data-flags="true">
+                <div class="bfh-selectbox bfh-countries" data-name="data[Profile][resident_country]" data-country="BD" data-flags="true">
                 </div>
             </div>
         </div>
@@ -106,7 +96,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Missing Country</label>
             <div class="col-sm-3">
-                <div class="bfh-selectbox bfh-countries" data-name="data[Reporter][missing_country]" data-country="BD" data-flags="true">
+                <div class="bfh-selectbox bfh-countries" data-name="data[Profile][missing_country]" data-country="BD" data-flags="true">
                 </div>
             </div>
         </div>
@@ -130,8 +120,8 @@
             <div class="col-sm-3">
                 <select name="data[Profile][mental_illness]" class="form-control" required="">
                     <option value="">Select Mental illness</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                     <option value="NA">NA</option>
                 </select>
             </div>
@@ -142,8 +132,8 @@
             <div class="col-sm-3">
                 <select name="data[Profile][status]" class="form-control" required="">
                     <option value="">Select Status</option>
-                    <option value="alive">Alive</option>
-                    <option value="death">Death</option>
+                    <option value="Alive">Alive</option>
+                    <option value="Death">Death</option>
                     <option value="NA">NA</option>
                 </select>
             </div>
