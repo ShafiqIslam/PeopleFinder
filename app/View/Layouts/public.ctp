@@ -48,7 +48,7 @@
                             <ul class="col-sm-6 nav navbar-nav navbar-right">
                                 <li class="<?php if($page=='home') echo 'active';?>"><a href="<?php echo $this->webroot;?>home">Home</a></li>
                                 <li class="<?php if($page=='search') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>search">Search</a></li>
-                                <li class="<?php if($page=='report') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>report">Report</a></li> 
+                                <li class="<?php if($page=='report') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>report_missing">Report</a></li> 
                                 <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
                                 <li class=""><a class="" href="#" data-toggle="modal" data-target="#login1">Login</a></li>
                                 <li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li> 

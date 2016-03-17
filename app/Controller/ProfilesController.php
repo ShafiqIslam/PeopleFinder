@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('ReportersController', 'Controller');
 
 class ProfilesController extends AppController {
 
@@ -7,7 +8,11 @@ class ProfilesController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('report');
+        $this->Auth->allow('report_missing', 'report_found', 'blacklisted');
+
+		$page = $subpage = $title_for_layout = "report";
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->layout = 'public';
     }
 
 	public function admin_index() {
@@ -72,18 +77,43 @@ class ProfilesController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
-	public function report() {
+	/*
+	*
+	*	Public/Front End Functions
+	*
+	*/
+
+	private function _check_user() {
 		$logged_user = $this->Session->read('logged_user');
 		if(empty($logged_user)) {
 			return $this->redirect(array('controller'=>'reporters', 'action' => 'login'));
 		}
 
+		$reporter_obj = new ReportersController();
+		if($reporter_obj->is_blacklisted($logged_user['id'])) {
+			return $this->redirect(array('action' => 'blacklisted'));
+		}
+
+		return true;
+	}
+
+	public function blacklisted() {
+		
+	}
+
+	public function report_missing() {
+		$this->_check_user();
+
 		if($this->request->is('post')) {
 			AuthComponent::_setTrace($this->request->data);
 		}
+	}
 
-		$page = $subpage = $title_for_layout = "report";
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->layout = 'public';
+	public function report_found() {
+		$this->_check_user();
+
+		if($this->request->is('post')) {
+			AuthComponent::_setTrace($this->request->data);
+		}
 	}
 }

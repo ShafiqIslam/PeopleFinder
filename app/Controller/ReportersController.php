@@ -159,6 +159,7 @@ class ReportersController extends AppController {
         $this->request->data['Reporter']['password'] = $this->Auth->password($this->request->data['Reporter']['password']);
         $this->request->data['Reporter']['email_verified'] = false;
         $this->request->data['Reporter']['account_type'] = "Normal";
+        $this->request->data['Reporter']['is_blacklisted'] = false;
         $token = $this->request->data['Reporter']['email_verification_token'] = $this->random_string(16,1,1);
 
 		$this->Reporter->create();
@@ -188,6 +189,84 @@ class ReportersController extends AppController {
 			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "signup"));
 		}
 	}
+
+	public function is_mail_exist($mail) {
+		$this->autoRender = false;
+		$this->autoLayout = false;
+		header('Content-Type: application/json');
+
+		$options = array('conditions' => array('Reporter.email' => $mail));
+		$reporter = $this->Reporter->find('first', $options);
+		if(empty($reporter)) {
+			die(json_encode(array('exist' => false)));
+		} else {
+			die(json_encode(array('exist' => true)));
+		}
+	} 
+
+	public function verify($id=null, $token=null) {
+		if($id==null || $token==null) {
+			$this->Session->setFlash(__('Bad Request.'), 'default', array('class' => 'error'));
+			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
+		}
+
+		$options = array('conditions' => array('Reporter.id' => $id, 'Reporter.email_verification_token' => $token));
+		$reporter = $this->Reporter->find('first', $options);
+		if(empty($reporter)) {
+			$success = false;
+		} else {
+			$success = true;
+			$this->Reporter->id = $id;
+			$data['Reporter']['email_verified'] = true;
+			$this->Reporter->save($data);
+		}
+
+		$page = $subpage = $title_for_layout = null;
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->set(compact('success'));
+
+		$this->layout = 'public';
+	}
+
+	public function recover_password($id=null, $token=null) {
+		if($id==null || $token==null) {
+			$this->Session->setFlash(__('Bad Request.'), 'default', array('class' => 'error'));
+			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
+		}
+
+		$options = array('conditions' => array('Reporter.id' => $id, 'Reporter.email_verification_token' => $token));
+		$reporter = $this->Reporter->find('first', $options);
+		if(empty($reporter)) {
+			$this->Session->setFlash(__('Bad Request.'), 'default', array('class' => 'error'));
+			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
+		} else {
+			if($this->request->is('post')) {
+				$this->request->data['Reporter']['password'] = $this->Auth->password($this->request->data['Reporter']['password']);
+				$this->Reporter->id = $id;
+				if($this->Reporter->save($this->request->data)) {
+					$success = true;
+				} else {
+					$success = false;
+				}
+				$is_post = true;
+			} else {
+				$success = false;
+				$is_post = false;
+			}
+		}
+
+		$page = $subpage = $title_for_layout = null;
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->set(compact('success', 'is_post'));
+
+		$this->layout = 'public';
+	}
+
+	/*
+	*
+	*	Internal use functions
+	*
+	*/
 
 	private function _send_recovery_mail($mail, $token, $id, $name) {
 		$verification_link = "http://" . $_SERVER['HTTP_HOST'] . $this->webroot . "reporters/recover_password/" . $id . "/" . $token;
@@ -263,75 +342,14 @@ class ReportersController extends AppController {
         }
 	}
 
-	public function is_mail_exist($mail) {
-		$this->autoRender = false;
-		$this->autoLayout = false;
-		header('Content-Type: application/json');
+	public function is_blacklisted($id) {
+		if (!$this->Reporter->exists($id)) {
+			throw new NotFoundException(__('Invalid reporter'));
+		}
 
-		$options = array('conditions' => array('Reporter.email' => $mail));
+		$options = array('conditions' => array('Reporter.id' => $id));
 		$reporter = $this->Reporter->find('first', $options);
-		if(empty($reporter)) {
-			die(json_encode(array('exist' => false)));
-		} else {
-			die(json_encode(array('exist' => true)));
-		}
-	} 
 
-	public function verify($id=null, $token=null) {
-		if($id==null || $token==null) {
-			$this->Session->setFlash(__('Bad Request.'), 'default', array('class' => 'error'));
-			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
-		}
-
-		$options = array('conditions' => array('Reporter.id' => $id, 'Reporter.email_verification_token' => $token));
-		$reporter = $this->Reporter->find('first', $options);
-		if(empty($reporter)) {
-			$success = false;
-		} else {
-			$success = true;
-			$this->Reporter->id = $id;
-			$data['Reporter']['email_verified'] = true;
-			$this->Reporter->save($data);
-		}
-
-		$page = $subpage = $title_for_layout = null;
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->set(compact('success'));
-
-		$this->layout = 'public';
-	}
-
-	public function recover_password($id=null, $token=null) {
-		if($id==null || $token==null) {
-			$this->Session->setFlash(__('Bad Request.'), 'default', array('class' => 'error'));
-			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
-		}
-
-		$options = array('conditions' => array('Reporter.id' => $id, 'Reporter.email_verification_token' => $token));
-		$reporter = $this->Reporter->find('first', $options);
-		if(empty($reporter)) {
-			$this->Session->setFlash(__('Bad Request.'), 'default', array('class' => 'error'));
-			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
-		} else {
-			if($this->request->is('post')) {
-				$this->request->data['Reporter']['password'] = $this->Auth->password($this->request->data['Reporter']['password']);
-				$this->Reporter->id = $id;
-				if($this->Reporter->save($this->request->data)) {
-					$success = true;
-				} else {
-					$success = false;
-				}
-				$is_post = true;
-			} else {
-				$success = false;
-				$is_post = false;
-			}
-		}
-
-		$page = $subpage = $title_for_layout = null;
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->set(compact('success', 'is_post'));
-
-		$this->layout = 'public';
+		return $reporter['Reporter']['is_blacklisted'];
 	}
 }
