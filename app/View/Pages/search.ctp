@@ -36,12 +36,6 @@
         </div>
 
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-7">
-                <input id="adv_search_img" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="3">
-            </div>
-        </div>
-
-        <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Country</label>
             <div class="col-sm-4 country_selection_box">
                 <!--<select class="input-medium bfh-countries" data-country="BD"></select>-->
@@ -70,11 +64,16 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-7">
+                <input id="adv_search_img" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="3">
+            </div>
+        </div>
 
 
         <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-7">
-                <button type="submit" class="btn btn-primary btn_search">Search</button>
+            <div class="col-sm-offset-7 col-sm-5 report_found_submit">
+                <button type="submit" class="btn btn-primary btn_search">Submit</button>
             </div>
         </div>
     </form>

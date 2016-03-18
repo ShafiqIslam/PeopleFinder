@@ -475,6 +475,9 @@ input, textarea{
 	background: -moz-linear-gradient(top, #EEE 0px, #FFF 25px);
 }
 
+.report_found_submit button{
+	margin-left: 12.5%;
+}
 
 /*------Search result page CSS---------------*/
 .result_body ul li{
