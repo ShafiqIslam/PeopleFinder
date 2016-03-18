@@ -57,11 +57,19 @@ $(document).ready(function(){
 			$('#signup_form').find('button[type=submit]').removeAttr('disabled');
 		}
 	}
-});
 
-/*--------------Images Upload Js Code is Here-------------------*/
-$(document).ready(function(){
-	$("#images_upload").fileinput({
+	/*--------------Images search Js Code is Here-------------------*/
+	$("#search_img").fileinput({
+        uploadUrl: "/file-upload-batch/2",//need to change the upload url.
+        previewFileIcon: '<i class="fa fa-file"></i>',
+        allowedPreviewTypes: ['image'], // allow only preview of image files
+        uploadAsync : true,
+        maxFileCount : 1,
+        overwriteInitial : false,
+    });
+
+    /*--------------Advance Images search Js Code is Here-------------------*/
+	$("#adv_search_img").fileinput({
         uploadUrl: "/file-upload-batch/2",//need to change the upload url.
         previewFileIcon: '<i class="fa fa-file"></i>',
         allowedPreviewTypes: ['image'], // allow only preview of image files
@@ -70,3 +78,5 @@ $(document).ready(function(){
         overwriteInitial : false,
     });
 });
+
+

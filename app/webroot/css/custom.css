@@ -250,14 +250,15 @@ header ul li a{
 }
 
 .file-drop-zone {
-    margin: 7px 15px 10px 12px;
+    margin: 7px 15px 7px 12px;
     padding: 0px;
+    height: 180px;
 }
 .file-error-message {
     position: absolute;
     z-index: 3;
     top: 52%;
-    left: 30%;
+    left: 11%;
 }
 
 .text-success{
@@ -266,12 +267,12 @@ header ul li a{
     top: 52%;
     left: 30%;
 }
-.file-preview {
+.search_pill .file-preview {
     width: 90.5%;
     margin-left: 4.5%;
 }
 
-.file-input .input-group {
+.search_pill .file-input .input-group {
 	width: 90.5%;
     margin-left: 4.5%;
 }

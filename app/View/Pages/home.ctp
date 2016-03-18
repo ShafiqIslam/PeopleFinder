@@ -70,7 +70,7 @@ if(!empty($logged)) {
                     <form class="form-horizontal" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input id="images_upload" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-min-file-count="3">
+                                <input id="search_img" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="1">
                             </div>
                         </div>
 

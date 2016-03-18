@@ -447,9 +447,9 @@
         object: tObject,
         other: tOther
     };
-    defaultPreviewTypes = ['image', 'html', 'text', 'video', 'audio', 'flash', 'object'];
+    defaultPreviewTypes = ['image'];
     defaultPreviewSettings = {
-        image: {width: "180px", height: "85px"},
+        image: {width: "175px", height: "85px"},
         html: {width: "213px", height: "160px"},
         text: {width: "160px", height: "136px"},
         video: {width: "213px", height: "160px"},
@@ -2747,7 +2747,7 @@
         msgImageHeightLarge: 'Height of image file "{name}" cannot exceed {size} px.',
         msgImageResizeError: 'Could not get the image dimensions to resize.',
         msgImageResizeException: 'Error while resizing the image.<pre>{errors}</pre>',
-        dropZoneTitle: 'Drag & drop files here &hellip;'
+        dropZoneTitle: 'Drag & drop images here &hellip;'
     };
 
     $.fn.fileinput.Constructor = FileInput;
