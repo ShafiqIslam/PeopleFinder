@@ -52,7 +52,12 @@
                             <ul class="col-sm-6 nav navbar-nav navbar-right">
                                 <li class="<?php if($page=='home') echo 'active';?>"><a href="<?php echo $this->webroot;?>home">Home</a></li>
                                 <li class="<?php if($page=='search') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>search">Search</a></li>
-                                <li class="<?php if($page=='report') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>report_missing">Report</a></li> 
+                                <li class="dropdown <?php if($page=='report') echo 'active';?>"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Report<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown_menu"><a href="<?php echo $this->webroot;?>report_found">Report Found</a></li>
+                                        <li class="dropdown_menu"><a href="<?php echo $this->webroot;?>report_missing">Report Missing</a></li>
+                                    </ul>
+                                </li> 
                                 <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
                                 <li class=""><a class="" href="#" data-toggle="modal" data-target="#login1">Login</a></li>
                                 <li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li> 
@@ -92,6 +97,11 @@
                                 <div class="form-group">
                                     <div class="col-sm-offset-6 col-sm-6">
                                         <button type="submit" class="btn btn-primary btn_search">Login</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 forget_pass">
+                                        <p><a href="<?php echo $this->webroot;?>reporters/forgot_password">Forgot your password?</a></p>
                                     </div>
                                 </div>
                             </form>

@@ -4,7 +4,7 @@
     <hr>
 
     <?php if(!empty($login_fail) && $login_fail) { ?>
-        <p>Incorrect Username and Password.<br>Try Again.<br>Or, Check again your email for verification. We don't recongnise your email until it's verified.</p>
+        <p style="text-align: center;color: #E91E63;">Incorrect Username and Password.<br>Try Again.<br>Or, Check again your email for verification. We don't recongnise your email until it's verified.</p>
         <hr>
     <?php } ?>
 
@@ -28,6 +28,11 @@
                 <button type="submit" class="btn btn-primary btn_search">Login</button>
             </div>
         </div>
-        <a href="<?php echo $this->webroot;?>reporters/forgot_password">Forgot Your Password</a>
+
+        <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-5 forget_pass">
+                <p><a href="<?php echo $this->webroot;?>reporters/forgot_password">Forgot Your Password?</a></p>
+            </div>
+        </div>
     </form>       
 </div>

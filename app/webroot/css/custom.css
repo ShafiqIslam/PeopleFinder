@@ -124,6 +124,46 @@ header ul li a{
   display: block;
 }
 
+/*--------Drop-down menu CSS------------*/ 
+.navbar-right .dropdown-menu {
+    right: 0;
+    left: -1.04px;
+    background-color: rgba(28, 39, 66, 0.76);
+}
+.navbar-nav > li > .dropdown-menu {
+    box-shadow: none;
+    border: none;
+    border-left: 1px solid rgba(140, 140, 140, 0.2);
+    border-bottom: 1px solid rgba(140, 140, 140, 0.2);
+    border-right: 1px solid rgba(140, 140, 140, 0.2);
+}
+
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #695959;
+    background-color: #fff;
+}
+
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #695959;
+    background-color: #fff;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: #695959;
+    text-decoration: none;
+    background-color: #FFF;
+}
+
+.dropdown-menu > li > a {
+	color: #fff;
+}
+
+.dropdown-menu li{
+	display: block;
+	background-color: #fff;
+}
 
 /*----------Bootstrap Code Channge----------------*/
 
@@ -168,6 +208,10 @@ header ul li a{
 }
 #myaccount .modal-body .btn-primary{
 	color: #901B1B;
+}
+
+.forget_pass p{
+	margin-bottom: -10px;
 }
 
 /*-----------------------Container Section CSS---------------------------*/
@@ -324,6 +368,10 @@ header ul li a{
     color: #fff;
     background-color: #286090;
     border-color: #204d74;
+}
+
+.file-preview {
+    border: 1px solid rgba(119, 116, 116, 0.48);
 }
 
 /*---------------Result Section---------*/
@@ -519,6 +567,15 @@ input, textarea{
 }
 
 /*------Search result page CSS---------------*/
+.search_result_wrappper{
+	margin-bottom: 3%;
+}
+.search_result_wrappper h1{
+	margin-left: 3%;
+    margin-bottom: 3%;
+    margin-top: 5%;
+}
+
 .result_body ul li{
 	list-style: none;
 	padding: 10px 0px;
@@ -605,6 +662,25 @@ input, textarea{
 	color:blue;
 	cursor: pointer;
 }
+
+/*Reporters login page CSS*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*---------------------Social link----------------*/

@@ -7,7 +7,7 @@
         <?php if($email_exist) { ?>
             <p>An e-mail has been send to <?php echo $email;?>. Please follow the mail to get the recovery link of your account.</p>
         <?php } else { ?>
-            <p>Sorry, we dont recognise the email.<br>Try Again.<br>Or, Check again your email for verification. We don't recongnise your email until it's verified.</p>
+            <p style="text-align: center;color: #E91E63;">Sorry, we dont recognise the email.<br>Try Again.<br>Or, Check again your email for verification. We don't recongnise your email until it's verified.</p>
         <?php } ?>
         <hr>
     <?php } ?>
