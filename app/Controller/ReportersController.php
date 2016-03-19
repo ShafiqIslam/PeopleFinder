@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('UsersController', 'Controller');
 
 class ReportersController extends AppController {
 
@@ -17,11 +18,34 @@ class ReportersController extends AppController {
     }
 
 	public function admin_index() {
-		$this->Reporter->recursive = 0;
-		$this->set('reporters', $this->Paginator->paginate());
+		$conditions = array();
+        $keyword = null;
+        if(!empty($this->request->params['named']['keyword'])) {
+            $keyword = $this->request->params['named']['keyword'];
+            if (!empty($keyword)) {
+                $conditions = am($conditions, array(
+                        'OR' => array(
+                            'Reporter.first_name LIKE' => '%' . $keyword . '%',
+                            'Reporter.second_name LIKE' => '%' . $keyword . '%',
+                            'Reporter.last_name LIKE' => '%' . $keyword . '%',
+                            'Reporter.email LIKE' => '%' . $keyword . '%'
+                        )
+                    )
+                );
+            } 
+        }
+               
+        $this->Reporter->recursive = 0;
+        $this->paginate = array('all',
+            'limit' => 10,
+            'order' => array('Reporter.document_id' => 'DESC', 'Reporter.created' => 'DESC'),
+            'conditions' => $conditions
+        );
+        $this->set('reporters', $this->Paginator->paginate());
+        $this->set('keyword', $keyword);
 	}
 
-	public function admin_view($id = null) {
+	/*public function admin_view($id = null) {
 		if (!$this->Reporter->exists($id)) {
 			throw new NotFoundException(__('Invalid reporter'));
 		}
@@ -39,7 +63,7 @@ class ReportersController extends AppController {
 				$this->Session->setFlash(__('The reporter could not be saved. Please, try again.'));
 			}
 		}
-	}
+	}*/
 
 	public function admin_edit($id = null) {
 		if (!$this->Reporter->exists($id)) {
@@ -56,6 +80,37 @@ class ReportersController extends AppController {
 			$options = array('conditions' => array('Reporter.' . $this->Reporter->primaryKey => $id));
 			$this->request->data = $this->Reporter->find('first', $options);
 		}
+	}
+
+	public function admin_accept_id_document ($id) {
+		$this->Reporter->id = $id;
+		if (!$this->Reporter->exists()) {
+			throw new NotFoundException(__('Invalid reporter'));
+		}
+		$data['Reporter']['account_type'] = "Verified";
+		$this->Reporter->id = $id;
+		if($this->Reporter->save($data)) {
+			$this->Session->setFlash(__('The reporter has been saved.'));
+		} else {
+			$this->Session->setFlash(__('The reporter could not be saved. Please, try again.'));
+		}
+		return $this->redirect(array('action' => 'edit', $id));
+	}
+
+	public function admin_revoke_type ($id) {
+		$this->Reporter->id = $id;
+		if (!$this->Reporter->exists()) {
+			throw new NotFoundException(__('Invalid reporter'));
+		}
+		$data['Reporter']['account_type'] = "Normal";
+		$data['Reporter']['document_id'] = null;
+		$this->Reporter->id = $id;
+		if($this->Reporter->save($data)) {
+			$this->Session->setFlash(__('The reporter has been saved.'));
+		} else {
+			$this->Session->setFlash(__('The reporter could not be saved. Please, try again.'));
+		}
+		return $this->redirect(array('action' => 'edit', $id));
 	}
 
 	public function admin_delete($id = null) {
@@ -143,12 +198,13 @@ class ReportersController extends AppController {
 			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "signup"));
 		}
 
+		$verified = 0;
+
 		if (!empty($this->request->data['Reporter']['document_id']['name'])) {
             //upload to picasa
             $file_name = $this->_upload($this->request->data['Reporter']['document_id'], 'uploads');
             $this->request->data['Reporter']['document_id'] = $file_name;            
-
-            // send admin an email
+            $verified = 1; // send admin an email
 
         } else {
             unset($this->request->data['Reporter']['document_id']);
@@ -172,6 +228,12 @@ class ReportersController extends AppController {
 			$email = $this->request->data['Reporter']['email'];
 
 			$success = $this->_send_verification_mail($email, $token, $id, $name);
+			if($verified) {				
+				$user = new UsersController;
+				$email = $user->get_admin_email();
+            	$this->_send_notification_mail($email, 'Admin', $id);
+			}
+
 			/*if(!$success) {
 				$this->Reporter->delete();
 			}*/			
@@ -329,6 +391,43 @@ class ReportersController extends AppController {
             return false;
         }
 	}
+
+	private function _send_notification_mail($mail, $name, $reporter_id) {
+        $reporter_link = "http://" . $_SERVER['HTTP_HOST'] . $this->webroot . "admin/reporters/edit/" . $reporter_id;
+        $subject = "Face Finder New Verified Reporter";
+        $body = "";
+
+        $body .= '<html>';
+        $body .= '  <body>';
+        $body .= '      <div style="width: 700px; margin:0 auto; border: 2px solid #ededed; border-radius: 7px;">';
+        $body .= '          <h2  style="font-size: 30px;text-align: center;background-color: #ededed;padding: 20px 0px;margin-top: 0px;">Thanks for using FaceFinder</h2>';
+        $body .= '          <div style="padding: 20px;">';
+        $body .= '              <strong style="font-size: 20px;">Hello, ' . $name . ' </strong>';
+        $body .= '              <br><br>';
+        $body .= '              <p style="font-size: 15px;">There is a new reporter account created which has submitted an id. Please have a look on to the request.</p>';
+        $body .= '              <a style="font-size: 15px;" href="' . $reporter_link . '">'. $reporter_link .'</a>';
+        $body .= '              <br><br>';
+        $body .= '              <p style="font-size: 15px;">If you don\'t know anything about this email. Please just ignore it.';
+        $body .= '              <br><br><br>';
+        $body .= '              <p style="font-size: 20px;">Cordially,<br/>';
+        $body .= '              <strong style="font-size: 17px;">Face Finder Team</strong>';
+        $body .= '              <br><br>';
+        $body .= '              <img src="' . $this->webroot . 'img/logo_2.png" alt="Logo" />';
+        $body .= '              <br><br>';
+        $body .= '          </div>';
+        $body .= '      </div>';
+        $body .= '  </body>';
+        $body .= '</html>';
+
+        $plain_body = "Your password is: $password. ";
+        $plain_body .= "<a target=\"_blank\" href=\"$login_link\">Login now</a>";
+
+        if($this->send_mail($mail, $name, $subject, $body, $plain_body)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 	public function is_blacklisted($id) {
 		if (!$this->Reporter->exists($id)) {
