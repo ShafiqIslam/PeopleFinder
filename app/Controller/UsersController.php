@@ -229,4 +229,15 @@ class UsersController extends AppController {
             return false;
         }
     }
+
+    public function get_admin_email() {
+        $options = array(
+            'conditions' => array(
+                'User.role' => 'admin'
+            )
+        );
+        $admin = $this->User->find('first', $options);
+
+        return $admin['User']['email'];
+    }
 }

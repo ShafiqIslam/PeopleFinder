@@ -1,33 +1,93 @@
-<div class="reporters form">
-<?php echo $this->Form->create('Reporter'); ?>
-	<fieldset>
-		<legend><?php echo __('Admin Edit Reporter'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('first_name');
-		echo $this->Form->input('second_name');
-		echo $this->Form->input('last_name');
-		echo $this->Form->input('nationality');
-		echo $this->Form->input('gender');
-		echo $this->Form->input('resident_country');
-		echo $this->Form->input('document_id');
-		echo $this->Form->input('email');
-		echo $this->Form->input('password');
-		echo $this->Form->input('email_verification_token');
-		echo $this->Form->input('account_type');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php echo $this->element('menu');?>
+<div class="index col-md-10 col-sm-10">
+    <div class="white">
+        <?php echo $this->Form->create('Reporter',array('class'=>'form-horizontal col-md-6')); ?>
+        <fieldset>
+            <legend><?php echo __('Admin Edit Reporter'); ?></legend>
+                     
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">First Name</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('first_name',array('label' => false, 'class'=>'form-control')); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Second Name</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('second_name',array('label' => false,'class'=>'form-control')); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Last Name</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('last_name',array('label' => false, 'class'=>'form-control')); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Nationality</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('nationality',array('label' => false,'class'=>'form-control')); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Gender</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('gender',array('label' => false, 'class'=>'form-control', 'options'=>array('Male'=>'Male', 'Female'=>'Female'), 'default'=>$this->request->data['Reporter']['gender'])); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Resident Country</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('resident_country',array('label' => false,'class'=>'form-control')); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">ID Document</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('document_id',array('label' => false, 'class'=>'form-control')); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('email',array('label' => false,'class'=>'form-control')); ?>
+                </div>
+            </div>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Reporter.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Reporter.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Reporters'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Logs'), array('controller' => 'logs', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Log'), array('controller' => 'logs', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Profiles'), array('controller' => 'profiles', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Profile'), array('controller' => 'profiles', 'action' => 'add')); ?> </li>
-	</ul>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Account Type</label>
+                <div class="col-sm-9">
+                    <?php echo $this->Form->input('account_type',array('label' => false,'class'=>'form-control')); ?>
+                </div>
+            </div>
+
+            <?php if(!empty($this->request->data['Reporter']['document_id']) && $this->request->data['Reporter']['account_type'] == 'Normal') { ?>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label"></label>
+                <div class="col-sm-9">
+                	<input class="form-control" style="font-weight: bold" type="text" disabled="disabled" value="This user has submitted an new ID. And waiting for admin confirmation.">
+                    <?php echo $this->Html->Link(__('Accept'), array('action' => 'accept_id_document', $this->request->data['Reporter']['id']), array('class' => 'btn btn-danger')); ?>
+                </div>
+            </div>
+            <?php } ?>
+
+            <?php if(!empty($this->request->data['Reporter']['document_id']) && $this->request->data['Reporter']['account_type'] == 'Verified') { ?>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label"></label>
+                <div class="col-sm-9">
+                    <?php echo $this->Html->Link(__('Revoke Account Type'), array('action' => 'revoke_type', $this->request->data['Reporter']['id']), array('class' => 'btn btn-danger')); ?>
+                </div>
+            </div>
+            <?php } ?>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label"></label>
+                <div class="col-sm-9">
+                    <button type="submit" class="btn submit-green s-c">Submit</button>
+                </div>
+            </div>
+
+        </fieldset>
+        <?php echo $this->Form->end(); ?>
+    </div>
 </div>
