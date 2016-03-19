@@ -6,14 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:500,400" />
         <title>FaceFinder</title>
 
         <?php
             echo $this->Html->meta('icon');
             //echo $this->Html->css('cake.generic');
             echo $this->Html->css(array('bootstrap', 'bootstrap-datetimepicker', 'jquery-ui', 'bootstrap-formhelpers.min','fileinput', 'custom'));
-            echo $this->Html->script(array('jquery-1.11.3', 'bootstrap.min', 'fileinput.js', 'jquery-ui', 'bootstrap-formhelpers.min', 'bootstrap-formhelpers-countries', 'validator.min', 'count'));
-
+            echo $this->Html->script(array('jquery-1.11.3', 'bootstrap.min', 'fileinput.js', 'jquery-ui', 'bootstrap-formhelpers.min', 'bootstrap-formhelpers-countries', 'validator.min', 'count',));
+        ?>
+        <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=drawing"></script>
+        <?php
+            echo $this->Html->script(array('app',));
             echo $this->fetch('meta');
             echo $this->fetch('css');
             echo $this->fetch('script');

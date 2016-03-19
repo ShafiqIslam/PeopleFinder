@@ -204,7 +204,7 @@ header ul li a{
 }
 
 .search_pill .nav-pills>li {
-    width: 24%;
+    width: 19%;
     text-align: center;
     background: #cfcfcf;
     border-radius: 4px;
@@ -238,6 +238,45 @@ header ul li a{
 /* this is for country selection box.*/
 .search_pill .country_selection_box .bfh-selectbox .bfh-selectbox-options ul{
 	max-width: 222px;
+}
+
+/*this is for map draging CSS */
+#map-canvas {
+    width: 100%;
+    height: 250px;
+    background-color: gray;
+}
+.draw_map{
+	margin-top: 8%;
+	margin-left: 6.3%;
+    padding-right: 7.5%;
+}
+.draw_map p{
+	//margin-left: 5%;
+}
+#name .adv_search_link p{
+	position: absolute;
+	bottom: -90px;
+}
+
+#photos .adv_search_link p{
+	position: absolute;
+	bottom: -65px;
+}
+
+#country .adv_search_link p{
+	position: absolute;
+	bottom: -135px;
+}
+
+#map .adv_search_link p{
+	position: absolute;
+	bottom: -73px;
+}
+
+#id_search .adv_search_link p{
+	position: absolute;
+	bottom: -238px;
 }
 
 /*========= Drag & Drop images upload css customization========*/

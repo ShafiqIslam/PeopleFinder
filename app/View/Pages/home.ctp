@@ -16,6 +16,7 @@ if(!empty($logged)) {
                     <li class="active"><a data-toggle="pill" href="#name">Name</a></li>
                     <li><a data-toggle="pill" href="#photos">Photos</a></li>
                     <li><a data-toggle="pill" href="#country">Country</a></li>
+                    <li><a data-toggle="pill" href="#map">Map</a></li>
                     <li><a data-toggle="pill" href="#id_search">ID</a></li>
                 </ul>
             </div>
@@ -58,7 +59,10 @@ if(!empty($logged)) {
                         </div>
 
                         <div class="form-group">
-                            <div class="col-sm-offset-5 col-sm-8">
+                            <div class="col-sm-5 adv_search_link">
+                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...</a></p>
+                            </div>
+                            <div class=" col-sm-7">
                                 <button type="submit" class="btn btn-primary btn_search">Search</button>
                             </div>
                         </div>
@@ -86,7 +90,10 @@ if(!empty($logged)) {
                         </div>
 
                         <div class="form-group">
-                            <div class="col-sm-offset-5 col-sm-8">
+                            <div class="col-sm-9 adv_search_link">
+                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...</a></p>
+                            </div>
+                            <div class="col-sm-3">
                                 <button type="submit" class="btn btn-primary btn_search">Search</button>
                             </div>
                         </div>
@@ -130,12 +137,38 @@ if(!empty($logged)) {
                         </div>
 
                         <div class="form-group">
-                            <div class="col-sm-offset-5 col-sm-8">
+                            <div class="col-sm-5 adv_search_link">
+                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...</a></p>
+                            </div>
+                            <div class="col-sm-7">
                                 <button type="submit" class="btn btn-primary btn_search">Search</button>
                             </div>
                         </div>
                     </form>
                 </div>
+
+                <div id="map" class="tab-pane fade">
+                    <!--<h3>Search By Photos</h3>-->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="draw_map">
+                                <div id="map-canvas"></div><!-- Drag on google map-->
+                                <p>Draw a circle on the map.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-9 adv_search_link">
+                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...</a></p>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="submit" class="btn btn-primary btn_search">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
                 <div id="id_search" class="tab-pane fade">
                     <h3>Search By ID</h3>
                     <form class="form-horizontal">
@@ -147,7 +180,10 @@ if(!empty($logged)) {
                         </div>
 
                         <div class="form-group">
-                            <div class="col-sm-offset-5 col-sm-8">
+                            <div class="col-sm-5 adv_search_link">
+                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...</a></p>
+                            </div>
+                            <div class="col-sm-7">
                                 <button type="submit" class="btn btn-primary btn_search">Search</button>
                             </div>
                         </div>

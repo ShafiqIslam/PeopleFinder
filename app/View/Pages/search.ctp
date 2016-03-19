@@ -64,6 +64,14 @@
             </div>
         </div>
 
+            <div class="form-group adv_draw_map">
+                <div class="col-sm-offset-2 col-sm-7">
+                    <div id="map-canvas"></div><!-- Drag on google map-->
+                    <p>Draw a circle on the map.</p>
+                </div>
+                
+            </div>
+
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-7">
                 <input id="adv_search_img" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="3">

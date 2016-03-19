@@ -172,7 +172,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-7">
-                <input id="adv_search_img" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="3">
+                <input id="adv_search_img" name="data[Reporter][document_id]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="3" enctype="multipart/form-data">
             </div>
         </div>
 
