@@ -8,7 +8,7 @@ class ProfilesController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('report_missing', 'report_found', 'blacklisted','myaccount','my_reports');
+        $this->Auth->allow('report_missing', 'report_found', 'blacklisted','myaccount','my_reports','change_pass');
 
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -129,6 +129,14 @@ class ProfilesController extends AppController {
 	}
 
 	public function my_reports() {
+		$this->_check_user();
+
+		if($this->request->is('post')) {
+			AuthComponent::_setTrace($this->request->data);
+		}
+	}
+
+	public function change_pass() {
 		$this->_check_user();
 
 		if($this->request->is('post')) {

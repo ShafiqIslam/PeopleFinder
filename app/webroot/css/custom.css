@@ -264,13 +264,31 @@ header ul li a{
 }
 
 /*-------------My account Page--------*/
-.my_account_heading h1{
+.my_account_heading{
 	text-align: center;
+}
+.my_account_heading h1{
 	margin: 5% 0%;
 }
 .account_edit, .change_pass{
 	border: 1px solid #ededed;
     border-radius: 7px;
+    text-align: center;
+}
+.account_edit h3, .change_pass h3{
+	margin-top: 20px;
+}
+.my_account_details .change_pass{
+	margin-left: 3%;
+}
+.account_edit h4, .change_pass h4{
+	font-size: 24px;
+	line-height: 40px;
+	padding: 5px;
+}
+.myaccount_page{
+	margin-bottom: 25%;
+	margin-top: 5%;
 }
 
 /*-----------------------Container Section CSS---------------------------*/
