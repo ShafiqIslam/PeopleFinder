@@ -35,7 +35,7 @@
         <header class="large">
             <!--<div class="container-fluid header_top"></div>-->
 
-            <nav class="navbar navbar-inverse navbar-fixed-top">
+            <nav class="navbar  navbar-fixed-top">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-4">
@@ -52,10 +52,11 @@
                             <ul class="col-sm-6 nav navbar-nav navbar-right">
                                 <li class="<?php if($page=='home') echo 'active';?>"><a href="<?php echo $this->webroot;?>home">Home</a></li>
                                 <li class="<?php if($page=='search') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>search">Search</a></li>
-                                <li class="dropdown <?php if($page=='report') echo 'active';?>"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Report<b class="caret"></b></a>
+                                <li class="dropdown <?php if($page=='report') echo 'active';?>">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Report<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li class="dropdown_menu"><a href="<?php echo $this->webroot;?>report_found">Report Found</a></li>
-                                        <li class="dropdown_menu"><a href="<?php echo $this->webroot;?>report_missing">Report Missing</a></li>
+                                        <li><a href="<?php echo $this->webroot;?>report_found">Report Found</a></li>
+                                        <li><a href="<?php echo $this->webroot;?>report_missing">Report Missing</a></li>
                                     </ul>
                                 </li> 
                                 <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
@@ -68,29 +69,32 @@
             </nav>
 
             <!-- Modal login -->
-            <div id="login1" class="modal modal_lage fade" role="dialog">
-                <span><i class=" login1 fa fa-caret-up fa_large fa-3x"></i></span>
+          
+            <div id="login1" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content col-sm-6">
+                    <div class="modal-content modal_large col-sm-6">
+                        <span><i class=" login1 fa fa-caret-up fa_large fa-3x"></i></span>
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h3 class="modal-title">Login</h3>
+                            <!--<h3 class="modal-title">Login</h3>-->
                         </div>
                         <!--Modal Body Start-->
                         <div class="modal-body">
-                            <form name="login_form" id="login_form" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
+                            <form name="login_form" data-toggle="validator" novalidate="true" id="login_form" enctype="multipart/form-data" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="" class="col-sm-12 control-label">Email</label>
+                                    <label for="inputEmail" class="col-sm-12 control-label">Email</label>
                                     <div class="col-sm-12">
-                                        <input type="text" name="data[Reporter][email]" class="form-control" id="" placeholder="First Name">
+                                        <input type="email" name="data[Reporter][email]" class="form-control" id="" placeholder="Email" data-error="Bruh, that email address is invalid" required="">
+                                        <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="" class="col-sm-12 control-label">Password</label>
+                                    <label for="inputPassword" class="col-sm-12 control-label">Password</label>
                                     <div class="col-sm-12">
                                         <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward">
+                                        <div class="help-block">Minimum of 6 characters</div>
                                     </div>
                                 </div>
 
@@ -112,18 +116,29 @@
             </div><!-- Modal End-->
 
             <!-- Modal My Account -->
-            <div id="myaccount" class="modal modal_lage fade" role="dialog">
-                <span><i class=" login1 fa fa-caret-up fa_large fa-3x"></i></span>
-                <div class="modal-dialog">
+            <div id="myaccount" class="modal fade" role="dialog">
+                
+                <div class="modal-dialog my_account">
                     <!-- Modal content-->
-                    <div class="modal-content col-sm-6">
+                    <div class="modal-content modal_large col-sm-6">
+                        <span><i class=" login1 fa fa-caret-up fa_large fa-3x"></i></span>
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h3 class="modal-title">My Account</h3>
+                            <!--<h3 class="modal-title">My Account</h3>-->
                         </div>
                         <!--Modal Body Start-->
                         <div class="modal-body">
-                            <a href="#" class="btn btn-primary">Signout</a>
+                            <div class="main_account_body row">
+                                <div class="account_title">
+                                    <h4>Shamim Forhad</h4>
+                                    <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount">My Account</a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="my_account_options">
+                                <a href="<?php echo $this->webroot;?>my_reports" class="btn btn_myaccount pull-left"><span><i class="fa fa-bell"></i></span>Reports</a>
+                                <a href="#" class="btn btn_myaccount pull-right"><span><i class="fa fa-sign-out fa-lg"></i></span>Signout</a>
+                            </div>
                         </div>
                         <!--Modal Body End-->
                     </div>
@@ -133,7 +148,10 @@
            <!-- <div class="container-fluid bdr_btm_header"></div>-->
         </header><!--Menubar End-->
 
+
+        <!--Calling the content of the body  -->
         <?php echo $this->fetch('content'); ?>
+
        
         <!--footer section-->
         <footer class="container-fluid footer_wrapper">

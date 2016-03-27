@@ -2,7 +2,7 @@
 <div class="container-fluid sign_up_page">
     <h1>REPORT A MISSING PERSON</h1>
     <hr>
-    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" enctype="multipart/form-data">
+    <form role="form" id="signup_form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" enctype="multipart/form-data" action="">
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
             <div class="col-sm-4">

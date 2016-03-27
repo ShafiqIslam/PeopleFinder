@@ -29,7 +29,7 @@
 	border-radius: none;
 }
 
-.navbar-inverse .navbar-nav>li>a{
+.navbar-nav>li>a{
 	//background-color: #fff;
 	color:#fff;
 	font-size: 20px;
@@ -40,28 +40,28 @@
     padding-bottom: 20px;
 }
 
-.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:hover{
+ .navbar-nav>.active>a, .navbar-nav>.active>a:hover{
 	background-color: #fff;
 	color: #695959;
 }
 
-.navbar-inverse .navbar-nav>li{
+.navbar-nav>li{
 	transition: all 1s ease-out;
 }
-.navbar-inverse .navbar-nav>li:hover{
+ .navbar-nav>li:hover{
 	background-color: #fff;
 	color: #695959;
 	//border-radius: 4px;
 }
-.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
     color: #190404;
 }
 
-.navbar-inverse .navbar-collapse {
+.navbar-collapse {
 	border-color: #fff;
 }
 
-.navbar-inverse .navbar-nav>.active>a{
+ .navbar-nav>.active>a{
     color: #695959;
     background-color: #fff; 
     border-bottom-color: rgba(255, 255, 255, 0);
@@ -125,7 +125,7 @@ header ul li a{
 }
 
 /*--------Drop-down menu CSS------------*/ 
-.navbar-right .dropdown-menu {
+/*.navbar-right .dropdown-menu {
     right: 0;
     left: -1.04px;
     background-color: rgba(28, 39, 66, 0.76);
@@ -139,13 +139,13 @@ header ul li a{
 }
 
 
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+.navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
     color: #695959;
     background-color: #fff;
 }
 
 
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+ .navbar-nav > .active > a,  .navbar-nav > .active > a:hover,  .navbar-nav > .active > a:focus {
     color: #695959;
     background-color: #fff;
 }
@@ -164,18 +164,29 @@ header ul li a{
 	display: block;
 	background-color: #fff;
 }
-
+*/
 /*----------Bootstrap Code Channge----------------*/
 
 /*-------Modal class-----------*/
-.modal_lage{
-	margin-top: 6%;
-    margin-left: 76%;
+#login1 .modal-header {
+    min-height: 16.42857143px;
+    padding: 15px;
+    border-bottom: none;
+}
+#myaccount .modal-header {
+    min-height: 16.42857143px;
+    padding: 15px;
+    border-bottom: none;
+}
+#login1 .modal_large{
+	margin-top: 14%;
+    margin-left: 110%;
 }
 .modal_small{
 	margin-top: 2.2%;
     margin-left: 76%;
 }
+
 .fa_small{
     margin-top: 6px;
 }
@@ -187,10 +198,29 @@ header ul li a{
 	font-size: 17px;
     margin-bottom: 2%;
 }
-.fa-caret-up{
+#login1 .fa-caret-up{
 	color: #fff;
-	position: fixed;
-    margin-left: 256px;
+    position: relative;
+    margin-left: 44%;
+    margin-top: -10%;
+    z-index: 100;
+    overflow: hidden;
+}
+
+#myaccount .fa-caret-up{
+	color: #fff;
+    position: relative;
+    margin-left: 83%;
+    margin-top: -10%;
+    z-index: 100;
+    overflow: hidden;
+}
+#myaccount .modal_large{
+	margin-top: 12%;
+    margin-left: 96%;
+}
+.my_account{
+	width: 700px
 }
 .fa_large{
 	margin-top: 2px;
@@ -203,15 +233,44 @@ header ul li a{
     border: none;
     border-radius: 6px;
     outline: 0;
-    webkit-box-shadow: none;
+    -webkit-box-shadow: none;
     box-shadow: none;
 }
 #myaccount .modal-body .btn-primary{
 	color: #901B1B;
 }
 
+#myaccount .my_account_options{
+	padding-bottom: 35px;
+}
+#myaccount .btn_myaccount{
+	background-color: #673AB7;
+    color: #fff;
+}
+
+#myaccount .btn_myaccount:hover{
+	background-color: rgba(103, 58, 183, 0.62);
+    color: #fff;
+}
+
 .forget_pass p{
 	margin-bottom: -10px;
+}
+
+#myaccount .main_account_body img{
+	width: 93px;
+    height: 93px;
+    margin-top: 0%;
+}
+
+/*-------------My account Page--------*/
+.my_account_heading h1{
+	text-align: center;
+	margin: 5% 0%;
+}
+.account_edit, .change_pass{
+	border: 1px solid #ededed;
+    border-radius: 7px;
 }
 
 /*-----------------------Container Section CSS---------------------------*/
@@ -639,6 +698,36 @@ input, textarea{
     color:red;
 }
 
+/*--------My Report List Page-----------*/
+.my_report_page h1{
+	text-align: center;
+	margin: 5% 0%;
+}
+.my_report_page .report_list_name{
+	font-size: 17px;
+}
+.my_report_page ul{
+	margin-top: 5%;
+	margin-bottom: 10.5%;
+}
+.my_report_page ul li{
+	list-style: none;
+	margin: 5px 0px;
+}
+
+.my_report_page .btn_myaccount{
+	background-color: #4747E0;
+	color: #fff;
+}
+.my_report_page .btn_myaccount:hover{
+	background-color: rgba(71, 71, 224, 0.82);
+}
+.my_report_page .edit{
+	margin-left: 15%;
+}
+.my_report_page .delete{
+	margin-left: 2%;
+}
 /*---------- Sign Up thanks Page CSS--------*/
 .simple_msg_page h2{
 	letter-spacing: 2px;

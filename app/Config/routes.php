@@ -29,6 +29,8 @@
 	Router::connect('/search', array('controller' => 'pages', 'action' => 'display', 'search'));
 	Router::connect('/report_missing', array('controller' => 'profiles', 'action' => 'report_missing'));
 	Router::connect('/report_found', array('controller' => 'profiles', 'action' => 'report_found'));
+	Router::connect('/myaccount', array('controller' => 'profiles', 'action' => 'myaccount'));
+	Router::connect('/my_reports', array('controller' => 'profiles', 'action' => 'my_reports'));
 	Router::connect('/signup', array('controller' => 'pages', 'action' => 'display', 'signup'));
 	Router::connect('/login', array('controller' => 'reporters', 'action' => 'login'));
 	Router::connect('/search_result', array('controller' => 'pages', 'action' => 'display', 'search_result'));
