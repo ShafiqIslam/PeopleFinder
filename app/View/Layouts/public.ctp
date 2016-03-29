@@ -61,7 +61,7 @@
                                 </li> 
                                 <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
                                 <li class=""><a class="" href="#" data-toggle="modal" data-target="#login1">Login</a></li>
-                                <li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li> 
+                                <li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li>
                             </ul>
                         </div>   
                     </div>

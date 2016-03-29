@@ -313,9 +313,8 @@ class ReportersController extends AppController {
 	}
 
 	public function myaccount() {
-		if($this->request->is('post')) {
-			AuthComponent::_setTrace($this->request->data);
-		}
+		$page = $subpage = $title_for_layout = 'My Account';
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
 	}
 
 	public function my_reports() {
