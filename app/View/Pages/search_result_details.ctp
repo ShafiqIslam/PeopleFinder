@@ -48,7 +48,26 @@
 				<div class="col-sm-offset-1 col-sm-6"><h4>No</h4></div>
 			</div>
 
-			<a class="btn btn-default" href="#" role="button">Abuse</a>
+			<hr>
+
+			<!--=======This is for captcha using=========-->
+
+			 <form id="captcha" method="post" class="form-horizontal report_abuse" action="">
+			 	<p>Please fill the correct captcha for Report Abuse.</p>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" id="captchaOperation"></label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="captcha" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-warning btn_abuse" name="abuse" value="abuse">Abuse</button>
+                    </div>
+                </div>
+            </form>
 		</div>
 		<!--===================left side===============-->
 		<div class="col-sm-7 right_side">

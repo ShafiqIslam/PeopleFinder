@@ -90,3 +90,46 @@ $(document).ready(function(){
 });
 
 
+
+/*-------------captcha validation-------------*/
+$(document).ready(function() {
+    // Generate a simple captcha
+    function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    };
+    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+
+    $('#captcha').bootstrapValidator({
+//        live: 'disabled',
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            captcha: {
+                validators: {
+                    callback: {
+                        message: 'Invalid captcha answer!',
+                        callback: function(value, validator) {
+                            var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
+                            return value == sum;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Validate the form manually
+    $('#validateBtn').click(function() {
+        $('#captcha').bootstrapValidator('validate');
+    });
+
+    $('#resetBtn').click(function() {
+        $('#captcha').data('bootstrapValidator').resetForm(true);
+    });
+});
+
+
