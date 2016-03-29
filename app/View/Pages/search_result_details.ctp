@@ -47,6 +47,8 @@
 				<div class="col-sm-5"><h4>Physical illness</h4></div>
 				<div class="col-sm-offset-1 col-sm-6"><h4>No</h4></div>
 			</div>
+
+			<a class="btn btn-default" href="#" role="button">Abuse</a>
 		</div>
 		<!--===================left side===============-->
 		<div class="col-sm-7 right_side">
