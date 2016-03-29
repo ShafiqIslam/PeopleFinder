@@ -8,7 +8,7 @@ class ReportersController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout');
+        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout', 'myaccount', 'my_reports', 'change_pass');
     
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -310,6 +310,24 @@ class ReportersController extends AppController {
 		$this->set(compact('success', 'is_post'));
 
 		$this->layout = 'public';
+	}
+
+	public function myaccount() {
+		if($this->request->is('post')) {
+			AuthComponent::_setTrace($this->request->data);
+		}
+	}
+
+	public function my_reports() {
+		if($this->request->is('post')) {
+			AuthComponent::_setTrace($this->request->data);
+		}
+	}
+
+	public function change_pass() {
+		if($this->request->is('post')) {
+			AuthComponent::_setTrace($this->request->data);
+		}
 	}
 
 	/*
