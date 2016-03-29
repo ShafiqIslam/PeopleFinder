@@ -1,11 +1,13 @@
 <div style="clear: both;"></div>
-<div class="container chng_pass_page">
+<div class="container-fluid chng_pass_page sign_up_page">
+	<h3>Welcome, John Doe</h3>
+	<h3>You Can Your Password From Here.</h3>
 	<div class="col-sm-6 col-sm-offset-3">
 		<form name="" data-toggle="validator" novalidate="true" id="login_form" enctype="multipart/form-data" method="post" action="" class="form-horizontal">
             <div class="form-group">
                 <label for="inputPassword" class="col-sm-4 control-label">Old Password</label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" id="inputPassword" name="data[Reporter][password]" placeholder="Type Old Passward">
+                    <input type="password" class="form-control" id="inputPassword" name="data[Reporter][password]" placeholder="Type Old Passward" required="">
                 </div>
             </div>
 

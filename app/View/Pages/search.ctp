@@ -81,7 +81,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-7 col-sm-5 report_found_submit">
-                <button type="submit" class="btn btn-primary btn_search">Submit</button>
+                <button type="submit" class="btn btn-primary btn_search">Search</button>
             </div>
         </div>
     </form>

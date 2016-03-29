@@ -291,6 +291,17 @@ header ul li a{
 	margin-top: 5%;
 }
 
+/*------------ Change Password Page-----------------*/
+.chng_pass_page{
+	padding-top: 3%;
+}
+.chng_pass_page h3{
+	text-align: center;
+	padding-bottom: 3%;
+}
+.chng_pass_page h3:last-child{
+	padding-bottom: 3%;
+}
 /*-----------------------Container Section CSS---------------------------*/
 /*-------------Banner Section--------------*/
 .banner_wrapper{
