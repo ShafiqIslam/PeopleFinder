@@ -108,12 +108,12 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Personal Photos</label>
             <div class="col-sm-4">
                 <input type="file" name="data[Profile][personal_photos]" class="form-control" id="" enctype="multipart/form-data">
             </div>
-        </div>
+        </div> -->
 
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Mental illness</label>
@@ -172,14 +172,33 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-7">
-                <input id="adv_search_img" name="data[Reporter][document_id]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="3" enctype="multipart/form-data">
+                <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3" data-min-file-count="1" enctype="multipart/form-data">
             </div>
         </div>
+
+        <input type="hidden" name="data[Profile][image_links_1]">
+        <input type="hidden" name="data[Profile][image_links_2]">
+        <input type="hidden" name="data[Profile][image_links_3]">
 
         <div class="form-group">
             <div class="col-sm-offset-7 col-sm-5 report_found_submit">
                 <button type="submit" class="btn btn-primary btn_search">Submit</button>
             </div>
         </div>
+
+        <script>
+            $('#adv_search_img').on('fileuploaded', function(event, data, previewId, index) {
+                var response = data.response.response;
+                var filename = data.response.filename;
+
+                if(!$("input[name='data[Profile][image_links_1]']").val()) {
+                    $("input[name='data[Profile][image_links_1]']").val(filename);
+                } else if(!$("input[name='data[Profile][image_links_2]']").val()) {
+                    $("input[name='data[Profile][image_links_2]']").val(filename);
+                } else if(!$("input[name='data[Profile][image_links_3]']").val()) {
+                    $("input[name='data[Profile][image_links_3]']").val(filename);
+                }
+            });
+        </script>
     </form>
 </div>

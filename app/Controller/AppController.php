@@ -1,5 +1,8 @@
 <?php
 
+include '../Vendor/CloudinaryPHP/src/Cloudinary.php';
+include '../Vendor/CloudinaryPHP/src/Uploader.php';
+
 App::uses('Controller', 'Controller');
 App::uses('AuthComponent', 'Controller/Component');
 
@@ -89,6 +92,45 @@ class AppController extends Controller {
 	    $phpThumb->RenderToFile($dest_small);
 	}
 
+    public function upload_to_cloud($sample_paths, $tags = "basic") {
+        /*App::import('Vendor', 'CloudinaryPHP', array('file' => 'CloudinaryPHP' . DS . 'src' . DS . 'Cloudinary.php'));
+        App::import('Vendor', 'CloudinaryPHP', array('file' => 'CloudinaryPHP' . DS . 'src' . DS . 'Uploader.php'));
+*/
+        // api configeration
+        \Cloudinary::config(array(
+            "cloud_name" => "dg0qpsar6",
+            "api_key" => "824232614796376",
+            "api_secret" => "v0gErUr-VkaATpwaZTzukftlvCY"
+        ));
+
+        $default_upload_options = array("tags" => "basic_sample");
+        $eager_params = array("width" => 200, "height" => 150, "crop" => "scale");
+        $files = array();
+          
+        foreach ($sample_paths as $key => $path) {
+            $path = getcwd() . DS . 'files' . DS . 'uploads' . DS . $path;        
+            # public_id will be generated on Cloudinary's backend.
+            $upload_link = \Cloudinary\Uploader::upload($path, $default_upload_options);
+            array_push($files, $upload_link['url']);
+            unlink($path);
+        }
+
+        # Same image, uploaded with a public_id
+        /*$files["named_local"] = \Cloudinary\Uploader::upload($sample_paths["pizza"],
+        array_merge($default_upload_options, array("public_id" => "custom_name")));*/
+
+        # Eager transformations are applied as soon as the file is uploaded, instead of waiting
+        # for a user to request them. 
+        /*$files["eager"] = \Cloudinary\Uploader::upload($sample_paths["lake"],
+            array_merge($default_upload_options, array(
+              "public_id" => "eager_custom_name",
+              "eager" => $eager_params,
+            )
+        ));*/
+
+        return $files;
+    }
+
     public function random_string($len, $num=0, $alpha=0, $spec_char=0) {
         $alphabets = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $numbers = "0123456789";
@@ -139,6 +181,21 @@ class AppController extends Controller {
         } else {
             return true;
             //echo "Message has been sent successfully";
+        }
+    }
+
+    public function lat_lng($address = null) {
+        header('Content-Type: application/json');
+        $this->autoRender = false;
+        App::uses('HttpSocket', 'Network/Http');
+        $HttpSocket = new HttpSocket();
+        if($address!=null){
+            $results = $HttpSocket->get('http://maps.googleapis.com/maps/api/geocode/json', array(
+                'address' => $address,
+                'sensor' => 'false'
+            ));
+            $lat_lng_obj = json_decode($results->body, true);
+            return $lat_lng_obj['results'][0]['geometry']['location'];
         }
     }
 }

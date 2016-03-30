@@ -318,9 +318,7 @@ class ReportersController extends AppController {
 	}
 
 	public function my_reports() {
-		if($this->request->is('post')) {
-			AuthComponent::_setTrace($this->request->data);
-		}
+		
 	}
 
 	public function change_pass() {

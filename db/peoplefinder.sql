@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50516
+Source Server         : local
+Source Server Version : 50617
 Source Host           : localhost:3306
-Source Database       : people_finder
+Source Database       : peoplefinder
 
 Target Server Type    : MYSQL
-Target Server Version : 50516
+Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-03-26 14:49:02
+Date: 2016-03-30 12:39:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,12 +54,15 @@ CREATE TABLE `profiles` (
   `resident_street` varchar(100) DEFAULT NULL,
   `missing_country` varchar(100) DEFAULT NULL,
   `missing_city` varchar(100) DEFAULT NULL,
-  `personal_photos` int(11) DEFAULT NULL,
+  `lat` varchar(255) DEFAULT NULL,
+  `lng` varchar(255) DEFAULT NULL,
   `mental_illness` varchar(5) DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL,
   `kidnapped` varchar(5) DEFAULT NULL,
   `physical_illness` varchar(5) DEFAULT NULL,
-  `document_id` int(11) DEFAULT NULL,
+  `image_link_1` varchar(255) DEFAULT NULL,
+  `image_link_2` varchar(255) DEFAULT NULL,
+  `image_link_3` varchar(255) DEFAULT NULL,
   `verified_profile` tinyint(1) DEFAULT NULL,
   `description` longtext,
   `reporter_id` int(11) DEFAULT NULL,
@@ -68,11 +71,13 @@ CREATE TABLE `profiles` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of profiles
 -- ----------------------------
+INSERT INTO `profiles` VALUES ('1', 'Abul', 'test', 'Kashem', '2000-06-06', 'B-', null, 'BD', 'Male', 'Found', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'No', 'Found', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319029/hgbxojyqeafemesvikdu.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319032/llnpw66pirdmhagynbvk.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319036/vxim9benjffbovxfuu6c.jpg', '0', 'Test description', '1', '0', null, '2016-03-30 08:20:31', '2016-03-30 08:20:31');
+INSERT INTO `profiles` VALUES ('2', 'Abdul', '', 'Jabbar', '2016-03-03', 'A+', null, 'BD', 'Male', 'Missing', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'Yes', 'Alive', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320122/kq9kfjrzjfzidoyffesi.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320127/qv7gtrm1zkpoffscrfqu.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320132/xdzufs6mgmynpvf4ktzd.jpg', '0', '', '1', '0', null, '2016-03-30 08:38:47', '2016-03-30 08:38:47');
 
 -- ----------------------------
 -- Table structure for `reporters`
@@ -86,7 +91,7 @@ CREATE TABLE `reporters` (
   `nationality` varchar(255) DEFAULT NULL,
   `gender` varchar(10) DEFAULT NULL,
   `resident_country` varchar(255) DEFAULT NULL,
-  `document_id` int(11) DEFAULT NULL,
+  `id_image_link` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `email_verified` tinyint(1) DEFAULT NULL,
