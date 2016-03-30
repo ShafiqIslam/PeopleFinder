@@ -12,14 +12,14 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Email</label>
             <div class="col-sm-3">
-                <input type="text" name="data[Reporter][email]" class="form-control" id="" placeholder="Email">
+                <input type="text" name="data[Reporter][email]" class="form-control" id="" placeholder="Email" required="">
             </div>
         </div>
 
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Password</label>
             <div class="col-sm-3">
-                <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward">
+                <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward" minlength="6" required="">
             </div>
         </div>
 

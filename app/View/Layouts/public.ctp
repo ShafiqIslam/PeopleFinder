@@ -70,6 +70,7 @@
             </nav>
 
             <?php if(empty($logged)) { ?>
+
             <!-- Modal login -->
             <div id="login1" class="modal fade" role="dialog">
                 <div class="modal-dialog modal_login modal_large">
@@ -82,20 +83,18 @@
                         </div>
                         <!--Modal Body Start-->
                         <div class="modal-body">
-                            <form name="login_form" data-toggle="validator" novalidate="true" id="login_form" enctype="multipart/form-data" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
+                            <form  name="login_form" enctype="multipart/form-data" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
                                 <div class="form-group">
                                     <label for="inputEmail" class="col-sm-12 control-label">Email</label>
                                     <div class="col-sm-12">
-                                        <input type="email" name="data[Reporter][email]" class="form-control" id="" placeholder="Email" data-error="Bruh, that email address is invalid" required="">
-                                        <div class="help-block with-errors"></div>
+                                        <input type="email" name="data[Reporter][email]" class="form-control" id="" placeholder="Email" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-12 control-label">Password</label>
                                     <div class="col-sm-12">
-                                        <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward">
-                                        <div class="help-block">Minimum of 6 characters</div>
+                                        <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward" required>
                                     </div>
                                 </div>
 

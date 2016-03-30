@@ -191,11 +191,14 @@
 <!--About Section-->
 <div class="container-fluid about_wrapper slideanim slide">
     <div class="container">
-        <h1>What we serve/Our Service</h1>
-        <p>People Finder is a free people search website.</p>
-        <p>Here users can search people by inputting a single data and can store their pictures</p>
-        <h2><q>Here may use Image instead of Text</q></h2>
+        <h1>Our Services</h1>
+        <p><span><i class="fa fa-check-square"></i></span>Searching a missed person.</p>
+        <p><span><i class="fa fa-check-square"></i></span>Finding a missed person.</p>
+        <p><span><i class="fa fa-check-square"></i></span>Reporting a missed person.</p>
+        <p><span><i class="fa fa-check-square"></i></span>Reporting a found person.</p>
     </div>
+    <a class="btn btn  btn_service pull-left" href="#">Report Found</a>
+    <a class="btn btn btn_service pull-right" href="#">Report Missing</a>
 </div>
 
         <!--===========Counter Section=============-->

@@ -67,6 +67,9 @@ $(document).ready(function(){
 		}
 	}
 
+    /*-------------Login popup validation--------------*/
+
+
 	/*--------------Images search Js Code is Here-------------------*/
 	$("#search_img").fileinput({
         previewFileIcon: '<i class="fa fa-file"></i>',

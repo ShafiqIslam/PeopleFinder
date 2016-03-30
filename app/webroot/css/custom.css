@@ -543,6 +543,13 @@ header ul li a{
 	text-align: center;
 }
 
+.about_wrapper .btn_service{
+	background-color: green;
+    color: #fff;
+    width: 18%;
+    font-size: 24px;
+}
+
 /*----------------Contact Section----------------*/
 
 .contact_wrapper{
