@@ -187,8 +187,10 @@
         <p><span><i class="fa fa-check-square"></i></span>Reporting a missed person.</p>
         <p><span><i class="fa fa-check-square"></i></span>Reporting a found person.</p>
     </div>
-    <a class="btn btn  btn_service pull-left" href="#">Report Found</a>
-    <a class="btn btn btn_service pull-right" href="#">Report Missing</a>
+    <div class="col-sm-4 col-sm-offset-4">
+        <a class="btn btn  btn_service pull-left" href="<?php echo $this->webroot;?>report_found">Report Found</a>
+        <a class="btn btn btn_service pull-right" href="<?php echo $this->webroot;?>report_missing">Report Missing</a>
+    </div>
 </div>
 
         <!--===========Counter Section=============-->

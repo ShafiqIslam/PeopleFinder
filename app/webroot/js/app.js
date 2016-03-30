@@ -12,7 +12,7 @@
         mapOptions);
 
         var drawingManager = new google.maps.drawing.DrawingManager({
-            drawingMode: google.maps.drawing.OverlayType.MARKER,
+            drawingMode: google.maps.drawing.OverlayType.CIRCLE,
             drawingControl: true,
             drawingControlOptions: {
                 position: google.maps.ControlPosition.TOP_CENTER,
@@ -26,7 +26,7 @@
                 strokeColor: '#004de8',
                 strokeOpacity: 0.5,
                 strokeWeight: 5,
-                clickable: true,
+                //clickable: true,
                 draggable: true,
                 editable: true,
                 zIndex: 1

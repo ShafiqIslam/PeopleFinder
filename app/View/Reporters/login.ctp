@@ -19,7 +19,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Password</label>
             <div class="col-sm-3">
-                <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward" minlength="6" required="">
+                <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward" required="">
             </div>
         </div>
 
