@@ -1,11 +1,3 @@
-<?php
-$logged = $this->Session->read('logged_user');
-if(!empty($logged)) {
-    //AuthComponent::_setTrace($logged);
-}
-
-?>
-
 <div class="container-fluid banner_wrapper parallax">
     <!--Nav Tab/ Nav Pill-->
     <div class="container">

@@ -32,6 +32,8 @@
     </head>
     <body>
 
+        <?php $logged = $this->Session->read('logged_user'); ?>
+
         <header class="large">
             <!--<div class="container-fluid header_top"></div>-->
 
@@ -55,17 +57,20 @@
                                     <li style="margin-top: 0px;"><a href="<?php echo $this->webroot;?>report_found">Report Found</a></li>
                                     <li style="margin-top: 0px;"><a href="<?php echo $this->webroot;?>report_missing">Report Missing</a></li>
                                 </ul>
-                            </li> 
+                            </li>
+                            <?php if(!empty($logged)) { ?>
+                                <li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li>
+                            <?php } else { ?>
                             <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
                             <li class=""><a class="" href="#" data-toggle="modal" data-target="#login1">Login</a></li>
-                            <li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li>
-                        </ul>
+                            <?php } ?>
+                            </ul>
                     </div>   
                 </div>
             </nav>
 
+            <?php if(empty($logged)) { ?>
             <!-- Modal login -->
-          
             <div id="login1" class="modal fade" role="dialog">
                 <div class="modal-dialog modal_login modal_large">
                     <!-- Modal content-->
@@ -110,7 +115,7 @@
                     </div>
                 </div>
             </div><!-- Modal End-->
-
+            <?php } else { ?>
             <!-- Modal My Account -->
             <div id="myaccount" class="modal fade" role="dialog">
                 
@@ -140,6 +145,7 @@
                     </div>
                 </div>
             </div><!-- Modal End-->
+            <?php } ?>
 
            <!-- <div class="container-fluid bdr_btm_header"></div>-->
         </header><!--Menubar End-->
