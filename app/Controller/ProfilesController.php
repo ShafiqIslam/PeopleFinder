@@ -8,7 +8,7 @@ class ProfilesController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted');
+        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted', 'search', 'full_profile');
 
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -148,6 +148,23 @@ class ProfilesController extends AppController {
 				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
 			}
 		}
+	}
+
+	public function search() {
+		if($this->request->is('post')) {
+			if(!empty($this->request->data['id'])) {
+				return $this->redirect(array('action' => 'full_profile', $this->request->data['id']));
+			}
+
+			$conditions = array();
+		} else {
+			return $this->redirect(array('controller'=>'pages', 'action' => 'display', 'search'));
+		}
+	}
+
+	public function full_profile($id) {
+		$profile = $this->Profile->findById($id);
+		$this->set(compact('profile'));
 	}
 
 	private function _process_images ($data) {

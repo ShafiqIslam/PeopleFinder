@@ -17,35 +17,35 @@
 
                 <div id="name" class="tab-pane fade in active">
                     <h3>Search By Name</h3>
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="<?php echo $this->webroot?>profiles/search" method="post">
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="" placeholder="First Name">
+                                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Second Name</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="" placeholder="Second Name">
+                                <input type="text" name="second_name" class="form-control" id="" placeholder="Second Name">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Last Name</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="" placeholder="Last Name">
+                                <input type="text" name="last_name" class="form-control" id="" placeholder="Last Name">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
                             <div class="col-sm-4">
-                                <select class="form-control">
+                                <select name="gender" class="form-control">
                                     <option>Select Gender</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                 </select>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
 
                 <div id="photos" class="tab-pane fade">
                     <!--<h3>Search By Photos</h3>-->
-                    <form class="form-horizontal" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="<?php echo $this->webroot?>profiles/search" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <input id="search_img" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="1">
@@ -73,10 +73,10 @@
                         <div class="form-group">
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Gender</label>
                             <div class="col-sm-4">
-                                <select class="form-control">
+                                <select name="gender" class="form-control">
                                     <option>Select Gender</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                 </select>
                             </div>
                         </div>
@@ -93,38 +93,24 @@
                 </div>
                 <div id="country" class="tab-pane fade">
                     <h3>Search By Country</h3>
-                    <form class="form-horizontal">
+                    <form class="form-horizontal"  action="<?php echo $this->webroot?>profiles/search" method="post">
                         <div class="form-group">
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Country</label>
                             <div class="col-sm-4 country_selection_box">
-                                <!--<select class="input-medium bfh-countries" data-country="BD"></select>-->
-                    
-                                <div class="bfh-selectbox bfh-countries" data-country="BD" data-flags="true">
-                                    <input type="hidden" value="">
-                                    <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
-                                        <span class="bfh-selectbox-option input-medium" data-option=""></span>
-                                        <b class="caret"></b>
-                                    </a>
-                                    <div class="bfh-selectbox-options">
-                                        <input type="text" class="bfh-selectbox-filter">
-                                        <div role="listbox">
-                                            <ul role="option"></ul>
-                                        </div>
-                                    </div>
+                                <div class="bfh-selectbox bfh-countries" data-name="country" data-country="BD" data-flags="true">
                                 </div>
-                 
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">City</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="" placeholder="City">
+                                <input type="text" name="city" class="form-control" id="" placeholder="City">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Street</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="" placeholder="Street">
+                                <input type="text" name="street" class="form-control" id="" placeholder="Street">
                             </div>
                         </div>
 
@@ -141,13 +127,17 @@
 
                 <div id="map" class="tab-pane fade">
                     <!--<h3>Search By Photos</h3>-->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal"  action="<?php echo $this->webroot?>profiles/search" method="post">
                         <div class="form-group">
                             <div class="draw_map">
                                 <div id="map-canvas"></div><!-- Drag on google map-->
                                 <p>Draw a circle on the map.</p>
                             </div>
                         </div>
+
+                        <input type="hidden" name="lat" value="">
+                        <input type="hidden" name="lng" value="">
+                        <input type="hidden" name="radius" value="">
 
                         <div class="form-group">
                             <div class="col-sm-9 adv_search_link">
@@ -163,11 +153,11 @@
 
                 <div id="id_search" class="tab-pane fade">
                     <h3>Search By ID</h3>
-                    <form class="form-horizontal">
+                    <form class="form-horizontal"  action="<?php echo $this->webroot?>profiles/search" method="post">
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Profile ID No.</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="" placeholder="Profile id">
+                                <input name="id" type="text" class="form-control" id="" placeholder="Profile id">
                             </div>
                         </div>
 
