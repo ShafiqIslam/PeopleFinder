@@ -718,6 +718,15 @@ input, textarea{
 	//margin-left: 5%;
 }
 
+.search_result_details_wrapper .report_abuse{
+	margin-top: 7%;
+}
+
+.search_result_details_wrapper .btn_abuse{
+	width: 30%;
+	margin-left: 23%;
+}
+
 
 /*email check from database*/
 .help-block2{
