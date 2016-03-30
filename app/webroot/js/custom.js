@@ -1,4 +1,5 @@
 /*------------Menu bar Drop-down-------------*/
+/*
 $(document).ready(function(){
 	$('ul.nav li.dropdown').hover(function() {
 	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
@@ -7,20 +8,18 @@ $(document).ready(function(){
 	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
 	});
 });
+*/
 
 /*--------------Menu Bar Shrink Js----------*/
 $(document).on("scroll",function(){
     if($(document).scrollTop()>100){
         $("header").removeClass("large").addClass("small");
-        $("#login1").removeClass("modal_lage").addClass("modal_small");
-        $(".login1").removeClass("fa_large").addClass("fa_small");
-        $("#myaccount").removeClass("modal_lage").addClass("modal_small");
+        $(".modal-dialog").removeClass("modal_large").addClass("modal_small");
 
     } else{
         $("header").removeClass("small").addClass("large");
-        $("#login1").removeClass("modal_small").addClass("modal_lage");
-        $(".login1").removeClass("fa_small").addClass("fa_large");
-        $("#myaccount").removeClass("modal_small").addClass("modal_lage")
+        $(".modal-dialog").removeClass("modal_small").addClass("modal_large");
+        //$("#myaccount").removeClass("modal_small").addClass("modal_large ")
 
     }
 });

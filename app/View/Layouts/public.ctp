@@ -37,43 +37,39 @@
 
             <nav class="navbar  navbar-fixed-top">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span> 
-                                </button>
-                                <img class="logo" src="<?php echo $this->webroot;?>img/logo_2.png"/>
-                            </div>  
-                        </div>
-                        <div class="collapse navbar-collapse" id="myNavbar">
-                            <ul class="col-sm-6 nav navbar-nav navbar-right">
-                                <li class="<?php if($page=='home') echo 'active';?>"><a href="<?php echo $this->webroot;?>home">Home</a></li>
-                                <li class="<?php if($page=='search') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>search">Search</a></li>
-                                <li class="dropdown <?php if($page=='report') echo 'active';?>">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Report<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="<?php echo $this->webroot;?>report_found">Report Found</a></li>
-                                        <li><a href="<?php echo $this->webroot;?>report_missing">Report Missing</a></li>
-                                    </ul>
-                                </li> 
-                                <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
-                                <li class=""><a class="" href="#" data-toggle="modal" data-target="#login1">Login</a></li>
-                                <li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li>
-                            </ul>
-                        </div>   
+                    <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span> 
+                            </button>
+                            <img class="logo" src="<?php echo $this->webroot;?>img/logo_2.png"/> 
                     </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="<?php if($page=='home') echo 'active';?>"><a href="<?php echo $this->webroot;?>home">Home</a></li>
+                            <li class="<?php if($page=='search') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>search">Search</a></li>
+                            <li class="dropdown <?php if($page=='report') echo 'active';?>">
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Report<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li style="margin-top: 0px;"><a href="<?php echo $this->webroot;?>report_found">Report Found</a></li>
+                                    <li style="margin-top: 0px;"><a href="<?php echo $this->webroot;?>report_missing">Report Missing</a></li>
+                                </ul>
+                            </li> 
+                            <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
+                            <li class=""><a class="" href="#" data-toggle="modal" data-target="#login1">Login</a></li>
+                            <li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li>
+                        </ul>
+                    </div>   
                 </div>
             </nav>
 
             <!-- Modal login -->
           
             <div id="login1" class="modal fade" role="dialog">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal_login modal_large">
                     <!-- Modal content-->
-                    <div class="modal-content modal_large col-sm-6">
+                    <div class="modal-content col-sm-6">
                         <span><i class=" login1 fa fa-caret-up fa_large fa-3x"></i></span>
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -120,7 +116,7 @@
                 
                 <div class="modal-dialog my_account">
                     <!-- Modal content-->
-                    <div class="modal-content modal_large col-sm-6">
+                    <div class="modal-content col-sm-6">
                         <span><i class=" login1 fa fa-caret-up fa_large fa-3x"></i></span>
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
