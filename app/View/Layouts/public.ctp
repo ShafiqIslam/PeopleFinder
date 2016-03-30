@@ -137,7 +137,7 @@
                             <hr>
                             <div class="my_account_options">
                                 <a href="<?php echo $this->webroot;?>my_reports" class="btn btn_myaccount pull-left"><span><i class="fa fa-bell"></i></span>Reports</a>
-                                <a href="#" class="btn btn_myaccount pull-right"><span><i class="fa fa-sign-out fa-lg"></i></span>Signout</a>
+                                <a href="<?php echo $this->webroot;?>reporters/logout" class="btn btn_myaccount pull-right"><span><i class="fa fa-sign-out fa-lg"></i></span>Signout</a>
                             </div>
                         </div>
                         <!--Modal Body End-->
