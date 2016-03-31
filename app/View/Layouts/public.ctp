@@ -59,12 +59,29 @@
                                 </ul>
                             </li>
                             <?php if(!empty($logged)) { ?>
-                                <li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li>
+                                <!--<li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li>-->
+                                 <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account</a>
+                                <ul class="dropdown-menu dropdown_menu_modal my_account_modal">
+                                    <span class="glyphicon glyphicon-triangle-top"></span>
+                                    <li>
+                                        <div class="main_account_body row">
+                                            <div class="account_title">
+                                                <h4>Shamim Forhad</h4>
+                                                <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount">My Account</a>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="my_account_options">
+                                            <a href="<?php echo $this->webroot;?>my_reports" class="btn btn_myaccount pull-left"><span><i class="fa fa-bell"></i></span>Reports</a>
+                                            <a href="<?php echo $this->webroot;?>reporters/logout" class="btn btn_myaccount pull-right"><span><i class="fa fa-sign-out fa-lg"></i></span>Signout</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
                             <?php } else { ?>
                             <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
                            <!-- <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="modal" data-target="#login1">Login</a></li>-->
-                            <?php } ?>
-
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login</a>
                                 <ul class="dropdown-menu dropdown_menu_modal">
@@ -99,6 +116,9 @@
                                     </li>
                                 </ul>
                             </li>
+
+                            <?php } ?>
+
                         </ul>
                     </div>   
                 </div>

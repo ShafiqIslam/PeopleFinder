@@ -184,6 +184,9 @@ header ul li a{
 	margin-top:2px;
 	left: -268%;
 }
+.navbar-nav>li>.my_account_modal{
+	left: -114%;
+}
 .navbar-right .dropdown_menu_modal {
      right: auto;
 } 
@@ -201,6 +204,23 @@ header ul li a{
 	font-size: 16px;
 	color:  #A59B9B;
 	margin-left: 265px;
+}
+
+.forget_pass p{
+	margin-bottom: -10px;
+}
+.my_account_modal .my_account_options{
+	padding: 10px 10px 50px 10px;
+}
+.my_account_modal .btn_myaccount{
+	padding: 10px;
+	background-color: #673AB7;
+    color: #fff;
+}
+
+.my_account_modal .btn_myaccount:hover{
+	background-color: rgba(103, 58, 183, 0.62);
+    color: #fff;
 }
 /*
 #login1 .modal_large{
