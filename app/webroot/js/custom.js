@@ -14,13 +14,8 @@ $(document).ready(function(){
 $(document).on("scroll",function(){
     if($(document).scrollTop()>100){
         $("header").removeClass("large").addClass("small");
-        $(".modal-dialog").removeClass("modal_large").addClass("modal_small");
-
     } else{
         $("header").removeClass("small").addClass("large");
-        $(".modal-dialog").removeClass("modal_small").addClass("modal_large");
-        //$("#myaccount").removeClass("modal_small").addClass("modal_large ")
-
     }
 });
 
@@ -132,4 +127,25 @@ $(document).ready(function() {
     });
 });
 
+
+/*----------------JS for Tool Tip---------------*/
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+
+
+/*-------captcha Show-----*/
+
+$(document).ready(function(){
+    $('.btn_abuse').click(function(){
+        $('.captcha').removeClass('captcha_hide').addClass('catpcha_show');
+
+        //this prevent for first time progression.
+        $(this).find('a').click();
+        event.stopPropagation();
+        return false;
+    })
+    $.btn_abuse.trigger('click');
+    
+});
 

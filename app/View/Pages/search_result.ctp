@@ -9,6 +9,7 @@
 					</div>
 					<div class="col-sm-5">
 						<a href="<?php echo $this->webroot;?>search_result_details"><h4>Name of the searched person</h4></a>
+						<span><a class="tooltip_check" href="#" data-toggle="tooltip" data-placement="top" title="Verified Report."><i class="fa fa-check-square-o"></i></a></span>
 						<p>Missing/Found Washington DC, US. <a href="<?php echo $this->webroot;?>search_result_details">learn more about this person</a></p>
 					</div>
 				</li>
@@ -18,6 +19,7 @@
 					</div>
 					<div class="col-sm-5">
 						<a href="<?php echo $this->webroot;?>search_result_details"><h4>Name of the searched person</h4></a>
+						<span><a class="tooltip_check" href="#" data-toggle="tooltip" data-placement="top" title="Verified Report."><i class="fa fa-check-square-o"></i></a></span>
 						<p>Missing/Found Washington DC, US. <a href="<?php echo $this->webroot;?>search_result_details">learn more about this person</a></p>
 					</div>
 				</li>
@@ -27,6 +29,7 @@
 					</div>
 					<div class="col-sm-5">
 						<a href="<?php echo $this->webroot;?>search_result_details"><h4>Name of the searched person</h4></a>
+						<span><a class="tooltip_check" href="#" data-toggle="tooltip" data-placement="top" title="Verified Report."><i class="fa fa-check-square-o"></i></a></span>
 						<p>Missing/Found Washington DC, US. <a href="<?php echo $this->webroot;?>search_result_details">learn more about this person</a></p>
 					</div>
 				</li>
@@ -36,6 +39,7 @@
 					</div>
 					<div class="col-sm-5">
 						<a href="<?php echo $this->webroot;?>search_result_details"><h4>Name of the searched person</h4></a>
+						<span><a class="tooltip_check" href="#" data-toggle="tooltip" data-placement="top" title="Verified Report."><i class="fa fa-check-square-o"></i></a></span>
 						<p>Missing/Found Washington DC, US. <a href="<?php echo $this->webroot;?>search_result_details">learn more about this person</a></p>
 					</div>
 				</li>
@@ -45,6 +49,7 @@
 					</div>
 					<div class="col-sm-5">
 						<a href="<?php echo $this->webroot;?>search_result_details"><h4>Name of the searched person</h4></a>
+						<span><a class="tooltip_check" href="#" data-toggle="tooltip" data-placement="top" title="Verified Report."><i class="fa fa-check-square-o"></i></a></span>
 						<p>Missing/Found Washington DC, US. <a href="<?php echo $this->webroot;?>search_result_details">learn more about this person</a></p>
 					</div>
 				</li>
