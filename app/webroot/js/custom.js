@@ -150,13 +150,6 @@ $(document).ready(function(){
 
 
 /*---------Page reload for map reload---------*/
-/*
-$(document).ready(function () {
-    $('#map_reload').click(function() { 
-        window.location.reload();    
-    }); 
-});
-*/
 
 $('#map_reload').on('shown.bs.tab', function () {
     google.maps.event.trigger(window, 'resize', {});

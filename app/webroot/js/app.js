@@ -1,9 +1,14 @@
 (function () {
     var circle;
+    var pos = {
+      lat: 51.6,
+      lng: -0.1
+    };
 
     function initialize() {
+        console.log(pos);
         var mapOptions = {
-            center: new google.maps.LatLng(22.8167, 89.5500),
+            center: new google.maps.LatLng(pos.lat, pos.lng),
             zoom: 12
         };
 
@@ -34,7 +39,8 @@
         });
         drawingManager.setMap(map);
         google.maps.event.addListener(drawingManager, 'circlecomplete', onCircleComplete);
-    }
+    };
+
 
     function onCircleComplete(shape) {
         if (shape == null || (!(shape instanceof google.maps.Circle))) return;
@@ -50,6 +56,24 @@
         console.log('lng', circle.getCenter().lng());
     }
 
-    google.maps.event.addDomListener(window, 'load', initialize);
+    function get_geolocation() {
+        // Try HTML5 geolocation.        
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            //console.log(position);
+            pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            //console.log(pos);
+          }, function() {
+            console.log("Error");
+          });
+        }
 
+        google.maps.event.addDomListener(window, 'load', initialize);
+    }
+
+    //google.maps.event.addDomListener(window, 'load', initialize);
+    get_geolocation();
 })();
