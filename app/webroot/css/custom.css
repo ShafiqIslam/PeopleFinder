@@ -128,8 +128,8 @@ header ul li a{
 
 /*--------Drop-down menu CSS------------*/
 .navbar-right .dropdown-menu {
-    right: 0;
-    left: 0;
+     right: 0;
+     left: 0;
 } 
 .dropdown-menu > li > a {
     padding: 12px 20px;
@@ -177,6 +177,32 @@ header ul li a{
 /*----------Bootstrap Code Channge----------------*/
 
 /*-------Modal class-----------*/
+.dropdown_menu_modal{
+	min-width: 301px;	
+}
+.navbar-nav>li>.dropdown_menu_modal{
+	margin-top:2px;
+	left: -268%;
+}
+.navbar-right .dropdown_menu_modal {
+     right: auto;
+} 
+.dropdown_menu_modal form{
+	padding: 0px 15px 0px 15px;
+}
+.dropdown_menu_modal .form-horizontal .control-label {
+    padding-top: 7px;
+    margin-bottom: 0;
+    text-align: left;
+    padding-bottom: 5px;
+}
+.dropdown_menu_modal .glyphicon {
+	top: -17px;
+	font-size: 16px;
+	color:  #A59B9B;
+	margin-left: 265px;
+}
+/*
 #login1 .modal_large{
 	margin-top: 7.5%;
 	margin-left: 76%;

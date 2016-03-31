@@ -62,9 +62,44 @@
                                 <li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li>
                             <?php } else { ?>
                             <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
-                            <li class=""><a class="" href="#" data-toggle="modal" data-target="#login1">Login</a></li>
+                           <!-- <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="modal" data-target="#login1">Login</a></li>-->
                             <?php } ?>
-                            </ul>
+
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login</a>
+                                <ul class="dropdown-menu dropdown_menu_modal">
+                                    <span class="glyphicon glyphicon-triangle-top"></span>
+                                    <li>
+                                        <form  name="login_form" enctype="multipart/form-data" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-sm-12 control-label">Email</label>
+                                                <div class="col-sm-12">
+                                                    <input type="email" name="data[Reporter][email]" class="form-control" id="" placeholder="Email" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputPassword" class="col-sm-12 control-label">Password</label>
+                                                <div class="col-sm-12">
+                                                    <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-6 col-sm-6">
+                                                    <button type="submit" class="btn btn-primary btn_search">Login</button>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12 forget_pass">
+                                                    <p><a href="<?php echo $this->webroot;?>reporters/forgot_password">Forgot your password?</a></p>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>   
                 </div>
             </nav>
