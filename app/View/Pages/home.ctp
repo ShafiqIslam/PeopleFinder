@@ -182,10 +182,16 @@
 <div class="container-fluid about_wrapper slideanim slide">
     <div class="container">
         <h1>Our Services</h1>
-        <p><span><i class="fa fa-check-square"></i></span>Searching a missed person.</p>
-        <p><span><i class="fa fa-check-square"></i></span>Finding a missed person.</p>
-        <p><span><i class="fa fa-check-square"></i></span>Reporting a missed person.</p>
-        <p><span><i class="fa fa-check-square"></i></span>Reporting a found person.</p>
+        <div class="row">
+            <div class="col-sm-4 pull-left service_option">
+                <p><span><i class="fa fa-check-square"></i></span>Searching missed persons.</p>
+                <p><span><i class="fa fa-check-square"></i></span>Finding missed persons.</p>
+            </div>
+            <div class="col-sm-4 col-sm-offset-4 pull-right service_option">
+                <p><span><i class="fa fa-check-square"></i></span>Reporting missed persons.</p>
+                <p><span><i class="fa fa-check-square"></i></span>Reporting found persons.</p>
+            </div>
+        </div>
     </div>
     <div class="col-sm-4 col-sm-offset-4">
         <a class="btn btn  btn_service pull-left" href="<?php echo $this->webroot;?>report_found">Report Found</a>
