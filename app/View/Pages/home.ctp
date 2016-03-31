@@ -8,7 +8,7 @@
                     <li class="active"><a data-toggle="pill" href="#name">Name</a></li>
                     <li><a data-toggle="pill" href="#photos">Photos</a></li>
                     <li><a data-toggle="pill" href="#country">Country</a></li>
-                    <li><a data-toggle="pill" href="#map">Map</a></li>
+                    <li><a id="map_reload" data-toggle="pill" href="#map">Map</a></li>
                     <li><a data-toggle="pill" href="#id_search">ID</a></li>
                 </ul>
             </div>

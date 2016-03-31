@@ -73,8 +73,8 @@
 								<p>Please fill the correct captcha for Report Abuse.</p>
 
 				                <div class="form-group">
-				                    <label class="col-sm-6 control-label" id="captchaOperation"></label>
-				                    <div class="col-sm-6">
+				                    <label class="col-sm-4 control-label" id="captchaOperation"></label>
+				                    <div class="col-sm-4">
 				                        <input type="text" class="form-control" name="captcha" />
 				                    </div>
 				                </div>

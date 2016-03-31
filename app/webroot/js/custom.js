@@ -145,7 +145,19 @@ $(document).ready(function(){
         event.stopPropagation();
         return false;
     })
-    $.btn_abuse.trigger('click');
     
 });
 
+
+/*---------Page reload for map reload---------*/
+/*
+$(document).ready(function () {
+    $('#map_reload').click(function() { 
+        window.location.reload();    
+    }); 
+});
+*/
+
+$('#map_reload').on('shown.bs.tab', function () {
+    google.maps.event.trigger(window, 'resize', {});
+});
