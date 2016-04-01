@@ -51,9 +51,12 @@
         }
 
         circle = shape;
-        console.log('radius', circle.getRadius());
+        /*console.log('radius', circle.getRadius());
         console.log('lat', circle.getCenter().lat());
-        console.log('lng', circle.getCenter().lng());
+        console.log('lng', circle.getCenter().lng());*/
+        $('input[name=search_lat]').val(circle.getCenter().lat());
+        $('input[name=search_lng]').val(circle.getCenter().lng());
+        $('input[name=search_radius]').val(circle.getRadius());
     }
 
     function get_geolocation() {

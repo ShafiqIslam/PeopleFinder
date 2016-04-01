@@ -97,20 +97,14 @@
                         <div class="form-group">
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Country</label>
                             <div class="col-sm-4 country_selection_box">
-                                <div class="bfh-selectbox bfh-countries" data-name="country" data-country="BD" data-flags="true">
+                                <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="BD" data-flags="true">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">City</label>
                             <div class="col-sm-4">
-                                <input type="text" name="city" class="form-control" id="" placeholder="City">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-sm-offset-3 col-sm-2 control-label">Street</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="street" class="form-control" id="" placeholder="Street">
+                                <input type="text" name="missing_city" class="form-control" id="" placeholder="City">
                             </div>
                         </div>
 
@@ -135,9 +129,9 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="lat" value="">
-                        <input type="hidden" name="lng" value="">
-                        <input type="hidden" name="radius" value="">
+                        <input type="hidden" name="search_lat" value="">
+                        <input type="hidden" name="search_lng" value="">
+                        <input type="hidden" name="search_radius" value="">
 
                         <div class="form-group">
                             <div class="col-sm-9 adv_search_link">

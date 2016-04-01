@@ -156,7 +156,67 @@ class ProfilesController extends AppController {
 				return $this->redirect(array('action' => 'full_profile', $this->request->data['id']));
 			}
 
-			$conditions = array();
+			$condition = "1 = 1";
+			$name_flag = 0;
+			if(!empty($this->request->data['first_name'])) {
+				if(!$name_flag)
+					$condition .= " AND (";
+				else
+					$condition .= " OR ";
+				$condition .= "`Profile`.`first_name` LIKE '%" . $this->request->data['first_name'] . "%'";
+				$name_flag = 1;
+			}
+			if(!empty($this->request->data['last_name'])) {
+				if(!$name_flag)
+					$condition .= " AND (";
+				else
+					$condition .= " OR ";
+				$condition .= "`Profile`.`last_name` LIKE '%" . $this->request->data['last_name'] . "%'";
+				$name_flag = 1;
+			}
+			if(!empty($this->request->data['second_name'])) {
+				if(!$name_flag)
+					$condition .= " AND (";
+				else
+					$condition .= " OR ";
+				$condition .= "`Profile`.`second_name` LIKE '%" . $this->request->data['second_name'] . "%'";
+				$name_flag = 1;
+			}
+			if($name_flag)
+				$condition .= ")";
+
+			
+			if(!empty($this->request->data['gender'])) {
+				$condition .= " AND `Profile`.`gender` = '" . $this->request->data['gender'] . "'";
+			}
+			if(!empty($this->request->data['missing_country'])) {
+				$condition .= " AND `Profile`.`missing_country` = '" . $this->request->data['missing_country'] . "'";
+			}
+			if(!empty($this->request->data['missing_city'])) {
+				$condition .= " AND `Profile`.`missing_city` LIKE '%" . $this->request->data['missing_city'] . "%'";
+			}
+			if(!empty($this->request->data['search_lat']) && !empty($this->request->data['search_lng']) && !empty($this->request->data['search_radius'])) {
+				$lat = $this->request->data['search_lat'];
+				$lng = $this->request->data['search_lng'];
+				$radius = $this->request->data['search_radius'] / 1000;
+
+				$condition .= " AND ";
+				$condition .= '(ROUND((6371.0 * ACOS(SIN(' . $lat . '*PI()/180)*SIN(`Profile`.`lat` * PI()/180)+COS(' . $lat . '*PI()/180)*
+						COS(`Profile`.`lat`*PI()/180)*COS((' . $lng . '*PI()/180)-(`Profile`.`lng`*PI()/180)))),2)<=' . $radius . ')';
+			}
+
+			$query = "SELECT * FROM `profiles` AS `Profile`";
+			$query .= " INNER JOIN `reporters` AS `Reporter` ON `Profile`.`reporter_id` = `Reporter`.`id`";
+			$query .= " WHERE $condition";
+
+			$profiles = $this->Profile->query($query);
+			AuthComponent::_setTrace($profiles);
+			if (!empty($profiles)) {
+				$this->set(compact('profiles'));
+				$this->render('search_result');
+			} else {
+
+			}
 		} else {
 			return $this->redirect(array('controller'=>'pages', 'action' => 'display', 'search'));
 		}
