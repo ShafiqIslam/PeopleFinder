@@ -187,9 +187,11 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-4 col-sm-offset-4">
-        <a class="btn btn  btn_service pull-left" href="<?php echo $this->webroot;?>report_found">Report Found</a>
-        <a class="btn btn btn_service pull-right" href="<?php echo $this->webroot;?>report_missing">Report Missing</a>
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="row">
+            <a class="btn btn  btn_service pull-left col-sm-4" href="<?php echo $this->webroot;?>report_found">Report Found</a>
+            <a class="btn btn btn_service pull-right col-smoffset-4 col-sm-4" href="<?php echo $this->webroot;?>report_missing">Report Missing</a>
+        </div>
     </div>
 </div>
 

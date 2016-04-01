@@ -154,3 +154,10 @@ $(document).ready(function(){
 $('#map_reload').on('shown.bs.tab', function () {
     google.maps.event.trigger(window, 'resize', {});
 });
+
+
+/*------------validate selector--------------*/
+$('.selectpicker').selectpicker({
+  style: 'btn-info',
+  size: 4
+});
