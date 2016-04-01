@@ -8,7 +8,7 @@ class ProfilesController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted', 'search', 'full_profile');
+        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted', 'search', 'full_profile', 'edit', 'delete');
 
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -148,6 +148,69 @@ class ProfilesController extends AppController {
 				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
 			}
 		}
+	}
+
+	public function edit($id) {
+		$logged_user = $this->Session->read('logged_user');
+		if(empty($logged_user)) {
+			return $this->redirect(array('controller'=>'reporters', 'action' => 'login'));
+		}
+		$this->Profile->id = $id;
+		if (!$this->Profile->exists()) {
+			throw new NotFoundException(__('Invalid profile'));
+		}
+
+		$profile = $this->Profile->findById($id);
+		if($profile['Profile']['reporter_id'] != $logged_user['id']) {
+			return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
+		}
+
+		if($this->request->is('post')) {
+			if(!empty($this->request->data['Profile']['image_links_1']))
+				$this->request->data = $this->_process_images($this->request->data);
+			
+			if($this->request->data['Profile']['image_link_1']=='')
+				$this->request->data['Profile']['image_link_1'] = $profile['Profile']['image_link_1'];
+			if($this->request->data['Profile']['image_link_2']=='')
+				$this->request->data['Profile']['image_link_2'] = $profile['Profile']['image_link_2'];
+			if($this->request->data['Profile']['image_link_3']=='')
+				$this->request->data['Profile']['image_link_3'] = $profile['Profile']['image_link_3'];
+
+			$address = $this->request->data['Profile']['missing_city'] . ', ' . $this->request->data['Profile']['missing_country'];
+			$lat_lng = $this->lat_lng($address);
+			$this->request->data['Profile']['lat'] = $lat_lng['lat'];
+			$this->request->data['Profile']['lng'] = $lat_lng['lng'];
+
+			$this->Profile->id = $id;
+			$this->Profile->save($this->request->data);
+
+			return $this->redirect(array('action' => 'edit', $id));
+		}
+		$this->set(compact('profile'));
+	}
+
+	public function delete($id) {
+		$logged_user = $this->Session->read('logged_user');
+		if(empty($logged_user)) {
+			return $this->redirect(array('controller'=>'reporters', 'action' => 'login'));
+		}
+		$this->Profile->id = $id;
+		if (!$this->Profile->exists()) {
+			throw new NotFoundException(__('Invalid profile'));
+		}
+
+		$profile = $this->Profile->findById($id);
+		if($profile['Profile']['reporter_id'] != $logged_user['id']) {
+			return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
+		}
+
+		$this->request->allowMethod('post', 'delete');
+		if ($this->Profile->delete()) {
+			$this->Session->setFlash(__('The profile has been deleted.'));
+		} else {
+			$this->Session->setFlash(__('The profile could not be deleted. Please, try again.'));
+		}
+		return $this->redirect(array('controller' => 'reporters', 'action' => 'my_reports'));
 	}
 
 	public function search() {

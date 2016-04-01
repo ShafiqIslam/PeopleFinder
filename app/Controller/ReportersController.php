@@ -313,12 +313,26 @@ class ReportersController extends AppController {
 	}
 
 	public function myaccount() {
-		$page = $subpage = $title_for_layout = 'My Account';
+		$page = $subpage = $title_for_layout = 'my_account';
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
 	}
 
 	public function my_reports() {
-		
+		$page = $subpage = $title_for_layout = 'my_account';
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
+		$logged_user = $this->Session->read('logged_user');
+		if(empty($logged_user)) {
+			return $this->redirect(array('controller'=>'reporters', 'action' => 'login'));
+		}
+
+		$id = $logged_user['id'];
+		$this->Reporter->recursive = 1;
+		$reporter = $this->Reporter->findById($id);
+		$my_profiles = $reporter['Profile'];
+
+		$this->set(compact('my_profiles'));
 	}
 
 	public function change_pass() {

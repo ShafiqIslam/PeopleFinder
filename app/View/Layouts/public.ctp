@@ -59,8 +59,7 @@
                                 </ul>
                             </li>
                             <?php if(!empty($logged)) { ?>
-                                <!--<li class="myaccount_modal"><a style="font-size: 13px;" class="" href="#" data-toggle="modal" data-target="#myaccount">My Account</a></li>-->
-                                 <li class="dropdown">
+                            <li class="dropdown <?php if($page=='my_account') echo '';?>">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account</a>
                                 <ul class="dropdown-menu dropdown_menu_modal my_account_modal">
                                     <span class="glyphicon glyphicon-triangle-top"></span>
@@ -80,7 +79,9 @@
                                 </ul>
                             </li>
                             <?php } else { ?>
-                            <li class="<?php if($page=='signup') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>signup">Sign up</a></li> 
+                            <li class="<?php if($page=='signup') echo 'active';?>">
+                                <a class="" href="<?php echo $this->webroot;?>signup">Sign up</a>
+                            </li>
                            <!-- <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="modal" data-target="#login1">Login</a></li>-->
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login</a>

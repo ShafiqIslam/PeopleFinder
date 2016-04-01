@@ -16,7 +16,7 @@
 					else if(!empty($profile['Profile']['image_link_3']))
 						$image_link = $profile['Profile']['image_link_3'];
 					else
-						$image_link = $this->webroot . "img/01.jpg";
+						$image_link = $this->webroot . "img/no_image_available.jpg";
 					?>
 					<div class="col-sm-2">
 						<img class="img-thumbnail img_result" src="<?php echo $image_link;?>">
