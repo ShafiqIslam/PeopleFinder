@@ -13,7 +13,7 @@
             echo $this->Html->meta('icon');
             //echo $this->Html->css('cake.generic');
             echo $this->Html->css(array('bootstrap', 'bootstrap-datetimepicker', 'jquery-ui', 'bootstrap-formhelpers.min','bootstrapValidator.min','fileinput', 'custom'));
-            echo $this->Html->script(array('jquery-1.11.3', 'bootstrap.min', 'fileinput.js', 'jquery-ui', 'bootstrap-formhelpers.min', 'bootstrap-formhelpers-countries', 'validator.min', 'bootstrapValidator.min','count',));
+            echo $this->Html->script(array('jquery-1.11.3', 'bootstrap.min', 'fileinput.js', 'jquery-ui', 'bootstrap-formhelpers.min', 'bootstrap-formhelpers-countries', 'validator.min', 'bootstrapValidator.min','bootstrap-multiselect','count',));
         ?>
         <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=drawing"></script>
         <?php

@@ -4,12 +4,12 @@
         <div class="col-sm-8 search_pill">
             <h2>Search Here</h2>
             <div class="col-sm-12">
-                <ul class="nav nav-pills">
-                    <li class="active"><a data-toggle="pill" href="#name">Name</a></li>
-                    <li><a data-toggle="pill" href="#photos">Photos</a></li>
-                    <li><a data-toggle="pill" href="#country">Country</a></li>
-                    <li><a id="map_reload" data-toggle="pill" href="#map">Map</a></li>
-                    <li><a data-toggle="pill" href="#id_search">ID</a></li>
+                <ul id="myTab" class="nav nav-pills">
+                    <li id="name_tab" class="active"><a data-toggle="tab" href="#name">Name</a></li>
+                    <li><a id="pic_reload" data-toggle="tab" href="#photos">Photos</a></li>
+                    <li><a data-toggle="tab" href="#country">Country</a></li>
+                    <li><a id="map_reload" data-toggle="tab" href="#map">Map</a></li>
+                    <li><a data-toggle="tab" href="#id_search">ID</a></li>
                 </ul>
             </div>
 
@@ -17,11 +17,11 @@
 
                 <div id="name" class="tab-pane fade in active">
                     <h3>Search By Name</h3>
-                    <form class="form-horizontal" action="<?php echo $this->webroot?>profiles/search" method="post">
+                    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search">
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
                             <div class="col-sm-4">
-                                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name">
+                                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name" required="">
                             </div>
                         </div>
 
@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
                             <div class="col-sm-4">
-                                <select name="gender" class="form-control">
+                                <select name="gender" class="form-control" required="">
                                     <option value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -63,7 +63,7 @@
 
                 <div id="photos" class="tab-pane fade">
                     <!--<h3>Search By Photos</h3>-->
-                    <form class="form-horizontal" action="<?php echo $this->webroot?>profiles/search" method="post" enctype="multipart/form-data">
+                    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <input id="search_img" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="1">
@@ -73,7 +73,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Gender</label>
                             <div class="col-sm-4">
-                                <select name="gender" class="form-control">
+                                <select name="gender" class="form-control" required="">
                                     <option value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>

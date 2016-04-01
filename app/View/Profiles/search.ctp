@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-sm-5 search_result_wrappper"> 
+		<div class="col-sm-7 search_result_wrappper"> 
 			<h1>Your Search Results :</h1>
 			<?php if(!$count) { ?>
 				<p class="no_search_result">No result Found. Sorry. <?php echo $this->Html->link('Try Again.', array('controller'=>'pages', 'action'=>'display', 'search'));?></p>
@@ -51,36 +51,32 @@
 			</div>
 			<?php } ?>
 		</div>
-		<div class="col-sm-6 col-sm-offset-1 sign_up_page search_page search_again">
+		<div class="col-sm-3 col-sm-offset-2 sign_up_page search_page search_again">
 			<h1>Search</h1>
 		    <hr>
-		    <form class="form-horizontal" action="<?php echo $this->webroot?>profiles/search" method="post">
+		    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search">
 		        <div class="form-group">
-		            <label for="" class="col-sm-5 control-label">First Name</label>
-		            <div class="col-sm-7">
-		                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name" required>
+		            <div class="col-sm-12">
+		                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name" required="">
 		            </div>
 		        </div>
 
 		        <div class="form-group">
-		            <label for="" class="col-sm-5 control-label">Second Name</label>
-		            <div class="col-sm-7">
+		            <div class="col-sm-12">
 		                <input type="text" name="second_name" class="form-control" id="" placeholder="Second Name">
 		            </div>
 		        </div>
 
 		        <div class="form-group">
-		            <label for="" class="col-sm-5 control-label">Last Name</label>
-		            <div class="col-sm-7">
+		            <div class="col-sm-12">
 		                <input type="text" name="last_name" class="form-control" id="" placeholder="Last Name">
 		            </div>
 		        </div>
 
 		        <div class="form-group">
-		            <label for="" class="col-sm-5 control-label">Gender</label>
-		            <div class="col-sm-7">
-		                <select name="gender" class="form-control">
-		                    <option>Select Gender</option>
+		            <div class="col-sm-12">
+		                <select name="gender" class="form-control" required="">
+		                    <option value="">Select Gender</option>
 		                    <option value="Male">Male</option>
 		                    <option value="Female">Female</option>
 		                </select>
@@ -88,23 +84,20 @@
 		        </div>
 
 		        <div class="form-group">
-		            <label for="" class="col-sm-5 control-label">Missing Country</label>
-		            <div class="col-sm-7 country_selection_box">
+		            <div class="col-sm-12 country_selection_box">
 		                <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="BD" data-flags="true">
 		                </div>
 		            </div>
 		        </div>
 
 		        <div class="form-group">
-		            <label for="" class="col-sm-5 control-label">Missing City</label>
-		            <div class="col-sm-7">
+		            <div class="col-sm-12">
 		                <input type="text" name="missing_city" class="form-control" id="" placeholder="City">
 		            </div>
 		        </div>
 
 		        <div class="form-group">
-		            <label for="" class="col-sm-5 control-label">Profile ID</label>
-		            <div class="col-sm-7">
+		            <div class="col-sm-12">
 		                <input name="id" type="text" class="form-control" id="" placeholder="Profile Id">
 		            </div>
 		        </div>
