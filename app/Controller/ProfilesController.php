@@ -151,6 +151,9 @@ class ProfilesController extends AppController {
 	}
 
 	public function search() {
+		$page = $subpage = $title_for_layout = "search";
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
 		if($this->request->is('post')) {
 			if(!empty($this->request->data['id'])) {
 				return $this->redirect(array('action' => 'full_profile', $this->request->data['id']));
@@ -210,19 +213,17 @@ class ProfilesController extends AppController {
 			$query .= " WHERE $condition";
 
 			$profiles = $this->Profile->query($query);
-			AuthComponent::_setTrace($profiles);
-			if (!empty($profiles)) {
-				$this->set(compact('profiles'));
-				$this->render('search_result');
-			} else {
-
-			}
+			$count = count($profiles);
+			$this->set(compact('profiles', 'count'));
 		} else {
 			return $this->redirect(array('controller'=>'pages', 'action' => 'display', 'search'));
 		}
 	}
 
 	public function full_profile($id) {
+		$page = $subpage = $title_for_layout = "search";
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		
 		$profile = $this->Profile->findById($id);
 		$this->set(compact('profile'));
 	}

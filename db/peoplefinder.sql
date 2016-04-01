@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-03-31 02:14:23
+Date: 2016-04-01 11:43:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -76,7 +76,7 @@ CREATE TABLE `profiles` (
 -- ----------------------------
 -- Records of profiles
 -- ----------------------------
-INSERT INTO `profiles` VALUES ('1', 'Abul', 'test', 'Kashem', '2000-06-06', 'B-', null, 'BD', 'Male', 'Found', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'No', 'Found', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319029/hgbxojyqeafemesvikdu.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319032/llnpw66pirdmhagynbvk.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319036/vxim9benjffbovxfuu6c.jpg', '0', 'Test description', '1', '0', null, '2016-03-30 08:20:31', '2016-03-30 08:20:31');
+INSERT INTO `profiles` VALUES ('1', 'Abul', 'test', 'Kashem', '2000-06-06', 'B-', null, 'BD', 'Male', 'Found', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '52', '0', 'No', 'Found', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319029/hgbxojyqeafemesvikdu.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319032/llnpw66pirdmhagynbvk.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319036/vxim9benjffbovxfuu6c.jpg', '1', 'Test description', '1', '0', null, '2016-03-30 08:20:31', '2016-03-30 08:20:31');
 INSERT INTO `profiles` VALUES ('2', 'Abdul', '', 'Jabbar', '2016-03-03', 'A+', null, 'BD', 'Male', 'Missing', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'Yes', 'Alive', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320122/kq9kfjrzjfzidoyffesi.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320127/qv7gtrm1zkpoffscrfqu.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320132/xdzufs6mgmynpvf4ktzd.jpg', '0', '', '1', '0', null, '2016-03-30 08:38:47', '2016-03-30 08:38:47');
 
 -- ----------------------------

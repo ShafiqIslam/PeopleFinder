@@ -2,75 +2,71 @@
 <div class="container-fluid sign_up_page search_page">
     <h1>Search</h1>
     <hr>
-    <form class="form-horizontal">
+    <form class="form-horizontal" action="<?php echo $this->webroot?>profiles/search" method="post">
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="" placeholder="First Name">
+                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name">
             </div>
         </div>
 
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Second Name</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="" placeholder="Second Name">
+                <input type="text" name="second_name" class="form-control" id="" placeholder="Second Name">
             </div>
         </div>
 
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Last Name</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="" placeholder="Last Name">
+                <input type="text" name="last_name" class="form-control" id="" placeholder="Last Name">
             </div>
         </div>
 
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
             <div class="col-sm-4">
-                <select class="form-control">
+                <select name="gender" class="form-control">
                     <option>Select Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                 </select>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Country</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Missing Country</label>
             <div class="col-sm-4 country_selection_box">
-                <!--<select class="input-medium bfh-countries" data-country="BD"></select>-->
-    
-                <div class="bfh-selectbox bfh-countries" data-country="BD" data-flags="true">
-                    <input type="hidden" value="">
-                    <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
-                        <span class="bfh-selectbox-option input-medium" data-option=""></span>
-                        <b class="caret"></b>
-                    </a>
-                    <div class="bfh-selectbox-options">
-                        <input type="text" class="bfh-selectbox-filter">
-                        <div role="listbox">
-                            <ul role="option"></ul>
-                        </div>
-                    </div>
+                <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="BD" data-flags="true">
                 </div>
- 
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Missing City</label>
+            <div class="col-sm-4">
+                <input type="text" name="missing_city" class="form-control" id="" placeholder="City">
             </div>
         </div>
 
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Profile ID</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="" placeholder="Profile Id">
+                <input name="id" type="text" class="form-control" id="" placeholder="Profile Id">
             </div>
         </div>
 
-            <div class="form-group adv_draw_map">
-                <div class="col-sm-offset-2 col-sm-7">
-                    <div id="map-canvas"></div><!-- Drag on google map-->
-                    <p>Draw a circle on the map.</p>
-                </div>
-                
+        <div class="form-group adv_draw_map">
+            <div class="col-sm-offset-2 col-sm-7">
+                <div id="map-canvas"></div><!-- Drag on google map-->
+                <p>Draw a circle on the map.</p>
             </div>
+            <input type="hidden" name="search_lat" value="">
+            <input type="hidden" name="search_lng" value="">
+            <input type="hidden" name="search_radius" value="">
+        </div>
+
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-7">
