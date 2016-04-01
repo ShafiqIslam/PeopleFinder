@@ -66,7 +66,7 @@
                                     <li>
                                         <div class="main_account_body row">
                                             <div class="account_title">
-                                                <h4>Shamim Forhad</h4>
+                                                <h4><?php echo $logged['name'];?></h4>
                                                 <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount">My Account</a>
                                             </div>
                                         </div>
@@ -186,7 +186,7 @@
                         <div class="modal-body">
                             <div class="main_account_body row">
                                 <div class="account_title">
-                                    <h4>Shamim Forhad</h4>
+                                    <h4><?php echo $logged['name'];?></h4>
                                     <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount">My Account</a>
                                 </div>
                             </div>
