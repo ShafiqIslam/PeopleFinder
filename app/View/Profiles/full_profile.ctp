@@ -9,8 +9,10 @@
 			?>
 			<h1><?php echo $name;?></h1>
 
+			<?php if($profile['Profile']['verified_profile']): ?>
 			<span><a class="tooltip_check" href="#" data-toggle="tooltip" data-placement="top" title="Verified Report."><i class="fa fa-check-square-o"></i></a></span>
-
+			<?php endif; ?>
+			
 			<p><b><?php echo $profile['Profile']['person_status'];?> : <?php echo $profile['Profile']['missing_city'];?>, <?php echo $profile['Profile']['missing_country'];?>.</b></p>
 
 			<div class="row">

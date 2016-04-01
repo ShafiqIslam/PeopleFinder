@@ -148,6 +148,11 @@ class ReportersController extends AppController {
 				$this->set(compact('login_fail'));
 			} else {
 				$data['id'] = $reporter['Reporter']['id'];
+				$first_name = !empty($reporter['Reporter']['first_name']) ? $reporter['Reporter']['first_name'] : "";
+				$second_name = !empty($reporter['Reporter']['second_name']) ? $reporter['Reporter']['second_name'] : "";
+				$last_name = !empty($reporter['Reporter']['last_name']) ? $reporter['Reporter']['last_name'] : "";
+				$name = $first_name . " " . $second_name . " " . $last_name;
+				$data['name'] = $name;
 				$data['is_admin'] = false;
 				$this->Session->write('logged_user', $data);
 				return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
@@ -313,18 +318,54 @@ class ReportersController extends AppController {
 	}
 
 	public function myaccount() {
-		$page = $subpage = $title_for_layout = 'My Account';
+		$page = $subpage = $title_for_layout = 'my_account';
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
 	}
 
 	public function my_reports() {
-		
+		$page = $subpage = $title_for_layout = 'my_account';
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
+		$logged_user = $this->Session->read('logged_user');
+		if(empty($logged_user)) {
+			return $this->redirect(array('controller'=>'reporters', 'action' => 'login'));
+		}
+
+		$id = $logged_user['id'];
+		$this->Reporter->recursive = 1;
+		$reporter = $this->Reporter->findById($id);
+		$my_profiles = $reporter['Profile'];
+
+		$this->set(compact('my_profiles'));
 	}
 
 	public function change_pass() {
-		if($this->request->is('post')) {
-			AuthComponent::_setTrace($this->request->data);
+		$page = $subpage = $title_for_layout = 'my_account';
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
+		$logged_user = $this->Session->read('logged_user');
+		if(empty($logged_user)) {
+			return $this->redirect(array('controller'=>'reporters', 'action' => 'login'));
 		}
+
+		$id = $logged_user['id'];
+		$this->Reporter->recursive = 0;
+		$reporter = $this->Reporter->findById($id);
+
+		if($this->request->is('post')) {
+			$old_password = $this->Auth->password($this->request->data['Reporter']['password_old']);
+			if($reporter['Reporter']['password'] != $old_password) {
+				$success = 10;
+			} else {
+				$this->request->data['Reporter']['password'] = $this->Auth->password($this->request->data['Reporter']['password']);
+				$this->Reporter->id = $id;
+				$this->Reporter->save($this->request->data);
+				$success = 20;
+			}
+			$this->set(compact('success'));
+		}
+		//echo $success; die();
 	}
 
 	/*

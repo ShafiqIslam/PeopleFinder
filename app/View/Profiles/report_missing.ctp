@@ -135,7 +135,7 @@
                 <select name="data[Profile][status]" class="form-control" required="">
                     <option value="">Select Status</option>
                     <option value="Alive">Alive</option>
-                    <option value="Death">Death</option>
+                    <option value="Dead">Dead</option>
                     <option value="NA">NA</option>
                 </select>
             </div>

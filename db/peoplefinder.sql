@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-04-01 11:43:47
+Date: 2016-04-02 00:42:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -71,13 +71,13 @@ CREATE TABLE `profiles` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of profiles
 -- ----------------------------
-INSERT INTO `profiles` VALUES ('1', 'Abul', 'test', 'Kashem', '2000-06-06', 'B-', null, 'BD', 'Male', 'Found', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '52', '0', 'No', 'Found', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319029/hgbxojyqeafemesvikdu.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319032/llnpw66pirdmhagynbvk.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319036/vxim9benjffbovxfuu6c.jpg', '1', 'Test description', '1', '0', null, '2016-03-30 08:20:31', '2016-03-30 08:20:31');
-INSERT INTO `profiles` VALUES ('2', 'Abdul', '', 'Jabbar', '2016-03-03', 'A+', null, 'BD', 'Male', 'Missing', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'Yes', 'Alive', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320122/kq9kfjrzjfzidoyffesi.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320127/qv7gtrm1zkpoffscrfqu.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320132/xdzufs6mgmynpvf4ktzd.jpg', '0', '', '1', '0', null, '2016-03-30 08:38:47', '2016-03-30 08:38:47');
+INSERT INTO `profiles` VALUES ('1', 'Abul', 'test', 'Kashem', '2000-01-01', 'B-', null, 'BD', 'Male', 'Found', 'BD', 'Dhaka', 'Rokeya Sarani', 'BD', 'Khulna', '22.845641', '89.5403279', 'No', 'Alive', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459533121/pwbpvq9bi0xxdndqvi5y.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459532790/rn3xyd1orsdqhsc8dsf4.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319036/vxim9benjffbovxfuu6c.jpg', '1', 'Test description blah blah blah', '1', '0', null, '2016-03-30 08:20:31', '2016-04-01 19:48:33');
+INSERT INTO `profiles` VALUES ('2', 'Abdul', '', 'Jabbar', '2016-03-03', 'A+', null, 'BD', 'Male', 'Missing', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'Yes', 'Alive', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319036/vxim9benjffbovxfuu6c.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320127/qv7gtrm1zkpoffscrfqu.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320132/xdzufs6mgmynpvf4ktzd.jpg', '0', '', '1', '0', null, '2016-03-30 08:38:47', '2016-03-30 08:38:47');
 
 -- ----------------------------
 -- Table structure for `reporters`
@@ -106,7 +106,7 @@ CREATE TABLE `reporters` (
 -- ----------------------------
 -- Records of reporters
 -- ----------------------------
-INSERT INTO `reporters` VALUES ('1', 'Shafiq', null, 'Islam', 'BD', 'Male', 'BD', null, 'shafiq.xor@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '1', 'mjRguRvNCgr8kBHq', 'Normal', '0', '2016-03-15 12:54:21', '2016-03-16 07:34:52');
+INSERT INTO `reporters` VALUES ('1', 'Shafiq', null, 'Islam', 'BD', 'Male', 'BD', null, 'shafiq.xor@gmail.com', 'c8e392bc6a1fcd9795f76e4d171e468391eb39cf', '1', 'mjRguRvNCgr8kBHq', 'Normal', '0', '2016-03-15 12:54:21', '2016-04-01 20:22:39');
 INSERT INTO `reporters` VALUES ('3', 'Shafiq', 'Islam', 'sdfasd', 'BD', 'Male', 'BD', null, 'islamshafiq03@gmail.com', 'e342df617ce15c040b95f90dc2f25273f630f6c5', '1', 'mjRguRvNCgr8kBHq', 'Normal', '0', '2016-03-16 07:34:52', '2016-03-19 04:31:41');
 
 -- ----------------------------
