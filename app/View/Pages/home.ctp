@@ -43,7 +43,7 @@
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
                             <div class="col-sm-4">
                                 <select name="gender" class="form-control">
-                                    <option>Select Gender</option>
+                                    <option value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
@@ -74,7 +74,7 @@
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Gender</label>
                             <div class="col-sm-4">
                                 <select name="gender" class="form-control">
-                                    <option>Select Gender</option>
+                                    <option value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>

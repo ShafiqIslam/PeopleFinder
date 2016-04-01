@@ -189,7 +189,7 @@ class ProfilesController extends AppController {
 				$condition .= ")";
 
 			
-			if(!empty($this->request->data['gender'])) {
+			if(!empty($this->request->data['gender']) && $this->request->data['gender']!="") {
 				$condition .= " AND `Profile`.`gender` = '" . $this->request->data['gender'] . "'";
 			}
 			if(!empty($this->request->data['missing_country'])) {
@@ -223,7 +223,7 @@ class ProfilesController extends AppController {
 	public function full_profile($id) {
 		$page = $subpage = $title_for_layout = "search";
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		
+
 		$profile = $this->Profile->findById($id);
 		$this->set(compact('profile'));
 	}
