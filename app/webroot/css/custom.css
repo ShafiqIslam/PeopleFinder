@@ -133,6 +133,16 @@ header ul li a{
 } 
 .dropdown-menu > li > a {
     padding: 12px 20px;
+    font-size: 20px;
+    transition: all .6s;
+    -moz-transition: all .6s; /* Firefox 4 */
+    -webkit-transition: all .6s; /* Safari and Chrome */
+    -o-transition: all .6s; /* Opera */
+}
+
+.dropdown-menu > li > a:hover{
+	background-color: #1C2742;
+	color: #fff;
 }
 /*.navbar-right .dropdown-menu {
     right: 0;
@@ -576,21 +586,37 @@ header ul li a{
 /*---------------About Section---------------*/
 
 .about_wrapper{
-	background-color: rgba(237, 237, 237, 0.34);
+	//background-color: rgba(237, 237, 237, 0.34);
+	background-image: url(../img/service.jpg);
+	background-repeat: no-repeat;
+	//background-size: cover;
+	background-position: center;
+	height: 550px;
 }
 
 .about_wrapper h1, .about_wrapper h2{
 	text-align: center;
 	font-size: 40px;
     font-weight: bold;
-    color: rgba(72, 69, 69, 0.76);
-    margin: 5% 0%;
+    color: #440808;
+    margin: 3% 0%;
+}
+.about_wrapper p{
+	font-size: 24px;
+    font-weight: 600;
+    color: #2E7D32;
+}
+.service_option{
+	margin: 8% 0%;
+}
+.service_option .fa{
+	padding-right: 9px;
 }
 
-.about_wrapper p{
-	font-size: 17px;
-	text-align: center;
+.pull-right p{
+	margin-left: 21px;
 }
+
 
 .about_wrapper .btn_service{
 	background-color: green;
@@ -598,7 +624,7 @@ header ul li a{
     width: 46%;
     font-size: 24px;
     padding: 12px 0px;
-    margin: 25px 0px;
+    margin: 21% 0%;
     transition: all .3s ease;
     -webkit-transition: all .5s ease;
 }
@@ -919,7 +945,7 @@ input, textarea{
 }
 .simple_msg_page h2, .simple_msg_page p{
 	text-align: center;
-    margin: 4.8% 0% 3% 0%;
+    margin: 4.8% 0% 5.5% 0%;
 }
 
 .simple_msg_page p{
@@ -994,7 +1020,11 @@ input, textarea{
     display: block;
     overflow: hidden;
     margin-left: 2%;
-	
+    transition: all 0.5s;
+	-webkit-transition : all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+
 }
 
 .social-link2 ul li a i:hover{
