@@ -8,7 +8,7 @@ class ProfilesController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted', 'search', 'full_profile', 'edit', 'delete');
+        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted', 'search', 'full_profile', 'edit', 'delete', 'test');
 
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -117,11 +117,12 @@ class ProfilesController extends AppController {
 			$this->request->data['Profile']['is_admin'] = 0;
 			#AuthComponent::_setTrace($this->request->data);
 			if($this->Profile->save($this->request->data)) {
-				$this->Session->setFlash(__('The profile has been saved.'));
+				$this->request->data['Profile']['id'] = $this->Profile->id;
+				$this->_facepp_job($this->request->data);
 				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
 			} else {
-				$this->Session->setFlash(__('The profile could not be saved.'));
-				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
+				$success = false;
+				$this->set(compact('success'));
 			}
 		}
 	}
@@ -141,13 +142,28 @@ class ProfilesController extends AppController {
 			#AuthComponent::_setTrace($this->request->data);
 			$this->Profile->create();
 			if($this->Profile->save($this->request->data)) {
-				$this->Session->setFlash(__('The profile has been saved.'));
+				$this->request->data['Profile']['id'] = $this->Profile->id;
+				$this->_facepp_job($this->request->data);
 				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
 			} else {
-				$this->Session->setFlash(__('The profile could not be saved.'));
-				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
+				$success = false;
+				$this->set(compact('success'));
 			}
 		}
+	}
+
+	private function test() {
+		//AuthComponent::_setTrace($this->facepp_create_group());
+		$profile = $this->Profile->findById(2);
+		#AuthComponent::_setTrace($profile);
+		$group = $profile['Profile']['gender'];
+		$person = $profile['Profile']['id'];
+		$images = array(
+			$profile['Profile']['image_link_1'],
+			$profile['Profile']['image_link_2'],
+			$profile['Profile']['image_link_3']
+		);
+		AuthComponent::_setTrace($this->facepp_add_to_group($group, $person, $images));
 	}
 
 	public function edit($id) {
@@ -168,7 +184,7 @@ class ProfilesController extends AppController {
 		if($this->request->is('post')) {
 			if(!empty($this->request->data['Profile']['image_links_1']))
 				$this->request->data = $this->_process_images($this->request->data);
-			
+
 			if($this->request->data['Profile']['image_link_1']=='')
 				$this->request->data['Profile']['image_link_1'] = $profile['Profile']['image_link_1'];
 			if($this->request->data['Profile']['image_link_2']=='')
@@ -182,8 +198,13 @@ class ProfilesController extends AppController {
 			$this->request->data['Profile']['lng'] = $lat_lng['lng'];
 
 			$this->Profile->id = $id;
-			$this->Profile->save($this->request->data);
-
+			if($this->Profile->save($this->request->data)) {
+				$this->request->data['Profile']['id'] = $id;
+				$this->_facepp_job($this->request->data);
+				$this->Session->write('success', true);
+			}
+			else
+				$this->Session->write('success', false);
 			return $this->redirect(array('action' => 'edit', $id));
 		}
 		$this->set(compact('profile'));
@@ -294,6 +315,7 @@ class ProfilesController extends AppController {
 	private function _process_images ($data) {
 		unset($data['Profile']['images']);
 
+		// process image and upload to cloudinary
 		$files = array();
 		if(!empty($data['Profile']['image_links_1'])) {
 			array_push($files, $data['Profile']['image_links_1']);
@@ -315,7 +337,7 @@ class ProfilesController extends AppController {
 
 		unset($data['Profile']['image_links_1'], $data['Profile']['image_links_2'], $data['Profile']['image_links_3']);
 
-		// security
+		// delete all from server (security)
 		$files = glob('files/uploads/*'); // get all file names
 		foreach($files as $file){ // iterate files
 		  if(is_file($file))
@@ -323,6 +345,21 @@ class ProfilesController extends AppController {
 		}
 
 		return $data;
+	}
+
+	private function _facepp_job($data) {
+		// do facepp job here
+		$group = $data['Profile']['gender'];
+		$person = $data['Profile']['id'];
+		$images = array();
+		if(!empty($data['Profile']['image_link_1']) || $data['Profile']['image_link_1']!='')
+			array_push($images, $data['Profile']['image_link_1']);
+		if(!empty($data['Profile']['image_link_2']) || $data['Profile']['image_link_2']!='')
+			array_push($images, $data['Profile']['image_link_2']);
+		if(!empty($data['Profile']['image_link_3']) || $data['Profile']['image_link_3']!='')
+			array_push($images, $data['Profile']['image_link_3']);
+		$this->facepp_add_to_group($group, $person, $images);
+		return true;
 	}
 
 	public function upload_image() {

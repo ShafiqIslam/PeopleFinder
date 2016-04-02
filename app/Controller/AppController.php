@@ -2,11 +2,16 @@
 
 include '../Vendor/CloudinaryPHP/src/Cloudinary.php';
 include '../Vendor/CloudinaryPHP/src/Uploader.php';
+include '../Vendor/FacePP/FacePPClientDemo.php';
 
 App::uses('Controller', 'Controller');
 App::uses('AuthComponent', 'Controller/Component');
 
 class AppController extends Controller {
+
+    private $_facepp_api_key = "921e786d46d586478ad122e96e3600d5";
+    private $_facepp_api_secret = "J-A-Hc63JM2cmtfJDzRoKxxy5b7YmeVE";
+
 	public $components = array(
         'Session', 'RequestHandler','Cookie',
         'Auth' => array(
@@ -182,6 +187,63 @@ class AppController extends Controller {
             return true;
             //echo "Message has been sent successfully";
         }
+    }
+
+    /*
+     * Creating groups. Only called initially.
+     */
+    public function facepp_create_group(){
+        $facepp_api = new FacePPClientDemo($this->_facepp_api_key, $this->_facepp_api_secret);
+        $facepp_api->group_delete('sample_group');
+        $facepp_api->group_delete('Male');
+        $facepp_api->group_create('Male');
+        $facepp_api->group_delete('Female');
+        $facepp_api->group_create('Female');
+        return true;
+    }
+
+    public function facepp_add_to_group($group_name, $person_id, $person_images){
+        set_time_limit(0);
+        $facepp_api = new FacePPClientDemo($this->_facepp_api_key, $this->_facepp_api_secret);
+
+        // first create the person
+        $facepp_api->person_delete($person_id);
+        $facepp_api->person_create($person_id);
+
+        foreach($person_images as $person_image) {
+            // detect faces in this photo
+            $result = $facepp_api->face_detect($person_image);
+            // skip errors and skip photo with multiple faces (they are not sure which face to train)
+            if ( empty($result->face) || (count($result->face) > 1) )
+                continue;
+
+            // obtain the face_id
+            $face_id = $result->face[0]->face_id;
+
+            // add face into new person
+            $facepp_api->person_add_face($face_id, $person_id);
+        }
+
+        // then add the person to group
+        $facepp_api->group_add_person($person_id, $group_name);
+
+        // immediately run the training on group
+        $session = $facepp_api->train_identify($group_name);
+        if (empty($session->session_id)) {
+            // something went wrong, skip
+            return false;
+        }
+        $session_id = $session->session_id;
+        // wait until training process done
+        while ($session = $facepp_api->info_get_session($session_id)) {
+            sleep(1);
+            if (!empty($session->status)) {
+                if ($session->status != "INQUEUE")
+                    break;
+            }
+        }
+        // done
+        return true;
     }
 
     public function lat_lng($address = null) {

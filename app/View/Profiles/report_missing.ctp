@@ -1,6 +1,9 @@
 <!--==================Sign Up Section========================-->
 <div class="container-fluid sign_up_page">
     <h1>REPORT A MISSING PERSON</h1>
+    <?php if(!empty($success) && !$success) { ?>
+        <h4>Your Report can't be saved right now. Try again later.</h4>
+    <?php } ?>
     <hr>
     <form role="form" id="signup_form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" enctype="multipart/form-data" action="">
         <div class="form-group">

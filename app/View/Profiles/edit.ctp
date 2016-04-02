@@ -1,7 +1,18 @@
 <!--==================Sign Up Section========================-->
 <div class="container-fluid sign_up_page">
     <h1>EDIT PROFILE</h1>
+
+    <?php
+        $success = $this->Session->read('success');
+        $this->Session->delete('success');
+    ?>
+    <?php if(!empty($success) && $success) { ?>
+        <h4>Your Report has been updated.</h4>
+    <?php } elseif(!empty($success) && !$success) { ?>
+        <h4>Your Report can't be saved right now. Try again later.</h4>
+    <?php } ?>
     <hr>
+
     <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" enctype="multipart/form-data">
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
