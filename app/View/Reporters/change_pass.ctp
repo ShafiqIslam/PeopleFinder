@@ -1,14 +1,21 @@
 <div style="clear: both;"></div>
 <div class="container-fluid chng_pass_page sign_up_page">
-	<h3>Change Password</h3>
+	<h3 class="<?php echo 'change_pass_success';?>">Change Password</h3>
 
 	<?php if($success==20) { ?>
-		<h4>Your Password Has been changed.</h4>
+		<h4 class="success" style="margin: 5.3% 0%;">Your Password Has been changed.</h4>
+		<?php
+			echo "<style>
+	            .change_pass_success { 
+	            	display:none;
+	            }
+            </style>";
+		?>
 	<?php } elseif($success==10) { ?>
-		<h4>Oops! Your Old Password does not match.</h4>
+		<h4 class="warning">Oops! Your Old Password does not match.</h4>
 	<?php } ?>
 
-	<div class="col-sm-6 col-sm-offset-3">
+	<div class="col-sm-6 col-sm-offset-3 <?php echo 'change_pass_success';?>">
 		<form name="" data-toggle="validator" novalidate="true" id="login_form" method="post" class="form-horizontal">
             <div class="form-group">
                 <label for="inputPassword" class="col-sm-4 control-label">Old Password</label>

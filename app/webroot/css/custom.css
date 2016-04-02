@@ -245,109 +245,6 @@ header ul li a{
 	background-color: rgba(103, 58, 183, 0.62);
     color: #fff;
 }
-/*
-#login1 .modal_large{
-	margin-top: 7.5%;
-	margin-left: 76%;
-}
-#login1 .modal_login{
-	margin-top: 8.4%;
-	margin-left: 76%;	
-}
-
-#myaccount .my_account{
-	margin-top: 7.5%;
-	margin-left: 74%;
-}
-
-#login1 .modal_small, #myaccount .modal_small{
-	margin-top:4.6%;
-}
-
-#login1 .modal-header {
-    min-height: 16.42857143px;
-    padding: 15px;
-    border-bottom: none;
-}
-#myaccount .modal-header {
-    min-height: 16.42857143px;
-    padding: 15px;
-    border-bottom: none;
-}
-
-
-.fa_small{
-    margin-top: 6px;
-}
-.modal h3{
-	text-align: center;
-}
-.modal .form-horizontal .control-label{
-	text-align: left;
-	font-size: 17px;
-    margin-bottom: 2%;
-}
-#login1 .fa-caret-up{
-	color: #fff;
-    position: relative;
-    margin-left: 95%;
-    margin-top: -10%;
-    z-index: 100;
-    overflow: hidden;
-}
-
-#myaccount .fa-caret-up{
-	color: #fff;
-    position: relative;
-    margin-left: 83%;
-    margin-top: -10%;
-    z-index: 100;
-    overflow: hidden;
-}
-
-.my_account{
-	width: 700px
-}
-.fa_large{
-	margin-top: 2px;
-}
-.modal-content {
-    position: relative;
-    background-color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: none;
-    border-radius: 6px;
-    outline: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-#myaccount .modal-body .btn-primary{
-	color: #901B1B;
-}
-
-#myaccount .my_account_options{
-	padding-bottom: 35px;
-}
-#myaccount .btn_myaccount{
-	background-color: #673AB7;
-    color: #fff;
-}
-
-#myaccount .btn_myaccount:hover{
-	background-color: rgba(103, 58, 183, 0.62);
-    color: #fff;
-}
-
-.forget_pass p{
-	margin-bottom: -10px;
-}
-
-#myaccount .main_account_body img{
-	width: 93px;
-    height: 93px;
-    margin-top: 0%;
-}
 
 /*-------------My account Page--------*/
 .my_account_heading{
@@ -790,8 +687,8 @@ input, textarea{
     margin: 14px 0px;
 }
 
-.result_body ul li .img_result{
-	width: 120px;
+.img_result{
+	width: 100px;
 	height: 100px;
 }
 
@@ -871,7 +768,7 @@ input, textarea{
 .search_result_details_wrapper .person_place{
 	font-size: 20px;
 }
-.search_result_wrappper .result_body span{
+.result_body span{
 	//float: right;
 	margin-top: -9%;
     font-size: 12px;
@@ -888,7 +785,7 @@ input, textarea{
     color: #4DAF4D;
     padding-right: 5px;
 }
-.search_result_wrappper .result_body span .fa{
+.result_body span .fa{
 	font-size: 17px;
     color: #4DAF4D;
     padding-right: 5px;
@@ -995,6 +892,23 @@ input, textarea{
 	transition: all .1s ease;
 }
 
+.warning{
+	text-align: center;
+	color: #E91E63; 
+	font-size: 20px;
+}
+.warning_solve{
+	text-align: center; 
+	font-size: 20px;
+}
+.success{
+	text-align: center; 
+	font-size: 35px;
+	color: green;	
+}
+.chng_pass_page h4{
+
+}
 
 /*---------------Log Scroll Section-----------*/
 #log_scroll{
@@ -1040,6 +954,9 @@ input, textarea{
 .my_report_page .btn_myaccount{
 	background-color: #4747E0;
 	color: #fff;
+	width: 41%;
+    padding: 10px 20px;
+    font-size: 20px;
 }
 .my_report_page .btn_myaccount:hover{
 	background-color: rgba(71, 71, 224, 0.82);

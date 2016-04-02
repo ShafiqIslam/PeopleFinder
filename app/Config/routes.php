@@ -32,6 +32,7 @@
 	Router::connect('/myaccount', array('controller' => 'reporters', 'action' => 'myaccount'));
 	Router::connect('/change_pass', array('controller' => 'reporters', 'action' => 'change_pass'));
 	Router::connect('/my_reports', array('controller' => 'reporters', 'action' => 'my_reports'));
+	Router::connect('/my_reports', array('controller' => 'reporters', 'action' => 'create_report'));
 	Router::connect('/signup', array('controller' => 'pages', 'action' => 'display', 'signup'));
 	Router::connect('/login', array('controller' => 'reporters', 'action' => 'login'));
 	Router::connect('/search_result', array('controller' => 'pages', 'action' => 'display', 'search_result'));

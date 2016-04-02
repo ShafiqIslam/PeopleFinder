@@ -127,79 +127,9 @@
 
             <?php if(empty($logged)) { ?>
 
-            <!-- Modal login -->
-            <div id="login1" class="modal fade" role="dialog">
-                <div class="modal-dialog modal_login modal_large">
-                    <!-- Modal content-->
-                    <div class="modal-content col-sm-6">
-                        <span><i class=" login1 fa fa-caret-up fa_large fa-3x"></i></span>
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <!--<h3 class="modal-title">Login</h3>-->
-                        </div>
-                        <!--Modal Body Start-->
-                        <div class="modal-body">
-                            <form  name="login_form" enctype="multipart/form-data" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-sm-12 control-label">Email</label>
-                                    <div class="col-sm-12">
-                                        <input type="email" name="data[Reporter][email]" class="form-control" id="" placeholder="Email" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-12 control-label">Password</label>
-                                    <div class="col-sm-12">
-                                        <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-sm-offset-6 col-sm-6">
-                                        <button type="submit" class="btn btn-primary btn_search">Login</button>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12 forget_pass">
-                                        <p><a href="<?php echo $this->webroot;?>reporters/forgot_password">Forgot your password?</a></p>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!--Modal Body End-->
-                    </div>
-                </div>
-            </div><!-- Modal End-->
+            
             <?php } else { ?>
-            <!-- Modal My Account -->
-            <div id="myaccount" class="modal fade" role="dialog">
-                
-                <div class="modal-dialog my_account">
-                    <!-- Modal content-->
-                    <div class="modal-content col-sm-6">
-                        <span><i class=" login1 fa fa-caret-up fa_large fa-3x"></i></span>
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <!--<h3 class="modal-title">My Account</h3>-->
-                        </div>
-                        <!--Modal Body Start-->
-                        <div class="modal-body">
-                            <div class="main_account_body row">
-                                <div class="account_title">
-                                    <h4><?php echo $logged['name'];?></h4>
-                                    <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount">My Account</a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="my_account_options">
-                                <a href="<?php echo $this->webroot;?>my_reports" class="btn btn_myaccount pull-left"><span><i class="fa fa-bell"></i></span>Reports</a>
-                                <a href="<?php echo $this->webroot;?>reporters/logout" class="btn btn_myaccount pull-right"><span><i class="fa fa-sign-out fa-lg"></i></span>Signout</a>
-                            </div>
-                        </div>
-                        <!--Modal Body End-->
-                    </div>
-                </div>
-            </div><!-- Modal End-->
+           
             <?php } ?>
 
            <!-- <div class="container-fluid bdr_btm_header"></div>-->
