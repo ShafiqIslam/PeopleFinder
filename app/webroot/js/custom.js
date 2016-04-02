@@ -1,15 +1,13 @@
 /*-----Window Loader Function-----*/
 $(document).ready(function(){
-    $(window).load(function() {
+    $(window).load(function(){
         $(".loader").fadeOut("slow");
     })
 });
 
 $(document).ready(function(){
     $('.btn_search').click(function(){
-        $(window).load(function() {
-            $(".loader").fadeOut("slow");
-        })
+        $(".loader").fadeIn("slow");
     })
 });
 
