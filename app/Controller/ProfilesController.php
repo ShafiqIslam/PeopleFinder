@@ -304,7 +304,7 @@ class ProfilesController extends AppController {
 					$condition .= " )";
 
 					$order = substr($order, 0, -2);
-					$order .= " )";
+					$order .= " ),";
 				}
 			}
 			
@@ -329,7 +329,7 @@ class ProfilesController extends AppController {
 
 			#AuthComponent::_setTrace($condition);
 
-			$order .= ", `Profile`.`created` DESC";
+			$order .= " `Profile`.`created` DESC";
 
 			$query = "SELECT * FROM `profiles` AS `Profile`";
 			$query .= " INNER JOIN `reporters` AS `Reporter` ON `Profile`.`reporter_id` = `Reporter`.`id`";
