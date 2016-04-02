@@ -2,11 +2,11 @@
 <div class="container-fluid sign_up_page search_page">
     <h1>Search</h1>
     <hr>
-    <form class="form-horizontal" action="<?php echo $this->webroot?>profiles/search" method="post">
+    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search">
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
             <div class="col-sm-4">
-                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name">
+                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name" required="">
             </div>
         </div>
 
@@ -27,7 +27,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
             <div class="col-sm-4">
-                <select name="gender" class="form-control">
+                <select name="gender" class="form-control" required="">
                     <option value="">Select Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>

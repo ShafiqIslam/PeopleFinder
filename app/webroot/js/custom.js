@@ -156,8 +156,38 @@ $('#map_reload').on('shown.bs.tab', function () {
 });
 
 
-/*------------validate selector--------------*/
-$('.selectpicker').selectpicker({
-  style: 'btn-info',
-  size: 4
+/*
+$('#pic_reload').on('shown.bs.tab', function () {
+    $('#photos').event.trigger(window, 'resize', {});
 });
+*/
+
+/*------ Keep current Tab page active after reloading------*/
+$('a[data-toggle="tab"]').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+});
+
+$('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
+    var id = $(e.target).attr("href");
+    localStorage.setItem('selectedTab', id)
+});
+
+var selectedTab = localStorage.getItem('selectedTab');
+if (selectedTab != null) {
+    $('a[data-toggle="tab"][href="' + selectedTab + '"]').tab('show');
+};
+
+$(document).ready(function(){
+    $('#name_tab').click(function(){
+        window.location.reload()
+    })
+})
+
+$(document).ready(function(){
+    $('#pic_reload').click(function(){
+        window.location.reload()
+    })
+})
+
+/*------------validate selector--------------*/
