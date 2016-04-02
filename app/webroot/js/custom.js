@@ -215,6 +215,6 @@ $(document).ready(function(){
     $('#log_scroll').slimScroll({
             railVisible: true,
             //railColor: '#f00'
-            height: 100,
+            height: 150,
     });
 });
