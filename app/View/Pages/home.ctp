@@ -5,7 +5,7 @@
             <h2>Search Here</h2>
             <div class="col-sm-12">
                 <ul id="myTab" class="nav nav-pills">
-                    <li id="name_tab" class="active"><a data-toggle="tab" href="#name">Name</a></li>
+                    <li class="active"><a data-toggle="tab" href="#name">Name</a></li>
                     <li><a id="pic_reload" data-toggle="tab" href="#photos">Photos</a></li>
                     <li><a data-toggle="tab" href="#country">Country</a></li>
                     <li><a id="map_reload" data-toggle="tab" href="#map">Map</a></li>
@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
                             <div class="col-sm-4">
-                                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name" required="">
+                                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name">
                             </div>
                         </div>
 
@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
                             <div class="col-sm-4">
-                                <select name="gender" class="form-control" required="">
+                                <select name="gender" class="form-control">
                                     <option value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -54,7 +54,7 @@
                             <div class="col-sm-5 adv_search_link">
                                 <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...</a></p>
                             </div>
-                            <div class=" col-sm-7">
+                            <div class="col-sm-7">
                                 <button type="submit" class="btn btn-primary btn_search">Search</button>
                             </div>
                         </div>
@@ -66,9 +66,17 @@
                     <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input id="search_img" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="1">
+                                <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="1">
+                                <input type="hidden" name="search_image">
                             </div>
                         </div>
+                        <script>
+                            $('#adv_search_img').on('fileuploaded', function(event, data, previewId, index) {
+                                var response = data.response.response;
+                                var filename = data.response.filename;
+                                $("input[name=search_image]").val(filename);
+                            });
+                        </script>
 
                         <div class="form-group">
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Gender</label>
@@ -91,6 +99,7 @@
                         </div>
                     </form>
                 </div>
+
                 <div id="country" class="tab-pane fade">
                     <h3>Search By Country</h3>
                     <form class="form-horizontal"  action="<?php echo $this->webroot?>profiles/search" method="post">
@@ -143,7 +152,6 @@
                         </div>
                     </form>
                 </div>
-
 
                 <div id="id_search" class="tab-pane fade">
                     <h3>Search By ID</h3>

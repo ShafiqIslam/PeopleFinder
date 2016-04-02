@@ -6,7 +6,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
             <div class="col-sm-4">
-                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name" required="">
+                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name">
             </div>
         </div>
 
@@ -27,7 +27,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
             <div class="col-sm-4">
-                <select name="gender" class="form-control" required="">
+                <select name="gender" class="form-control">
                     <option value="">Select Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -38,7 +38,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Missing Country</label>
             <div class="col-sm-4 country_selection_box">
-                <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="BD" data-flags="true">
+                <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="" data-flags="true">
                 </div>
             </div>
         </div>
@@ -70,9 +70,18 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-7">
-                <input id="adv_search_img" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="3">
+                <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="1">
+                <input type="hidden" name="search_image">
             </div>
         </div>
+
+        <script>
+            $('#adv_search_img').on('fileuploaded', function(event, data, previewId, index) {
+                var response = data.response.response;
+                var filename = data.response.filename;
+                $("input[name=search_image]").val(filename);
+            });
+        </script>
 
 
         <div class="form-group">

@@ -118,7 +118,7 @@ class ProfilesController extends AppController {
 			#AuthComponent::_setTrace($this->request->data);
 			if($this->Profile->save($this->request->data)) {
 				$this->request->data['Profile']['id'] = $this->Profile->id;
-				$this->_facepp_job($this->request->data);
+				$this->_facepp_upload($this->request->data);
 				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
 			} else {
 				$success = false;
@@ -200,7 +200,7 @@ class ProfilesController extends AppController {
 			$this->Profile->id = $id;
 			if($this->Profile->save($this->request->data)) {
 				$this->request->data['Profile']['id'] = $id;
-				$this->_facepp_job($this->request->data);
+				$this->_facepp_upload($this->request->data);
 				$this->Session->write('success', true);
 			}
 			else
@@ -272,6 +272,33 @@ class ProfilesController extends AppController {
 			if($name_flag)
 				$condition .= ")";
 
+			if(!empty($this->request->data['search_image'])) {
+				$image = $this->request->data['search_image'];
+				if($_SERVER['HTTP_HOST']=='localhost' || $_SERVER['HTTP_HOST']=='127.0.0.1') {
+					$files = array($image);
+					$gender = '';
+					if(!empty($this->request->data['gender']) && $this->request->data['gender']!="") {
+						$gender = $this->request->data['gender'];
+					}
+					$links = $this->upload_to_cloud($files, $gender);
+					if(!empty($links)) {
+						$image = empty($links[0]) ? '' : $links[0];
+					}
+				} else {
+					$image = Router::fullbaseUrl() . $this->webroot . 'files/uploads/' . $image;
+				}
+
+				$face_search_results = $this->facepp_search($image, $gender);
+				if(!empty($face_search_results)) {
+					$condition .= " AND `Profile`.`id` IN ( ";
+					foreach($face_search_results as $key => $item) {
+						$condition .= "'$key', ";
+					}
+
+					$condition = substr($condition, 0, -2);
+					$condition .= " )";
+				}
+			}
 			
 			if(!empty($this->request->data['gender']) && $this->request->data['gender']!="") {
 				$condition .= " AND `Profile`.`gender` = '" . $this->request->data['gender'] . "'";
@@ -291,6 +318,8 @@ class ProfilesController extends AppController {
 				$condition .= '(ROUND((6371.0 * ACOS(SIN(' . $lat . '*PI()/180)*SIN(`Profile`.`lat` * PI()/180)+COS(' . $lat . '*PI()/180)*
 						COS(`Profile`.`lat`*PI()/180)*COS((' . $lng . '*PI()/180)-(`Profile`.`lng`*PI()/180)))),2)<=' . $radius . ')';
 			}
+
+			#AuthComponent::_setTrace($condition);
 
 			$query = "SELECT * FROM `profiles` AS `Profile`";
 			$query .= " INNER JOIN `reporters` AS `Reporter` ON `Profile`.`reporter_id` = `Reporter`.`id`";
@@ -347,7 +376,7 @@ class ProfilesController extends AppController {
 		return $data;
 	}
 
-	private function _facepp_job($data) {
+	private function _facepp_upload($data) {
 		// do facepp job here
 		$group = $data['Profile']['gender'];
 		$person = $data['Profile']['id'];

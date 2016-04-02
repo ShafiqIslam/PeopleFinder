@@ -246,6 +246,37 @@ class AppController extends Controller {
         return true;
     }
 
+    function facepp_search($image_url, $group_name = null) {
+        set_time_limit(0);
+        $facepp_api = new FacePPClientDemo($this->_facepp_api_key, $this->_facepp_api_secret);
+
+        $result_data = array();
+        if(empty($group_name) || $group_name=='') {
+            $result_1 = $this->facepp_search($image_url, "Male");
+            $result_2 = $this->facepp_search($image_url, "Female");
+            $result_data = array_merge($result_1, $result_2);
+        } else {
+            // recognition in both group
+            $result = $facepp_api->recognition_identify($image_url, $group_name);
+
+            // skip errors
+            if (empty($result->face))
+                return false;
+            // skip photo with multiple faces
+            if (count($result->face) > 1)
+                return false;
+            $face = $result->face[0];
+            // skip if no person returned
+            if (count($face->candidate) < 1)
+                return false;
+
+            foreach ($face->candidate as $candidate) {
+                $result_data[$candidate->person_name] = $candidate->confidence;
+            }
+        }
+        return $result_data;
+    }
+
     public function lat_lng($address = null) {
         header('Content-Type: application/json');
         $this->autoRender = false;
