@@ -67,7 +67,7 @@
 				$last_name = !empty($reporter['Reporter']['last_name']) ? $reporter['Reporter']['last_name'] : "";
 				$name = $first_name . " " . $second_name . " " . $last_name;
 
-                if(!empty($reporter['Reporter']['document_id']) && $reporter['Reporter']['account_type'] == 'Normal') {
+                if(!empty($reporter['Reporter']['id_image_link_1']) && $reporter['Reporter']['account_type'] == 'Normal') {
                     $tr_style = "background: rgba(169, 142, 66, 0.65);border-bottom:1px solid #000";
                     $td_style = "color: #000; font-weight: bold;";
                 } else {
@@ -80,7 +80,7 @@
 					<td style="<?php echo $td_style;?>"><?php echo h($reporter['Reporter']['gender']); ?>&nbsp;</td>
 					<td style="<?php echo $td_style;?>"><?php echo h($reporter['Reporter']['resident_country']); ?>&nbsp;</td>
 					<td style="<?php echo $td_style;?>"><?php echo h($reporter['Reporter']['email']); ?>&nbsp;</td>
-					<td style="<?php echo $td_style;?>"><?php echo h($reporter['Reporter']['account_type']); if(!empty($reporter['Reporter']['document_id']) && $reporter['Reporter']['account_type'] == 'Normal') echo " (new ID)";?>&nbsp;</td>
+					<td style="<?php echo $td_style;?>"><?php echo h($reporter['Reporter']['account_type']); if(!empty($reporter['Reporter']['id_image_link_1']) && $reporter['Reporter']['account_type'] == 'Normal') echo " (new ID)";?>&nbsp;</td>
 					<td style="<?php echo $td_style;?>"><?php echo date_format(date_create($reporter['Reporter']['created']),'d M Y'); ?>&nbsp;</td>
 					<td class="actions" style="<?php echo $td_style;?>">
 						<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $reporter['Reporter']['id']), array( 'class' => 'btn btn-info')); ?>

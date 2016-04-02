@@ -61,17 +61,45 @@
                 </div>
             </div>
 
-            <?php if(!empty($this->request->data['Reporter']['document_id']) && $this->request->data['Reporter']['account_type'] == 'Normal') { ?>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Currently Used Ids</label>
+                <div class="col-sm-9">
+                    <ul style="list-style: none">
+                        <?php if(!empty($this->request->data['Reporter']['id_image_link_1'])) { ?>
+                            <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>"></li>
+                        <?php } ?>
+                        <?php if(!empty($this->request->data['Reporter']['id_image_link_2'])) { ?>
+                            <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>"></li>
+                        <?php } ?>
+                        <?php if(!empty($this->request->data['Reporter']['id_image_link_3'])) { ?>
+                            <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>"></li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+
+            <?php if(!empty($this->request->data['Reporter']['id_image_link_1']) && $this->request->data['Reporter']['account_type'] == 'Normal') { ?>
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label"></label>
                 <div class="col-sm-9">
                 	<input class="form-control" style="font-weight: bold" type="text" disabled="disabled" value="This user has submitted an new ID. And waiting for admin confirmation.">
                     <?php echo $this->Html->Link(__('Accept'), array('action' => 'accept_id_document', $this->request->data['Reporter']['id']), array('class' => 'btn btn-danger')); ?>
+                    <?php echo $this->Html->Link(__('Reject'), array('action' => 'admin_revoke_type', $this->request->data['Reporter']['id']), array('class' => 'btn btn-danger')); ?>
                 </div>
             </div>
             <?php } ?>
 
-            <?php if(!empty($this->request->data['Reporter']['document_id']) && $this->request->data['Reporter']['account_type'] == 'Verified') { ?>
+            <?php if(!$this->request->data['Reporter']['account_type'] == 'Rejected') { ?>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input class="form-control" style="font-weight: bold" type="text" disabled="disabled" value="This user has submitted an new ID and was rejected.">
+                        <?php //echo $this->Html->Link(__('Accept'), array('action' => 'accept_id_document', $this->request->data['Reporter']['id']), array('class' => 'btn btn-danger')); ?>
+                    </div>
+                </div>
+            <?php } ?>
+
+            <?php if(!empty($this->request->data['Reporter']['id_image_link_1']) && $this->request->data['Reporter']['account_type'] == 'Verified') { ?>
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label"></label>
                 <div class="col-sm-9">

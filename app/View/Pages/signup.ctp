@@ -55,9 +55,28 @@
                 <p style="font-size: 16px;color: #9E9E9E;margin-bottom: -7px;">Insert the photos of your ID</p>
             </div>
             <div class="col-sm-offset-2 col-sm-7">
-                <input id="adv_search_img" name="data[Reporter][document_id]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="#" data-max-file-count="3" enctype="multipart/form-data">
+                <input id="adv_search_img" name="data[Reporter][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>reporters/upload_image" data-max-file-count="3" enctype="multipart/form-data">
             </div>
         </div>
+        
+        <script>
+            $('#adv_search_img').on('fileuploaded', function(event, data, previewId, index) {
+                var response = data.response.response;
+                var filename = data.response.filename;
+
+                if(!$("input[name='data[Reporter][image_links_1]']").val()) {
+                    $("input[name='data[Reporter][image_links_1]']").val(filename);
+                } else if(!$("input[name='data[Reporter][image_links_2]']").val()) {
+                    $("input[name='data[Reporter][image_links_2]']").val(filename);
+                } else if(!$("input[name='data[Reporter][image_links_3]']").val()) {
+                    $("input[name='data[Reporter][image_links_3]']").val(filename);
+                }
+            });
+        </script>
+
+        <input type="hidden" name="data[Reporter][image_links_1]">
+        <input type="hidden" name="data[Reporter][image_links_2]">
+        <input type="hidden" name="data[Reporter][image_links_3]">
 
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Email</label>

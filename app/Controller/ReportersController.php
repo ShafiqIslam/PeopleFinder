@@ -8,7 +8,7 @@ class ReportersController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout', 'myaccount', 'my_reports', 'change_pass');
+        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout', 'myaccount', 'my_reports', 'change_pass', 'upload_image');
     
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -38,7 +38,7 @@ class ReportersController extends AppController {
         $this->Reporter->recursive = 0;
         $this->paginate = array('all',
             'limit' => 10,
-            'order' => array('Reporter.document_id' => 'DESC', 'Reporter.created' => 'DESC'),
+            'order' => array('Reporter.id_image_link_1' => 'DESC', 'Reporter.created' => 'DESC'),
             'conditions' => $conditions
         );
         $this->set('reporters', $this->Paginator->paginate());
@@ -102,8 +102,7 @@ class ReportersController extends AppController {
 		if (!$this->Reporter->exists()) {
 			throw new NotFoundException(__('Invalid reporter'));
 		}
-		$data['Reporter']['account_type'] = "Normal";
-		$data['Reporter']['document_id'] = null;
+		$data['Reporter']['account_type'] = "Rejected";
 		$this->Reporter->id = $id;
 		if($this->Reporter->save($data)) {
 			$this->Session->setFlash(__('The reporter has been saved.'));
@@ -202,18 +201,15 @@ class ReportersController extends AppController {
 		if(!$this->request->is('post')) {
 			return $this->redirect(array('controller'=>'pages', 'action' => 'display', "signup"));
 		}
-
 		$verified = 0;
 
-		if (!empty($this->request->data['Reporter']['document_id']['name'])) {
-            //upload to picasa
-            $file_name = $this->_upload($this->request->data['Reporter']['document_id'], 'uploads');
-            $this->request->data['Reporter']['document_id'] = $file_name;            
-            $verified = 1; // send admin an email
+		$processed_data = $this->_process_images($this->request->data);
+		#AuthComponent::_setTrace($processed_data);
 
-        } else {
-            unset($this->request->data['Reporter']['document_id']);
-        }
+		if(is_array($processed_data)) {
+			$verified = 1;
+			$this->request->data = $processed_data;
+		}
 
         $this->request->data['Reporter']['password'] = $this->Auth->password($this->request->data['Reporter']['password']);
         $this->request->data['Reporter']['email_verified'] = false;
@@ -223,7 +219,6 @@ class ReportersController extends AppController {
 
 		$this->Reporter->create();
 		if ($this->Reporter->save($this->request->data)) {
-
 			$first_name = !empty($this->request->data['Reporter']['first_name']) ? $this->request->data['Reporter']['first_name'] : "";
 			$second_name = !empty($this->request->data['Reporter']['second_name']) ? $this->request->data['Reporter']['second_name'] : "";
 			$last_name = !empty($this->request->data['Reporter']['last_name']) ? $this->request->data['Reporter']['last_name'] : "";
@@ -235,13 +230,10 @@ class ReportersController extends AppController {
 			$success = $this->_send_verification_mail($email, $token, $id, $name);
 			if($verified) {				
 				$user = new UsersController;
-				$email = $user->get_admin_email();
-            	$this->_send_notification_mail($email, 'Admin', $id);
+				$admin_email = $user->get_admin_email();
+            	$this->_send_notification_mail($admin_email, 'Admin', $id);
 			}
 
-			/*if(!$success) {
-				$this->Reporter->delete();
-			}*/			
 			$this->set(compact('email', 'success'));
 			$this->render('signup_thanks');
 		} else {
@@ -494,5 +486,51 @@ class ReportersController extends AppController {
 		$reporter = $this->Reporter->find('first', $options);
 
 		return $reporter['Reporter']['is_blacklisted'];
+	}
+
+	private function _process_images ($data) {
+		unset($data['Reporter']['images']);
+
+		// process image and upload to cloudinary
+		$files = array();
+		if(!empty($data['Reporter']['image_links_1'])) {
+			array_push($files, $data['Reporter']['image_links_1']);
+		}
+		if(!empty($data['Reporter']['image_links_2'])) {
+			array_push($files, $data['Reporter']['image_links_2']);
+		}
+		if(!empty($data['Reporter']['image_links_3'])) {
+			array_push($files, $data['Reporter']['image_links_3']);
+		}
+		if(!empty($files)) {
+			$links = $this->upload_to_cloud($files, $data['Reporter']['gender']);
+			if(!empty($links)) {
+				$data['Reporter']['id_image_link_1'] = empty($links[0]) ? '' : $links[0];
+				$data['Reporter']['id_image_link_2'] = empty($links[1]) ? '' : $links[1];
+				$data['Reporter']['id_image_link_3'] = empty($links[2]) ? '' : $links[2];
+			}
+		} else return false;
+
+		unset($data['Reporter']['image_links_1'], $data['Reporter']['image_links_2'], $data['Reporter']['image_links_3']);
+
+		// delete all from server (security)
+		$files = glob('files/uploads/*'); // get all file names
+		foreach($files as $file){ // iterate files
+			if(is_file($file))
+				unlink($file); // delete file
+		}
+
+		return $data;
+	}
+
+	public function upload_image() {
+		if($this->request->is('post')) {
+			if (!empty($this->request->data['Reporter']['images']['name'])) {
+				$file_name = $this->_upload($this->request->data['Reporter']['images'], 'uploads');
+				#AuthComponent::_setTrace($file_name);
+				$res = "Successfully uploaded " . $this->request->data['Reporter']['images']['name'];
+				die(json_encode(array('response' => $res, 'filename' => $file_name)));
+			} else die(json_encode(array('error'=>'No files found for upload.')));
+		}
 	}
 }
