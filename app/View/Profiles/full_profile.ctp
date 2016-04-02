@@ -108,7 +108,7 @@
 				<!--=======This is for captcha using=========-->
 				<div class="row captcha_section">
 					<div class="col-sm-6 btn_found_section">
-						<a class="btn btn_found pull-right" href="">Found</a>
+						<a class="btn btn_found" href="">Found</a>
 					</div>
 
 					<div class="col-sm-6 report_abuse_section">
@@ -134,9 +134,10 @@
 				</div>
 			</div>
 
-			<div class="col-sm-10 col-sm-offset-1">
+			<div class="col-sm-12">
 				<div id="log_scroll">
 			        <h3>Scrolling Logs Heading</h3>
+			        <hr>
 			        <ul>
 			        	<li>This is logs of reporters.</li>
 			        	<li>This is logs of reporters.</li>
@@ -171,25 +172,46 @@
 			<div class="col-sm-12 related_search">
 				<h1>Related Search Results</h1>
 				<ul>
-					<li>
+					<li class="col-sm-2">
 						<a href="#">
 							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
 							<h4>John Webster</h4>
 							<p>Missing Dublin, Ireland, UK</p>
 						</a>
 					</li>
-					<li>
+					<li class="col-sm-2">
 						<a href="#">
 							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
-							<h4>John Keats</h4>
-							<p>Missing London, UK</p>
+							<h4>John Webster</h4>
+							<p>Missing Dublin, Ireland, UK</p>
 						</a>
 					</li>
-					<li>
+					<li class="col-sm-2">
 						<a href="#">
 							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
-							<h4>John Milton</h4>
-							<p>Found London, UK</p>
+							<h4>John Webster</h4>
+							<p>Missing Dublin, Ireland, UK</p>
+						</a>
+					</li>
+					<li class="col-sm-2">
+						<a href="#">
+							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
+							<h4>John Webster</h4>
+							<p>Missing Dublin, Ireland, UK</p>
+						</a>
+					</li>
+					<li class="col-sm-2">
+						<a href="#">
+							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
+							<h4>John Webster</h4>
+							<p>Missing Dublin, Ireland, UK</p>
+						</a>
+					</li>
+					<li class="col-sm-2">
+						<a href="#">
+							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
+							<h4>John Webster</h4>
+							<p>Missing Dublin, Ireland, UK</p>
 						</a>
 					</li>
 				</ul>
