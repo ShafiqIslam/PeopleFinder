@@ -1,47 +1,207 @@
-<div class="profiles form">
-<?php echo $this->Form->create('Profile'); ?>
-	<fieldset>
-		<legend><?php echo __('Admin Add Profile'); ?></legend>
-	<?php
-		echo $this->Form->input('first_name');
-		echo $this->Form->input('second_name');
-		echo $this->Form->input('last_name');
-		echo $this->Form->input('birthdate');
-		echo $this->Form->input('blood_type');
-		echo $this->Form->input('day_of_birth');
-		echo $this->Form->input('nationality');
-		echo $this->Form->input('gender');
-		echo $this->Form->input('person_status');
-		echo $this->Form->input('resident_country ');
-		echo $this->Form->input('resident_city ');
-		echo $this->Form->input('resident_street');
-		echo $this->Form->input('missing_country ');
-		echo $this->Form->input('missing_city');
-		echo $this->Form->input('personal_photos');
-		echo $this->Form->input('mental_illness');
-		echo $this->Form->input('status');
-		echo $this->Form->input('kidnapped ');
-		echo $this->Form->input('physical_illness');
-		echo $this->Form->input('document_id');
-		echo $this->Form->input('verified_profile');
-		echo $this->Form->input('description');
-		echo $this->Form->input('reporter_id');
-		echo $this->Form->input('is_admin');
-		echo $this->Form->input('user_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php echo $this->element('menu');?>
+<div class="cmsUsers col-md-10 col-sm-10 index">
+	<div class="white">
+		<div class="profiles form">
+			<form role="form" id="signup_form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" enctype="multipart/form-data" action="">
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
+					<div class="col-sm-4">
+						<input type="text" name="data[Profile][first_name]" class="form-control" id="" placeholder="First Name" required="">
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Second Name</label>
+					<div class="col-sm-4">
+						<input type="text" name="data[Profile][second_name]" class="form-control" id="" placeholder="Second Name">
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Last Name</label>
+					<div class="col-sm-4">
+						<input type="text" name="data[Profile][last_name]" class="form-control" id="" placeholder="Last Name" required="">
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Birthdate</label>
+					<div class="col-sm-4">
+						<input type="date" name="data[Profile][birthdate]" class="form-control" id="" placeholder="date">
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Blood Group</label>
+					<div class="col-sm-4">
+						<select name="data[Profile][blood_type]" class="form-control">
+							<option>Select Blood Group</option>
+							<option value="A+">A+</option>
+							<option value="A-">A-</option>
+							<option value="B+">B+</option>
+							<option value="B-">B-</option>
+							<option value="O+">O+</option>
+							<option value="O-">O-</option>
+							<option value="AB+">AB+</option>
+							<option value="AB-">AB-</option>
+		
+						</select>
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Nationality</label>
+					<div class="col-sm-4 country_selection_box">
+						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][nationality]"  data-country="BD" data-flags="true">
+						</div>
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
+					<div class="col-sm-4">
+						<select name="data[Profile][gender]" class="form-control" required="">
+							<option value="">Select Gender</option>
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+						</select>
+					</div>
+				</div>
 
-		<li><?php echo $this->Html->link(__('List Profiles'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Reporters'), array('controller' => 'reporters', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Reporter'), array('controller' => 'reporters', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Logs'), array('controller' => 'logs', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Log'), array('controller' => 'logs', 'action' => 'add')); ?> </li>
-	</ul>
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Person Status</label>
+					<div class="col-sm-4">
+						<select name="data[Profile][person_status]" class="form-control" required="">
+							<option value="Missing">Missing</option>
+							<option value="Found">Found</option>
+						</select>
+					</div>
+				</div>
+		
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">ResidentÂ Country</label>
+					<div class="col-sm-4">
+						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][resident_country]" data-country="BD" data-flags="true">
+						</div>
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident City</label>
+					<div class="col-sm-4">
+						<input type="text" name="data[Profile][resident_city]" class="form-control" id="" placeholder="Resident City">
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident Street</label>
+					<div class="col-sm-4">
+						<input type="text" name="data[Profile][resident_street]" class="form-control" id="" placeholder="Resident Street">
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">MissingÂ Country</label>
+					<div class="col-sm-4">
+						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][missing_country]" data-country="BD" data-flags="true">
+						</div>
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Missing City</label>
+					<div class="col-sm-4">
+						<input type="text" name="data[Profile][missing_city]" class="form-control" id="" placeholder="Correct City">
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">MentalÂ illness</label>
+					<div class="col-sm-4">
+						<select name="data[Profile][mental_illness]" class="form-control" required="">
+							<option value="">Select MentalÂ illness</option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+							<option value="NA">NA</option>
+						</select>
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Status</label>
+					<div class="col-sm-4">
+						<select name="data[Profile][status]" class="form-control" required="">
+							<option value="">Select Status</option>
+							<option value="Alive">Alive</option>
+							<option value="Dead">Dead</option>
+							<option value="NA">NA</option>
+						</select>
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Kidnapped</label>
+					<div class="col-sm-4">
+						<select name="data[Profile][kidnapped]" class="form-control">
+							<option>Select Kidnapped</option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+							<option value="NA">NA</option>
+						</select>
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">PhysicalÂ illness</label>
+					<div class="col-sm-4">
+						<select name="data[Profile][physical_illness]" class="form-control" required="">
+							<option value="">Select PhysicalÂ illness</option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+							<option value="NA">NA</option>
+						</select>
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Description</label>
+					<div class="col-sm-4">
+						<textarea name="data[Profile][description]" class="form-control"></textarea>
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-7">
+						<input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3" data-min-file-count="1" enctype="multipart/form-data">
+					</div>
+				</div>
+		
+				<input type="hidden" name="data[Profile][image_links_1]">
+				<input type="hidden" name="data[Profile][image_links_2]">
+				<input type="hidden" name="data[Profile][image_links_3]">
+		
+				<div class="form-group">
+					<div class="col-sm-offset-7 col-sm-5 report_found_submit">
+						<button type="submit" class="btn btn-primary btn_search">Submit</button>
+					</div>
+				</div>
+		
+				<script>
+					$('#adv_search_img').on('fileuploaded', function(event, data, previewId, index) {
+						var response = data.response.response;
+						var filename = data.response.filename;
+		
+						if(!$("input[name='data[Profile][image_links_1]']").val()) {
+							$("input[name='data[Profile][image_links_1]']").val(filename);
+						} else if(!$("input[name='data[Profile][image_links_2]']").val()) {
+							$("input[name='data[Profile][image_links_2]']").val(filename);
+						} else if(!$("input[name='data[Profile][image_links_3]']").val()) {
+							$("input[name='data[Profile][image_links_3]']").val(filename);
+						}
+					});
+				</script>
+			</form>
+		</div>
+	</div>
 </div>

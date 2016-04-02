@@ -19,39 +19,91 @@ class ProfilesController extends AppController {
     }
 
 	public function admin_index() {
-		$this->Profile->recursive = 0;
-		$this->set('profiles', $this->Paginator->paginate());
-	}
-
-	public function admin_view($id = null) {
-		if (!$this->Profile->exists($id)) {
-			throw new NotFoundException(__('Invalid profile'));
+		$logged_user = $this->Session->read('logged_user');
+		if($logged_user['role'] != 'admin') {
+			$conditions = array('Profile.user_id' => $logged_user['id']);
+		} else {
+			$conditions = array();
 		}
-		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
-		$this->set('profile', $this->Profile->find('first', $options));
+
+		$keyword = null;
+		if(!empty($this->request->params['named']['keyword'])) {
+			$keyword = $this->request->params['named']['keyword'];
+			if (!empty($keyword)) {
+				$conditions = am($conditions, array(
+						'OR' => array(
+							'Profile.first_name LIKE' => '%' . $keyword . '%',
+							'Profile.second_name LIKE' => '%' . $keyword . '%',
+							'Profile.last_name LIKE' => '%' . $keyword . '%',
+							'Profile.missing_country LIKE' => '%' . $keyword . '%',
+							'Profile.missing_city LIKE' => '%' . $keyword . '%',
+							'Profile.gender LIKE' => '%' . $keyword . '%',
+							'Profile.person_status LIKE' => '%' . $keyword . '%'
+						)
+					)
+				);
+			}
+		}
+
+		$this->Profile->recursive = 0;
+		$this->paginate = array('all',
+			'limit' => 10,
+			'order' => array('Profile.created' => 'DESC'),
+			'conditions' => $conditions
+		);
+		$this->set('profiles', $this->Paginator->paginate());
+		$this->set('keyword', $keyword);
 	}
 
 	public function admin_add() {
-		if ($this->request->is('post')) {
-			$this->Profile->create();
-			if ($this->Profile->save($this->request->data)) {
+		$logged_user = $this->Session->read('logged_user');
+		if($this->request->is('post')) {
+			$this->request->data = $this->_process_images($this->request->data);
+			$address = $this->request->data['Profile']['missing_city'] . ', ' . $this->request->data['Profile']['missing_country'];
+			$lat_lng = $this->lat_lng($address);
+			$this->request->data['Profile']['lat'] = $lat_lng['lat'];
+			$this->request->data['Profile']['lng'] = $lat_lng['lng'];
+
+			$this->request->data['Profile']['verified_profile'] = 1;
+			$this->request->data['Profile']['user_id'] = $logged_user['id'];
+			$this->request->data['Profile']['is_admin'] = 1;
+			#AuthComponent::_setTrace($this->request->data);
+			if($this->Profile->save($this->request->data)) {
+				$this->request->data['Profile']['id'] = $this->Profile->id;
+				$this->_facepp_upload($this->request->data);
 				$this->Session->setFlash(__('The profile has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
 			}
 		}
-		$reporters = $this->Profile->Reporter->find('list');
-		$users = $this->Profile->User->find('list');
-		$this->set(compact('reporters', 'users'));
 	}
 
 	public function admin_edit($id = null) {
+		$logged_user = $this->Session->read('logged_user');
 		if (!$this->Profile->exists($id)) {
 			throw new NotFoundException(__('Invalid profile'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Profile->save($this->request->data)) {
+			if(!empty($this->request->data['Profile']['image_links_1']))
+				$this->request->data = $this->_process_images($this->request->data);
+
+			if($this->request->data['Profile']['image_link_1']=='')
+				$this->request->data['Profile']['image_link_1'] = $profile['Profile']['image_link_1'];
+			if($this->request->data['Profile']['image_link_2']=='')
+				$this->request->data['Profile']['image_link_2'] = $profile['Profile']['image_link_2'];
+			if($this->request->data['Profile']['image_link_3']=='')
+				$this->request->data['Profile']['image_link_3'] = $profile['Profile']['image_link_3'];
+
+			$address = $this->request->data['Profile']['missing_city'] . ', ' . $this->request->data['Profile']['missing_country'];
+			$lat_lng = $this->lat_lng($address);
+			$this->request->data['Profile']['lat'] = $lat_lng['lat'];
+			$this->request->data['Profile']['lng'] = $lat_lng['lng'];
+
+			$this->Profile->id = $id;
+			if($this->Profile->save($this->request->data)) {
+				$this->request->data['Profile']['id'] = $id;
+				$this->_facepp_upload($this->request->data);
 				$this->Session->setFlash(__('The profile has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
@@ -61,9 +113,6 @@ class ProfilesController extends AppController {
 			$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
 			$this->request->data = $this->Profile->find('first', $options);
 		}
-		$reporters = $this->Profile->Reporter->find('list');
-		$users = $this->Profile->User->find('list');
-		$this->set(compact('reporters', 'users'));
 	}
 
 	public function admin_delete($id = null) {

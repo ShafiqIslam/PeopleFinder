@@ -11,6 +11,9 @@
 
     <ul class="nav-menu">
 		<li  class="node <?php if($controller == 'profiles') echo 'selected';?>"><?php echo $this->Html->link(__('Profiles'), array('controller' => 'profiles' ,'action' => 'index', 'admin' => true)); ?></li>
+        <?php if($controller == 'profiles') { ?>
+            <li class="add a-s <?php if($controller == 'profiles' && $action=="admin_add") echo 'selected';?>"><?php echo $this->Html->link(__('Add Profile'), array('controller' => 'profiles' ,'action' => 'add', 'admin' => true)); ?></li>
+        <?php } ?>
         <li  class="node <?php if($controller == 'reporters') echo 'selected';?>"><?php echo $this->Html->link(__('Reporters'), array('controller' => 'reporters' ,'action' => 'index', 'admin' => true)); ?></li>
         <li  class="node <?php if($controller == 'logs') echo 'selected';?>"><?php echo $this->Html->link(__('Logs'), array('controller' => 'logs' ,'action' => 'index', 'admin' => true)); ?></li>
 
