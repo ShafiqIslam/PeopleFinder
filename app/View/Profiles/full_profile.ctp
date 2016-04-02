@@ -12,7 +12,7 @@
 			<?php if($profile['Profile']['verified_profile']): ?>
 			<span><a class="tooltip_check" href="#" data-toggle="tooltip" data-placement="top" title="Verified Report."><i class="fa fa-check-square-o"></i></a></span>
 			<?php endif; ?>
-			
+
 			<p><b><?php echo $profile['Profile']['person_status'];?> : <?php echo $profile['Profile']['missing_city'];?>, <?php echo $profile['Profile']['missing_country'];?>.</b></p>
 
 			<div class="row">
@@ -118,21 +118,21 @@
 				<ul>
 					<li>
 						<a href="#">
-							<img class="img-thumbnail" src="img/01.jpg">
+							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
 							<h4>John Webster</h4>
 							<p>Missing Dublin, Ireland, UK</p>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img class="img-thumbnail" src="img/01.jpg">
+							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
 							<h4>John Keats</h4>
 							<p>Missing London, UK</p>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img class="img-thumbnail" src="img/01.jpg">
+							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
 							<h4>John Milton</h4>
 							<p>Found London, UK</p>
 						</a>

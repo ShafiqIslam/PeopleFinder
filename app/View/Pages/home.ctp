@@ -6,7 +6,7 @@
             <div class="col-sm-12">
                 <ul id="myTab" class="nav nav-pills">
                     <li class="active"><a data-toggle="tab" href="#name">Name</a></li>
-                    <li><a id="pic_reload" data-toggle="tab" href="#photos">Photos</a></li>
+                    <li><a id="" data-toggle="tab" href="#photos">Photos</a></li>
                     <li><a data-toggle="tab" href="#country">Country</a></li>
                     <li><a id="map_reload" data-toggle="tab" href="#map">Map</a></li>
                     <li><a data-toggle="tab" href="#id_search">ID</a></li>
@@ -81,7 +81,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Gender</label>
                             <div class="col-sm-4">
-                                <select name="gender" class="form-control" required="">
+                                <select name="gender" class="form-control">
                                     <option value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>

@@ -254,7 +254,7 @@ class AppController extends Controller {
         if(empty($group_name) || $group_name=='') {
             $result_1 = $this->facepp_search($image_url, "Male");
             $result_2 = $this->facepp_search($image_url, "Female");
-            $result_data = array_merge($result_1, $result_2);
+            $result_data = $result_1 + $result_2;
         } else {
             // recognition in both group
             $result = $facepp_api->recognition_identify($image_url, $group_name);
@@ -274,6 +274,7 @@ class AppController extends Controller {
                 $result_data[$candidate->person_name] = $candidate->confidence;
             }
         }
+        arsort($result_data);
         return $result_data;
     }
 

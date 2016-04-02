@@ -244,6 +244,7 @@ class ProfilesController extends AppController {
 			}
 
 			$condition = "1 = 1";
+			$order = "";
 			$name_flag = 0;
 			if(!empty($this->request->data['first_name'])) {
 				if(!$name_flag)
@@ -287,16 +288,23 @@ class ProfilesController extends AppController {
 				} else {
 					$image = Router::fullbaseUrl() . $this->webroot . 'files/uploads/' . $image;
 				}
+				//$image = "http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555277/gmcbzajesxdinezqgnqj.jpg";
 
 				$face_search_results = $this->facepp_search($image, $gender);
+				#AuthComponent::_setTrace($face_search_results);
 				if(!empty($face_search_results)) {
 					$condition .= " AND `Profile`.`id` IN ( ";
+					$order .= " field(`Profile`.`id`, ";
 					foreach($face_search_results as $key => $item) {
 						$condition .= "'$key', ";
+						$order .= "'$key', ";
 					}
 
 					$condition = substr($condition, 0, -2);
 					$condition .= " )";
+
+					$order = substr($order, 0, -2);
+					$order .= " )";
 				}
 			}
 			
@@ -321,9 +329,12 @@ class ProfilesController extends AppController {
 
 			#AuthComponent::_setTrace($condition);
 
+			$order .= ", `Profile`.`created` DESC";
+
 			$query = "SELECT * FROM `profiles` AS `Profile`";
 			$query .= " INNER JOIN `reporters` AS `Reporter` ON `Profile`.`reporter_id` = `Reporter`.`id`";
 			$query .= " WHERE $condition";
+			$query .= " ORDER BY $order";
 
 			$profiles = $this->Profile->query($query);
 			$count = count($profiles);
