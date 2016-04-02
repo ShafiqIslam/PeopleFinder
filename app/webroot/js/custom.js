@@ -141,6 +141,12 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function(){
+    $('.btn_abuse').click(function(){
+        $('.btn_found').addClass('margin_top');
+        return false;
+    })
+});
 
 /*----------------JS for Tool Tip---------------*/
 $(document).ready(function(){
@@ -202,6 +208,13 @@ $(document).ready(function(){
     $('#pic_reload').click(function(){
         window.location.reload()
     })
-})
+});
 
-/*------------validate selector--------------*/
+/*------------Scrolling log--------------*/
+$(document).ready(function(){
+    $('#log_scroll').slimScroll({
+            railVisible: true,
+            //railColor: '#f00'
+            height: 100,
+    });
+});

@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-sm-7 search_result_wrappper"> 
+		<div class="col-sm-8 search_result_wrappper"> 
 			<h1>Your Search Results :</h1>
 			<?php if(!$count) { ?>
 				<p class="no_search_result">No result Found. Sorry. <?php echo $this->Html->link('Try Again.', array('controller'=>'pages', 'action'=>'display', 'search'));?></p>
@@ -8,6 +8,7 @@
 			<div class="result_body">
 				<ul>
 					<?php foreach($profiles as $key => $profile) : ?>
+					<a href="<?php echo $this->webroot;?>profiles/full_profile/<?php echo $profile['Profile']['id'];?>">
 					<li class="row">
 						<?php
 						if(!empty($profile['Profile']['image_link_1']))
@@ -17,12 +18,10 @@
 						else if(!empty($profile['Profile']['image_link_3']))
 							$image_link = $profile['Profile']['image_link_3'];
 						else
-							$image_link = $this->webroot . "img/no_image_available.jpg";
+							$image_link = $this->webroot . "img/no_image_available.png";
 						?>
-						<div class="col-sm-4">
-							<a href="<?php echo $this->webroot;?>profiles/full_profile/<?php echo $profile['Profile']['id'];?>">
-								<img class="img-thumbnail img_result" src="<?php echo $image_link;?>">
-							</a>
+						<div class="col-sm-3">
+							<img class="img-thumbnail img_result" src="<?php echo $image_link;?>">
 						</div>
 						<?php
 						$first_name = !empty($profile['Profile']['first_name']) ? $profile['Profile']['first_name'] : "";
@@ -30,28 +29,45 @@
 						$last_name = !empty($profile['Profile']['last_name']) ? $profile['Profile']['last_name'] : "";
 						$name = $first_name . " " . $second_name . " " . $last_name;
 						?>
-						<div class="col-sm-8">
-							<a href="<?php echo $this->webroot;?>profiles/full_profile/<?php echo $profile['Profile']['id'];?>">
-								<h4><?php echo $name;?></h4>
-							</a>
-							<?php if($profile['Profile']['verified_profile']): ?>
-							<span><a class="tooltip_check" href="#" data-toggle="tooltip" data-placement="top" title="Verified Report."><i class="fa fa-check-square-o"></i></a></span>
-							<?php endif; ?>
-							<a href="<?php echo $this->webroot;?>profiles/full_profile/<?php echo $profile['Profile']['id'];?>">
+						<div class="col-sm-5">
+								<h4><?php echo $name;?></h4>							
 								<p>
-									<mark><?php echo $profile['Profile']['person_status'];?>&nbsp;</mark>
 									<?php echo $profile['Profile']['missing_city'];?>,&nbsp;
 									<?php echo $profile['Profile']['missing_country'];?>.&nbsp;
 								</p>
-							</a>
+								<p>
+									<?php if($profile['Profile']['verified_profile']): ?>
+										<span class="tooltip_check" data-toggle="tooltip" data-placement="top" title="This profile is verified."><i class="fa fa-check-square-o"></i>Verified</span>
+									<?php endif; ?>
+								</p>
+						</div>
+						<div class="col-sm-4">
+							<?php
+								if ($profile['Profile']['person_status'] == 'Found') {
+									?>
+										<p class="person_status"><mark class="found"><?php echo $profile['Profile']['person_status'];?>&nbsp;</mark></p>
+									<?php
+								};
+								if ($profile['Profile']['person_status'] == 'Missing') {
+									?>
+										<p class="person_status"><mark class="missing"><?php echo $profile['Profile']['person_status'];?>&nbsp;</mark></p>
+									<?php
+								};
+								if ($profile['Profile']['person_status'] == 'Maybe Found') {
+									?>
+										<p class="person_status"><mark class="maybe_found"><?php echo $profile['Profile']['person_status'];?>&nbsp;</mark></p>
+									<?php
+								};
+							?>
 						</div>
 					</li>
+					</a>
 					<?php endforeach; ?>
 				</ul>	
 			</div>
 			<?php } ?>
 		</div>
-		<div class="col-sm-3 col-sm-offset-2 sign_up_page search_page search_again">
+		<div class="col-sm-3 col-sm-offset-1 sign_up_page search_page search_again">
 			<h1>Search</h1>
 		    <hr>
 		    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search">
@@ -104,7 +120,7 @@
 
 
 		        <div class="form-group">
-		            <div class="col-sm-4 col-sm-offset-8 report_found_submit">
+		            <div class="col-sm-4 col-sm-offset-5 report_found_submit">
 		                <button type="submit" class="btn btn-primary btn_search">Search</button>
 		            </div>
 		        </div>

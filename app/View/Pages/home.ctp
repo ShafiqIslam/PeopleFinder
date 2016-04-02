@@ -1,3 +1,8 @@
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=drawing"></script>
+<?php
+    echo $this->Html->script(array('app'));
+?>
+
 <div class="container-fluid banner_wrapper parallax">
     <!--Nav Tab/ Nav Pill-->
     <div class="container">

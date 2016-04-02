@@ -1,3 +1,7 @@
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=drawing"></script>
+<?php
+    echo $this->Html->script(array('app'));
+?>
 <!--==================Sign Up Section========================-->
 <div class="container-fluid sign_up_page search_page">
     <h1>Search</h1>

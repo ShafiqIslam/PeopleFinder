@@ -1,6 +1,6 @@
 <div class="container search_result_details_wrapper">
 	<div class="row">
-		<div class="col-sm-5 left_side">
+		<div class="col-sm-6 left_side">
 			<?php
 			$first_name = !empty($profile['Profile']['first_name']) ? $profile['Profile']['first_name'] : "";
 			$second_name = !empty($profile['Profile']['second_name']) ? $profile['Profile']['second_name'] : "";
@@ -9,13 +9,39 @@
 			?>
 			<h1><?php echo $name;?></h1>
 
-			<?php if($profile['Profile']['verified_profile']): ?>
-			<span><a class="tooltip_check" href="#" data-toggle="tooltip" data-placement="top" title="Verified Report."><i class="fa fa-check-square-o"></i></a></span>
-			<?php endif; ?>
-
-			<p><b><?php echo $profile['Profile']['person_status'];?> : <?php echo $profile['Profile']['missing_city'];?>, <?php echo $profile['Profile']['missing_country'];?>.</b></p>
-
+			
 			<div class="row">
+				<div class="col-sm-4 pull-left">
+					<p class="person_place">
+						<b><?php echo $profile['Profile']['missing_city'];?>, <?php echo $profile['Profile']['missing_country'];?>.</b>
+					</p>
+
+					<?php if($profile['Profile']['verified_profile']): ?>
+						<span class="tooltip_check" data-toggle="tooltip" data-placement="top" title="This profile is verified."><i class="fa fa-check-square-o"></i>Verified</span>
+					<?php endif; ?>
+				</div>
+				<div class="col-sm-5 pull-right">
+					<?php
+						if ($profile['Profile']['person_status'] == 'Found') {
+							?>
+								<p class="person_status"><mark class="found"><?php echo $profile['Profile']['person_status'];?>&nbsp;</mark></p>
+							<?php
+						};
+						if ($profile['Profile']['person_status'] == 'Missing') {
+							?>
+								<p class="person_status"><mark class="missing"><?php echo $profile['Profile']['person_status'];?>&nbsp;</mark></p>
+							<?php
+						};
+						if ($profile['Profile']['person_status'] == 'Maybe Found') {
+							?>
+								<p class="person_status"><mark class="maybe_found"><?php echo $profile['Profile']['person_status'];?>&nbsp;</mark></p>
+							<?php
+						};
+					?>
+				</div>
+			</div>
+
+			<div class="row person_detail_info">
 				<div class="col-sm-5"><h4>Birth Date</h4></div>
 				<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['birthdate'];?></h4></div>
 			</div>
@@ -61,20 +87,20 @@
 			</div>
 		</div>
 		<!--===================left side===============-->
-		<div class="col-sm-7 right_side">
+		<div class="col-sm-6 right_side">
 			<!--Search Images of the Result Details-->
 			<div class="">
 				<div class="col-sm-12 search_result_img">
 					<h1>Images of <?php echo $name;?></h1>
 					<ul>
 						<?php if(!empty($profile['Profile']['image_link_1'])) { ?>
-							<li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $profile['Profile']['image_link_1'];?>"></li>
+							<li class=" search_result_Details_img"><img class="" src="<?php echo $profile['Profile']['image_link_1'];?>"></li>
 						<?php } ?>
 						<?php if(!empty($profile['Profile']['image_link_2'])) { ?>
-							<li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $profile['Profile']['image_link_2'];?>"></li>
+							<li class="search_result_Details_img"><img class="" src="<?php echo $profile['Profile']['image_link_2'];?>"></li>
 						<?php } ?>
 						<?php if(!empty($profile['Profile']['image_link_3'])) { ?>
-							<li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $profile['Profile']['image_link_3'];?>"></li>
+							<li class="search_result_Details_img"><img class="" src="<?php echo $profile['Profile']['image_link_3'];?>"></li>
 						<?php } ?>
 					</ul>
 				</div>
@@ -88,11 +114,11 @@
 					<div class="col-sm-6 report_abuse_section">
 						<form id="captcha" method="post" class="form-horizontal report_abuse" action="">
 							<div class="captcha captcha_hide">
-								<p>Please fill the correct captcha for Report Abuse.</p>
+								<p>Please fill the correct captcha.</p>
 
 								<div class="form-group">
-									<label class="col-sm-6 control-label" id="captchaOperation"></label>
-									<div class="col-sm-6">
+									<label class="col-sm-4 control-label" id="captchaOperation"></label>
+									<div class="col-sm-5 captcha_input">
 										<input type="text" class="form-control" name="captcha" />
 									</div>
 								</div>
@@ -107,8 +133,37 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="col-sm-10 col-sm-offset-1">
+				<div id="log_scroll">
+			        <h3>Scrolling Logs Heading</h3>
+			        <ul>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        	<li>This is logs of reporters.</li>
+			        </ul>
+			    </div>
+			</div>
 		</div>
 	</div>
+
 	<hr>
 	<div class="row">
 		<div class="container">
