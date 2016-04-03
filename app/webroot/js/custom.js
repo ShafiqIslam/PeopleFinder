@@ -141,13 +141,6 @@ $(document).ready(function() {
     });
 });
 
-$(document).ready(function(){
-    $('.btn_abuse').click(function(){
-        $('.btn_found').addClass('margin_top');
-        return false;
-    })
-});
-
 
 /*----------------JS for Tool Tip---------------*/
 $(document).ready(function(){
@@ -159,7 +152,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $('.btn_abuse').click(function(){
-        $('.captcha').removeClass('captcha_hide').addClass('catpcha_show');
+       // $('.captcha').removeClass('captcha_hide').addClass('catpcha_show');
 
         //this prevent for first time progression.
         $(this).find('a').click();
