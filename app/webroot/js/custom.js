@@ -148,6 +148,7 @@ $(document).ready(function(){
     })
 });
 
+
 /*----------------JS for Tool Tip---------------*/
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
@@ -168,6 +169,18 @@ $(document).ready(function(){
     
 });
 
+
+/*------------Popover of report abuse----------*/
+
+$(document).ready(function(){
+  $('.danger').popover({ 
+    html : true,
+    placement: 'bottom',
+    content: function() {
+      return $('#popover_content_wrapper').html();
+    }
+  });
+});
 
 /*---------Page reload for map reload---------*/
 

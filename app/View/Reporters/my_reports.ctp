@@ -6,7 +6,11 @@
 			<?php
 				if (empty($my_profiles)) { ?>
 					<p class="warning"><?php echo "You have no profile!"; ?></p>
-					<p class="warning_solve"><a href="<?php echo $this->webroot;?>create_report">Create a Profile</p></p>
+					<p class="warning_solve"><a href="<?php echo $this->webroot;?>create_report"></a></p>
+					<div class="col-sm-6 col-sm-offset-3 ">
+			            <a class="btn btn  btn_service pull-left" href="<?php echo $this->webroot;?>report_found">Report Found</a>
+			            <a class="btn btn btn_service pull-right" href="<?php echo $this->webroot;?>report_missing">Report Missing</a>
+				    </div>
 				<?php }
 			?>
 			<ul>

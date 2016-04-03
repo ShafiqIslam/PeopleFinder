@@ -525,7 +525,7 @@ header ul li a{
 }
 
 
-.about_wrapper .btn_service{
+.btn_service{
 	background-color: green;
     color: #fff;
     width: 35%;
@@ -536,7 +536,7 @@ header ul li a{
     -webkit-transition: all .5s ease;
 }
 
-.about_wrapper .btn_service:hover{
+.btn_service:hover{
 	background-color: #fff;
 	color:green;
 	border: 1px solid green;

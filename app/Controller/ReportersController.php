@@ -8,7 +8,7 @@ class ReportersController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout', 'myaccount', 'my_reports', 'change_pass', 'upload_image','create_report');
+        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout', 'myaccount', 'my_reports', 'change_pass', 'upload_image');
     
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -310,11 +310,6 @@ class ReportersController extends AppController {
 	}
 
 	public function myaccount() {
-		$page = $subpage = $title_for_layout = 'my_account';
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-
-	}
-	public function create_report() {
 		$page = $subpage = $title_for_layout = 'my_account';
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 
