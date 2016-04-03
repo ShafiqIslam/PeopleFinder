@@ -94,4 +94,17 @@ class TestimonialsController extends AppController {
 		$this->set(compact('reporter'));
 	}
 
+	public function get_testimonials($limit) {
+		$this->Testimonial->recursive = 1;
+		$testimonials = $this->Testimonial->find('all',
+			array(
+				'conditions' => array('Testimonial.active' => 1),
+				'limit' => $limit,
+				'order' => 'Testimonial.created DESC'
+			)
+		);
+
+		return $testimonials;
+	}
+
 }

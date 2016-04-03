@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-04-03 15:09:41
+Date: 2016-04-04 02:19:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -135,11 +135,12 @@ CREATE TABLE `testimonials` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of testimonials
 -- ----------------------------
+INSERT INTO `testimonials` VALUES ('1', 'Great service!!!', '1', '1', '2016-04-04 01:24:55', '2016-04-04 01:24:58');
 
 -- ----------------------------
 -- Table structure for `users`
