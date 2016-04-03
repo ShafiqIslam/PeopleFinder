@@ -8,7 +8,7 @@ class ProfilesController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted', 'search', 'full_profile', 'edit', 'delete', 'test');
+        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted', 'search', 'full_profile', 'edit', 'delete', 'test', 'found', 'maybe_found', 'missing');
 
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -399,6 +399,139 @@ class ProfilesController extends AppController {
 
 		$profile = $this->Profile->findById($id);
 		$this->set(compact('profile'));
+	}
+
+	public function found($id) {
+		$logged = $this->Session->read('logged_user');
+		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
+		$profile = $this->Profile->find('first', $options);
+
+		if(empty($logged) || $logged['id'] != $profile['Profile']['reporter_id']) {
+			return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
+		}
+
+		if (!$this->Profile->exists($id)) {
+			throw new NotFoundException(__('Invalid profile'));
+		}
+
+		$data['Profile']['maybe_found_by'] = null;
+		$data['Profile']['maybe_found_by_admin'] = null;
+		$data['Profile']['maybe_found_log'] = null;
+		$data['Profile']['person_status'] = "Found";
+		$this->Profile->id = $id;
+		$this->Profile->save($data);
+
+		$log['Log']['profile_id'] = $id;
+		if($logged['is_admin']) {
+			$log['Log']['user_id'] = $logged['id'];
+			$reporter_name = "Admin";
+		}
+		else {
+			$log['Log']['reporter_id'] = $logged['id'];
+			$reporter = new ReportersController();
+			$reporter_name = $reporter->get_name($logged['id']);
+		}
+		$log['Log']['message'] = "Found by " . $reporter_name;
+		$this->loadModel('Log');
+		$this->Log->create();
+		$this->Log->save($log);
+
+		return $this->redirect(array('controller'=>'testimonials', 'action' => 'add'));
+	}
+
+	public function maybe_found($id) {
+		$logged = $this->Session->read('logged_user');
+		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
+		$profile = $this->Profile->find('first', $options);
+
+		if(empty($logged)) {
+			return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
+		}
+
+		if (!$this->Profile->exists($id)) {
+			throw new NotFoundException(__('Invalid profile'));
+		}
+
+		$log['Log']['profile_id'] = $id;
+		if($logged['is_admin']) {
+			$log['Log']['user_id'] = $logged['id'];
+			$reporter_name = "Admin";
+		}
+		else {
+			$log['Log']['reporter_id'] = $logged['id'];
+			$reporter = new ReportersController();
+			$reporter_name = $reporter->get_name($logged['id']);
+		}
+		$log['Log']['message'] = "Maybe Found by " . $reporter_name;
+		$this->loadModel('Log');
+		$this->Log->create();
+		$this->Log->save($log);
+
+		$data['Profile']['person_status'] = "Maybe Found";
+		$data['Profile']['maybe_found_by'] = $logged['id'];
+		$data['Profile']['maybe_found_by_admin'] = $logged['is_admin'];
+		$data['Profile']['maybe_found_log'] = $this->Log->getLastInsertId();
+		$this->Profile->id = $id;
+		$this->Profile->save($data);
+
+		$this->Session->setFlash('Profile Updated. And Notified The Reporter', 'default', array(), 'flash');
+		return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
+	}
+
+	public function missing($id) {
+		$logged = $this->Session->read('logged_user');
+		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
+		$profile = $this->Profile->find('first', $options);
+
+		if(empty($logged) || $logged['id'] != $profile['Profile']['reporter_id']) {
+			return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
+		}
+
+		if (!$this->Profile->exists($id)) {
+			throw new NotFoundException(__('Invalid profile'));
+		}
+
+		$data['Profile']['maybe_found_by'] = null;
+		$data['Profile']['maybe_found_by_admin'] = null;
+		$data['Profile']['maybe_found_log'] = null;
+		$data['Profile']['person_status'] = "Missing";
+		$this->Profile->id = $id;
+		$this->Profile->save($data);
+		
+		$reporter = new ReportersController();
+		$reporter_name = $reporter->get_name($logged['id']);
+
+		$log['Log']['profile_id'] = $id;
+		$log['Log']['reporter_id'] = $logged['id'];
+		$log['Log']['message'] = "Maybe Found Reverted to Missing Again by " . $reporter_name;
+
+		$this->loadModel('Log');
+		$this->Log->create();
+		$this->Log->save($log);
+
+		if(!$profile['Profile']['maybe_found_by_admin']) {
+			$this->Log->id = $profile['Profile']['maybe_found_log'];
+			$abuse_data['Log']['abuse'] = 1;
+			$this->Log->save($abuse_data);
+
+			$abuse_logs = $this->Log->find('count',
+				array(
+					'conditions' => array(
+						'Log.reporter_id' => $profile['Profile']['maybe_found_by'],
+						'Log.profile_id' => $id,
+						'Log.abuse' => 1
+					)
+				)
+			);
+			if($abuse_logs>=5) {
+				$this->loadModel('Reporter');
+				$black['Reporter']['is_blacklisted'] = 1;
+				$this->Reporter->save($black);
+			}
+		}
+
+		$this->Session->setFlash('Profile Reverted To Missing. And Logged The Found Claimer as Abuse.', 'default', array(), 'flash');
+		return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
 	}
 
 	private function _process_images ($data) {

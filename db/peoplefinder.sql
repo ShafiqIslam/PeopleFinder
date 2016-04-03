@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-04-03 00:40:27
+Date: 2016-04-03 15:09:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,19 +20,22 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `logs`;
 CREATE TABLE `logs` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `profile_id` int(11) DEFAULT NULL,
   `reporter_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `message` varchar(500) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `abuse` tinyint(1) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logs
 -- ----------------------------
+INSERT INTO `logs` VALUES ('1', '4', '7', null, 'Maybe Found by Shafiqul Islam XOR', '1', '2016-04-03 09:50:18', '2016-04-03 10:18:08');
+INSERT INTO `logs` VALUES ('6', '4', '1', null, 'Found by Shawn  Parker', null, '2016-04-03 10:43:10', '2016-04-03 10:43:10');
 
 -- ----------------------------
 -- Table structure for `profiles`
@@ -65,6 +68,10 @@ CREATE TABLE `profiles` (
   `image_link_3` varchar(255) DEFAULT NULL,
   `verified_profile` tinyint(1) DEFAULT NULL,
   `description` longtext,
+  `maybe_found_by_admin` tinyint(1) DEFAULT NULL,
+  `maybe_found_by` int(11) DEFAULT NULL,
+  `maybe_found_log` int(11) DEFAULT NULL,
+  `abuse_counter` int(3) DEFAULT '0',
   `reporter_id` int(11) DEFAULT NULL,
   `is_admin` tinyint(1) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -76,12 +83,12 @@ CREATE TABLE `profiles` (
 -- ----------------------------
 -- Records of profiles
 -- ----------------------------
-INSERT INTO `profiles` VALUES ('1', 'Abul', 'test', 'Kashem', '2000-01-01', 'B-', null, 'BD', 'Male', 'Found', 'BD', 'Dhaka', 'Rokeya Sarani', 'BD', 'Khulna', '22.845641', '89.5403279', 'No', 'Alive', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459533121/pwbpvq9bi0xxdndqvi5y.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459532790/rn3xyd1orsdqhsc8dsf4.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319036/vxim9benjffbovxfuu6c.jpg', '1', 'Test description blah blah blah', '1', '0', null, '2016-03-30 08:20:31', '2016-04-01 19:48:33');
-INSERT INTO `profiles` VALUES ('2', 'Abdul', '', 'Jabbar', '2016-03-03', 'A+', null, 'BD', 'Male', 'Missing', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'Yes', 'Alive', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319036/vxim9benjffbovxfuu6c.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320127/qv7gtrm1zkpoffscrfqu.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320132/xdzufs6mgmynpvf4ktzd.jpg', '0', '', '1', '0', null, '2016-03-30 08:38:47', '2016-03-30 08:38:47');
-INSERT INTO `profiles` VALUES ('4', 'Umme', 'Ahmed', 'Shishir', '1989-12-29', 'B+', null, 'BD', 'Female', 'Missing', 'US', 'Wisconsin', '5th Avenue', 'BD', 'Dhaka', '23.810332', '90.4125181', 'Yes', 'Alive', 'Yes', 'No', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555277/gmcbzajesxdinezqgnqj.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555284/xbxh4mhzo2p829gboiaj.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555291/amnp8kto09pxjoiyeovz.jpg', '0', 'b l a h b l a h b l a h . . .', '1', '0', null, '2016-04-02 02:01:32', '2016-04-02 02:01:32');
-INSERT INTO `profiles` VALUES ('5', 'test', '', 'test', '2016-04-13', 'O-', null, 'BD', 'Female', 'Missing', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'No', 'Alive', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555291/amnp8kto09pxjoiyeovz.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555284/xbxh4mhzo2p829gboiaj.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555277/gmcbzajesxdinezqgnqj.jpg', '0', 'jfg hgfghfj', '1', '0', null, '2016-04-02 06:52:19', '2016-04-02 06:52:19');
-INSERT INTO `profiles` VALUES ('6', 'girl ', '', 'girl', '2016-04-12', 'B+', null, 'BD', 'Male', 'Missing', 'BD', 'test', 'test', 'BD', 'Khulna', '22.845641', '89.5403279', 'No', 'Dead', 'Yes', 'Yes', null, null, null, '1', 'dsfas dfsd fsd fdas f ds', '1', '0', null, '2016-04-02 06:57:35', '2016-04-02 18:08:33');
-INSERT INTO `profiles` VALUES ('7', 'Admin', 'Middle', 'Test', '2016-04-12', 'O+', null, 'BD', 'Male', 'Missing', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'No', 'Dead', 'No', 'Yes', null, null, null, '1', 'hgfhgf ff ghffjghfgff ghf ghfgfghfgfjhg fgf jfjgfgf j', null, '1', '1', '2016-04-02 17:59:01', '2016-04-02 18:01:10');
+INSERT INTO `profiles` VALUES ('1', 'Abul', 'test', 'Kashem', '2000-01-01', 'B-', null, 'BD', 'Male', 'Found', 'BD', 'Dhaka', 'Rokeya Sarani', 'BD', 'Khulna', '22.845641', '89.5403279', 'No', 'Alive', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459533121/pwbpvq9bi0xxdndqvi5y.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459532790/rn3xyd1orsdqhsc8dsf4.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319036/vxim9benjffbovxfuu6c.jpg', '1', 'Test description blah blah blah', null, null, null, '0', '1', '0', null, '2016-03-30 08:20:31', '2016-04-01 19:48:33');
+INSERT INTO `profiles` VALUES ('2', 'Abdul', '', 'Jabbar', '2016-03-03', 'A+', null, 'BD', 'Male', 'Missing', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'Yes', 'Alive', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459319036/vxim9benjffbovxfuu6c.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320127/qv7gtrm1zkpoffscrfqu.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459320132/xdzufs6mgmynpvf4ktzd.jpg', '0', '', null, null, null, '0', '1', '0', null, '2016-03-30 08:38:47', '2016-03-30 08:38:47');
+INSERT INTO `profiles` VALUES ('4', 'Umme', 'Ahmed', 'Shishir', '1989-12-29', 'B+', null, 'BD', 'Female', 'Found', 'US', 'Wisconsin', '5th Avenue', 'BD', 'Dhaka', '23.810332', '90.4125181', 'Yes', 'Alive', 'Yes', 'No', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555277/gmcbzajesxdinezqgnqj.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555284/xbxh4mhzo2p829gboiaj.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555291/amnp8kto09pxjoiyeovz.jpg', '0', 'b l a h b l a h b l a h . . .', null, null, null, '0', '1', '0', null, '2016-04-02 02:01:32', '2016-04-03 10:43:10');
+INSERT INTO `profiles` VALUES ('5', 'test', '', 'test', '2016-04-13', 'O-', null, 'BD', 'Female', 'Missing', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'No', 'Alive', 'Yes', 'Yes', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555291/amnp8kto09pxjoiyeovz.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555284/xbxh4mhzo2p829gboiaj.jpg', 'http://res.cloudinary.com/dg0qpsar6/image/upload/v1459555277/gmcbzajesxdinezqgnqj.jpg', '0', 'jfg hgfghfj', null, null, null, '0', '2', '0', null, '2016-04-02 06:52:19', '2016-04-02 06:52:19');
+INSERT INTO `profiles` VALUES ('6', 'girl ', '', 'girl', '2016-04-12', 'B+', null, 'BD', 'Male', 'Missing', 'BD', 'test', 'test', 'BD', 'Khulna', '22.845641', '89.5403279', 'No', 'Dead', 'Yes', 'Yes', null, null, null, '1', 'dsfas dfsd fsd fdas f ds', null, null, null, '0', '1', '0', null, '2016-04-02 06:57:35', '2016-04-02 18:08:33');
+INSERT INTO `profiles` VALUES ('7', 'Admin', 'Middle', 'Test', '2016-04-12', 'O+', null, 'BD', 'Male', 'Missing', 'BD', 'Khulna', 'M A Bari', 'BD', 'Khulna', '22.845641', '89.5403279', 'No', 'Dead', 'No', 'Yes', null, null, null, '1', 'hgfhgf ff ghffjghfgff ghf ghfgfghfgfjhg fgf jfjgfgf j', null, null, null, '0', null, '1', '1', '2016-04-02 17:59:01', '2016-04-02 18:01:10');
 
 -- ----------------------------
 -- Table structure for `reporters`
