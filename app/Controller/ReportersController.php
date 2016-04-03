@@ -8,7 +8,7 @@ class ReportersController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout', 'myaccount', 'my_reports', 'change_pass', 'upload_image','create_report');
+        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout', 'myaccount', 'my_reports', 'change_pass', 'upload_image','create_report', 'get_name');
     
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -537,5 +537,17 @@ class ReportersController extends AppController {
 				die(json_encode(array('response' => $res, 'filename' => $file_name)));
 			} else die(json_encode(array('error'=>'No files found for upload.')));
 		}
+	}
+
+	public function get_name($id) {
+		$options = array('conditions' => array('Reporter.id' => $id));
+		$reporter = $this->Reporter->find('first', $options);
+
+		$first_name = !empty($reporter['Reporter']['first_name']) ? $reporter['Reporter']['first_name'] : "";
+		$second_name = !empty($reporter['Reporter']['second_name']) ? $reporter['Reporter']['second_name'] : "";
+		$last_name = !empty($reporter['Reporter']['last_name']) ? $reporter['Reporter']['last_name'] : "";
+		$name = $first_name . " " . $second_name . " " . $last_name;
+
+		return $name;
 	}
 }
