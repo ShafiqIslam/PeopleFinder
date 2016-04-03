@@ -1,4 +1,5 @@
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=drawing"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=drawing"
+        xmlns="http://www.w3.org/1999/html"></script>
 <?php
     echo $this->Html->script(array('app'));
 ?>
@@ -213,11 +214,11 @@
     <div class="container count_wrapper_body">
         <div class="col-sm-4 counter_bg">
             <h3>Number of Found People</h3>
-            <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
+            <h2 class="timer count-title" id="count-number" data-to="<?php echo $profile_count['found'];?>" data-speed="1500"></h2>
         </div>
         <div class="col-sm-offset-4 col-sm-4 counter_bg">
             <h3>Number of added Profile</h3>
-            <h2 class="timer count-title" id="count-number" data-to="1000" data-speed="1500"></h2>
+            <h2 class="timer count-title" id="count-number" data-to="<?php echo $profile_count['total'];?>" data-speed="1500"></h2>
         </div>
     </div>
 </div>
@@ -225,55 +226,45 @@
 <!--Carousel-->
 <!--<div class="container-fluid slider_wrapper">-->
 
+<?php if(!empty($testimonials)) { ?>
 <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-    
     <!-- Indicators -->
     <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <?php foreach($testimonials as $key => $item): ?>
+        <li data-target="#myCarousel" data-slide-to="<?php echo $key;?>" class="<?php if(!$key) echo 'active';?>"></li>
+        <?php endforeach; ?>
     </ol>
-        <h2>User's Testimonial</h2>
+    <h2>User's Testimonial</h2>
 
     <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <div class="row">
-                    <div class="col-sm-offset-5 col-sm-2">
-                        <img src="img/01.jpg" class="img-responsive img-circle" alt="New York">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-offset-2 col-sm-8">
-                        <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="row">
-                    <div class="col-sm-offset-5 col-sm-2">
-                        <img src="img/01.jpg" class="img-responsive img-circle" alt="New York">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-offset-2 col-sm-8">
-                        <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
-                    </div>
+    <div class="carousel-inner" role="listbox">
+        <?php foreach($testimonials as $key => $item): ?>
+        <div class="item <?php if(!$key) echo 'active';?>">
+            <div class="row">
+                <div class="col-sm-offset-5 col-sm-2">
+                    <!--<img src="img/01.jpg" class="img-responsive img-circle" alt="New York">-->
+                    <?php
+                        $initials = "";
+                        $initials .= !empty($item['Reporter']['first_name']) ? $item['Reporter']['first_name'][0] : "";
+                        $initials .= !empty($item['Reporter']['second_name']) ? $item['Reporter']['second_name'][0] : "";
+                        $initials .= !empty($item['Reporter']['last_name']) ? $item['Reporter']['last_name'][0] : "";
+
+                        $first_name = !empty($item['Reporter']['first_name']) ? $item['Reporter']['first_name'] : "";
+                        $second_name = !empty($item['Reporter']['second_name']) ? $item['Reporter']['second_name'] : "";
+                        $last_name = !empty($item['Reporter']['last_name']) ? $item['Reporter']['last_name'] : "";
+                        $name = $first_name . " " . $second_name . " " . $last_name;
+                    ?>
+                    <div class="img-circle"><?php echo $initials;?></div>
                 </div>
             </div>
-            <div class="item">
-                <div class="row">
-                    <div class="col-sm-offset-5 col-sm-2">
-                        <img src="img/01.jpg" class="img-responsive img-circle" alt="New York">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-offset-2 col-sm-8">
-                        <h4>"I am very much satisfied with the service of People Finder. I think it will be helpful for others"</h4>
-                    </div>
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <h4><q><blockquote><?php echo $item['Testimonial']['testimonial'];?></blockquote></q></h4>
                 </div>
             </div>
         </div>
+        <?php endforeach; ?>
+    </div>
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -285,6 +276,9 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+<?php } else { ?>
+    No testimonials are available yet to show.
+<?php } ?>
         <!--</div>-->
 
 <!--Contact Section-->

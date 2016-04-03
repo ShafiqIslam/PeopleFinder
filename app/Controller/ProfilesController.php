@@ -594,4 +594,18 @@ class ProfilesController extends AppController {
 	        } else die(json_encode(array('error'=>'No files found for upload.')));
 		}
 	}
+
+	public function get_counts() {
+		$count['found'] = $this->Profile->find('count',
+			array(
+				'conditions' => array(
+					'Profile.person_status'=>'Found'
+				)
+			)
+		);
+
+		$count['total'] =  $this->Profile->find('count');
+
+		return $count;
+	}
 }

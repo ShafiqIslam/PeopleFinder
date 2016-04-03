@@ -19,6 +19,8 @@
  */
 
 App::uses('AppController', 'Controller');
+App::uses('TestimonialsController', 'Controller');
+App::uses('ProfilesController', 'Controller');
 
 /**
  * Static content controller
@@ -63,6 +65,17 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
+
+		if($page == "home") {
+			$testimonial_obj = new TestimonialsController();
+			$testimonials = $testimonial_obj->get_testimonials(10);
+
+			$profile_obj = new ProfilesController();
+			$profile_count = $profile_obj->get_counts();
+
+			$this->set(compact('testimonials', 'profile_count'));
+		}
+
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 
 		try {
