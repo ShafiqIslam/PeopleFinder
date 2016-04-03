@@ -757,7 +757,7 @@ input, textarea{
 	//margin-left: 23%;
 }
 
-.search_result_details_wrapper .left_side span{
+.search_result_details_wrapper .left_side .tooltip_check{
 	//float: right;
 	margin-top: -9%;
 	font-size: 15px;
@@ -768,7 +768,7 @@ input, textarea{
 .search_result_details_wrapper .person_place{
 	font-size: 20px;
 }
-.result_body span{
+.result_body .tooltip_check{
 	//float: right;
 	margin-top: -9%;
     font-size: 12px;
@@ -780,12 +780,12 @@ input, textarea{
 	font-size: 20px;
 	margin: 4.5% 0% 4.5% 0%;
 }
-.search_result_details_wrapper .left_side span .fa{
+.search_result_details_wrapper .left_side .tooltip_check .fa{
 	font-size: 17px;
     color: #4DAF4D;
     padding-right: 5px;
 }
-.result_body span .fa{
+.result_body .tooltip_check .fa{
 	font-size: 17px;
     color: #4DAF4D;
     padding-right: 5px;

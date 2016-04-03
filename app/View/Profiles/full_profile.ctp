@@ -26,10 +26,9 @@
 
 			
 			<div class="row">
-				<div class="col-sm-4 pull-left">
+				<div class="col-sm-6 pull-left">
 					<p class="person_place">
-						<b><?php echo $profile['Profile']['missing_city'];?>, <?php echo $profile['Profile']['missing_country'];?>.</b>
-						<span class="bfh-countries" data-country="<?php echo $profile['Profile']['missing_country'];?>" data-flags="true"></span>
+						<b><?php echo $profile['Profile']['missing_city'];?>, <span class="bfh-countries" data-country="<?php echo $profile['Profile']['missing_country'];?>" data-flags="true"></span></b>
 					</p>
 
 					<?php if($profile['Profile']['verified_profile']): ?>
