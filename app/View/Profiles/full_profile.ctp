@@ -102,22 +102,27 @@
 					<h1>Images of <?php echo $name;?></h1>
 					<ul>
 						<?php if(!empty($profile['Profile']['image_link_1'])) { ?>
-							<li class=" search_result_Details_img"><img class="img_popover_1" src="<?php echo $profile['Profile']['image_link_1'];?>"></li>
-								<div id="img_popover_1" style="display: none">
-									<img src="<?php echo $profile['Profile']['image_link_1'];?>"/>
-								</div>
+							<li class=" search_result_Details_img">
+								<a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_1'];?>">
+									<img class="img_popover_1" src="<?php echo $profile['Profile']['image_link_1'];?>">
+								</a>
+							</li>
 						<?php } ?>
 						<?php if(!empty($profile['Profile']['image_link_2'])) { ?>
-							<li class="search_result_Details_img"><img class="img_popover_2" src="<?php echo $profile['Profile']['image_link_2'];?>"></li>
-								<div id="img_popover_2" style="display: none">
-									<img src="<?php echo $profile['Profile']['image_link_2'];?>"/>
-								</div>
+							<li class=" search_result_Details_img">
+								<a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_2'];?>">
+									<img class="img_popover_1" src="<?php echo $profile['Profile']['image_link_2'];?>">
+								</a>
+							</li>
+								
 						<?php } ?>
 						<?php if(!empty($profile['Profile']['image_link_3'])) { ?>
-							<li class="search_result_Details_img"><img class="img_popover_3" src="<?php echo $profile['Profile']['image_link_3'];?>"></li>
-								<div id="img_popover_3" style="display: none">
-									<img src="<?php echo $profile['Profile']['image_link_3'];?>"/>
-								</div>
+							<li class=" search_result_Details_img">
+								<a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_3'];?>">
+									<img class="img_popover_1" src="<?php echo $profile['Profile']['image_link_3'];?>">
+								</a>
+							</li>
+								
 						<?php } ?>
 					</ul>
 				</div>

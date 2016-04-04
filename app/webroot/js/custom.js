@@ -176,6 +176,7 @@ $(document).ready(function(){
 });
 
 /*---------------Popover of Images---------*/
+/*
 $(document).ready(function(){
   $('.img_popover_1').popover({ 
     html : true,
@@ -208,7 +209,7 @@ $(document).ready(function(){
     }
   });
 });
-
+*/
 /*---------Page reload for map reload---------*/
 
 $('#map_reload').on('shown.bs.tab', function () {
@@ -258,3 +259,20 @@ $(document).ready(function(){
             height: 150,
     });
 });
+
+
+
+$('.image-popup-no-margins').magnificPopup({
+        type: 'image',
+        closeOnContentClick: true,
+        closeBtnInside: false,
+        fixedContentPos: true,
+        mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+        image: {
+            verticalFit: true
+        },
+        zoom: {
+            enabled: true,
+            duration: 300 // don't foget to change the duration also in CSS
+        }
+    });
