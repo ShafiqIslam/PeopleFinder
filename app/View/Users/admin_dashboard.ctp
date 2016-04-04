@@ -34,9 +34,9 @@
             </div>
 
             <div class="col-md-3 col-sm-3">
-                <a href="<?php echo $this->Html->url(array('controller' => 'logs', 'action' => 'index')) ?>">
+                <a href="<?php echo $this->Html->url(array('controller' => 'testimonials', 'action' => 'index')) ?>">
                     <div class="realtime t-color">
-                        <span>Logs</span>
+                        <span>Testimonials</span>
 
                         <div class="all-desc">
                             <div class="pull-right">

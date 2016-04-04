@@ -14,8 +14,10 @@
         <?php if($controller == 'profiles') { ?>
             <li class="add a-s <?php if($controller == 'profiles' && $action=="admin_add") echo 'selected';?>"><?php echo $this->Html->link(__('Add Profile'), array('controller' => 'profiles' ,'action' => 'add', 'admin' => true)); ?></li>
         <?php } ?>
+
         <li  class="node <?php if($controller == 'reporters') echo 'selected';?>"><?php echo $this->Html->link(__('Reporters'), array('controller' => 'reporters' ,'action' => 'index', 'admin' => true)); ?></li>
-        <li  class="node <?php if($controller == 'logs') echo 'selected';?>"><?php echo $this->Html->link(__('Logs'), array('controller' => 'logs' ,'action' => 'index', 'admin' => true)); ?></li>
+
+        <li  class="node <?php if($controller == 'testimonials') echo 'selected';?>"><?php echo $this->Html->link(__('Testimonials'), array('controller' => 'testimonials' ,'action' => 'index', 'admin' => true)); ?></li>
 
         <?php if($logged_user['role'] == 'admin') { ?>
             <li class="node <?php if($controller == 'users') echo 'selected';?>"><?php echo $this->Html->link(__('CMS Users'), array('controller' => 'users', 'action' => 'index')); ?>

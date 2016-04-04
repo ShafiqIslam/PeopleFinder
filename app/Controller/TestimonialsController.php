@@ -17,8 +17,32 @@ class TestimonialsController extends AppController {
 	}
 
 	public function admin_index() {
-		$this->Testimonial->recursive = 0;
+		$conditions = array();
+		$keyword = null;
+
+		if(!empty($this->request->params['named']['keyword'])) {
+			$keyword = $this->request->params['named']['keyword'];
+			if (!empty($keyword)) {
+				$conditions = am($conditions, array(
+						'OR' => array(
+							'Reporter.first_name LIKE' => '%' . $keyword . '%',
+							'Reporter.second_name LIKE' => '%' . $keyword . '%',
+							'Reporter.last_name LIKE' => '%' . $keyword . '%',
+							'Testimonial.testimonial LIKE' => '%' . $keyword . '%'
+						)
+					)
+				);
+			}
+		}
+
+		$this->Testimonial->recursive = 1;
+		$this->paginate = array('all',
+			'limit' => 10,
+			'order' => array('Testimonial.active' => 'DESC'),
+			'conditions' => $conditions
+		);
 		$this->set('testimonials', $this->Paginator->paginate());
+		$this->set('keyword', $keyword);
 	}
 
 	public function admin_view($id = null) {
@@ -29,37 +53,19 @@ class TestimonialsController extends AppController {
 		$this->set('testimonial', $this->Testimonial->find('first', $options));
 	}
 
-	public function admin_add() {
-		if ($this->request->is('post')) {
-			$this->Testimonial->create();
-			if ($this->Testimonial->save($this->request->data)) {
-				$this->Session->setFlash(__('The testimonial has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The testimonial could not be saved. Please, try again.'));
-			}
-		}
-		$reporters = $this->Testimonial->Reporter->find('list');
-		$this->set(compact('reporters'));
-	}
-
-	public function admin_edit($id = null) {
+	public function admin_activate($id = null) {
 		if (!$this->Testimonial->exists($id)) {
 			throw new NotFoundException(__('Invalid testimonial'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Testimonial->save($this->request->data)) {
-				$this->Session->setFlash(__('The testimonial has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The testimonial could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Testimonial.' . $this->Testimonial->primaryKey => $id));
-			$this->request->data = $this->Testimonial->find('first', $options);
-		}
-		$reporters = $this->Testimonial->Reporter->find('list');
-		$this->set(compact('reporters'));
+
+		$sql = "
+		UPDATE `testimonials`
+		SET `testimonials`.`active` = NOT `testimonials`.`active`
+		WHERE `testimonials`.`id` = $id
+		";
+		$this->Testimonial->query($sql);
+		$this->Session->setFlash(__('The testimonial has been changed.'));
+		return $this->redirect(array('action' => 'index'));
 	}
 
 	public function admin_delete($id = null) {
