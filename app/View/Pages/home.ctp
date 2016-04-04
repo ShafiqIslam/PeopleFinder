@@ -58,7 +58,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-5 adv_search_link">
-                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...</a></p>
+                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...<i class="fa fa-external-link"></i></a></p>
                             </div>
                             <div class="col-sm-7">
                                 <button type="submit" class="btn btn-primary btn_search">Search</button>
@@ -97,7 +97,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-9 adv_search_link">
-                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...</a></p>
+                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...<i class="fa fa-external-link"></i></a></p>
                             </div>
                             <div class="col-sm-3">
                                 <button type="submit" class="btn btn-primary btn_search">Search</button>
@@ -125,7 +125,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-5 adv_search_link">
-                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...</a></p>
+                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...<i class="fa fa-external-link"></i></a></p>
                             </div>
                             <div class="col-sm-7">
                                 <button type="submit" class="btn btn-primary btn_search">Search</button>
@@ -150,7 +150,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-9 adv_search_link">
-                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...</a></p>
+                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...<i class="fa fa-external-link"></i></a></p>
                             </div>
                             <div class="col-sm-3">
                                 <button type="submit" class="btn btn-primary btn_search">Search</button>
@@ -171,7 +171,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-5 adv_search_link">
-                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...</a></p>
+                                <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...<i class="fa fa-external-link"></i></a></p>
                             </div>
                             <div class="col-sm-7">
                                 <button type="submit" class="btn btn-primary btn_search">Search</button>
@@ -212,12 +212,12 @@
         <!--===========Counter Section=============-->
 <div id="first_result" class="container-fluid count_wrapper parallax">
     <div class="container count_wrapper_body">
-        <div class="col-sm-4 counter_bg">
-            <h3>Number of Found People</h3>
+        <div class="col-sm-4 counter_bg pull-left">
+            <h3>Found People</h3>
             <h2 class="timer count-title" id="count-number" data-to="<?php echo $profile_count['found'];?>" data-speed="1500"></h2>
         </div>
-        <div class="col-sm-offset-4 col-sm-4 counter_bg">
-            <h3>Number of added Profile</h3>
+        <div class="col-sm-offset-4 col-sm-4 counter_bg pull-right">
+            <h3>Added Profile</h3>
             <h2 class="timer count-title" id="count-number" data-to="<?php echo $profile_count['total'];?>" data-speed="1500"></h2>
         </div>
     </div>
@@ -254,7 +254,7 @@
                         $last_name = !empty($item['Reporter']['last_name']) ? $item['Reporter']['last_name'] : "";
                         $name = $first_name . " " . $second_name . " " . $last_name;
                     ?>
-                    <div class="img-circle"><?php echo $initials;?></div>
+                    <div class="client_testi_circle"><h1><?php echo $initials;?></h1></div>
                 </div>
             </div>
             <div class="row">
@@ -286,16 +286,16 @@
     <div class="container">
         <h1>Contact Us</h1>
         <div class="row contact_body">
-            <div class="col-sm-4 contact_address slideanim slide">
+            <div class="col-sm-5 contact_address slideanim slide">
                 <address>
-                    <strong style="font-size:18px;">People Finder</strong><br>
-                    Lower Jessore Road, Daulatpur<br>
-                    Bangladesh, Khulna-9000<br>
+                    <strong style="font-size:18px;">Face Finder</strong><br>
+                    ABC Road, CDEF City<br>
+                    CDEF City-123456, XYZ Country<br>
                     <p><span><i class="fa fa-phone"></i></span> : <a>456-7890</a></p>
                     <p><span><i class="fa fa-envelope-o"></i></span> : <a href="mailto:#">mailus@peoplefinder.com</a></p>
                 </address>    
             </div>
-            <div class="col-sm-2 vdivide"></div>
+            <div class="col-sm-1 contact_devide"></div>
             <div class="col-sm-offset-2 col-sm-4 Contact_mail slideanim slide">
                 <form class="form-horizontal" role="form">
                     <div class="form-group">

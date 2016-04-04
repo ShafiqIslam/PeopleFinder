@@ -67,13 +67,13 @@
                                         <div class="main_account_body row">
                                             <div class="account_title">
                                                 <h4><?php echo $logged['name'];?></h4>
-                                                <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount">My Account</a>
+                                                <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount btn_myaccount_original ">My Account</a>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="my_account_options">
                                             <a href="<?php echo $this->webroot;?>my_reports" class="btn btn_myaccount pull-left"><span><i class="fa fa-bell"></i></span>Reports</a>
-                                            <a href="<?php echo $this->webroot;?>reporters/logout" class="btn btn_myaccount pull-right"><span><i class="fa fa-sign-out fa-lg"></i></span>Signout</a>
+                                            <a href="<?php echo $this->webroot;?>reporters/logout" class="btn btn_sign_out pull-right"><span><i class="fa fa-sign-out fa-lg"></i></span>Signout</a>
                                         </div>
                                     </li>
                                 </ul>

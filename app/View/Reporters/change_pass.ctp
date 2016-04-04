@@ -1,9 +1,9 @@
 <div style="clear: both;"></div>
-<div class="container-fluid chng_pass_page sign_up_page">
+<div class="container-fluid chng_pass_page ">
 	<h3 class="<?php echo 'change_pass_success';?>">Change Password</h3>
 
 	<?php if($success==20) { ?>
-		<h4 class="success" style="margin: 5.3% 0%;">Your Password Has been changed.</h4>
+		<h4 class="success" style="margin: 7.1% 0%;">Your Password Has been changed.</h4>
 		<?php
 			echo "<style>
 	            .change_pass_success { 

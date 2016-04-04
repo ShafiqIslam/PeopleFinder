@@ -33,7 +33,7 @@
 								<h4><?php echo $name;?></h4>							
 								<p>
 									<?php echo $profile['Profile']['missing_city'];?>,&nbsp;
-									<?php echo $profile['Profile']['missing_country'];?>.&nbsp;
+									<span class="bfh-countries" data-country="<?php echo $profile['Profile']['missing_country'];?>" data-flags="true"></span>.&nbsp;
 								</p>
 								<p>
 									<?php if($profile['Profile']['verified_profile']): ?>

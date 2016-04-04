@@ -234,15 +234,33 @@ header ul li a{
 }
 .my_account_modal .btn_myaccount{
 	padding: 10px;
-	background-color: #673AB7;
+	background-color: #05AD05;
     color: #fff;
+    font-size: 18px;
+}
+.my_account_modal .btn_myaccount_original{
+	width: 85.5%;
+}
+.my_account_modal .btn_sign_out{
+	padding: 10px;
+	background-color: #B7403A;
+    color: #fff;
+    font-size: 18px;
+}
+.my_account_modal .btn_sign_out:hover{
+	background-color: #CE625C;
 }
 .my_account_modal h4{
-	margin-bottom:20px;
+	margin-bottom: 20px;
+    margin-top: 0px;
+    font-size: 20px;
+}
+.my_account_modal .btn_myaccount .fa{
+	padding-right: 10px;
 }
 
 .my_account_modal .btn_myaccount:hover{
-	background-color: rgba(103, 58, 183, 0.62);
+	background-color: rgba(5, 173, 5, 0.8);
     color: #fff;
 }
 
@@ -253,10 +271,36 @@ header ul li a{
 .my_account_heading h1{
 	margin: 5% 0%;
 }
+.my_account_heading span{
+	font-style: italic;
+	font-weight: bold;
+}
 .account_edit, .change_pass{
-	border: 1px solid #ededed;
+	display: block;
+	border: 1px solid rgba(19, 17, 17, 0.43);
     border-radius: 7px;
     text-align: center;
+    background: #ededed;
+    box-shadow: 0px 8px 12px 4px black;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz--webkit-transition: all .3s;
+    -o--webkit-transition: all .3s;
+}
+.account_edit hr, .change_pass hr{
+	border-top: 1px solid rgba(14, 8, 8, 0.18);
+}
+.myaccount_page a{
+	display: block;
+	text-decoration: none;
+	cursor: pointer;
+}
+.account_edit:hover, .change_pass:hover{
+	border: 1px solid rgba(19, 17, 17, 0.43);
+    border-radius: 7px;
+    text-align: center;
+    background: #ededed;
+    box-shadow: none;
 }
 .account_edit h3, .change_pass h3{
 	margin-top: 20px;
@@ -281,9 +325,19 @@ header ul li a{
 .chng_pass_page h3{
 	text-align: center;
 	padding-bottom: 3%;
+	font-size: 30px;
+    font-weight: bold;
 }
 .chng_pass_page h3:last-child{
 	padding-bottom: 3%;
+}
+.chng_pass_page .form-horizontal .control-label {
+    font-size: 20px;
+    //color: #a1a2a3;
+    text-align: left;
+}
+.chng_pass_page .btn_search{
+	margin-left: 16%;
 }
 /*-----------------------Container Section CSS---------------------------*/
 /*-------------Banner Section--------------*/
@@ -296,8 +350,8 @@ header ul li a{
 }
 
 .search_pill{
-	color:#fff;
-	background-color: rgba(0, 0, 0, 0.28);
+	color: rgba(0, 0, 0, 0.63);
+	background-color: rgba(232, 232, 232, 0.28);
 	border-radius: 7px;
 	margin-top: 2%;
     margin-bottom: 20px;
@@ -369,9 +423,13 @@ header ul li a{
 .draw_map p{
 	//margin-left: 5%;
 }
+.adv_search_link .fa{
+	padding-left: 5px;
+}
 #name .adv_search_link p{
 	position: absolute;
 	bottom: -90px;
+	font-size: 15px;
 }
 
 #photos .adv_search_link p{
@@ -381,17 +439,17 @@ header ul li a{
 
 #country .adv_search_link p{
 	position: absolute;
-	bottom: -135px;
+	bottom: -177px;
 }
 
 #map .adv_search_link p{
 	position: absolute;
-	bottom: -73px;
+	bottom: -68px;
 }
 
 #id_search .adv_search_link p{
 	position: absolute;
-	bottom: -238px;
+	bottom: -234px;
 }
 
 /*========= Drag & Drop images upload css customization========*/
@@ -455,19 +513,22 @@ header ul li a{
 	text-align: center;
     font-weight: bold;
     font-size: 28px;
-    //padding: 20px 3px;
+    margin-top: 38%;
+    color: #fff;
 }
 .count_wrapper h2{
 	text-align: center;
-	color: green;
+	color: #fff;
 	font-weight: bold;
 	font-size: 45px;
 	//padding-bottom: 28px;
 }
 
 .counter_bg{
-	background-color: rgba(255, 255, 255, 0.65);
-	border-radius: 7px;
+	background-color: rgba(46, 189, 63, 0.65);
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
 }
 
 .count_wrapper_body{
@@ -505,13 +566,13 @@ header ul li a{
 	text-align: center;
 	font-size: 40px;
     font-weight: bold;
-    color: #440808;
+    color: #00A708;
     margin: 3% 0%;
 }
 .about_wrapper p{
 	font-size: 24px;
     font-weight: 600;
-    color: #2E7D32;
+    color: #00A708;
 }
 .service_option{
 	margin: 8% 0%;
@@ -571,7 +632,7 @@ header ul li a{
 	border-right: 1px solid;
 	width: 100px;
 }
-.vdivide{
+.contact_devide{
 	border-right: 1px dotted rgba(95, 91, 91, 0.39);
     height: 200px;
     margin-top: 4%;
@@ -593,7 +654,7 @@ header ul li a{
 	padding-top: 5%;
     font-size: 42px;
     font-weight: bold;
-    //text-shadow: 2px 2px 2px rgba(138, 134, 134, 0.72);
+    color: rgba(53, 170, 17, 0.67);
 }
 .carousel-inner img{
 	margin-left: auto;
@@ -603,16 +664,35 @@ header ul li a{
 }
 .carousel-inner h4{
 	margin-bottom: 10%;
+	padding-top: 3%;
 }
-.carousel-indicators .active{
-	background-color: black;
+.carousel-inner h4 q{
+	font-size: 60px;
+}
+.carousel-inner h4 q blockquote{
+	font-size: 30px;
+	border-left: 5px solid #C1BEBE;
+}
+.carousel-indicators .active {
+    background-color: #ededed;
+    width: 20px;
+    height: 20px;
 }
 
 .carousel-indicators li{
-	border: 1px solid #150606;
+	border: 3px solid #0501FD;
 }
-.img-circle {
-    //border-radius: 100%;
+
+.client_testi_circle{
+	background-color: rgba(18, 193, 18, 0.65);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.client_testi_circle h1{
+	font-size: 79px;
+    color: #fff;
+    padding: 30% 24%;
 }
 
 
@@ -626,7 +706,7 @@ header ul li a{
 	text-align: center;
     font-size: 40px;
     font-weight: bold;
-    color: #a1a2a3;
+    color: rgba(0, 0, 0, 0.63);
     font-stretch: ultra-expanded;
     margin: 3% 0%;
 
@@ -639,7 +719,7 @@ header ul li a{
 
 .sign_up_page .form-horizontal .control-label{
 	font-size: 20px;
-	color: #a1a2a3;
+	color: rgba(0, 0, 0, 0.63);;
 	text-align: left;
 }
 
@@ -655,6 +735,25 @@ header ul li a{
 	background-color: rgba(0, 0, 255, 0.68);
     padding: 9px 30px;
     font-size: 20px;
+}
+
+.adv_draw_map p{
+	font-size: 20px;
+    color: #F57C00;
+    background: #F6FFFD;
+    padding-left: 10px;
+}
+.draw_map p{
+	font-size: 20px;
+    color: #F57C00;
+    background: #F6FFFD;
+    padding-left: 10px;
+}
+.upload_img p{
+	font-size: 20px;
+    color: #F57C00;;
+    background: #F6FFFD;
+    padding-left: 10px;
 }
 
 input, textarea{
@@ -910,6 +1009,7 @@ input, textarea{
 
 }
 
+
 /*---------------Log Scroll Section-----------*/
 #log_scroll{
 	border: 2px solid #ededed;
@@ -937,7 +1037,7 @@ input, textarea{
 /*--------My Report List Page-----------*/
 .my_report_page h1{
 	text-align: center;
-	margin: 5% 0%;
+	margin-top: 3%;
 }
 .my_report_page .report_list_name{
 	font-size: 17px;
