@@ -234,7 +234,7 @@ header ul li a{
 }
 .my_account_modal .btn_myaccount{
 	padding: 10px;
-	background-color: #05AD05;
+	background-color: #1C2742;
     color: #fff;
     font-size: 18px;
 }
@@ -260,7 +260,7 @@ header ul li a{
 }
 
 .my_account_modal .btn_myaccount:hover{
-	background-color: rgba(5, 173, 5, 0.8);
+	background-color: #3a5795;
     color: #fff;
 }
 
