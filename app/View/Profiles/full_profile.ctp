@@ -45,7 +45,7 @@
 							$mark_class = "maybe_found";
 						}
 					?>
-					<p class="person_status"><mark class="<?php echo $mark_class;?>"><?php echo $profile['Profile']['person_status'];?>&nbsp;</mark></p>
+					<p class="person_status"><mark class="status_mark <?php echo $mark_class;?>"><?php echo $profile['Profile']['person_status'];?></mark></p>
 				</div>
 			</div>
 
@@ -179,12 +179,15 @@
 
 			<div class="col-sm-12">
 				<div id="log_scroll">
-			        <h3>User Log</h3>
+			        <h3>Profile Log Book</h3>
 			        <hr>
 			        <ul>
 						<?php if(!empty($profile['Log'])) { foreach($profile['Log'] as $key => $log) { ?>
 			        		<li>
-								<?php echo "<strong>" . $log['created'] . ": </strong>" . $log['message']; ?>
+								<strong>
+									<?php echo date_format(date_create($log['created']),'h:m A - d M, Y') . ": "; ?>
+								</strong>
+								<code><?php echo $log['message']; ?></code>
 							</li>
 						<?php } } else { ?>
 			        		<li>No log yet to show for this profile.</li>
