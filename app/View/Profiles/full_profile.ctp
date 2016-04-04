@@ -35,7 +35,7 @@
 						<span class="tooltip_check" data-toggle="tooltip" data-placement="top" title="This profile is verified."><i class="fa fa-check-square-o"></i>Verified</span>
 					<?php endif; ?>
 				</div>
-				<div class="col-sm-5 pull-right">
+				<div class="col-sm-6 pull-right">
 					<?php
 						if ($profile['Profile']['person_status'] == 'Found') {
 							$mark_class = "found";
@@ -100,31 +100,29 @@
 			<div class="">
 				<div class="col-sm-12 search_result_img">
 					<h1>Images of <?php echo $name;?></h1>
-					<ul>
 						<?php if(!empty($profile['Profile']['image_link_1'])) { ?>
-							<li class=" search_result_Details_img">
+							<div class=" search_result_Details_img">
 								<a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_1'];?>">
 									<img class="img_popover_1" src="<?php echo $profile['Profile']['image_link_1'];?>">
 								</a>
-							</li>
+							</div>
 						<?php } ?>
 						<?php if(!empty($profile['Profile']['image_link_2'])) { ?>
-							<li class=" search_result_Details_img">
+							<div class=" search_result_Details_img">
 								<a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_2'];?>">
 									<img class="img_popover_1" src="<?php echo $profile['Profile']['image_link_2'];?>">
 								</a>
-							</li>
+							</div>
 								
 						<?php } ?>
 						<?php if(!empty($profile['Profile']['image_link_3'])) { ?>
-							<li class=" search_result_Details_img">
+							<div class=" search_result_Details_img">
 								<a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_3'];?>">
 									<img class="img_popover_1" src="<?php echo $profile['Profile']['image_link_3'];?>">
 								</a>
-							</li>
+							</div>
 								
 						<?php } ?>
-					</ul>
 				</div>
 
 				<?php $logged = $this->Session->read('logged_user'); ?>

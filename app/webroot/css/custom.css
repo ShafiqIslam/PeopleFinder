@@ -817,11 +817,12 @@ input, textarea{
 	margin-top: 4%;
 }
 .search_result_Details_img img{
-	width: 151px;
-    height: 160px;
+	width: 175px;
+    height: 180px;
     padding: 3px;
     margin-left: auto;
     margin-right: auto;
+    float: left;
 }
 
 /* padding-bottom and top for image */
@@ -841,6 +842,17 @@ input, textarea{
 .mfp-image-holder .mfp-content {
     max-width: 100%;
     margin-top: 10%;
+}
+
+.mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
+    color: #FFF;
+    right: 1px;
+    text-align: right;
+    padding-right: 5px;
+    width: 100%;
+    top: -4px;
+    font-size: 45px;
+    cursor: pointer;
 }
 
 
@@ -870,7 +882,7 @@ input, textarea{
 
 
 .search_result_details_wrapper .btn_abuse{
-	 width: 94%;
+	 width: 93%;
     padding: 15px 20px;
     font-size: 30px;
 	//margin-left: 23%;
@@ -994,9 +1006,10 @@ input, textarea{
 .btn_found{
 	background-color: rgba(62, 173, 62, 0.86);
     color: #fff;
-    width: 95%;
+    width: 100%;
     padding: 15px 20px;
     font-size: 30px;
+    margin-left: -7px;
 }
 
 .btn_found:hover, .btn_found:focus, .btn_found.focus {
@@ -1035,11 +1048,15 @@ input, textarea{
 
 
 /*---------------Log Scroll Section-----------*/
+#slimScrollDiv{
+	width: 98.5%;
+    margin-left: 1%;
+}
 #log_scroll{
-	border: 2px solid #ededed;
+	border: 3px solid #ededed;
     border-radius: 7px;
     padding: 10px;
-    margin-left: 2%;
+    //margin-left: 2%;
 }
 #log_scroll h3{
 	text-align: center;
