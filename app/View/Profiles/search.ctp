@@ -43,22 +43,15 @@
 						</div>
 						<div class="col-sm-4">
 							<?php
-								if ($profile['Profile']['person_status'] == 'Found') {
-									?>
-										<p class="person_status"><mark class="found"><?php echo $profile['Profile']['person_status'];?>&nbsp;</mark></p>
-									<?php
-								};
-								if ($profile['Profile']['person_status'] == 'Missing') {
-									?>
-										<p class="person_status"><mark class="missing"><?php echo $profile['Profile']['person_status'];?>&nbsp;</mark></p>
-									<?php
-								};
-								if ($profile['Profile']['person_status'] == 'Maybe Found') {
-									?>
-										<p class="person_status"><mark class="maybe_found"><?php echo $profile['Profile']['person_status'];?>&nbsp;</mark></p>
-									<?php
-								};
+							if ($profile['Profile']['person_status'] == 'Found') {
+								$mark_class = "found";
+							} elseif ($profile['Profile']['person_status'] == 'Missing') {
+								$mark_class = "missing";
+							} elseif ($profile['Profile']['person_status'] == 'Maybe Found') {
+								$mark_class = "maybe_found";
+							}
 							?>
+							<p class="person_status"><mark class="status_mark <?php echo $mark_class;?>"><?php echo $profile['Profile']['person_status'];?></mark></p>
 						</div>
 					</li>
 					</a>
@@ -70,10 +63,10 @@
 		<div class="col-sm-3 col-sm-offset-1 sign_up_page search_page search_again">
 			<h1>Search</h1>
 		    <hr>
-		    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search">
+		    <form role="form" method="post" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search">
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name" required="">
+		                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name">
 		            </div>
 		        </div>
 
@@ -91,7 +84,7 @@
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <select name="gender" class="form-control" required="">
+		                <select name="gender" class="form-control">
 		                    <option value="">Select Gender</option>
 		                    <option value="Male">Male</option>
 		                    <option value="Female">Female</option>
