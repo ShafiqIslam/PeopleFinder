@@ -54,8 +54,9 @@
             <div class="col-sm-offset-2 col-sm-4">
                 <p style="font-size: 16px;color: #9E9E9E;margin-bottom: -7px;">Insert the photos of your ID</p>
             </div>
-            <div class="col-sm-offset-2 col-sm-7">
+            <div class="col-sm-offset-2 col-sm-7 upload_img">
                 <input id="adv_search_img" name="data[Reporter][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>reporters/upload_image" data-max-file-count="3" enctype="multipart/form-data">
+                <p>You must upload the photos. Otherwise its will not be uploaded.</p>
             </div>
         </div>
         

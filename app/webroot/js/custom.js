@@ -175,6 +175,40 @@ $(document).ready(function(){
   });
 });
 
+/*---------------Popover of Images---------*/
+$(document).ready(function(){
+  $('.img_popover_1').popover({ 
+    html : true,
+    placement: 'bottom',
+    trigger: 'click hover',
+    content: function() {
+      return $('#img_popover_1').html();
+    }
+  });
+});
+
+$(document).ready(function(){
+  $('.img_popover_2').popover({ 
+    html : true,
+    placement: 'bottom',
+    trigger: 'click hover',
+    content: function() {
+      return $('#img_popover_2').html();
+    }
+  });
+});
+
+$(document).ready(function(){
+  $('.img_popover_3').popover({ 
+    html : true,
+    placement: 'bottom',
+    trigger: 'click hover',
+    content: function() {
+      return $('#img_popover_3').html();
+    }
+  });
+});
+
 /*---------Page reload for map reload---------*/
 
 $('#map_reload').on('shown.bs.tab', function () {

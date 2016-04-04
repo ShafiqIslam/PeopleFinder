@@ -71,9 +71,10 @@
                     <!--<h3>Search By Photos</h3>-->
                     <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search" enctype="multipart/form-data">
                         <div class="form-group">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 upload_img">
                                 <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="1">
                                 <input type="hidden" name="search_image">
+                                <p>You must upload the photos. Otherwise its will not be uploaded.</p>
                             </div>
                         </div>
                         <script>

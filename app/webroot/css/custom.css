@@ -479,14 +479,14 @@ header ul li a{
     top: 52%;
     left: 30%;
 }
-.search_pill .file-preview {
-    width: 90.5%;
+.search_pill .upload_img{
+    width: 90%;
     margin-left: 4.5%;
 }
 
 .search_pill .file-input .input-group {
-	width: 90.5%;
-    margin-left: 4.5%;
+	//width: 90.5%;
+   // margin-left: 4.5%;
 }
 
 .file-input .btn-primary {
@@ -822,6 +822,13 @@ input, textarea{
     padding: 3px;
     margin-left: auto;
     margin-right: auto;
+}
+.search_result_Details_img .popover {
+	max-width: 332px;
+}
+.popover-content img{
+	width: 300px;
+	height:auto;
 }
 
 .related_search{
