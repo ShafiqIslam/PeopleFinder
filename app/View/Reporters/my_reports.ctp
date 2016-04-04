@@ -37,7 +37,7 @@
 						<h4><?php echo $name;?></h4>							
 						<p>
 							<?php echo $item['missing_city'];?>,&nbsp;
-							<span class="bfh-countries" data-country="<?php echo $profile['Profile']['missing_country'];?>" data-flags="true"></span>.&nbsp;
+							<span class="bfh-countries" data-country="<?php echo $item['missing_country'];?>" data-flags="true"></span>.&nbsp;
 						</p>
 						<p>
 							<?php if($item['verified_profile']): ?>
@@ -47,22 +47,15 @@
 				</div>
 				<div class="col-sm-3">
 					<?php
-						if ($item['person_status'] == 'Found') {
-							?>
-								<p class="person_status"><mark class="found"><?php echo $item['person_status'];?>&nbsp;</mark></p>
-							<?php
-						};
-						if ($item['person_status'] == 'Missing') {
-							?>
-								<p class="person_status"><mark class="missing"><?php echo $item['person_status'];?>&nbsp;</mark></p>
-							<?php
-						};
-						if ($item['person_status'] == 'Maybe Found') {
-							?>
-								<p class="person_status"><mark class="maybe_found"><?php echo $item['person_status'];?>&nbsp;</mark></p>
-							<?php
-						};
+					if ($item['person_status'] == 'Found') {
+						$mark_class = "found";
+					} elseif ($item['person_status'] == 'Missing') {
+						$mark_class = "missing";
+					} elseif ($item['person_status'] == 'Maybe Found') {
+						$mark_class = "maybe_found";
+					}
 					?>
+					<p class="person_status"><mark class="status_mark <?php echo $mark_class;?>"><?php echo $item['person_status'];?></mark></p>
 				</div>
 				<div class="col-sm-3">
 					<?php
