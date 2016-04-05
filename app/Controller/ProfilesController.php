@@ -284,13 +284,16 @@ class ProfilesController extends AppController {
 		return $this->redirect(array('controller' => 'reporters', 'action' => 'my_reports'));
 	}
 
-	public function search() {
+	public function search($limit = 10, $offset = 0) {
+		set_time_limit(0);
 		$page = $subpage = $title_for_layout = "search";
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$query = "";
 
+		$search_query_session = $this->Session->read('search_query');
 		if($this->request->is('post')) {
 			if(!empty($this->request->data['id'])) {
-				return $this->redirect(array('action' => 'full_profile', $this->request->data['id']));
+				return $this->redirect(array('action' => 'full_profile', $this->request->data['id'], 0));
 			}
 
 			$condition = "1 = 1";
@@ -382,24 +385,60 @@ class ProfilesController extends AppController {
 			$order .= " `Profile`.`created` DESC";
 
 			$query = "SELECT * FROM `profiles` AS `Profile`";
-			$query .= " INNER JOIN `reporters` AS `Reporter` ON `Profile`.`reporter_id` = `Reporter`.`id`";
+			//$query .= " LEFT JOIN `reporters` AS `Reporter` ON `Profile`.`reporter_id` = `Reporter`.`id`";
 			$query .= " WHERE $condition";
 			$query .= " ORDER BY $order";
-
-			$profiles = $this->Profile->query($query);
-			$count = count($profiles);
-			$this->set(compact('profiles', 'count'));
+			$query_without_limit = $query;
+			$this->Session->write('search_query', $query_without_limit);
+			//AuthComponent::_setTrace($query);
+		} elseif(!empty($search_query_session) && $search_query_session!="") {
+			$query = $search_query_session;
 		} else {
 			return $this->redirect(array('controller'=>'pages', 'action' => 'display', 'search'));
 		}
+
+
+		$query .= " LIMIT $limit";
+		$query .= " OFFSET $offset";
+
+		$profiles = $this->Profile->query($query);
+		$count = count($profiles);
+		$this->set(compact('profiles', 'count'));
 	}
 
-	public function full_profile($id) {
+	public function full_profile($id=null, $related = true) {
 		$page = $subpage = $title_for_layout = "search";
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 
+		if (!$this->Profile->exists($id)) {
+			return $this->redirect(array('controller'=>'pages', 'action' => 'display', 'search'));
+		}
+
 		$profile = $this->Profile->findById($id);
+		if(!empty($profile['Profile']['maybe_found_by']) && $profile['Profile']['maybe_found_by']!=0) {
+			$this->loadModel('Reporter');
+			$this->Reporter->recursive = 0;
+			$claimed_by = $this->Reporter->findById($profile['Profile']['maybe_found_by']);
+			$claimed = 1;
+			$this->set(compact('claimed', 'claimed_by'));
+		} elseif(!empty($profile['Profile']['maybe_found_by_admin']) && $profile['Profile']['maybe_found_by_admin']) {
+			$claimed_by = 'Admin';
+			$claimed = 2;
+			$this->set(compact('claimed', 'claimed_by'));
+		}
 		$this->set(compact('profile'));
+
+		if($related) {
+			$search_query_session = $this->Session->read('search_query');
+			if(!empty($search_query_session) && $search_query_session!="") {
+				$query = $search_query_session;
+				$query .= " LIMIT 6";
+				$query .= " OFFSET 0";
+
+				$related_profiles = $this->Profile->query($query);
+				$this->set(compact('related', 'related_profiles'));
+			}
+		}
 	}
 
 	public function found($id) {
