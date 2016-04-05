@@ -1305,3 +1305,8 @@ header ul li a:active, header ul li a:focus {
 	border: none !important;
 	outline: none !important;
 }
+
+.disabled_link {
+	pointer-events: none;
+	cursor: default;
+}

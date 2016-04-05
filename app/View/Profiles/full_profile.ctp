@@ -6,6 +6,8 @@
 	</div>
 <?php } ?>
 
+<?php $logged = $this->Session->read('logged_user'); ?>
+
 <div class="container search_result_details_wrapper">
 	<div class="row">
 		<div class="col-sm-6 left_side">
@@ -91,8 +93,53 @@
 				<div class="col-sm-5"><h4>Physical illness</h4></div>
 				<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['physical_illness'];?></h4></div>
 			</div>
+
+			<?php if($profile['Reporter']['reporter_id']!=$logged['id']) { ?>
+			<div>
+				<h3>Reporter Details</h3>
+				<?php
+				$first_name = !empty($profile['Reporter']['first_name']) ? $profile['Reporter']['first_name'] : "";
+				$second_name = !empty($profile['Reporter']['second_name']) ? $profile['Reporter']['second_name'] : "";
+				$last_name = !empty($profile['Reporter']['last_name']) ? $profile['Reporter']['last_name'] : "";
+				$reporter_name = $first_name . " " . $second_name . " " . $last_name;
+				?>
+				<p>Name: <?php echo $reporter_name;?></p>
+				<p>Email: <?php echo $profile['Reporter']['email'];?></p>
+				<p>Address: <?php echo $profile['Reporter']['resident_country'];?></p>
+				<p>Nationality: <?php echo $profile['Reporter']['nationality'];?></p>
+				<?php if($profile['Reporter']['account_type']=="Verified") { ?>
+					<p>This Reporter is verified</p>
+				<?php } ?>
+			</div>
+			<?php } ?>
+
+			<?php if(!empty($claimed) && $claimed==1) { ?>
+				<div>
+					<h3>Claimed Reporter Details</h3>
+					<?php
+					$first_name = !empty($claimed_by['Reporter']['first_name']) ? $claimed_by['Reporter']['first_name'] : "";
+					$second_name = !empty($claimed_by['Reporter']['second_name']) ? $claimed_by['Reporter']['second_name'] : "";
+					$last_name = !empty($claimed_by['Reporter']['last_name']) ? $claimed_by['Reporter']['last_name'] : "";
+					$claimer_name = $first_name . " " . $second_name . " " . $last_name;
+					?>
+					<p>Name: <?php echo $claimer_name;?></p>
+					<p>Email: <?php echo $claimed_by['Reporter']['email'];?></p>
+					<p>Address: <?php echo $claimed_by['Reporter']['resident_country'];?></p>
+					<p>Nationality: <?php echo $claimed_by['Reporter']['nationality'];?></p>
+					<?php if($claimed_by['Reporter']['account_type']=="Verified") { ?>
+						<p>This Reporter is verified</p>
+					<?php } ?>
+				</div>
+			<?php } else if(!empty($claimed) && $claimed==2) { ?>
+				<div>
+					<h3>Claimed Reporter Details</h3>
+					<p>Claimed By Admin.</p>
+				</div>
+			<?php } ?>
+
 		</div>
 		<!--===================left side===============-->
+
 		<div class="col-sm-6 right_side">
 			<!--Search Images of the Result Details-->
 			<div class="">
@@ -130,7 +177,6 @@
 						<?php } ?>
 				</div>
 
-				<?php $logged = $this->Session->read('logged_user'); ?>
 				<!--=======This is for captcha using=========-->
 				<?php if(!empty($logged)) { ?>
 					<div class="row captcha_section">
@@ -206,58 +252,41 @@
 		</div>
 	</div>
 
+	<?php if(!empty($related) && $related==1) { ?>
 	<hr>
-
 	<div class="row">
 		<div class="container">
 			<!--=========Related result=============-->
 			<div class="col-sm-12 related_search">
 				<h1>Related Search Results</h1>
 				<ul>
+					<?php foreach ($related_profiles as $key=>$item) { ?>
 					<li class="col-sm-2">
-						<a href="#">
-							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
-							<h4>John Webster</h4>
-							<p>Missing Dublin, Ireland, UK</p>
+						<?php
+						if(!empty($item['Profile']['image_link_1']))
+							$image_link = $item['Profile']['image_link_1'];
+						else if(!empty($item['Profile']['image_link_2']))
+							$image_link = $item['Profile']['image_link_2'];
+						else if(!empty($item['Profile']['image_link_3']))
+							$image_link = $item['Profile']['image_link_3'];
+						else
+							$image_link = $this->webroot . "img/no_image_available.png";
+
+						$first_name = !empty($item['Profile']['first_name']) ? $item['Profile']['first_name'] : "";
+						$second_name = !empty($item['Profile']['second_name']) ? $item['Profile']['second_name'] : "";
+						$last_name = !empty($item['Profile']['last_name']) ? $item['Profile']['last_name'] : "";
+						$name = $first_name . " " . $second_name . " " . $last_name;
+						?>
+						<a href="<?php echo $this->webroot?>profiles/full_profile/<?php echo $item['Profile']['id']?>">
+							<img class="img-thumbnail" src="<?php echo $image_link;?>">
+							<h4><?php echo $name;?></h4>
+							<p><?php echo $item['Profile']['person_status'];?> <?php echo $item['Profile']['missing_city'];?>, <?php echo $item['Profile']['missing_country'];?>.</p>
 						</a>
 					</li>
-					<li class="col-sm-2">
-						<a href="#">
-							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
-							<h4>John Webster</h4>
-							<p>Missing Dublin, Ireland, UK</p>
-						</a>
-					</li>
-					<li class="col-sm-2">
-						<a href="#">
-							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
-							<h4>John Webster</h4>
-							<p>Missing Dublin, Ireland, UK</p>
-						</a>
-					</li>
-					<li class="col-sm-2">
-						<a href="#">
-							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
-							<h4>John Webster</h4>
-							<p>Missing Dublin, Ireland, UK</p>
-						</a>
-					</li>
-					<li class="col-sm-2">
-						<a href="#">
-							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
-							<h4>John Webster</h4>
-							<p>Missing Dublin, Ireland, UK</p>
-						</a>
-					</li>
-					<li class="col-sm-2">
-						<a href="#">
-							<img class="img-thumbnail" src="<?php echo $this->webroot;?>img/01.jpg">
-							<h4>John Webster</h4>
-							<p>Missing Dublin, Ireland, UK</p>
-						</a>
-					</li>
+					<?php } ?>
 				</ul>
 			</div>
 		</div>
 	</div>
+	<?php } ?>
 </div>
