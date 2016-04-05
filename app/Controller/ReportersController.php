@@ -348,16 +348,14 @@ class ReportersController extends AppController {
 		if($this->request->is('post')) {
 			$old_password = $this->Auth->password($this->request->data['Reporter']['password_old']);
 			if($reporter['Reporter']['password'] != $old_password) {
-				$success = 10;
+				$this->Session->setFlash('Oops! Your Old Password doesn\'t match.', 'default', array('class'=>'error_msg'), 'flash');
 			} else {
 				$this->request->data['Reporter']['password'] = $this->Auth->password($this->request->data['Reporter']['password']);
 				$this->Reporter->id = $id;
 				$this->Reporter->save($this->request->data);
-				$success = 20;
+				$this->Session->setFlash('Password Changed.', 'default', array('class'=>'success_msg'), 'flash');
 			}
-			$this->set(compact('success'));
 		}
-		//echo $success; die();
 	}
 
 	/*

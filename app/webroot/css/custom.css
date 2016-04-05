@@ -858,25 +858,28 @@ input, textarea{
 /*-----------Flash Message--------*/
 
 .flash_message{
-	width: 356px;
-    height: 96px;
-    position: absolute;
     background: #fff;
-    top: 17.5%;
-    left: 38%;
     z-index: 100;
     box-shadow: 0px 0px 4px black;
+	padding: 0px 0px;
 }
 #flashMessage{
-	font-size: 16px;
+	font-size: 18px;
     color: rgb(86, 9, 9);
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 25px;
+	text-align: center;
+	padding: 10px 0px;
 }
 .flash_close_btn{
 	float: right;
-    margin-top: 3%;
+    margin-top: -3%;
+}
+
+.success_msg {
+	background: green;
+}
+
+.error_msg {
+	background: red;
 }
 
 .related_search{

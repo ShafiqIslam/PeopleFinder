@@ -6,11 +6,6 @@
 			<button class="flash_close_btn">close</button>
 		</div>
 	</div>
-	<script>
-		$('.flash_close_btn').click(function(){
-			$('.flash_message').hide('fast');
-		});
-	</script>
 <?php } ?>
 
 <div class="container search_result_details_wrapper">

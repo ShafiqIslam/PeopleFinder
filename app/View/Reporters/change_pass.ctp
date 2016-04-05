@@ -1,21 +1,18 @@
 <div style="clear: both;"></div>
+
+<?php $flash = $this->Session->flash('flash'); ?>
+<?php if(!empty($flash)) { ?>
+	<div class="container flash_message">
+		<?php echo $flash;?>
+		<div class="">
+			<button class="flash_close_btn">&#215;</button>
+		</div>
+	</div>
+<?php } ?>
+
 <div class="container-fluid chng_pass_page ">
-	<h3 class="<?php echo 'change_pass_success';?>">Change Password</h3>
-
-	<?php if($success==20) { ?>
-		<h4 class="success" style="margin: 7.1% 0%;">Your Password Has been changed.</h4>
-		<?php
-			echo "<style>
-	            .change_pass_success { 
-	            	display:none;
-	            }
-            </style>";
-		?>
-	<?php } elseif($success==10) { ?>
-		<h4 class="warning">Oops! Your Old Password does not match.</h4>
-	<?php } ?>
-
-	<div class="col-sm-6 col-sm-offset-3 <?php echo 'change_pass_success';?>">
+	<h3 class="">Change Password</h3>
+	<div class="col-sm-6 col-sm-offset-3">
 		<form name="" data-toggle="validator" novalidate="true" id="login_form" method="post" class="form-horizontal">
             <div class="form-group">
                 <label for="inputPassword" class="col-sm-4 control-label">Old Password</label>

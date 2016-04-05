@@ -90,8 +90,11 @@ class TestimonialsController extends AppController {
 	*/
 
 	public function add() {
+		$logged = $this->Session->read('logged_user');
+		if(empty($logged)) {
+			return $this->redirect(array('controller'=>'pages', 'action' => 'display', 'home'));
+		}
 		if($this->request->is('post')) {
-			$logged = $this->Session->read('logged_user');
 			$this->request->data['Testimonial']['reporter_id'] = $logged['id'];
 
 			$this->Testimonial->create();

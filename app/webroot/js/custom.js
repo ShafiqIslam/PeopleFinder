@@ -2,13 +2,15 @@
 $(document).ready(function(){
     $(window).load(function(){
         $(".loader").fadeOut("slow");
-    })
-});
+    });
 
-$(document).ready(function(){
     $('.btn_search').click(function(){
         $(".loader").fadeIn("slow");
-    })
+    });
+
+    $('.flash_close_btn').click(function(){
+        $('.flash_message').hide('fast');
+    });
 });
 
 
