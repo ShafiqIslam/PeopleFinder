@@ -95,8 +95,9 @@
 			</div>
 
 			<?php if($profile['Reporter']['reporter_id']!=$logged['id']) { ?>
-			<div>
-				<h3>Reporter Details</h3>
+			<div class="reporter_details">
+				<h3>Reporter Details :</h3>
+				<hr>
 				<?php
 				$first_name = !empty($profile['Reporter']['first_name']) ? $profile['Reporter']['first_name'] : "";
 				$second_name = !empty($profile['Reporter']['second_name']) ? $profile['Reporter']['second_name'] : "";

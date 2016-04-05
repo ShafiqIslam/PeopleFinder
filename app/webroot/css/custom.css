@@ -727,6 +727,19 @@ header ul li a{
 	color:red;
 }
 
+/*-----------------reporter Details in Full profile page------*/
+.reporter_details{
+
+}
+.reporter_details h3{
+	font-size: 25px;
+} 
+.reporter_details hr{
+	width: 31%;
+    margin-left: 0;
+    border-top: 1px solid #8C8585;
+    margin-top: 0px;
+}
 /*--------------Search Page-------------*/
 .sign_up_page{
 	background-color: #ededed;
