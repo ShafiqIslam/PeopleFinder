@@ -94,7 +94,7 @@
 				<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['physical_illness'];?></h4></div>
 			</div>
 
-			<?php if($profile['Reporter']['reporter_id']!=$logged['id']) { ?>
+			<?php if($profile['Profile']['reporter_id']!=$logged['id']) { ?>
 			<div>
 				<h3>Reporter Details</h3>
 				<?php
@@ -104,7 +104,7 @@
 				$reporter_name = $first_name . " " . $second_name . " " . $last_name;
 				?>
 				<p>Name: <?php echo $reporter_name;?></p>
-				<p>Email: <?php echo $profile['Reporter']['email'];?></p>
+				<p>Email: <?php echo (!empty($logged)) ? $profile['Reporter']['email'] : "You have to login to obtain the email.";?></p>
 				<p>Address: <?php echo $profile['Reporter']['resident_country'];?></p>
 				<p>Nationality: <?php echo $profile['Reporter']['nationality'];?></p>
 				<?php if($profile['Reporter']['account_type']=="Verified") { ?>
@@ -123,7 +123,7 @@
 					$claimer_name = $first_name . " " . $second_name . " " . $last_name;
 					?>
 					<p>Name: <?php echo $claimer_name;?></p>
-					<p>Email: <?php echo $claimed_by['Reporter']['email'];?></p>
+					<p>Email: <?php echo (!empty($logged)) ? $claimed_by['Reporter']['email'] : "You have to login to obtain the email.";?></p>
 					<p>Address: <?php echo $claimed_by['Reporter']['resident_country'];?></p>
 					<p>Nationality: <?php echo $claimed_by['Reporter']['nationality'];?></p>
 					<?php if($claimed_by['Reporter']['account_type']=="Verified") { ?>
