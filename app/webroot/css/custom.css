@@ -855,6 +855,29 @@ input, textarea{
     cursor: pointer;
 }
 
+/*-----------Flash Message--------*/
+
+.flash_message{
+	width: 356px;
+    height: 96px;
+    position: absolute;
+    background: #fff;
+    top: 17.5%;
+    left: 38%;
+    z-index: 100;
+    box-shadow: 0px 0px 4px black;
+}
+#flashMessage{
+	font-size: 16px;
+    color: rgb(86, 9, 9);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 25px;
+}
+.flash_close_btn{
+	float: right;
+    margin-top: 3%;
+}
 
 .related_search{
 	margin-top: 2%;
@@ -882,10 +905,10 @@ input, textarea{
 
 
 .search_result_details_wrapper .btn_abuse{
-	 width: 93%;
+	width: 97%;
     padding: 15px 20px;
     font-size: 30px;
-	//margin-left: 23%;
+	margin-left: -10px;
 }
 
 .search_result_details_wrapper .left_side .tooltip_check{
@@ -993,6 +1016,7 @@ input, textarea{
 
 .captcha_section{
  	margin-left: 2%;
+ 	margin-bottom: 2%;
  }
 .captcha_section .margin_top{
 	margin-top: 27%;
@@ -1060,6 +1084,7 @@ input, textarea{
 }
 #log_scroll h3{
 	text-align: center;
+	margin-top: 0px;
 }
 #log_scroll hr{
 	margin-top: 5px;

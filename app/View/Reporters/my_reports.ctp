@@ -5,7 +5,6 @@
 		<?php
 			if (empty($my_profiles)) { ?>
 				<p class="warning" style="font-size : 20px;"><?php echo "You have no profile!"; ?></p>
-				<p class="warning_solve"><a href="<?php echo $this->webroot;?>create_report"></a></p>
 				<div class="col-sm-6 col-sm-offset-3 ">
 		            <a class="btn btn  btn_service pull-left" href="<?php echo $this->webroot;?>report_found">Report Found</a>
 		            <a class="btn btn btn_service pull-right" href="<?php echo $this->webroot;?>report_missing">Report Missing</a>
@@ -34,6 +33,7 @@
 					<img class="img-thumbnail img_result" src="<?php echo $image_link;?>">
 				</div>
 				<div class="col-sm-4">
+					<a href="<?php echo $this->webroot;?>profiles/full_profile/<?php echo $item['id'];?>">
 						<h4><?php echo $name;?></h4>							
 						<p>
 							<?php echo $item['missing_city'];?>,&nbsp;
@@ -44,6 +44,7 @@
 								<span class="tooltip_check" data-toggle="tooltip" data-placement="top" title="This profile is verified."><i class="fa fa-check-square-o"></i>Verified</span>
 							<?php endif; ?>
 						</p>
+					</a>
 				</div>
 				<div class="col-sm-3">
 					<?php

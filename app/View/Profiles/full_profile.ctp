@@ -122,6 +122,13 @@
 								</a>
 							</div>
 								
+						<?php } ?> 
+						<?php if (empty($profile['Profile']['image_link_1']) && empty($profile['Profile']['image_link_2']) && empty($profile['Profile']['image_link_3'])) { ?>
+							<div class=" search_result_Details_img">
+								<a class="image-popup-no-margins" href="<?php echo $this->webroot . "img/no_image_available.png" ?>">
+									<img class="img_popover_1" src="<?php echo $this->webroot . "img/no_image_available.png" ?>">
+								</a>
+							</div>
 						<?php } ?>
 				</div>
 
@@ -180,7 +187,7 @@
 				<?php } ?>
 			</div>
 
-			<div class="col-sm-12">
+			<div class="col-sm-12 log_section">
 				<div id="log_scroll">
 			        <h3>Profile Log Book</h3>
 			        <hr>
