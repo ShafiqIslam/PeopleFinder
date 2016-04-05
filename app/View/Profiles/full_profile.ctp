@@ -56,9 +56,13 @@
 				<div class="col-sm-5"><h4>Person's Status</h4></div>
 				<?php
 					if ($profile['Profile']['person_status'] == 'Found') { ?>
-						<div class="col-sm-offset-1 col-sm-6"><h4 class="<?Php echo "if_found" ?>"><?php echo $profile['Profile']['person_status'];?></h4></div>
+						<div class="col-sm-offset-1 col-sm-6">
+							<h4 class="<?Php echo "if_found" ?>"><?php echo $profile['Profile']['person_status'];?></h4>
+						</div>
 					<?php } else { ?>
-						<div class="col-sm-offset-1 col-sm-6"><h4 class="<?Php echo "if_missing" ?>"><?php echo $profile['Profile']['person_status'];?></h4></div>
+						<div class="col-sm-offset-1 col-sm-6">
+							<h4 class="<?Php echo "if_missing" ?>"><?php echo $profile['Profile']['person_status'];?></h4>
+						</div>
 					<?php } ?>
 			</div>
 			<div class="row">
@@ -93,27 +97,34 @@
 				<div class="col-sm-5"><h4>Physical illness</h4></div>
 				<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['physical_illness'];?></h4></div>
 			</div>
+			<hr> 
 
-<<<<<<< HEAD
 			<?php if($profile['Reporter']['reporter_id']!=$logged['id']) { ?>
 			<div class="reporter_details">
 				<h3>Reporter Details :</h3>
 				<hr>
-=======
-			<?php if($profile['Profile']['reporter_id']!=$logged['id']) { ?>
-			<div>
-				<h3>Reporter Details</h3>
->>>>>>> df614eb11c2f9ac72af495fb704430b55407b908
 				<?php
 				$first_name = !empty($profile['Reporter']['first_name']) ? $profile['Reporter']['first_name'] : "";
 				$second_name = !empty($profile['Reporter']['second_name']) ? $profile['Reporter']['second_name'] : "";
 				$last_name = !empty($profile['Reporter']['last_name']) ? $profile['Reporter']['last_name'] : "";
 				$reporter_name = $first_name . " " . $second_name . " " . $last_name;
 				?>
-				<p>Name: <?php echo $reporter_name;?></p>
-				<p>Email: <?php echo (!empty($logged)) ? $profile['Reporter']['email'] : "You have to login to obtain the email.";?></p>
-				<p>Address: <?php echo $profile['Reporter']['resident_country'];?></p>
-				<p>Nationality: <?php echo $profile['Reporter']['nationality'];?></p>
+				<div class="row">
+					<div class="col-sm-5"><h4>Reporter Name</h4></div>
+					<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $reporter_name;?></h4></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-5"><h4>Email</h4></div>
+					<div class="col-sm-offset-1 col-sm-6"><h4><?php echo (!empty($logged)) ? $profile['Reporter']['email'] : "You have to login to obtain the email.";?></h4></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-5"><h4>Address</h4></div>
+					<div class="col-sm-offset-1 col-sm-6"><h4><span class="bfh-countries" data-country="<?php echo $profile['Reporter']['resident_country'];?>" data-flags="true"></span></h4></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-5"><h4>Nationality</h4></div>
+					<div class="col-sm-offset-1 col-sm-6"><h4><span class="bfh-countries" data-country="<?php echo $profile['Reporter']['nationality'];?>" data-flags="true"></span></h4></div>
+				</div>
 				<?php if($profile['Reporter']['account_type']=="Verified") { ?>
 					<p>This Reporter is verified</p>
 				<?php } ?>
@@ -121,23 +132,36 @@
 			<?php } ?>
 
 			<?php if(!empty($claimed) && $claimed==1) { ?>
-				<div>
+				<div class="reporter_details">
 					<h3>Claimed Reporter Details</h3>
+					<hr>
 					<?php
 					$first_name = !empty($claimed_by['Reporter']['first_name']) ? $claimed_by['Reporter']['first_name'] : "";
 					$second_name = !empty($claimed_by['Reporter']['second_name']) ? $claimed_by['Reporter']['second_name'] : "";
 					$last_name = !empty($claimed_by['Reporter']['last_name']) ? $claimed_by['Reporter']['last_name'] : "";
 					$claimer_name = $first_name . " " . $second_name . " " . $last_name;
 					?>
-					<p>Name: <?php echo $claimer_name;?></p>
-					<p>Email: <?php echo (!empty($logged)) ? $claimed_by['Reporter']['email'] : "You have to login to obtain the email.";?></p>
-					<p>Address: <?php echo $claimed_by['Reporter']['resident_country'];?></p>
-					<p>Nationality: <?php echo $claimed_by['Reporter']['nationality'];?></p>
+					<div class="row">
+						<div class="col-sm-5"><h4>Clamier Name</h4></div>
+						<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $claimer_name;?></h4></div>
+					</div>
+					<div class="row">
+						<div class="col-sm-5"><h4>Email</h4></div>
+						<div class="col-sm-offset-1 col-sm-6"><h4><?php echo (!empty($logged)) ? $claimed_by['Reporter']['email'] : "You have to login to obtain the email.";?></h4></div>
+					</div>
+					<div class="row">
+						<div class="col-sm-5"><h4>Address</h4></div>
+						<div class="col-sm-offset-1 col-sm-6"><h4><span class="bfh-countries" data-country="<?php echo $claimed_by['Reporter']['resident_country'];?>" data-flags="true"></span></h4></div>
+					</div>
+					<div class="row">
+						<div class="col-sm-5"><h4>Nationality</h4></div>
+						<div class="col-sm-offset-1 col-sm-6"><h4><span class="bfh-countries" data-country="<?php echo $claimed_by['Reporter']['nationality'];?>" data-flags="true"></span></h4></div>
+					</div>
 					<?php if($claimed_by['Reporter']['account_type']=="Verified") { ?>
 						<p>This Reporter is verified</p>
 					<?php } ?>
 				</div>
-			<?php } else if(!empty($claimed) && $claimed==2) { ?>
+			<<?php } else if(!empty($claimed) && $claimed==2) { ?>
 				<div>
 					<h3>Claimed Reporter Details</h3>
 					<p>Claimed By Admin.</p>
