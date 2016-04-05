@@ -56,7 +56,27 @@
 					</li>
 					</a>
 					<?php endforeach; ?>
-				</ul>	
+				</ul>
+
+				<div class="search_pagination">
+					<?php
+						$next = $offset+$limit;
+						$prev = $offset-$limit;
+						$next_link = $this->webroot . 'profiles/search/' . $next ;
+						$prev_link = $this->webroot . 'profiles/search/' . $prev ;
+
+						$showing_from = $offset+1;
+						$showing_to = $offset+$limit;
+						if($showing_to > $count)
+							$showing_to = $count;
+					?>
+
+					<a href="<?php echo $prev_link?>" class="<?php if($prev<0) echo 'disabled_link'?>">prev</a>
+
+					<a href="<?php echo $next_link?>" class="<?php if($next>=$count) echo 'disabled_link'?>">next</a>
+
+					Showing <?php echo $showing_from?> to <?php echo $showing_to?> of <?php echo $count?> results.
+				</div>
 			</div>
 			<?php } ?>
 		</div>

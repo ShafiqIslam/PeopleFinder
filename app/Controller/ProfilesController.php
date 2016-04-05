@@ -284,7 +284,7 @@ class ProfilesController extends AppController {
 		return $this->redirect(array('controller' => 'reporters', 'action' => 'my_reports'));
 	}
 
-	public function search($limit = 10, $offset = 0) {
+	public function search($offset = 0, $limit = 10) {
 		set_time_limit(0);
 		$page = $subpage = $title_for_layout = "search";
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
@@ -388,11 +388,12 @@ class ProfilesController extends AppController {
 			//$query .= " LEFT JOIN `reporters` AS `Reporter` ON `Profile`.`reporter_id` = `Reporter`.`id`";
 			$query .= " WHERE $condition";
 			$query .= " ORDER BY $order";
+
 			$query_without_limit = $query;
 			$this->Session->write('search_query', $query_without_limit);
 			//AuthComponent::_setTrace($query);
 		} elseif(!empty($search_query_session) && $search_query_session!="") {
-			$query = $search_query_session;
+			$query_without_limit = $query = $search_query_session;
 		} else {
 			return $this->redirect(array('controller'=>'pages', 'action' => 'display', 'search'));
 		}
@@ -402,8 +403,10 @@ class ProfilesController extends AppController {
 		$query .= " OFFSET $offset";
 
 		$profiles = $this->Profile->query($query);
-		$count = count($profiles);
-		$this->set(compact('profiles', 'count'));
+		$profiles_count = $this->Profile->query($query_without_limit);
+		$count = count($profiles_count);
+
+		$this->set(compact('profiles', 'count', 'limit', 'offset'));
 	}
 
 	public function full_profile($id=null, $related = true) {
