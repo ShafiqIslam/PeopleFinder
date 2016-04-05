@@ -505,30 +505,55 @@ header ul li a{
 
 /*---------------Result Section---------*/
 .count_wrapper{
-	//background-color: rgba(239, 239, 239, 0.59);
 	padding-bottom: 4%;
 	padding-top: 4%;
 }
+
+.inner_counter{
+    padding: 7px 24px 7px 24px;
+}
+
 .count_wrapper h3{
 	text-align: center;
     font-weight: bold;
     font-size: 28px;
-    margin-top: 38%;
-    color: #fff;
+    //margin-top: 38%;
+    color: rgb(3, 169, 244);
 }
 .count_wrapper h2{
 	text-align: center;
 	color: #fff;
 	font-weight: bold;
 	font-size: 45px;
-	//padding-bottom: 28px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 37%;
+}
+.counter_found{
+	background-color: rgba(0, 150, 136, 0.71);
+	margin-left: 17%;
+}
+.counter_found_text{
+	background-color: rgba(30, 35, 25, 0.73);
+}
+.counter_add{
+	background-color: rgba(134, 35, 25, 0.67);
+	margin-left: 17%;
+	
 }
 
+.counter_add_text{
+	background-color: rgba(34, 6, 82, 0.58);
+}
+
+
 .counter_bg{
-	background-color: rgba(46, 189, 63, 0.65);
+	//background-color: rgba(46, 189, 63, 0.65);
     border-radius: 50%;
     width: 250px;
     height: 250px;
+
 }
 
 .count_wrapper_body{
@@ -685,16 +710,22 @@ header ul li a{
 
 .client_testi_circle{
 	background-color: rgba(18, 193, 18, 0.65);
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
 }
 .client_testi_circle h1{
-	font-size: 79px;
+	font-size: 55px;
     color: #fff;
-    padding: 30% 24%;
+    padding: 31% 26%;
 }
 
+.if_found{
+	color:green;
+}
+.if_missing{
+	color:red;
+}
 
 /*--------------Search Page-------------*/
 .sign_up_page{

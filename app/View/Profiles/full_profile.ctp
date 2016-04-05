@@ -48,19 +48,24 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-5"><h4>Blood Group</h4></div>
-				<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['blood_type'];?></h4></div>
+				<div class="col-sm-offset-1 col-sm-6"><h4 style="color: red;"><?php echo $profile['Profile']['blood_type'];?></h4></div>
 			</div>
 			<div class="row">
 				<div class="col-sm-5"><h4>Person's Status</h4></div>
-				<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['person_status'];?></h4></div>
+				<?php
+					if ($profile['Profile']['person_status'] == 'Found') { ?>
+						<div class="col-sm-offset-1 col-sm-6"><h4 class="<?Php echo "if_found" ?>"><?php echo $profile['Profile']['person_status'];?></h4></div>
+					<?php } else { ?>
+						<div class="col-sm-offset-1 col-sm-6"><h4 class="<?Php echo "if_missing" ?>"><?php echo $profile['Profile']['person_status'];?></h4></div>
+					<?php } ?>
 			</div>
 			<div class="row">
 				<div class="col-sm-5"><h4>Nationality</h4></div>
-				<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['nationality'];?></h4></div>
+				<div class="col-sm-offset-1 col-sm-6"><h4><span class="bfh-countries" data-country="<?php echo $profile['Profile']['nationality'];?>" data-flags="true"></span></h4></div>
 			</div>
 			<div class="row">
 				<div class="col-sm-5"><h4>Resident Country</h4></div>
-				<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['resident_country'];?></h4></div>
+				<div class="col-sm-offset-1 col-sm-6"><h4><span class="bfh-countries" data-country="<?php echo $profile['Profile']['resident_country'];?>" data-flags="true"></span></h4></div>
 			</div>
 			<div class="row">
 				<div class="col-sm-5"><h4>Resident City</h4></div>

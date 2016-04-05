@@ -213,13 +213,22 @@
         <!--===========Counter Section=============-->
 <div id="first_result" class="container-fluid count_wrapper parallax">
     <div class="container count_wrapper_body">
-        <div class="col-sm-4 counter_bg pull-left">
+        <div class="col-sm-4 col-sm-offset-1">
+            <div class="counter_bg counter_found">
+                <div class="inner_counter">
+                    <h2 class="timer count-title counter_found_text" id="count-number" data-to="<?php echo $profile_count['found'];?>" data-speed="1500"></h2>
+                </div>
+            </div>
             <h3>Found People</h3>
-            <h2 class="timer count-title" id="count-number" data-to="<?php echo $profile_count['found'];?>" data-speed="1500"></h2>
         </div>
-        <div class="col-sm-offset-4 col-sm-4 counter_bg pull-right">
+        
+        <div class="col-sm-offset-2 col-sm-4">
+            <div class="counter_bg counter_add">
+            <div class="inner_counter">
+                <h2 class="timer count-title counter_add_text" id="count-number" data-to="<?php echo $profile_count['total'];?>" data-speed="1500"></h2> 
+            </div>
+            </div>
             <h3>Added Profile</h3>
-            <h2 class="timer count-title" id="count-number" data-to="<?php echo $profile_count['total'];?>" data-speed="1500"></h2>
         </div>
     </div>
 </div>
