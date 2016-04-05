@@ -60,78 +60,68 @@
                                 </ul>
                             </li>
                             <?php if(!empty($logged)) { ?>
-                            <li class="dropdown <?php if($page=='my_account') echo '';?>">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account</a>
-                                <ul class="dropdown-menu dropdown_menu_modal my_account_modal">
-                                    <span class="glyphicon glyphicon-triangle-top"></span>
-                                    <li>
-                                        <div class="main_account_body row">
-                                            <div class="account_title">
-                                                <h4><?php echo $logged['name'];?></h4>
-                                                <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount btn_myaccount_original ">My Account</a>
+                                <li class="dropdown <?php if($page=='my_account') echo '';?>">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account</a>
+                                    <ul class="dropdown-menu dropdown_menu_modal my_account_modal">
+                                        <span class="glyphicon glyphicon-triangle-top"></span>
+                                        <li>
+                                            <div class="main_account_body row">
+                                                <div class="account_title">
+                                                    <h4><?php echo $logged['name'];?></h4>
+                                                    <a href="<?php echo $this->webroot;?>my_reports" class="btn btn_myaccount btn_myaccount_original"><span><i class="fa fa-bell"></i></span>My Reports</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <hr>
-                                        <div class="my_account_options">
-                                            <a href="<?php echo $this->webroot;?>my_reports" class="btn btn_myaccount pull-left"><span><i class="fa fa-bell"></i></span>Reports</a>
-                                            <a href="<?php echo $this->webroot;?>reporters/logout" class="btn btn_sign_out pull-right"><span><i class="fa fa-sign-out fa-lg"></i></span>Signout</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
+                                            <hr>
+                                            <div class="my_account_options">
+                                                <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount pull-left">My Account</a>
+                                                <a href="<?php echo $this->webroot;?>reporters/logout" class="btn btn_sign_out pull-right"><span><i class="fa fa-sign-out fa-lg"></i></span>Signout</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                             <?php } else { ?>
-                            <li class="<?php if($page=='signup') echo 'active';?>">
-                                <a class="" href="<?php echo $this->webroot;?>signup">Sign up</a>
-                            </li>
-                           <!-- <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="modal" data-target="#login1">Login</a></li>-->
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login</a>
-                                <ul class="dropdown-menu dropdown_menu_modal">
-                                    <span class="glyphicon glyphicon-triangle-top"></span>
-                                    <li>
-                                        <form  name="login_form" enctype="multipart/form-data" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
-                                            <div class="form-group">
-                                                <label for="inputEmail" class="col-sm-12 control-label">Email</label>
-                                                <div class="col-sm-12">
-                                                    <input type="email" name="data[Reporter][email]" class="form-control" id="" placeholder="Email" required>
+                                <li class="<?php if($page=='signup') echo 'active';?>">
+                                    <a class="" href="<?php echo $this->webroot;?>signup">Sign up</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login</a>
+                                    <ul class="dropdown-menu dropdown_menu_modal">
+                                        <span class="glyphicon glyphicon-triangle-top"></span>
+                                        <li>
+                                            <form  name="login_form" enctype="multipart/form-data" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label for="inputEmail" class="col-sm-12 control-label">Email</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="email" name="data[Reporter][email]" class="form-control" id="" placeholder="Email" required>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="form-group">
-                                                <label for="inputPassword" class="col-sm-12 control-label">Password</label>
-                                                <div class="col-sm-12">
-                                                    <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward" required>
+                                                <div class="form-group">
+                                                    <label for="inputPassword" class="col-sm-12 control-label">Password</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward" required>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-6 col-sm-6">
-                                                    <button type="submit" class="btn btn-primary btn_search">Login</button>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-6 col-sm-6">
+                                                        <button type="submit" class="btn btn-primary btn_search">Login</button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12 forget_pass">
-                                                    <p><a href="<?php echo $this->webroot;?>reporters/forgot_password">Forgot your password?</a></p>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12 forget_pass">
+                                                        <p><a href="<?php echo $this->webroot;?>reporters/forgot_password">Forgot your password?</a></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
                             <?php } ?>
-
                         </ul>
                     </div>   
                 </div>
             </nav>
-
-            <?php if(empty($logged)) { ?>
-
-            
-            <?php } else { ?>
-           
-            <?php } ?>
 
            <!-- <div class="container-fluid bdr_btm_header"></div>-->
         </header><!--Menubar End-->
