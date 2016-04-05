@@ -63,6 +63,7 @@ class TestimonialsController extends AppController {
 		SET `testimonials`.`active` = NOT `testimonials`.`active`
 		WHERE `testimonials`.`id` = $id
 		";
+
 		$this->Testimonial->query($sql);
 		$this->Session->setFlash(__('The testimonial has been changed.'));
 		return $this->redirect(array('action' => 'index'));
@@ -89,15 +90,14 @@ class TestimonialsController extends AppController {
 	*/
 
 	public function add() {
-		$logged = $this->Session->read('logged_user');
-		$reporter_id = $logged['id'];
-
-		$this->loadModel('Reporter');
-		$reporter = $this->Reporter->findById($reporter_id);
 		if($this->request->is('post')) {
-			AuthComponent::_setTrace($this->request->data);
+			$logged = $this->Session->read('logged_user');
+			$this->request->data['Testimonial']['reporter_id'] = $logged['id'];
+
+			$this->Testimonial->create();
+			$this->Testimonial->save($this->request->data);
+			return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
 		}
-		$this->set(compact('reporter'));
 	}
 
 	public function get_testimonials($limit) {
