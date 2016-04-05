@@ -8,8 +8,8 @@ class ReportersController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout', 'myaccount', 'my_reports', 'change_pass', 'upload_image');
-    
+        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout', 'myaccount', 'my_reports', 'change_account', 'change_pass', 'upload_image');
+
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
 			$this->set(compact('page', 'subpage', 'title_for_layout'));
@@ -356,6 +356,45 @@ class ReportersController extends AppController {
 				$this->Session->setFlash('Password Changed.', 'default', array('class'=>'success_msg'), 'flash');
 			}
 		}
+	}
+
+	public function change_account() {
+		$page = $subpage = $title_for_layout = 'my_account';
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
+		$logged_user = $this->Session->read('logged_user');
+		if(empty($logged_user)) {
+			return $this->redirect(array('controller'=>'reporters', 'action' => 'login'));
+		}
+
+		$id = $logged_user['id'];
+		$this->Reporter->recursive = 0;
+
+		if($this->request->is('post')) {
+			$verified = 0;
+			$processed_data = $this->_process_images($this->request->data);
+			if(is_array($processed_data)) {
+				$verified = 1;
+				$this->request->data = $processed_data;
+			}
+
+			$this->Reporter->id = $id;
+			if ($this->Reporter->save($this->request->data)) {
+				if($verified) {
+					$user = new UsersController;
+					$admin_email = $user->get_admin_email();
+					$this->_send_notification_mail($admin_email, 'Admin', $id);
+				}
+
+				$this->Session->setFlash('Account Changed.', 'default', array('class'=>'success_msg'), 'flash');
+				return $this->redirect(array('action' => 'change_account'));
+			} else {
+				$this->Session->setFlash('Password Changed.', 'default', array('class'=>'error_msg'), 'flash');
+				return $this->redirect(array('action' => 'change_account'));
+			}
+		}
+
+		$this->request->data = $this->Reporter->findById($id);
 	}
 
 	/*

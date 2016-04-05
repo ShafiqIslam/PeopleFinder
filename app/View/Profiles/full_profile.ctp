@@ -2,9 +2,7 @@
 <?php if(!empty($flash)) { ?>
 	<div class="container flash_message">
 		<?php echo $flash;?>
-		<div class="">
-			<button class="flash_close_btn">close</button>
-		</div>
+		<button class="flash_close_btn">close</button>
 	</div>
 <?php } ?>
 

@@ -7,7 +7,7 @@
 		</div>
 		<hr>
 		<div class="myaccount_page">
-			<a href="#" class="col-sm-offset-2 col-sm-4 account_edit">
+			<a href="<?php echo $this->webroot;?>change_account" class="col-sm-offset-2 col-sm-4 account_edit">
 				<h3>Edit Account <span><i class="fa fa-arrow-right"></i></span></h3>
 				<hr>
 				<h4>Edit & Control your Account From Here.</h4>

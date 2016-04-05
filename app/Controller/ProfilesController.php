@@ -250,10 +250,11 @@ class ProfilesController extends AppController {
 			if($this->Profile->save($this->request->data)) {
 				$this->request->data['Profile']['id'] = $id;
 				$this->_facepp_upload($this->request->data);
-				$this->Session->write('success', true);
+				$this->Session->setFlash('Your Report has been updated.', 'default', array('class'=>'success_msg'), 'flash');
 			}
 			else
-				$this->Session->write('success', false);
+				$this->Session->setFlash('Your Report can\'t be saved right now. Try again later.', 'default', array('class'=>'error_msg'), 'flash');
+
 			return $this->redirect(array('action' => 'edit', $id));
 		}
 		$this->set(compact('profile'));

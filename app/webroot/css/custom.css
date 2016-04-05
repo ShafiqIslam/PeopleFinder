@@ -858,7 +858,7 @@ input, textarea{
 /*-----------Flash Message--------*/
 
 .flash_message{
-    background: #fff;
+	background: transparent;
     z-index: 100;
     box-shadow: 0px 0px 4px black;
 	padding: 0px 0px;

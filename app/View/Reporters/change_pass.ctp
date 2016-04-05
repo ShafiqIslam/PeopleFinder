@@ -1,12 +1,9 @@
 <div style="clear: both;"></div>
-
 <?php $flash = $this->Session->flash('flash'); ?>
 <?php if(!empty($flash)) { ?>
-	<div class="container flash_message">
+	<div class="flash_message">
 		<?php echo $flash;?>
-		<div class="">
-			<button class="flash_close_btn">&#215;</button>
-		</div>
+		<button class="flash_close_btn">&#215;</button>
 	</div>
 <?php } ?>
 
