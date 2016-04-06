@@ -19,6 +19,8 @@
 
         <li  class="node <?php if($controller == 'testimonials') echo 'selected';?>"><?php echo $this->Html->link(__('Testimonials'), array('controller' => 'testimonials' ,'action' => 'index', 'admin' => true)); ?></li>
 
+        <li  class="node <?php if($controller == 'removed_profiles') echo 'selected';?>"><?php echo $this->Html->link(__('Removed Profiles'), array('controller' => 'removed_profiles' ,'action' => 'index', 'admin' => true)); ?></li>
+
         <?php if($logged_user['role'] == 'admin') { ?>
             <li class="node <?php if($controller == 'users') echo 'selected';?>"><?php echo $this->Html->link(__('CMS Users'), array('controller' => 'users', 'action' => 'index')); ?>
             </li>

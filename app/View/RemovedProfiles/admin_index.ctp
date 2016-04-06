@@ -2,7 +2,7 @@
 	$(function () {
 		$("#go").on('click', function () {
 			var keyword = $.trim($('#keyword').val());
-			location.href = ROOT+ 'admin/profiles/index/keyword:' + keyword;
+			location.href = ROOT+ 'admin/removed_profiles/index/keyword:' + keyword;
 		})
 	});
 </script>
@@ -31,7 +31,7 @@
 				?>
 			</p>
 		</div>
-		<h2><?php echo __('Profiles'); ?></h2>
+		<h2><?php echo __('Removed RemovedProfiles'); ?></h2>
 
 		<div class="form-horizontal">
 			<div class="form-group">
@@ -53,31 +53,42 @@
 				<th><?php echo $this->Paginator->sort('id'); ?></th>
 				<th><?php echo $this->Paginator->sort('person_status'); ?></th>
 				<th><?php echo $this->Paginator->sort('first_name'); ?></th>
+				<th><?php echo $this->Paginator->sort('second_name'); ?></th>
 				<th><?php echo $this->Paginator->sort('last_name'); ?></th>
+				<th><?php echo $this->Paginator->sort('birthdate'); ?></th>
+				<th><?php echo $this->Paginator->sort('blood_type'); ?></th>
+				<th><?php echo $this->Paginator->sort('nationality'); ?></th>
 				<th><?php echo $this->Paginator->sort('gender'); ?></th>
 				<th><?php echo $this->Paginator->sort('missing_country'); ?></th>
 				<th><?php echo $this->Paginator->sort('missing_city'); ?></th>
+				<th><?php echo $this->Paginator->sort('verified_profile'); ?></th>
 				<th><?php echo $this->Paginator->sort('reporter_id'); ?></th>
+				<th><?php echo $this->Paginator->sort('created'); ?></th>
 				<th class="actions"><?php echo __('Actions'); ?></th>
 			</tr>
 			</thead>
 			<tbody>
 			<?php foreach ($profiles as $profile): ?>
-			<tr>
-				<td><?php echo h($profile['Profile']['id']); ?>&nbsp;</td>
-				<td><?php echo h($profile['Profile']['person_status']); ?>&nbsp;</td>
-				<td><?php echo h($profile['Profile']['first_name']); ?>&nbsp;</td>
-				<td><?php echo h($profile['Profile']['last_name']); ?>&nbsp;</td>
-				<td><?php echo h($profile['Profile']['gender']); ?>&nbsp;</td>
-				<td><?php echo h($profile['Profile']['missing_country']); ?>&nbsp;</td>
-				<td><?php echo h($profile['Profile']['missing_city']); ?>&nbsp;</td>
-				<td><?php echo h($profile['Reporter']['first_name']); ?>&nbsp;</td>
-				<td class="actions">
-					<a class="btn btn-info" target="_blank" href="<?php echo $this->webroot;?>profiles/full_profile/<?php echo $profile['Profile']['id'];?>"><i class="fa fa-eye"></i></a>
-					<a class="btn btn-info" href="<?php echo $this->webroot;?>admin/profiles/edit/<?php echo $profile['Profile']['id'];?>"><i class="fa fa-pencil"></i></a>
-					<?php echo $this->Form->postLink('X', array('action' => 'delete', $profile['Profile']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $profile['Profile']['id']), 'class' => 'btn btn-info')); ?>
-				</td>
-			</tr>
+				<tr>
+					<td><?php echo h($profile['RemovedProfile']['id']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['person_status']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['first_name']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['second_name']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['last_name']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['birthdate']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['blood_type']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['nationality']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['gender']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['missing_country']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['missing_city']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['verified_profile']); ?>&nbsp;</td>
+					<td><?php echo h($profile['Reporter']['first_name']); ?>&nbsp;</td>
+					<td><?php echo h($profile['RemovedProfile']['created']); ?>&nbsp;</td>
+					<td class="actions">
+						<?php echo $this->Html->link(__('View'), array('action' => 'view', $profile['RemovedProfile']['id'])); ?>
+						<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $profile['RemovedProfile']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $profile['RemovedProfile']['id']))); ?>
+					</td>
+				</tr>
 			<?php endforeach; ?>
 			</tbody>
 		</table>

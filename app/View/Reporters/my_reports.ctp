@@ -1,3 +1,11 @@
+<?php $flash = $this->Session->flash('flash'); ?>
+<?php if(!empty($flash)) { ?>
+	<div class="container flash_message">
+		<?php echo $flash;?>
+		<button class="flash_close_btn">close</button>
+	</div>
+<?php } ?>
+
 <div class="container">
 	<div class="my_report_page result_body">
 		<h1>Report List</h1>

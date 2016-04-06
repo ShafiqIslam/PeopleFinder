@@ -278,9 +278,12 @@ class ProfilesController extends AppController {
 
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Profile->delete()) {
-			$this->Session->setFlash(__('The profile has been deleted.'));
+			$removed['RemovedProfiles'] = $profile['Profile'];
+			$this->loadModel('RemovedProfiles');
+			$this->RemovedProfiles->save($removed);
+			$this->Session->setFlash('The profile has been deleted.', 'default', array('class'=>'success_msg'), 'flash');
 		} else {
-			$this->Session->setFlash(__('The profile could not be deleted. Please, try again.'));
+			$this->Session->setFlash('The profile could not be deleted. Please, try again.', 'default', array('class'=>'error_msg'), 'flash');
 		}
 		return $this->redirect(array('controller' => 'reporters', 'action' => 'my_reports'));
 	}
