@@ -632,16 +632,21 @@ class ProfilesController extends AppController {
 
 		$logged = $this->Session->read('logged_user');
 		$log['Log']['profile_id'] = $id;
-		if($logged['is_admin']) {
-			$log['Log']['user_id'] = $logged['id'];
-			$who = "Admin";
+		if(!empty($logged)) {
+			if($logged['is_admin']) {
+				$log['Log']['user_id'] = $logged['id'];
+				$who = "Admin";
+			}
+			else {
+				$log['Log']['reporter_id'] = $logged['id'];
+				$reporter = new ReportersController();
+				$who = $reporter->get_name($logged['id']);
+			}
+		} else {
+			$who = "Guest";
 		}
-		else {
-			$log['Log']['reporter_id'] = $logged['id'];
-			$reporter = new ReportersController();
-			$who = $reporter->get_name($logged['id']);
-		}
-		$log['Log']['message'] = "Reported abuse by " . $who . "Total times of abuse reported: <b>" . $data['Profile']['abuse_counter'] . "</b> " . $deleted_msg;
+
+		$log['Log']['message'] = "Reported abuse by " . $who . ". Total times of abuse reported: <b>" . $data['Profile']['abuse_counter'] . "</b> " . $deleted_msg;
 		$this->loadModel('Log');
 		$this->Log->create();
 		$this->Log->save($log);

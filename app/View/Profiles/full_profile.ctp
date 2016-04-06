@@ -236,14 +236,16 @@
 			        <h3>Profile Log Book</h3>
 			        <hr>
 			        <ul>
-						<?php if(!empty($profile['Log'])) { foreach($profile['Log'] as $key => $log) { ?>
-			        		<li>
-								<strong>
-									<?php echo date_format(date_create($log['created']),'h:m A - d M, Y') . ": "; ?>
-								</strong>
-								<code><?php echo $log['message']; ?></code>
-							</li>
-						<?php } } else { ?>
+						<?php if(!empty($profile['Log'])) { ?>
+							<?php foreach($profile['Log'] as $key => $log) { ?>
+								<li>
+									<strong>
+										<?php echo date_format(date_create($log['created']),'h:m A - d M, Y') . ": "; ?>
+									</strong>
+									<code><?php echo $log['message']; ?></code>
+								</li>
+							<?php } ?>
+						<?php } else { ?>
 			        		<li>No log yet to show for this profile.</li>
 						<?php } ?>
 			        </ul>

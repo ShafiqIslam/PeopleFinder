@@ -9,7 +9,7 @@ $(document).ready(function(){
     });
 
     $('.flash_close_btn').click(function(){
-        $('.flash_message').hide('fast');
+        $(".flash_message").fadeOut("slow");
     });
 });
 
