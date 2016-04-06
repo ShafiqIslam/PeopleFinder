@@ -946,10 +946,43 @@ input, textarea{
 }
 
 .related_search ul li img{
-	max-width: 120px;
-	max-height: 82px;
+	width: 120px;
+	height: 120px;
 }
 
+
+.search_pagination{
+	margin-bottom: 25px;
+}
+.search_pagination .fa{
+	font-size: 40px;
+	position: absolute;
+}
+.search_pagination .fa-long-arrow-left{
+	left: 110px;
+    //right: 28px;
+    top: -3px;
+}
+.search_pagination a:hover .fa-long-arrow-left{
+	//left: 110px;
+    right: 28px;
+    top: -3px;
+}
+
+.search_pagination .search_info{
+	text-align: center;
+	font-size: 17px;
+}
+.previous_arrow{
+
+}
+.next_arrow{
+	text-align: left;
+}
+
+.search_pagination .btn-primary{
+	background-color: red;
+}
 
 .search_result_details_wrapper .btn_abuse{
 	width: 97%;
