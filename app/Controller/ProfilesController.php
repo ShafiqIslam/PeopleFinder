@@ -1,6 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('ReportersController', 'Controller');
+App::uses('UsersController', 'Controller');
 
 class ProfilesController extends AppController {
 
@@ -8,7 +9,7 @@ class ProfilesController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted', 'search', 'full_profile', 'edit', 'delete', 'test', 'found', 'maybe_found', 'missing');
+        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted', 'search', 'full_profile', 'edit', 'delete', 'test', 'found', 'maybe_found', 'missing', 'abuse');
 
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -517,7 +518,7 @@ class ProfilesController extends AppController {
 		$this->Profile->id = $id;
 		$this->Profile->save($data);
 
-		$this->Session->setFlash('Profile Updated. And Notified The Reporter', 'default', array(), 'flash');
+		$this->Session->setFlash('Profile Updated. And Notified The Reporter', 'default', array('class'=>'success_msg'), 'flash');
 		return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
 	}
 
@@ -573,7 +574,79 @@ class ProfilesController extends AppController {
 			}
 		}
 
-		$this->Session->setFlash('Profile Reverted To Missing. And Logged The Found Claimer as Abuse.', 'default', array(), 'flash');
+		$this->Session->setFlash('Profile Reverted To Missing. And Logged The Found Claimer as Abuse.', 'default', array('class'=>'error_msg'), 'flash');
+		return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
+	}
+
+	public function abuse($id) {
+		if (!$this->Profile->exists($id)) {
+			throw new NotFoundException(__('Invalid profile'));
+		}
+
+		$profile = $this->Profile->findById($id);
+		$data['Profile']['abuse_counter'] = $profile['Profile']['abuse_counter'] + 1;
+		$this->Profile->id = $id;
+		$this->Profile->save($data);
+
+
+		$status = ($profile['Profile']['person_status'] == 'Maybe Found') ? 'Missing' : $profile['Profile']['person_status'];
+
+		$first_name = !empty($profile['Profile']['first_name']) ? $profile['Profile']['first_name'] : "";
+		$second_name = !empty($profile['Profile']['second_name']) ? $profile['Profile']['second_name'] : "";
+		$last_name = !empty($profile['Profile']['last_name']) ? $profile['Profile']['last_name'] : "";
+		$name = $first_name . " " . $second_name . " " . $last_name;
+
+		$first_name = !empty($profile['Reporter']['first_name']) ? $profile['Reporter']['first_name'] : "";
+		$second_name = !empty($profile['Reporter']['second_name']) ? $profile['Reporter']['second_name'] : "";
+		$last_name = !empty($profile['Reporter']['last_name']) ? $profile['Reporter']['last_name'] : "";
+		$reporter_name = $first_name . " " . $second_name . " " . $last_name;
+
+		$user = new UsersController;
+		$admin_email = $user->get_admin_email();
+
+		$deleted_msg = "";
+
+		if($data['Profile']['abuse_counter'] == 1) {
+			$msg = "Your report on <strong>$status</strong> of <strong>$name</strong> has been reported abuse. Please, click on the link below to review the report.";
+			//$this->_send_abuse_mail($profile['Reporter']['email'], $msg, $profile['Profile']['id'], $reporter_name);
+
+			$msg = "The report on <strong>$status</strong> of <strong>$name</strong> by $reporter_name has been reported abuse. Please, click on the link below to review the report.";
+			//$this->_send_abuse_mail($admin_email, $msg, $profile['Profile']['id'], 'Admin');
+		} else if ($data['Profile']['abuse_counter'] == 200) {
+			$this->Profile->id = $id;
+			$this->Profile->delete();
+
+			$profile['Profile']['abuse_counter'] = 200;
+			$removed['RemovedProfiles'] = $profile['Profile'];
+			$this->loadModel('RemovedProfiles');
+			$this->RemovedProfiles->save($removed);
+
+			$msg = "Your report on <strong>$status</strong> of <strong>$name</strong> has been reported abuse 200 times and has been deleted automatically.";
+			$this->_send_abuse_mail($profile['Reporter']['email'], $msg, $profile['Profile']['id'], $reporter_name);
+
+			$msg = "The report on <strong>$status</strong> of <strong>$name</strong> by $reporter_name has been reported abuse 200 times and has been deleted automatically.";
+			$this->_send_abuse_mail($admin_email, $msg, $profile['Profile']['id'], 'Admin');
+
+			$deleted_msg = "This Profile has been removed according to too many abuse reports.";
+		}
+
+		$logged = $this->Session->read('logged_user');
+		$log['Log']['profile_id'] = $id;
+		if($logged['is_admin']) {
+			$log['Log']['user_id'] = $logged['id'];
+			$who = "Admin";
+		}
+		else {
+			$log['Log']['reporter_id'] = $logged['id'];
+			$reporter = new ReportersController();
+			$who = $reporter->get_name($logged['id']);
+		}
+		$log['Log']['message'] = "Reported abuse by " . $who . "Total times of abuse reported: <b>" . $data['Profile']['abuse_counter'] . "</b> " . $deleted_msg;
+		$this->loadModel('Log');
+		$this->Log->create();
+		$this->Log->save($log);
+
+		$this->Session->setFlash('Profile reported as Abuse. ' . $deleted_msg, 'default', array('class'=>'error_msg'), 'flash');
 		return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
 	}
 
@@ -625,6 +698,80 @@ class ProfilesController extends AppController {
 			array_push($images, $data['Profile']['image_link_3']);
 		$this->facepp_add_to_group($group, $person, $images);
 		return true;
+	}
+
+	private function _send_abuse_mail($mail, $msg, $profile_id, $name) {
+		$profile_link = "http://" . $_SERVER['HTTP_HOST'] . $this->webroot . "profiles/full_profile/" . $profile_id . "/0";
+		$subject = "Face Finder Report Abuse";
+		$body = "";
+
+		$body .= '<html>';
+		$body .= '	<body>';
+		$body .= '		<div style="width: 700px; margin:0 auto; border: 2px solid #ededed; border-radius: 7px;">';
+		$body .= '			<h2 style="font-size: 30px;text-align: center;background-color: #ededed;padding: 20px 0px;margin-top: 0px;">Abuse Report</h2>';
+		$body .= '			<div style="padding: 20px;">';
+		$body .= '				<strong style="font-size: 20px;">Hello, ' . $name . ' </strong>';
+		$body .= '				<br><br>';
+		$body .= '				<p style="font-size: 15px;"></p>';
+		$body .= '				<a style="font-size: 15px;" href="' . $profile_link . '">' . $profile_link . '</a>';
+		$body .= '				<br><br>';
+		$body .= '				<p style="font-size: 15px;">If you don\'t know anything about this email. Please just ignore it.';
+		$body .= '				<br><br><br>';
+		$body .= '				<p style="font-size: 20px;">Cordially,<br/>';
+		$body .= '				<strong style="font-size: 17px;">Face Finder Team</strong>';
+		$body .= '				<br><br>';
+		$body .= '				<img src="' . $this->webroot . 'img/logo_2.png" alt="Logo" />';
+		$body .= '				<br><br>';
+		$body .= '			</div>';
+		$body .= '		</div>';
+		$body .= '	</body>';
+		$body .= '</html>';
+
+		$plain_body = $msg;
+		$plain_body .= "<a href=\"$profile_link\">$profile_link</a>";
+
+		if($this->send_mail($mail, $name, $subject, $body, $plain_body)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private function _send_notification_mail($mail, $name, $reporter_id) {
+		$reporter_link = "http://" . $_SERVER['HTTP_HOST'] . $this->webroot . "admin/reporters/edit/" . $reporter_id;
+		$subject = "Face Finder New Verified Reporter";
+		$body = "";
+
+		$body .= '<html>';
+		$body .= '  <body>';
+		$body .= '      <div style="width: 700px; margin:0 auto; border: 2px solid #ededed; border-radius: 7px;">';
+		$body .= '          <h2  style="font-size: 30px;text-align: center;background-color: #ededed;padding: 20px 0px;margin-top: 0px;">Thanks for using FaceFinder</h2>';
+		$body .= '          <div style="padding: 20px;">';
+		$body .= '              <strong style="font-size: 20px;">Hello, ' . $name . ' </strong>';
+		$body .= '              <br><br>';
+		$body .= '              <p style="font-size: 15px;">There is a new reporter account created which has submitted an id. Please have a look on to the request.</p>';
+		$body .= '              <a style="font-size: 15px;" href="' . $reporter_link . '">'. $reporter_link .'</a>';
+		$body .= '              <br><br>';
+		$body .= '              <p style="font-size: 15px;">If you don\'t know anything about this email. Please just ignore it.';
+		$body .= '              <br><br><br>';
+		$body .= '              <p style="font-size: 20px;">Cordially,<br/>';
+		$body .= '              <strong style="font-size: 17px;">Face Finder Team</strong>';
+		$body .= '              <br><br>';
+		$body .= '              <img src="' . $this->webroot . 'img/logo_2.png" alt="Logo" />';
+		$body .= '              <br><br>';
+		$body .= '          </div>';
+		$body .= '      </div>';
+		$body .= '  </body>';
+		$body .= '</html>';
+
+		$plain_body = "Your password is: $password. ";
+		$plain_body .= "<a target=\"_blank\" href=\"$login_link\">Login now</a>";
+
+		if($this->send_mail($mail, $name, $subject, $body, $plain_body)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public function upload_image() {
