@@ -7,7 +7,7 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('admin_forgot_password');
+        $this->Auth->allow('admin_forgot_password', 'send_message');
         
     }
 
@@ -239,5 +239,51 @@ class UsersController extends AppController {
         $admin = $this->User->find('first', $options);
 
         return $admin['User']['email'];
+    }
+
+    public function send_message() {
+        $this->autoRender = false;
+        $this->autoLayout = false;
+        header('Content-Type: application/json');
+
+        if($this->request->is('post')) {
+            $mail = $this->get_admin_email();
+            $message = $this->request->data['message'];
+            $from = $this->request->data['email'];
+            $from_name = $this->request->data['name'];
+            if($this->_send_message_mail($mail, $message, $from, $from_name)) {
+                die(json_encode(array('success' => true, 'msg' => 'Your message has been sent successfully. We\'ll get to it soon.')));
+            } else die(json_encode(array('success' => false, 'msg' => 'Something bad happened!!! Please, try again.')));
+        } else die(json_encode(array('success' => false, 'msg' => 'Invalid Request')));
+    }
+
+    private function _send_message_mail($mail, $message, $from, $from_name) {
+        $subject = "Face Finder Message";
+        $body = "";
+
+        $body .= '<html>';
+        $body .= '  <body>';
+        $body .= '      <div style="width: 700px; margin:0 auto; border: 2px solid #ededed; border-radius: 7px;">';
+        $body .= '          <div style="padding: 20px;">';
+        $body .= '              <strong style="font-size: 20px;">Hello, Admin </strong>';
+        $body .= '              <br><br>';
+        $body .= '              <p style="font-size: 15px;">You have new message from: ' . $from_name . ' (' . $from . ')</p>';
+        $body .= '              <br><br>';
+        $body .= '              <p style="font-size: 15px; background: #eee">' . $message . '</p>';
+        $body .= '              <br><br>';
+        $body .= '              <p style="font-size: 15px;">If you don\'t know anything about this email. Please just ignore it.';
+        $body .= '          </div>';
+        $body .= '      </div>';
+        $body .= '  </body>';
+        $body .= '</html>';
+
+        $plain_body = "You have new message from: $from_name ($from)\n";
+        $plain_body .= $message;
+
+        if($this->send_mail($mail, $name, $subject, $body, $plain_body)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

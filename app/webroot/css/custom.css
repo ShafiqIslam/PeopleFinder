@@ -540,13 +540,13 @@ header ul li a{
 .count_wrapper h3{
 	text-align: center;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 40px;
     //margin-top: 38%;
-    color: rgb(3, 169, 244);
+    color: rgb(28, 39, 66);
 }
 .count_wrapper h2{
 	text-align: center;
-	color: #fff;
+	color: #1C2742;
 	font-weight: bold;
 	font-size: 45px;
     width: 200px;
@@ -559,7 +559,7 @@ header ul li a{
 	margin-left: 17%;
 }
 .counter_found_text{
-	background-color: rgba(30, 35, 25, 0.73);
+	background-color: #fff;
 }
 .counter_add{
 	background-color: rgba(134, 35, 25, 0.67);
@@ -568,7 +568,7 @@ header ul li a{
 }
 
 .counter_add_text{
-	background-color: rgba(34, 6, 82, 0.58);
+	background-color: #fff;
 }
 
 
