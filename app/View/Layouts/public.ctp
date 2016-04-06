@@ -70,11 +70,10 @@
                                                     <h4><?php echo $logged['name'];?></h4>
                                                     <a href="<?php echo $this->webroot;?>my_reports" class="btn btn_myaccount btn_myaccount_original"><span><i class="fa fa-bell"></i></span>My Reports</a>
                                                 </div>
-                                            </div>
-                                            <hr>
-                                            <div class="my_account_options">
-                                                <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount pull-left">My Account</a>
-                                                <a href="<?php echo $this->webroot;?>reporters/logout" class="btn btn_sign_out pull-right"><span><i class="fa fa-sign-out fa-lg"></i></span>Signout</a>
+                                                <div class="my_account_options">
+                                                    <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount"><span><i class="fa fa-server"></i></span>My Account</a>
+                                                    <a href="<?php echo $this->webroot;?>reporters/logout" class="btn btn_sign_out"><span><i class="fa fa-sign-out fa-lg"></i></span>Signout</a>
+                                                </div>
                                             </div>
                                         </li>
                                     </ul>

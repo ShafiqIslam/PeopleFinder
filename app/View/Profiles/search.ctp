@@ -131,15 +131,16 @@
 				if($showing_to > $count)
 					$showing_to = $count;
 			?>
-			<div class="previous_arrow">
-				<a href="<?php echo $prev_link?>" class="col-sm-1 btn btn-primary pull-left <?php if($prev<0) echo 'disabled_link'?>">prev</a>
-				<span><i class="fa fa-long-arrow-left"></i></span>
+			<div class="previous_arrow col-sm-3">
+				<a href="<?php echo $prev_link?>" class="btn btn_prv fa fa-long-arrow-left <?php if($prev<0) echo 'disabled_link'?>"><span>prev</span></a>
 			</div>
 
-			<span class=" col-sm-10 search_info">Showing <?php echo $showing_from?> to <?php echo $showing_to?> of <?php echo $count?> results.</span>
+			<div class="col-sm-6 search_info">
+				<p>Showing <span><?php echo $showing_from?></span> to <span><?php echo $showing_to?></span> of <span><?php echo $count?></span> results.</p>
+			</div>
 
-			<div class="next_arrow">
-				<a href="<?php echo $next_link?>" class="col-sm-1 btn btn-primary pull-right <?php if($next>=$count) echo 'disabled_link'?>">next<span><i class="fa fa-long-arrow-right"></i></span></a>
+			<div class="next_arrow col-sm-3">
+				<a href="<?php echo $next_link?>" class="btn btn_prv fa fa-long-arrow-right pull-right <?php if($next>=$count) echo 'disabled_link'?>"><span>next</span></a>
 			</div>
 		</div>
 

@@ -97,9 +97,11 @@
 				<div class="col-sm-5"><h4>Physical illness</h4></div>
 				<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['physical_illness'];?></h4></div>
 			</div>
-			<hr> 
+			
 
-			<?php if($profile['Reporter']['reporter_id']!=$logged['id']) { ?>
+			<?php if($profile['Profile']['reporter_id']!=$logged['id']) { ?>
+
+			<hr> 
 			<div class="reporter_details">
 				<h3>Reporter Details :</h3>
 				<hr>
@@ -132,6 +134,7 @@
 			<?php } ?>
 
 			<?php if(!empty($claimed) && $claimed==1) { ?>
+				<hr>
 				<div class="reporter_details">
 					<h3>Claimed Reporter Details</h3>
 					<hr>
