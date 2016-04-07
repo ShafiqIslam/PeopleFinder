@@ -307,30 +307,34 @@
             </div>
             <div class="col-sm-1 contact_devide"></div>
             <div class="col-sm-offset-2 col-sm-4 Contact_mail slideanim slide">
-                <form class="form-horizontal" role="form">
+                <form id="sending_message" role="form" data-toggle="validator" method="post" class="form-horizontal" action="<?php echo $this->webroot;?>users/send_message">
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="email">Name:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name" placeholder="Enter email">
+                            <input type="text" class="form-control name" name="name" data-error="Please input your Name" id="name" placeholder="Enter email" required="">
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="email">Email:</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                            <input type="email" name="email" data-error="Bruh, that email address is invalid" class="form-control email" id="email" placeholder="Enter email" required="">
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="email">Message:</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" rows="4"></textarea>
+                            <textarea class="form-control message" name="message" rows="4" data-error="Please write a mesasage" required=""></textarea>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group"> 
-                    <div class="col-sm-offset-3 col-sm-9">
-                    <button type="submit" class="btn btn-primary btn_search">Submit</button>
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-primary" id="send_btn">Submit</button>
+                        </div>
                     </div>
-                    </div>
+                    <div id="reply_msg"></div>
                 </form>    
             </div>
         </div>

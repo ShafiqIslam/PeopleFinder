@@ -280,7 +280,7 @@ class UsersController extends AppController {
         $plain_body = "You have new message from: $from_name ($from)\n";
         $plain_body .= $message;
 
-        if($this->send_mail($mail, $name, $subject, $body, $plain_body)) {
+        if($this->send_mail($mail, 'Admin', $subject, $body, $plain_body)) {
             return true;
         } else {
             return false;

@@ -5,7 +5,9 @@ $(document).ready(function(){
     });
 
     $('.btn_search').click(function(){
-        $(".loader").fadeIn("slow");
+        if (!$(this).hasClass('disabled')) {
+          $(".loader").fadeIn("slow");  
+        }
     });
 
     $('.flash_close_btn').click(function(){
@@ -278,4 +280,107 @@ $('.image-popup-no-margins').magnificPopup({
             enabled: true,
             duration: 300 // don't foget to change the duration also in CSS
         }
+});
+
+
+
+/*-------------Social Share plaguin---------*/
+
+$(function (){
+
+    var url = 'http://www.xorcoder.com';
+
+    var options = {
+
+        twitter: true,/*{
+            text: 'Check out this awesome jQuery Social Buttons Plugin! ',
+            via: 'Tutorialzine'
+        },*/
+
+        facebook : true,
+        googlePlus : true
+    };
+
+    $('.socialShare').shareButtons(url, options);
+
+
+/*
+
+    // You can also share to pinterest and tumblr:
+
+    var options = {
+
+        // Pinterest requires a image to be "pinned"
+
+        pinterest: {
+            media: 'http://example.com/image.jpg',
+            description: 'My lovely picture'
+        },
+
+        // Tumblr takes a name and a description
+
+        tumblr: {
+            name: 'jQuery Social Buttons Plugin!',
+            description: 'There is a new article on tutorialzine.com page! Check out!'
+        }
+    };
+
+*/
+
+});
+
+
+/*------------- Posting a message---------*/
+
+
+$(document).ready(function(){
+    $("#sending_message").submit(function(e) {
+        e.preventDefault();
+
+        $('#send_btn').html("Sending... Please Wait.");
+
+        var name = $(".name").val(),
+        email = $(".email").val(),
+        message = $(".message").val();
+        var data = $('#sending_message').serializeObject();
+        //console.log(data);
+        url = $('#sending_message').attr('action');
+        //console.log(url);
+
+        $.ajax({
+            type:'POST',
+            url:url,
+            data: data,
+            dataType: 'json',
+            cache: false,
+            success: function(response){
+                $('#sending_message').find('#reply_msg').html(response.msg);
+                $('#send_btn').html("Send.");
+                //$('.loader').hide();
+            }, 
+            /*failer: function(response){
+                $('#sending_message').find('#reply_msg').html(response.msg);
+                $('.loader').hide();
+            },*/
+        });
+        
     });
+    return false;
+});
+
+$.fn.serializeObject = function () {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function () {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
