@@ -12,9 +12,9 @@
         <?php
             echo $this->Html->meta('icon');
             //echo $this->Html->css('cake.generic');
-            echo $this->Html->css(array('bootstrap', 'bootstrap-datetimepicker', 'jquery-ui', 'bootstrap-formhelpers.min','bootstrapValidator.min','magnific-popup.css', 'fileinput', 'share-plugin','custom'));
+            echo $this->Html->css(array('bootstrap', 'bootstrap-datetimepicker', 'jquery-ui', 'bootstrap-formhelpers.min','bootstrapValidator.min','magnific-popup.css', 'fileinput', 'custom'));
 
-            echo $this->Html->script(array('jquery-1.11.3', 'bootstrap.min', 'fileinput', 'jquery-ui', 'bootstrap-formhelpers.min', 'bootstrap-formhelpers-countries', 'validator.min', 'bootstrapValidator.min','count','jquery.slimscroll.min','jquery.magnific-popup.min','share-plugin'));
+            echo $this->Html->script(array('jquery-1.11.3', 'bootstrap.min', 'fileinput', 'jquery-ui', 'bootstrap-formhelpers.min', 'bootstrap-formhelpers-countries', 'validator.min', 'bootstrapValidator.min','count','jquery.slimscroll.min','jquery.magnific-popup.min'));
         ?>
         
         <?php

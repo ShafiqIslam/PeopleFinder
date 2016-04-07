@@ -305,7 +305,9 @@
                     <p><span><i class="fa fa-envelope-o"></i></span> : <a href="mailto:#">mailus@peoplefinder.com</a></p>
                 </address>    
             </div>
+
             <div class="col-sm-1 contact_devide"></div>
+
             <div class="col-sm-offset-2 col-sm-4 Contact_mail slideanim slide">
                 <form id="sending_message" role="form" data-toggle="validator" method="post" class="form-horizontal" action="<?php echo $this->webroot;?>users/send_message">
                     <div class="form-group">
@@ -331,10 +333,28 @@
                     </div>
                     <div class="form-group"> 
                         <div class="col-sm-offset-3 col-sm-9">
-                            <button type="submit" class="btn btn-primary" id="send_btn">Submit</button>
+                            <button type="submit" class="btn btn-primary btn_msg" id="send_btn">Submit</button>
                         </div>
                     </div>
-                    <div id="reply_msg"></div>
+
+                    <a href="#" class="btn" id="thankyouModal">Open modal</a>
+
+                    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                                <h3>Modal header</h3>
+                        </div>
+                        <div id="reply_msg" class="modal-body">
+                            <p>My modal content here…</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+
+
+                    <div></div>
                 </form>    
             </div>
         </div>

@@ -337,7 +337,7 @@ $(document).ready(function(){
     $("#sending_message").submit(function(e) {
         e.preventDefault();
 
-        $('#send_btn').html("Sending... Please Wait.");
+        //$('#reply_msg').html("Sending... Please Wait.");
 
         var name = $(".name").val(),
         email = $(".email").val(),
@@ -354,9 +354,11 @@ $(document).ready(function(){
             dataType: 'json',
             cache: false,
             success: function(response){
-                $('#sending_message').find('#reply_msg').html(response.msg);
-                $('#send_btn').html("Send.");
+                $("#thankyouModal").modal('show');
+                $('#thankyouModal').find('#reply_msg').html(response.msg);
+                //$('#reply_msg').html("Send.");
                 //$('.loader').hide();
+
             }, 
             /*failer: function(response){
                 $('#sending_message').find('#reply_msg').html(response.msg);

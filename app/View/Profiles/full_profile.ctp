@@ -13,7 +13,6 @@
 
 <div class="container-fluid">
 	<!--Social Share button=============-->
-	<span class="socialShare"> <!-- The share buttons will be inserted here --> </span>
 	<div class="sticky-container">
 		<ul class="sticky">
 			<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $link ?>" target="_blank">
@@ -22,15 +21,18 @@
 					<p>Facebook</p>
 				</li>
 			</a>
-			
-			<li>
-			<span><i class="fa fa-twitter fa-5X"></i></span>
-				<p>Twitter</p>
-			</li>
-			<li>
-				<img width="32" height="32" title="" alt="" src="<?php echo $this->webroot;?>img/pin1.png" />
-				<p>Pinterest</p>
-			</li>
+			<a href="https://twitter.com/home?status=<?php echo $link ?>" target="_blank">
+				<li>
+					<img width="32" height="32" title="" alt="" src="<?php echo $this->webroot;?>img/tw1.png" />
+					<p>Twitter</p>
+				</li>
+			</a>
+			<a href="https://plus.google.com/share?url=<?php echo $link ?>" target="_blank">
+				<li>
+					<img width="32" height="32" title="" alt="" src="<?php echo $this->webroot;?>img/google-plus.png" />
+					<p>Google+</p>
+				</li>
+			</a>
 		</ul>
 	</div>
 	<div class="container search_result_details_wrapper">
