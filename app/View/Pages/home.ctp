@@ -96,8 +96,13 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
+                                <div class="faceplus_img col-sm-4">
+                                    <img src="<?php echo $this->webroot;?>img/inside.png" alt="">
+                                </div>
                                 <div class="form-group photo_search">
-                                    <button type="submit" class="btn btn-primary btn_search">Search</button>
+                                    <div class="col-sm-8">
+                                        <button type="submit" class="btn btn-primary btn_search">Search</button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="adv_search_link">

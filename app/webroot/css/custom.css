@@ -480,6 +480,10 @@ header ul li a{
 	position: absolute;
 }
 
+.faceplus_img img{
+	width: 115px;
+}
+
 
 
 /*========= Drag & Drop images upload css customization========*/
@@ -720,7 +724,7 @@ header ul li a{
 #reply_msg{
     font-size: 130px;
     position: absolute;
-    background: rgba(0,0,0,0.48);
+    background: rgba(0,0,0,0.70);
     width: 97.5%;
     height: 100%;
     z-index: 10;
@@ -731,7 +735,10 @@ header ul li a{
 .check:before{
 	content: "\2714";
 	color: #009C00;
-	//content: "\2718";/*for Error Sign*/
+}
+.msr_not_sent:before{
+	content: "\2718";
+	color:red;
 }
 
 #reply_msg p {
@@ -741,6 +748,7 @@ header ul li a{
 #reply_msg p h2{
 	margin-top:-39px;
 	color: #fff;
+	font-size: 20px;
 }
 
 .msg_loading_bg {
@@ -748,7 +756,7 @@ header ul li a{
 	width: 97.5%;
 	height: 100%; 
 	display:none;
-	background-color: rgba(0,0,0,0.48);
+	background-color: rgba(0,0,0,0.70);
 	z-index: 10;
 }
 .msg_loading{
@@ -781,7 +789,7 @@ header ul li a{
 	padding-top: 5%;
     font-size: 42px;
     font-weight: bold;
-    color: rgba(53, 170, 17, 0.67);
+    color: rgb(28, 39, 66);
 }
 .carousel-inner img{
 	margin-left: auto;
@@ -865,13 +873,17 @@ header ul li a{
     font-weight: bold;
     color: rgba(0, 0, 0, 0.63);
     font-stretch: ultra-expanded;
-    margin: 3% 0%;
+    margin: 3% 0% -1% 0%;
+    text-transform: uppercase;
 
 }
 .sign_up_page hr{
 	border: 2px solid #C1BCBC;
     border-radius: 24px;
     width: 24%;
+}
+.report_missing hr, .report_found hr{
+	width: 53%;
 }
 
 .sign_up_page .form-horizontal .control-label{
@@ -900,6 +912,9 @@ header ul li a{
     background: #F6FFFD;
     padding-left: 10px;
 }
+.adv_draw_map .saech_map{
+	margin-bottom: 0px;
+} 
 .draw_map p{
 	font-size: 20px;
     color: #F57C00;
@@ -911,6 +926,9 @@ header ul li a{
     color: #F57C00;;
     background: #F6FFFD;
     padding-left: 10px;
+}
+.sign_up_page .info_search{
+	margin-bottom: -9px;
 }
 
 input, textarea{
@@ -1019,16 +1037,21 @@ input, textarea{
     z-index: 100;
     box-shadow: 0px 0px 4px black;
 	padding: 0px 0px;
+	margin-top: 2%;
 }
 #flashMessage{
 	font-size: 18px;
-    color: rgb(86, 9, 9);
+    color:#fff;
 	text-align: center;
-	padding: 10px 0px;
+	padding: 20px 0px;
 }
 .flash_close_btn{
 	float: right;
-    margin-top: -3%;
+    margin-top: -5.3%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
 }
 
 .success_msg {

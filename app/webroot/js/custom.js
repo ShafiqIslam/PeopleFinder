@@ -315,15 +315,11 @@ $(document).ready(function(){
     $("#sending_message").submit(function(e) {
         e.preventDefault();
 
-        //$('#send_btn').html("Sending... Please Wait.");
-
         var name = $(".name").val(),
         email = $(".email").val(),
         message = $(".message").val();
         var data = $('#sending_message').serializeObject();
-        //console.log(data);
         url = $('#sending_message').attr('action');
-        //console.log(url);
         //show the loading sign
         if (!$(this).hasClass('disabled')) {
            $('.msg_loading_bg').show(); 
@@ -337,25 +333,28 @@ $(document).ready(function(){
             dataType: 'json',
             cache: false,
             success: function(response){
-                //$('#send_btn').hide();
-                //if (response.success == true) {
-                    $('#reply_msg').show();
-                    $('#reply_msg > p').addClass('check').append("<br><h2>Message Sent!</h2>");
-                    //.addClass('fa-check-square').addClass('fa-5x');
-                //} //else {
-                   // $('#reply_msg').html(response.msg);
-                //}
+                $('#reply_msg').show();
+                var txt = "<br><h2>"+response.msg+"</h2>";
+
+                if (response.success) {
+                    $('#reply_msg > p').addClass('check').html(txt);
+                    $("#sending_message").trigger('reset');
+                } else {
+                     $('#reply_msg > p').addClass('msr_not_sent').html(txt);
+                };
                 
-               // $('#reply_msg').html("Send.");
                 $('.msg_loading_bg').hide();
-                //$('#reply_msg').fadeOut(5000);
                 $('#reply_msg').delay(3000).fadeOut(1000);
 
             }, 
-            /*failer: function(response){
-                $('#sending_message').find('#reply_msg').html(response.msg);
-                $('.loader').hide();
-            },*/
+            error: function(response) {
+                $('#reply_msg').show();
+                var txt = "<br><h2>Something bad happened!!! Please, try again.</h2>";
+                $('#reply_msg > p').addClass('msr_not_sent').html(txt);
+                
+                $('.msg_loading_bg').hide();
+                $('#reply_msg').delay(3000).fadeOut(1000);    
+            }
         });
         
     });

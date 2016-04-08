@@ -1,5 +1,5 @@
 <!--==================Sign Up Section========================-->
-<div class="container-fluid sign_up_page">
+<div class="container-fluid sign_up_page report_found">
     <h1>REPORT A FOUND PERSON</h1>
     <?php if(!empty($success) && !$success) { ?>
         <h4>Your Report can't be saved right now. Try again later.</h4>
@@ -175,6 +175,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-7 upload_img">
+                <p class="info_search">Upload Photos</p>
                 <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3" data-min-file-count="1" enctype="multipart/form-data">
                 <p>You must upload the photos. Otherwise its will not be uploaded.</p>
             </div>

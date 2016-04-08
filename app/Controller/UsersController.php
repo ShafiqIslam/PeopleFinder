@@ -252,8 +252,8 @@ class UsersController extends AppController {
             $from = $this->request->data['email'];
             $from_name = $this->request->data['name'];
             if($this->_send_message_mail($mail, $message, $from, $from_name)) {
-                die(json_encode(array('success' => false, 'msg' => 'Something bad happened!!! Please, try again.')));
-            } else die(json_encode(array('success' => true, 'msg' => 'Your message has been sent successfully. We\'ll get to it soon.')));
+                die(json_encode(array('success' => true, 'msg' => 'Your message has been sent successfully. We\'ll get to it soon.')));
+            } else die(json_encode(array('success' => false, 'msg' => 'Something bad happened!!! Please, try again.' )));
         } else die(json_encode(array('success' => false, 'msg' => 'Invalid Request')));
     }
 
