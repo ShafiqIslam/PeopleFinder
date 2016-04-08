@@ -30,7 +30,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Birthdate</label>
             <div class="col-sm-4">
-                <input type="date" name="data[Profile][birthdate]" class="form-control" id="" placeholder="date">
+                <input type="text" name="data[Profile][birthdate]" class="form-control" id="datepicker" placeholder="date">
             </div>
         </div>
 

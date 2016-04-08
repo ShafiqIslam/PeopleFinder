@@ -1,3 +1,4 @@
+
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=drawing"></script>
 <?php
     echo $this->Html->script(array('app'));
@@ -41,8 +42,8 @@
 
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Birth Date</label>
-            <div class="col-sm-4">
-                <input type="date" name="birth_date" class="form-control" id="" placeholder="Date">
+            <div class="col-sm-4" >
+                <input type="text" name="birth_date"  class="form-control" placeholder="Date" id="datepicker">
             </div>
         </div>
 
@@ -114,11 +115,11 @@
 
 
         <div class="form-group">
-            <div class="col-sm-offset-4 faceplus_img col-sm-3">
-                                    <img src="<?php echo $this->webroot;?>img/inside.png" alt="">
+            <div class="faceplus_img col-sm-offset-2 col-sm-3">
+                                    <img style="width: 160px;" src="<?php echo $this->webroot;?>img/inside.png" alt="">
                                 </div>
-            <div class="col-sm-5 report_found_submit">
-                <button type="submit" class="btn btn-primary btn_search">Search</button>
+            <div class="col-sm-offset-2 col-sm-2 report_found_submit">
+                <button type="submit" class="btn btn-primary btn_search pull-right">Search</button>
             </div>
         </div>
     </form>

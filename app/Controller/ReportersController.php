@@ -167,6 +167,7 @@ class ReportersController extends AppController {
 	public function logout() {
 		$this->Session->delete('logged_user');
 		return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
+	}
 	
 	public function forgot_password() {
 		$logged_user = $this->Session->read('logged_user');

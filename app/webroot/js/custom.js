@@ -350,3 +350,11 @@ $.fn.serializeObject = function () {
     return o;
 };
 
+/*----------------date Picker--------------------*/
+
+  $(function() {
+    $( "#datepicker" ).datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
+  });

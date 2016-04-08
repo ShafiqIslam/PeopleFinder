@@ -273,8 +273,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-offset-2 col-sm-8">
-                    <h4><blockquote>" <?php echo $item['Testimonial']['testimonial'];?> "</blockquote></h4>
+                <div class="col-sm-offset-2 col-sm-8 testimonial_text">
+                    <h4><blockquote>" <?php echo $item['Testimonial']['testimonial'];?> " <br>
+                        <h5 class="pull-right"><span class="testi_arrow"><i class="fa fa-hand-o-right"></i></span> <?php echo $name ?>, <span class="bfh-countries" data-country="<?php echo $item['Reporter']['nationality'];?>" data-flags="true"></span></h5>
+                    </blockquote></h4>
                 </div>
             </div>
         </div>

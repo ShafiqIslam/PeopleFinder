@@ -281,7 +281,7 @@
 								<div class="col-sm-6 report_abuse_section">
 										<div class="form-group">
 											<div class="col-sm-12">
-												<a type="submit" class="btn btn-warning btn_abuse" href="<?php echo $this->webroot;?>abuse">Abuse</a>
+												<a type="submit" class="btn btn_warning btn_abuse" href="<?php echo $abuse_link;?>">Abuse</a>
 											</div>
 										</div>
 								</div>
