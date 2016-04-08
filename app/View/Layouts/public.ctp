@@ -53,7 +53,7 @@
                             <li class="<?php if($page=='home') echo 'active';?>"><a href="<?php echo $this->webroot;?>home">Home</a></li>
                             <li class="<?php if($page=='search') echo 'active';?>"><a class="" href="<?php echo $this->webroot;?>search">Search</a></li>
                             <li class="dropdown <?php if($page=='report') echo 'active';?>">
-                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Report<b class="caret"></b></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Report<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li style="margin-top: 0px;"><a href="<?php echo $this->webroot;?>report_found">Report Found</a></li>
                                     <li style="margin-top: 0px;"><a href="<?php echo $this->webroot;?>report_missing">Report Missing</a></li>

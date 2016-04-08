@@ -343,7 +343,7 @@
                     </div>
                     <div class="form-group"> 
                         <div class="col-sm-offset-3 col-sm-9 msg_submit">
-                            <button type="submit" class="btn btn-primary btn_msg">Submit</button>
+                            <button type="submit" class="btn btn-primary btn_msg">SEND <span class="glyphicon glyphicon-send"></span></button>
                         </div>
                     </div>
                 </form>    

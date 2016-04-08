@@ -277,25 +277,13 @@
 							<?php } ?>
 
 							<?php if($logged['id'] != $profile['Profile']['reporter_id']) { ?>
+								<?php $abuse_link = $this->webroot . "profiles/abuse/" . $profile['Profile']['id']; ?>
 								<div class="col-sm-6 report_abuse_section">
-									<form id="captcha_form"  method="post" class="form-horizontal report_abuse" action="">
-										<div id="popover_content_wrapper" class="captcha" style="display:none">
-											<p></p>
-
-											<div id="captcha" class="form-group">
-												<label class="col-sm-6 control-label" id="captchaOperation"></label>
-												<div class="col-sm-6 captcha_input">
-													<input type="text" class="form-control" name="captcha" />
-												</div>
-											</div>
-										</div>
-
 										<div class="form-group">
 											<div class="col-sm-12">
-												<a type="submit" class="btn btn-warning btn_abuse danger" data-title="Please fill the correct captcha." name="abuse" value="abuse" href="<?php echo $this->webroot;?>search_result">Abuse</a>
+												<a type="submit" class="btn btn-warning btn_abuse" href="<?php echo $this->webroot;?>abuse">Abuse</a>
 											</div>
 										</div>
-									</form>
 								</div>
 							<?php } ?>
 						</div>

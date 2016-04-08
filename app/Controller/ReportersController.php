@@ -133,6 +133,11 @@ class ReportersController extends AppController {
 	*/
 
 	public function login() {
+		$logged_user = $this->Session->read('logged_user');
+		if(!empty($logged_user)) {
+			return $this->redirect( Router::url( $this->referer(), true ) );
+		}
+
 		if($this->request->is('post')) {
 			$options = array(
 				'conditions' => array(
@@ -154,7 +159,7 @@ class ReportersController extends AppController {
 				$data['name'] = $name;
 				$data['is_admin'] = false;
 				$this->Session->write('logged_user', $data);
-				return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
+				return $this->redirect( Router::url( $this->referer(), true ) );
 			}	
 		}
 	}
@@ -162,9 +167,13 @@ class ReportersController extends AppController {
 	public function logout() {
 		$this->Session->delete('logged_user');
 		return $this->redirect(array('controller'=>'pages', 'action' => 'display', "home"));
-	}
-
+	
 	public function forgot_password() {
+		$logged_user = $this->Session->read('logged_user');
+		if(!empty($logged_user)) {
+			return $this->redirect( Router::url( $this->referer(), true ) );
+		}
+
 		if($this->request->is('post')) {
 			$options = array(
 				'conditions' => array(

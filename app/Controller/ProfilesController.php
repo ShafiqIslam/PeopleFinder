@@ -169,10 +169,10 @@ class ProfilesController extends AppController {
 			if($this->Profile->save($this->request->data)) {
 				$this->request->data['Profile']['id'] = $this->Profile->id;
 				$this->_facepp_upload($this->request->data);
+				$this->Session->setFlash('Your Report has been saved.', 'default', array('class'=>'success_msg'), 'flash');
 				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
 			} else {
-				$success = false;
-				$this->set(compact('success'));
+				$this->Session->setFlash('Your Report can\'t be saved. Try again later.', 'default', array('class'=>'error_msg'), 'flash');
 			}
 		}
 	}
@@ -194,10 +194,10 @@ class ProfilesController extends AppController {
 			if($this->Profile->save($this->request->data)) {
 				$this->request->data['Profile']['id'] = $this->Profile->id;
 				$this->_facepp_upload($this->request->data);
+				$this->Session->setFlash('Your Report has been saved.', 'default', array('class'=>'success_msg'), 'flash');
 				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
 			} else {
-				$success = false;
-				$this->set(compact('success'));
+				$this->Session->setFlash('Your Report can\'t be saved. Try again later.', 'default', array('class'=>'error_msg'), 'flash');
 			}
 		}
 	}
@@ -585,77 +585,79 @@ class ProfilesController extends AppController {
 		if (!$this->Profile->exists($id)) {
 			throw new NotFoundException(__('Invalid profile'));
 		}
-
-		$profile = $this->Profile->findById($id);
-		$data['Profile']['abuse_counter'] = $profile['Profile']['abuse_counter'] + 1;
-		$this->Profile->id = $id;
-		$this->Profile->save($data);
-
-
-		$status = ($profile['Profile']['person_status'] == 'Maybe Found') ? 'Missing' : $profile['Profile']['person_status'];
-
-		$first_name = !empty($profile['Profile']['first_name']) ? $profile['Profile']['first_name'] : "";
-		$second_name = !empty($profile['Profile']['second_name']) ? $profile['Profile']['second_name'] : "";
-		$last_name = !empty($profile['Profile']['last_name']) ? $profile['Profile']['last_name'] : "";
-		$name = $first_name . " " . $second_name . " " . $last_name;
-
-		$first_name = !empty($profile['Reporter']['first_name']) ? $profile['Reporter']['first_name'] : "";
-		$second_name = !empty($profile['Reporter']['second_name']) ? $profile['Reporter']['second_name'] : "";
-		$last_name = !empty($profile['Reporter']['last_name']) ? $profile['Reporter']['last_name'] : "";
-		$reporter_name = $first_name . " " . $second_name . " " . $last_name;
-
-		$user = new UsersController;
-		$admin_email = $user->get_admin_email();
-
-		$deleted_msg = "";
-
-		if($data['Profile']['abuse_counter'] == 1) {
-			$msg = "Your report on <strong>$status</strong> of <strong>$name</strong> has been reported abuse. Please, click on the link below to review the report.";
-			//$this->_send_abuse_mail($profile['Reporter']['email'], $msg, $profile['Profile']['id'], $reporter_name);
-
-			$msg = "The report on <strong>$status</strong> of <strong>$name</strong> by $reporter_name has been reported abuse. Please, click on the link below to review the report.";
-			//$this->_send_abuse_mail($admin_email, $msg, $profile['Profile']['id'], 'Admin');
-		} else if ($data['Profile']['abuse_counter'] == 200) {
+		if($this->request->is('post')) {
+			$profile = $this->Profile->findById($id);
+			$data['Profile']['abuse_counter'] = $profile['Profile']['abuse_counter'] + 1;
 			$this->Profile->id = $id;
-			$this->Profile->delete();
+			$this->Profile->save($data);
 
-			$profile['Profile']['abuse_counter'] = 200;
-			$removed['RemovedProfiles'] = $profile['Profile'];
-			$this->loadModel('RemovedProfiles');
-			$this->RemovedProfiles->save($removed);
 
-			$msg = "Your report on <strong>$status</strong> of <strong>$name</strong> has been reported abuse 200 times and has been deleted automatically.";
-			$this->_send_abuse_mail($profile['Reporter']['email'], $msg, $profile['Profile']['id'], $reporter_name);
+			$status = ($profile['Profile']['person_status'] == 'Maybe Found') ? 'Missing' : $profile['Profile']['person_status'];
 
-			$msg = "The report on <strong>$status</strong> of <strong>$name</strong> by $reporter_name has been reported abuse 200 times and has been deleted automatically.";
-			$this->_send_abuse_mail($admin_email, $msg, $profile['Profile']['id'], 'Admin');
+			$first_name = !empty($profile['Profile']['first_name']) ? $profile['Profile']['first_name'] : "";
+			$second_name = !empty($profile['Profile']['second_name']) ? $profile['Profile']['second_name'] : "";
+			$last_name = !empty($profile['Profile']['last_name']) ? $profile['Profile']['last_name'] : "";
+			$name = $first_name . " " . $second_name . " " . $last_name;
 
-			$deleted_msg = "This Profile has been removed according to too many abuse reports.";
-		}
+			$first_name = !empty($profile['Reporter']['first_name']) ? $profile['Reporter']['first_name'] : "";
+			$second_name = !empty($profile['Reporter']['second_name']) ? $profile['Reporter']['second_name'] : "";
+			$last_name = !empty($profile['Reporter']['last_name']) ? $profile['Reporter']['last_name'] : "";
+			$reporter_name = $first_name . " " . $second_name . " " . $last_name;
 
-		$logged = $this->Session->read('logged_user');
-		$log['Log']['profile_id'] = $id;
-		if(!empty($logged)) {
-			if($logged['is_admin']) {
-				$log['Log']['user_id'] = $logged['id'];
-				$who = "Admin";
+			$user = new UsersController;
+			$admin_email = $user->get_admin_email();
+
+			$deleted_msg = "";
+
+			if($data['Profile']['abuse_counter'] == 1) {
+				$msg = "Your report on <strong>$status</strong> of <strong>$name</strong> has been reported abuse. Please, click on the link below to review the report.";
+				//$this->_send_abuse_mail($profile['Reporter']['email'], $msg, $profile['Profile']['id'], $reporter_name);
+
+				$msg = "The report on <strong>$status</strong> of <strong>$name</strong> by $reporter_name has been reported abuse. Please, click on the link below to review the report.";
+				//$this->_send_abuse_mail($admin_email, $msg, $profile['Profile']['id'], 'Admin');
+			} else if ($data['Profile']['abuse_counter'] == 200) {
+				$this->Profile->id = $id;
+				$this->Profile->delete();
+
+				$profile['Profile']['abuse_counter'] = 200;
+				$removed['RemovedProfiles'] = $profile['Profile'];
+				$this->loadModel('RemovedProfiles');
+				$this->RemovedProfiles->save($removed);
+
+				$msg = "Your report on <strong>$status</strong> of <strong>$name</strong> has been reported abuse 200 times and has been deleted automatically.";
+				$this->_send_abuse_mail($profile['Reporter']['email'], $msg, $profile['Profile']['id'], $reporter_name);
+
+				$msg = "The report on <strong>$status</strong> of <strong>$name</strong> by $reporter_name has been reported abuse 200 times and has been deleted automatically.";
+				$this->_send_abuse_mail($admin_email, $msg, $profile['Profile']['id'], 'Admin');
+
+				$deleted_msg = "This Profile has been removed according to too many abuse reports.";
 			}
-			else {
-				$log['Log']['reporter_id'] = $logged['id'];
-				$reporter = new ReportersController();
-				$who = $reporter->get_name($logged['id']);
+
+			$logged = $this->Session->read('logged_user');
+			$log['Log']['profile_id'] = $id;
+			if(!empty($logged)) {
+				if($logged['is_admin']) {
+					$log['Log']['user_id'] = $logged['id'];
+					$who = "Admin";
+				}
+				else {
+					$log['Log']['reporter_id'] = $logged['id'];
+					$reporter = new ReportersController();
+					$who = $reporter->get_name($logged['id']);
+				}
+			} else {
+				$who = "Guest";
 			}
-		} else {
-			$who = "Guest";
+
+			$log['Log']['message'] = "Reported abuse by " . $who . ". Total times of abuse reported: <b>" . $data['Profile']['abuse_counter'] . "</b> " . $deleted_msg;
+			$this->loadModel('Log');
+			$this->Log->create();
+			$this->Log->save($log);
+
+			$this->Session->setFlash('Profile reported as Abuse. ' . $deleted_msg, 'default', array('class'=>'error_msg'), 'flash');
+			return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
+		
 		}
-
-		$log['Log']['message'] = "Reported abuse by " . $who . ". Total times of abuse reported: <b>" . $data['Profile']['abuse_counter'] . "</b> " . $deleted_msg;
-		$this->loadModel('Log');
-		$this->Log->create();
-		$this->Log->save($log);
-
-		$this->Session->setFlash('Profile reported as Abuse. ' . $deleted_msg, 'default', array('class'=>'error_msg'), 'flash');
-		return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
 	}
 
 	private function _process_images ($data) {

@@ -112,7 +112,7 @@ $(document).ready(function() {
     };
     $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
 
-    $('#captcha').bootstrapValidator({
+    $('#defaultForm').bootstrapValidator({
 //        live: 'disabled',
         message: 'This value is not valid',
         feedbackIcons: {
@@ -124,7 +124,7 @@ $(document).ready(function() {
             captcha: {
                 validators: {
                     callback: {
-                        message: 'Invalid captcha answer!',
+                        message: 'Wrong answer',
                         callback: function(value, validator) {
                             var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
                             return value == sum;
@@ -137,11 +137,11 @@ $(document).ready(function() {
 
     // Validate the form manually
     $('#validateBtn').click(function() {
-        $('#captcha').bootstrapValidator('validate');
+        $('#defaultForm').bootstrapValidator('validate');
     });
 
     $('#resetBtn').click(function() {
-        $('#captcha').data('bootstrapValidator').resetForm(true);
+        $('#defaultForm').data('bootstrapValidator').resetForm(true);
     });
 });
 
@@ -151,33 +151,6 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
 
-
-/*-------captcha Show-----*/
-
-$(document).ready(function(){
-    $('.btn_abuse').click(function(){
-       // $('.captcha').removeClass('captcha_hide').addClass('catpcha_show');
-
-        //this prevent for first time progression.
-        $(this).find('a').click();
-        event.stopPropagation();
-        return false;
-    })
-    
-});
-
-
-/*------------Popover of report abuse----------*/
-
-$(document).ready(function(){
-  $('.danger').popover({ 
-    html : true,
-    placement: 'bottom',
-    content: function() {
-      return $('#popover_content_wrapper').html();
-    }
-  });
-});
 
 /*---------------Popover of Images---------*/
 /*
@@ -260,7 +233,7 @@ $(document).ready(function(){
     $('#log_scroll').slimScroll({
             railVisible: true,
             //railColor: '#f00'
-            height: 150,
+            height: 250,
             //width:600,
     });
 });
