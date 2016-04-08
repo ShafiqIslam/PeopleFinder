@@ -432,7 +432,12 @@ header ul li a{
 .search_pill .country_selection_box .bfh-selectbox .bfh-selectbox-options ul{
 	max-width: 222px;
 }
-
+.search_pill .country_search{
+	margin-top: 6%;
+}
+.search_pill .id_search{
+	margin-top: 7%;
+}
 /*this is for map draging CSS */
 #map-canvas {
     width: 100%;
@@ -451,30 +456,31 @@ header ul li a{
 	padding-left: 5px;
 }
 #name .adv_search_link p{
-	position: absolute;
 	bottom: -90px;
 	font-size: 15px;
 }
 
 #photos .adv_search_link p{
-	position: absolute;
-	bottom: -65px;
+	bottom: -22px;
+	margin-left: 3%;
 }
 
 #country .adv_search_link p{
-	position: absolute;
-	bottom: -177px;
+	bottom: -147px;
 }
 
 #map .adv_search_link p{
-	position: absolute;
 	bottom: -68px;
 }
 
 #id_search .adv_search_link p{
-	position: absolute;
-	bottom: -234px;
+	margin-top: 52%;
 }
+.adv_search_link p{
+	position: absolute;
+}
+
+
 
 /*========= Drag & Drop images upload css customization========*/
 .file-drop-zone-title {
@@ -485,10 +491,11 @@ header ul li a{
 	margin-top: 10px;
 }
 
+
 .file-drop-zone {
     margin: 7px 15px 7px 12px;
     padding: 0px;
-    height: 135px;
+    height: 180px;
 }
 .file-error-message {
     position: absolute;
@@ -512,6 +519,20 @@ header ul li a{
 	//width: 90.5%;
    // margin-left: 4.5%;
 }
+.search_pill .gender .control-label{
+	padding-top: 0px;
+	margin-left: 6px;
+}
+.search_pill .photo_search{
+	margin-left: 58%;
+}
+.search_pill #gender{
+	margin-top: -10px;
+}
+
+
+
+/*---------------------------------------*/
 
 .file-input .btn-primary {
     background-color: #337ab7;;;
@@ -689,7 +710,7 @@ header ul li a{
 }
 .contact_devide{
 	border-right: 1px dotted rgba(95, 91, 91, 0.39);
-    height: 200px;
+    height: 277px;
     margin-top: 4%;
 }
 .Contact_mail .form-horizontal .control-label{
@@ -697,16 +718,53 @@ header ul li a{
 }
 
 #reply_msg{
-	//position: fixed;
-    width: 600px;
-    height: 100px;
-    background-color: #1C2742;
-    color: #fff;
-    font-size: 20px;
-   // z-index: 100;
-   // top: 47%;
-   // left: 35%;
-   // padding: 35px 23px;
+    font-size: 130px;
+    position: absolute;
+    background: rgba(0,0,0,0.48);
+    width: 97.5%;
+    height: 100%;
+    z-index: 10;
+    display: none;
+    text-align: center;
+}
+
+.check:before{
+	content: "\2714";
+	color: #009C00;
+	//content: "\2718";/*for Error Sign*/
+}
+
+#reply_msg p {
+	margin-top: 55px;
+}
+
+#reply_msg p h2{
+	margin-top:-39px;
+	color: #fff;
+}
+
+.msg_loading_bg {
+	position: absolute;
+	width: 97.5%;
+	height: 100%; 
+	display:none;
+	background-color: rgba(0,0,0,0.48);
+	z-index: 10;
+}
+.msg_loading{
+	background:url(../img/725.gif) no-repeat 1px;
+	background-position-x: 50%;
+    z-index: 11;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+
+.msg_submit .disabled{
+	pointer-events: none;
 }
 
 
@@ -734,22 +792,33 @@ header ul li a{
 .carousel-inner h4{
 	margin-bottom: 10%;
 	padding-top: 3%;
+	height: 100px;
 }
-.carousel-inner h4 q{
-	font-size: 60px;
-}
-.carousel-inner h4 q blockquote{
+
+.carousel-inner h4 blockquote{
 	font-size: 30px;
 	border-left: 5px solid #C1BEBE;
 }
-.carousel-indicators .active {
-    background-color: #ededed;
-    width: 20px;
-    height: 20px;
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: green;
+    //background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #fff;
+    border-radius: 10px;
 }
 
-.carousel-indicators li{
-	border: 3px solid #0501FD;
+.carousel-indicators .active {
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    //background-color: #fff;
+    background-color: red;
 }
 
 .client_testi_circle{
@@ -759,9 +828,9 @@ header ul li a{
     border-radius: 50%;
 }
 .client_testi_circle h1{
-	font-size: 55px;
+	font-size: 48px;
     color: #fff;
-    padding: 31% 26%;
+    padding: 35% 16%;
 }
 
 .if_found{

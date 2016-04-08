@@ -438,25 +438,25 @@
     };
     defaultPreviewTemplates = {
         generic: tGeneric,
-        html: tHtml,
+        //html: tHtml,
         image: tImage,
-        text: tText,
-        video: tVideo,
-        audio: tAudio,
-        flash: tFlash,
-        object: tObject,
-        other: tOther
+        //text: tText,
+        //video: tVideo,
+        //audio: tAudio,
+        //flash: tFlash,
+        //object: tObject,
+        //other: tOther
     };
     defaultPreviewTypes = ['image'];
     defaultPreviewSettings = {
-        image: {width: "175px", height: "85px"},
-        html: {width: "213px", height: "160px"},
-        text: {width: "160px", height: "136px"},
-        video: {width: "213px", height: "160px"},
-        audio: {width: "213px", height: "80px"},
-        flash: {width: "213px", height: "160px"},
-        object: {width: "160px", height: "160px"},
-        other: {width: "160px", height: "160px"}
+        image: {width: "160px", height: "85px"},
+        //html: {width: "213px", height: "160px"},
+        //text: {width: "160px", height: "136px"},
+        //video: {width: "213px", height: "160px"},
+       // audio: {width: "213px", height: "80px"},
+        //flash: {width: "213px", height: "160px"},
+        //object: {width: "160px", height: "160px"},
+        //other: {width: "160px", height: "160px"}
     };
     defaultFileTypeSettings = {
         image: function (vType, vName) {

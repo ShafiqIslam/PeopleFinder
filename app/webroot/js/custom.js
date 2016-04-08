@@ -283,27 +283,6 @@ $('.image-popup-no-margins').magnificPopup({
 });
 
 
-
-/*-------------Social Share plaguin---------*/
-
-$(function (){
-
-    var url = 'http://www.xorcoder.com';
-
-    var options = {
-
-        twitter: true,/*{
-            text: 'Check out this awesome jQuery Social Buttons Plugin! ',
-            via: 'Tutorialzine'
-        },*/
-
-        facebook : true,
-        googlePlus : true
-    };
-
-    $('.socialShare').shareButtons(url, options);
-
-
 /*
 
     // You can also share to pinterest and tumblr:
@@ -327,7 +306,6 @@ $(function (){
 
 */
 
-});
 
 
 /*------------- Posting a message---------*/
@@ -337,7 +315,7 @@ $(document).ready(function(){
     $("#sending_message").submit(function(e) {
         e.preventDefault();
 
-        //$('#reply_msg').html("Sending... Please Wait.");
+        //$('#send_btn').html("Sending... Please Wait.");
 
         var name = $(".name").val(),
         email = $(".email").val(),
@@ -346,6 +324,11 @@ $(document).ready(function(){
         //console.log(data);
         url = $('#sending_message').attr('action');
         //console.log(url);
+        //show the loading sign
+        if (!$(this).hasClass('disabled')) {
+           $('.msg_loading_bg').show(); 
+        }
+       
 
         $.ajax({
             type:'POST',
@@ -354,10 +337,19 @@ $(document).ready(function(){
             dataType: 'json',
             cache: false,
             success: function(response){
-                $("#thankyouModal").modal('show');
-                $('#thankyouModal').find('#reply_msg').html(response.msg);
-                //$('#reply_msg').html("Send.");
-                //$('.loader').hide();
+                //$('#send_btn').hide();
+                //if (response.success == true) {
+                    $('#reply_msg').show();
+                    $('#reply_msg > p').addClass('check').append("<br><h2>Message Sent!</h2>");
+                    //.addClass('fa-check-square').addClass('fa-5x');
+                //} //else {
+                   // $('#reply_msg').html(response.msg);
+                //}
+                
+               // $('#reply_msg').html("Send.");
+                $('.msg_loading_bg').hide();
+                //$('#reply_msg').fadeOut(5000);
+                $('#reply_msg').delay(3000).fadeOut(1000);
 
             }, 
             /*failer: function(response){

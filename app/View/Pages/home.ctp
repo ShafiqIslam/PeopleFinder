@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
                             <div class="col-sm-4">
-                                <select name="gender" class="form-control">
+                                <select name="gender" class="form-control" required="">
                                     <option value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -84,32 +84,32 @@
                                 $("input[name=search_image]").val(filename);
                             });
                         </script>
-
-                        <div class="form-group">
-                            <label for="" class="col-sm-offset-3 col-sm-2 control-label">Gender</label>
-                            <div class="col-sm-4">
-                                <select name="gender" class="form-control">
-                                    <option value="">Select Gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
+                        <div class="col-sm-12" id="gender">
+                            <div class="col-sm-6">
+                                <div class="form-group form-inline gender">
+                                    <label for="" class="col-sm-4 control-label">Gender</label>
+                                    <select name="gender" class=" col-sm-8 form-control pull-right" required="">
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-9 adv_search_link">
+                            <div class="col-sm-6">
+                                <div class="form-group photo_search">
+                                    <button type="submit" class="btn btn-primary btn_search">Search</button>
+                                </div>
+                            </div>
+                            <div class="adv_search_link">
                                 <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...<i class="fa fa-external-link"></i></a></p>
-                            </div>
-                            <div class="col-sm-3">
-                                <button type="submit" class="btn btn-primary btn_search">Search</button>
-                            </div>
+                        </div>
                         </div>
                     </form>
                 </div>
 
                 <div id="country" class="tab-pane fade">
                     <h3>Search By Country</h3>
-                    <form class="form-horizontal"  action="<?php echo $this->webroot?>profiles/search" method="post">
+                    <form class="form-horizontal country_search"  action="<?php echo $this->webroot?>profiles/search" method="post">
                         <div class="form-group">
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Country</label>
                             <div class="col-sm-4 country_selection_box">
@@ -162,7 +162,7 @@
 
                 <div id="id_search" class="tab-pane fade">
                     <h3>Search By ID</h3>
-                    <form class="form-horizontal"  action="<?php echo $this->webroot?>profiles/search" method="post">
+                    <form class="form-horizontal id_search"  action="<?php echo $this->webroot?>profiles/search" method="post">
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Profile ID No.</label>
                             <div class="col-sm-4">
@@ -269,7 +269,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-offset-2 col-sm-8">
-                    <h4><q><blockquote><?php echo $item['Testimonial']['testimonial'];?></blockquote></q></h4>
+                    <h4><blockquote>" <?php echo $item['Testimonial']['testimonial'];?> "</blockquote></h4>
                 </div>
             </div>
         </div>
@@ -307,20 +307,25 @@
             </div>
 
             <div class="col-sm-1 contact_devide"></div>
+            <div class="col-sm-6">
+                <div class="msg_loading_bg">
+                    <div class="msg_loading"></div>   
+                </div>
+                <div id="reply_msg"><p></p></div>
 
-            <div class="col-sm-offset-2 col-sm-4 Contact_mail slideanim slide">
+                <div class="col-sm-offset-2 col-sm-10 Contact_mail slideanim slide">
                 <form id="sending_message" role="form" data-toggle="validator" method="post" class="form-horizontal" action="<?php echo $this->webroot;?>users/send_message">
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="email">Name:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control name" name="name" data-error="Please input your Name" id="name" placeholder="Enter email" required="">
+                            <input type="text" class="form-control name" name="name" data-error="Please input your Name" id="name" placeholder="Enter Name" required="">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="email">Email:</label>
                         <div class="col-sm-9">
-                            <input type="email" name="email" data-error="Bruh, that email address is invalid" class="form-control email" id="email" placeholder="Enter email" required="">
+                            <input type="email" name="email" data-error="Bruh, that email address is invalid" class="form-control email" id="email" placeholder="Enter Email" required="">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -332,30 +337,12 @@
                         </div>
                     </div>
                     <div class="form-group"> 
-                        <div class="col-sm-offset-3 col-sm-9">
-                            <button type="submit" class="btn btn-primary btn_msg" id="send_btn">Submit</button>
+                        <div class="col-sm-offset-3 col-sm-9 msg_submit">
+                            <button type="submit" class="btn btn-primary btn_msg">Submit</button>
                         </div>
                     </div>
-
-                    <a href="#" class="btn" id="thankyouModal">Open modal</a>
-
-                    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">×</button>
-                                <h3>Modal header</h3>
-                        </div>
-                        <div id="reply_msg" class="modal-body">
-                            <p>My modal content here…</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-
-
-
-                    <div></div>
                 </form>    
+                </div> 
             </div>
         </div>
     </div>

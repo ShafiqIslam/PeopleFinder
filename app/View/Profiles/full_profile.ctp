@@ -279,7 +279,7 @@
 							<?php if($logged['id'] != $profile['Profile']['reporter_id']) { ?>
 								<div class="col-sm-6 report_abuse_section">
 									<form id="captcha_form"  method="post" class="form-horizontal report_abuse" action="">
-										<div id="popover_content_wrapper" class="captcha" style="display: none">
+										<div id="popover_content_wrapper" class="captcha" style="display:none">
 											<p></p>
 
 											<div id="captcha" class="form-group">

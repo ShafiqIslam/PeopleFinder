@@ -31,11 +31,33 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
             <div class="col-sm-4">
-                <select name="gender" class="form-control">
+                <select name="gender" class="form-control" required="">
                     <option value="">Select Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Birth Date</label>
+            <div class="col-sm-4">
+                <input type="date" name="birth_date" class="form-control" id="" placeholder="Date">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Living Country</label>
+            <div class="col-sm-4 country_selection_box">
+                <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="" data-flags="true">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Living City</label>
+            <div class="col-sm-4">
+                <input type="text" name="missing_city" class="form-control" id="" placeholder="City">
             </div>
         </div>
 
