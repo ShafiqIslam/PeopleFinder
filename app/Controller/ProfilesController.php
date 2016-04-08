@@ -193,7 +193,7 @@ class ProfilesController extends AppController {
 			$this->Profile->create();
 			if($this->Profile->save($this->request->data)) {
 				$this->request->data['Profile']['id'] = $this->Profile->id;
-				$this->_facepp_job($this->request->data);
+				$this->_facepp_upload($this->request->data);
 				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
 			} else {
 				$success = false;
