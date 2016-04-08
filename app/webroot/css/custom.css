@@ -1218,12 +1218,29 @@ input, textarea{
 
 .captcha_page h2{
 	text-align: center;
+	margin: 4.15%;
 }
 
 .captcha_page .control-label{
 	font-size: 20px;
 	text-align: left;
-} 
+}
+
+.captcha_page .btn_abuse{
+	background-color: rgba(0, 0, 255, 0.68);
+    padding: 9px 30px;
+    font-size: 20px;
+    color: #fff;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    margin-bottom: 16%;
+
+}
+.captcha_page .btn_abuse:hover{
+	background-color: rgba(0, 0, 255, 0.58);
+}
 
 .warning{
 	text-align: center;
@@ -1360,12 +1377,7 @@ input, textarea{
 	font-style: italic;
 }
 
-.search_result_details_wrapper .btn_abuse{
-	width: 97%;
-    padding: 15px 20px;
-    font-size: 30px;
-	margin-left: -10px;
-}
+
 /*----------left arrow-------*/
 .previous_arrow .btn {
 	border: none;

@@ -124,7 +124,7 @@ $(document).ready(function() {
             captcha: {
                 validators: {
                     callback: {
-                        message: 'Wrong answer',
+                        message: 'Captcha does not match!',
                         callback: function(value, validator) {
                             var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
                             return value == sum;

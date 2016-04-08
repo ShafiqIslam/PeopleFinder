@@ -9,8 +9,8 @@
         </div>
 
         <div class="form-group">
-            <div class="col-lg-9 col-lg-offset-3">
-                <button type="submit" class="btn btn-abuse" name="signup" value="Sign up">SUMBIT</button>
+            <div class="col-sm-2 col-sm-offset-6">
+                <button type="submit" class="btn btn_abuse" name="signup" value="Sign up">SUMBIT</button>
             </div>
         </div>
 	</form>
