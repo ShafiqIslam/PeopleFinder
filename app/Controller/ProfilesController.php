@@ -368,6 +368,15 @@ class ProfilesController extends AppController {
 			if(!empty($this->request->data['gender']) && $this->request->data['gender']!="") {
 				$condition .= " AND `Profile`.`gender` = '" . $this->request->data['gender'] . "'";
 			}
+			if(!empty($this->request->data['birthdate'])) {
+				$condition .= " AND `Profile`.`birthdate` = '" . $this->request->data['birthdate'] . "'";
+			}
+			if(!empty($this->request->data['resident_country'])) {
+				$condition .= " AND `Profile`.`resident_country` = '" . $this->request->data['resident_country'] . "'";
+			}
+			if(!empty($this->request->data['resident_city'])) {
+				$condition .= " AND `Profile`.`resident_city` = '" . $this->request->data['resident_city'] . "'";
+			}
 			if(!empty($this->request->data['missing_country'])) {
 				$condition .= " AND `Profile`.`missing_country` = '" . $this->request->data['missing_country'] . "'";
 			}

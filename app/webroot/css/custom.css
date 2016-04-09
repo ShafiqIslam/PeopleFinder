@@ -642,7 +642,7 @@ header ul li a{
     color: #00A708;
 }
 .service_option{
-	margin: 8% 0%;
+	margin: 8% 0% 5% 0%;
 }
 .service_option .fa{
 	padding-right: 9px;
@@ -659,9 +659,10 @@ header ul li a{
     width: 35%;
     font-size: 24px;
     padding: 12px 0px;
-    margin: 10% 0%;
+    margin: 12% 0% 0% 0%;
     transition: all .3s ease;
     -webkit-transition: all .5s ease;
+    display: inline-block;
 }
 
 .btn_service:hover{
@@ -1165,6 +1166,10 @@ input, textarea{
 }
 .result_body a{
 	text-decoration: none;
+	//display: block;
+}
+.report_list_name a{
+	display: block;
 }
 .person_status{
 	//margin-top: 30px;
@@ -1685,6 +1690,22 @@ input, textarea{
 }
 
 
+/* -------------Edit Page-------------*/
+
+.edit_img ul li .img-responsive{
+	max-width: 135px;
+	height: 128px;
+	float: left;
+	margin: 5px;
+	}
+.edit_img ul{
+	margin-left: -39px;
+}
+
+img.mfp-img{
+	max-width: 400px;
+	height: 400px;
+}
 
 
 

@@ -28,7 +28,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Birthdate</label>
             <div class="col-sm-4">
-                <input type="date" value="<?php echo $profile['Profile']['birthdate']?>" name="data[Profile][birthdate]" class="form-control" id="" placeholder="date">
+                <input type="date" value="<?php echo $profile['Profile']['birthdate']?>" name="data[Profile][birthdate]" class="form-control" id="datepicker" placeholder="date">
             </div>
         </div>
 
@@ -163,18 +163,24 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group edit_img">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Currently Used Images</label>
             <div class="col-sm-4">
                 <ul style="list-style: none">
                     <?php if(!empty($profile['Profile']['image_link_1'])) { ?>
-                        <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $profile['Profile']['image_link_1'];?>"></li>
+                    <a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_1'];?>">
+                        <li class=""><img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_1'];?>"></li>
+                    </a>
                     <?php } ?>
                     <?php if(!empty($profile['Profile']['image_link_2'])) { ?>
-                        <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $profile['Profile']['image_link_2'];?>"></li>
+                    <a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_2'];?>">
+                        <li class=""><img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_2'];?>"></li>
+                    </a>
                     <?php } ?>
                     <?php if(!empty($profile['Profile']['image_link_3'])) { ?>
-                        <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $profile['Profile']['image_link_3'];?>"></li>
+                    <a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_3'];?>">
+                        <li class=""><img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_3'];?>"></li>
+                    </a>
                     <?php } ?>
                 </ul>
             </div>

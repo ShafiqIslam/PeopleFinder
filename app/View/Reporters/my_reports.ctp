@@ -33,7 +33,7 @@
 				<div class="col-sm-2">
 					<img class="img-thumbnail img_result" src="<?php echo $image_link;?>">
 				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-4 report_list_name">
 					<a href="<?php echo $this->webroot;?>profiles/full_profile/<?php echo $item['id'];?>/0">
 						<h4><?php echo $name;?></h4>							
 						<p>

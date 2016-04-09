@@ -161,7 +161,7 @@
                     <p>&copy; 2016 Face Finder. All Rights Reserved.</p>
                 </div>
                 <div class="col-sm-4 pull-right">
-                    <p class="pull-right"><a href="http//:www.xorcoder.com" target="_blank">Design&developed by www.xorcoder.com</a></p>
+                    <p class="pull-right"><a href="http://www.xorcoder.com" target="_blank">Design&developed by www.xorcoder.com</a></p>
                 </div>
             </div>
         </footer>

@@ -43,22 +43,22 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Birth Date</label>
             <div class="col-sm-4" >
-                <input type="text" name="birth_date"  class="form-control" placeholder="Date" id="datepicker">
+                <input type="text" name="birthdate"  class="form-control" placeholder="Date" id="datepicker">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Living Country</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident Country</label>
             <div class="col-sm-4 country_selection_box">
-                <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="" data-flags="true">
+                <div class="bfh-selectbox bfh-countries" data-name="resident_country" data-country="" data-flags="true">
                 </div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Living City</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident City</label>
             <div class="col-sm-4">
-                <input type="text" name="missing_city" class="form-control" id="" placeholder="City">
+                <input type="text" name="resident_city" class="form-control" id="" placeholder="City">
             </div>
         </div>
 

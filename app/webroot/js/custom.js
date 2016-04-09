@@ -357,5 +357,6 @@ $.fn.serializeObject = function () {
         changeMonth: true,
         changeYear: true,
         yearRange: '1930:c',
+        dateFormat: "yy-mm-dd",
     });
   });

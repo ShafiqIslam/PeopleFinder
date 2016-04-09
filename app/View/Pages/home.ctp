@@ -206,11 +206,12 @@
                 <p><span><i class="fa fa-check-square"></i></span>Reporting found persons.</p>
             </div>
         </div>
-    </div>
-    <div class="col-sm-8 col-sm-offset-2">
-        <div class="row">
-            <a class="btn btn  btn_service pull-left col-sm-4" href="<?php echo $this->webroot;?>report_found">Report Found</a>
-            <a class="btn btn btn_service pull-right col-smoffset-4 col-sm-4" href="<?php echo $this->webroot;?>report_missing">Report Missing</a>
+    
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="row">
+                <a class="btn btn  btn_service pull-left col-sm-4" href="<?php echo $this->webroot;?>report_found">Report Found</a>
+                <a class="btn btn btn_service pull-right col-smoffset-4 col-sm-4" href="<?php echo $this->webroot;?>report_missing">Report Missing</a>
+            </div>
         </div>
     </div>
 </div>
@@ -275,7 +276,7 @@
             <div class="row">
                 <div class="col-sm-offset-2 col-sm-8 testimonial_text">
                     <h4><blockquote>" <?php echo $item['Testimonial']['testimonial'];?> " <br>
-                        <h5 class="pull-right"><span class="testi_arrow"><i class="fa fa-hand-o-right"></i></span> <?php echo $name ?>, <span class="bfh-countries" data-country="<?php echo $item['Reporter']['nationality'];?>" data-flags="true"></span></h5>
+                        <h5 class="pull-right"><span class="testi_arrow"><i class="fa fa-hand-o-right"></i><strong><i></span> <?php echo $name ?></i></strong>, <span class="bfh-countries" data-country="<?php echo $item['Reporter']['nationality'];?>" data-flags="true"></span></h5>
                     </blockquote></h4>
                 </div>
             </div>
