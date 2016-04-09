@@ -1,11 +1,3 @@
-<?php $flash = $this->Session->flash('flash'); ?>
-<?php if(!empty($flash)) { ?>
-	<div class="container flash_message">
-		<?php echo $flash;?>
-		<button class="flash_close_btn"><span><i class="fa fa-times fa-2x"></i></span></button>
-	</div>
-<?php } ?>
-
 <?php $logged = $this->Session->read('logged_user'); ?>
 <?php
 	$link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";

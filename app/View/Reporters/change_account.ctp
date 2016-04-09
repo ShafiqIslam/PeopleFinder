@@ -1,12 +1,3 @@
-<div style="clear: both;"></div>
-<?php $flash = $this->Session->flash('flash'); ?>
-<?php if(!empty($flash)) { ?>
-    <div class="flash_message">
-        <?php echo $flash;?>
-        <button class="flash_close_btn">&#215;</button>
-    </div>
-<?php } ?>
-
 <!--==================Sign Up Section========================-->
 <div class="container-fluid sign_up_page">
     <h1>Change Account Details</h1>
