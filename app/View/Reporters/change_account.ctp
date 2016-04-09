@@ -52,19 +52,25 @@
 
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Currently Used IDs</label>
-            <div class="col-sm-4">
+            <div class="col-sm-4 edit_img">
                 <ul style="list-style: none">
                     <?php $img_flag = 0; ?>
                     <?php if(!empty($this->request->data['Reporter']['id_image_link_1'])) { ?>
-                        <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>"></li>
+                    <a class="image-popup-no-margins" href="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>">
+                        <li class="search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>"></li>
+                    </a>
                         <?php $img_flag = 1; ?>
                     <?php } ?>
                     <?php if(!empty($this->request->data['Reporter']['id_image_link_2'])) { ?>
-                        <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>"></li>
+                    <a class="image-popup-no-margins" href="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>">
+                        <li class="search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>"></li>
+                    </a>
                         <?php $img_flag = 1; ?>
                     <?php } ?>
                     <?php if(!empty($this->request->data['Reporter']['id_image_link_3'])) { ?>
-                        <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>"></li>
+                    <a class="image-popup-no-margins" href="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>">
+                        <li class="search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>"></li>
+                    </a>
                         <?php $img_flag = 1; ?>
                     <?php } ?>
                 </ul>

@@ -1057,7 +1057,7 @@ input, textarea{
 }
 
 .mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
-    color: #FFF;
+    color: #F00000;
     right: 1px;
     text-align: right;
     padding-right: 5px;
