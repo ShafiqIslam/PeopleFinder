@@ -779,7 +779,7 @@ header ul li a{
 	margin-top: -1.5%;
 }
 .carousel  h2{
-	padding-top: 5%;
+	padding-top: 2%;
     font-size: 42px;
     font-weight: bold;
     color: rgb(28, 39, 66);
@@ -811,6 +811,10 @@ blockquote .fa{
 	font:30px;
 	color: blue;
 } 
+
+.carousel-indicators {
+    top: 94%;
+}
 
 .carousel-indicators li {
     display: inline-block;

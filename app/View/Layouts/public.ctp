@@ -46,7 +46,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span> 
                             </button>
-                            <img class="logo" src="<?php echo $this->webroot;?>img/logo_2.png"/> 
+                            <a href="<?php echo $this->webroot;?>home"><img class="logo" src="<?php echo $this->webroot;?>img/logo_2.png"/></a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-right">
