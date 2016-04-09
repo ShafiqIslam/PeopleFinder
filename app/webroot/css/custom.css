@@ -1,4 +1,7 @@
-
+@font-face {
+	font-family: 'digital-clock-font';
+	src: url('../fonts/digital-7/digital-7.ttf');
+}
 
 /*------windows loader CSS------*/
 .loader {
@@ -557,31 +560,56 @@ header ul li a{
 
 .count_wrapper h3{
 	text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-    //margin-top: 38%;
-    color: rgb(28, 39, 66);
+	font-weight: bold;
+	font-size: 40px;
+	color: rgb(255, 255, 255);
+	opacity: 0.85;
+	padding: 25px;
+	margin-top: -5px;
+	border-radius: 10px;
+	text-shadow: 3px 5px 2px #1C2742;
+	box-shadow: 4px 3px 3px #1C2742;
+	text-transform: uppercase;
 }
+
+h3.found_h3_counter {
+	background: #4AB4AA;
+	text-shadow: -3px 5px 2px #1C2742;
+	box-shadow: -4px 3px 3px #1C2742;
+	-ms-transform: skew(25deg, 10deg);
+	-webkit-transform: skew(25deg, 10deg);
+	transform: skewX(25deg);
+}
+
+h3.added_h3_counter {
+	background: #AD6A63;
+	text-shadow: 3px 5px 2px #1C2742;
+	box-shadow: 4px 3px 3px #1C2742;
+	-ms-transform: skew(-25deg, -10deg);
+	-webkit-transform: skew(-25deg, -10deg);
+	transform: skewX(-25deg);
+}
+
 .count_wrapper h2{
+	font-family: 'digital-clock-font';
 	text-align: center;
 	color: #1C2742;
-	font-weight: bold;
-	font-size: 45px;
+	font-size: 70px;
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    padding: 37%;
+	padding-top: 30%;
 }
 .counter_found{
 	background-color: rgba(0, 150, 136, 0.71);
-	margin-left: 17%;
+	margin-left: 10%;
 }
 .counter_found_text{
 	background-color: #fff;
 }
 .counter_add{
 	background-color: rgba(134, 35, 25, 0.67);
-	margin-left: 17%;
+	margin-left: 20%;
 	
 }
 

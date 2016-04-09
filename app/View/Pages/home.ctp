@@ -225,7 +225,7 @@
                     <h2 class="timer count-title counter_found_text" id="count-number" data-to="<?php echo $profile_count['found'];?>" data-speed="1500"></h2>
                 </div>
             </div>
-            <h3>Found People</h3>
+            <h3 class="found_h3_counter">Found People</h3>
         </div>
         
         <div class="col-sm-offset-2 col-sm-4">
@@ -234,7 +234,7 @@
                 <h2 class="timer count-title counter_add_text" id="count-number" data-to="<?php echo $profile_count['total'];?>" data-speed="1500"></h2> 
             </div>
             </div>
-            <h3>Added Profile</h3>
+            <h3 class="added_h3_counter">Added Profile</h3>
         </div>
     </div>
 </div>
