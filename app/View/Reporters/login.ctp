@@ -1,5 +1,5 @@
 <!--==================log in Section========================-->
-<div class="container-fluid sign_up_page">
+<div class="container-fluid login_page">
     <h1>Login</h1>
     <hr>
 
