@@ -12,6 +12,13 @@ class AppController extends Controller {
     private $_facepp_api_key = "921e786d46d586478ad122e96e3600d5";
     private $_facepp_api_secret = "J-A-Hc63JM2cmtfJDzRoKxxy5b7YmeVE";
 
+    private $_gmail = "facefinder2@gmail.com";
+    private $_gmail_password = "a9876543210z";
+
+    private $_cloudinary_cloud_name = "dg0qpsar6";
+    private $_cloudinary_api_key = "824232614796376";
+    private $_cloudinary_api_secret = "v0gErUr-VkaATpwaZTzukftlvCY";
+
 	public $components = array(
         'Session', 'RequestHandler','Cookie',
         'Auth' => array(
@@ -103,9 +110,9 @@ class AppController extends Controller {
 */
         // api configeration
         \Cloudinary::config(array(
-            "cloud_name" => "dg0qpsar6",
-            "api_key" => "824232614796376",
-            "api_secret" => "v0gErUr-VkaATpwaZTzukftlvCY"
+            "cloud_name" => $this->_cloudinary_cloud_name,
+            "api_key" => $this->_cloudinary_api_key,
+            "api_secret" => $this->_cloudinary_api_secret
         ));
 
         $default_upload_options = array("tags" => "basic_sample");
@@ -166,11 +173,12 @@ class AppController extends Controller {
         $mail->isSMTP();                                    // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  					// Specify main and backup SMTP servers
         $mail->Port = '587';
+        $mail->SMTPDebug = 1;                               // debugging: 1 = errors and messages, 2 = messages only
+        $mail->SMTPSecure = 'tls';                          // secure transfer enabled REQUIRED for GMail
         $mail->SMTPAuth = true;                             // Enable SMTP authentication
-        $mail->Username = 'facefinder2@gmail.com';          // SMTP username
-        $mail->Password = 'a9876543210z';                   // SMTP password
-        $mail->SMTPSecure = 'tls';                          // Enable encryption, 'ssl' also accepted
-        $mail->From = "facefinder2@gmail.com";
+        $mail->Username = $this->_gmail;                    // SMTP username
+        $mail->Password = $this->_gmail_password;           // SMTP password
+        $mail->SetFrom($this->_gmail);
         $mail->FromName = "FaceFinder";
 
         $mail->addAddress($receiver, $name);
