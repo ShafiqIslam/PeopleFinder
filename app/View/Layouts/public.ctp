@@ -87,7 +87,7 @@
                                     <ul class="dropdown-menu dropdown_menu_modal">
                                         <span class="glyphicon glyphicon-triangle-top"></span>
                                         <li>
-                                            <form  name="login_form" enctype="multipart/form-data" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
+                                            <form role="form" data-toggle="validator" novalidate="true"  name="login_form" enctype="multipart/form-data" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
                                                 <div class="form-group">
                                                     <label for="inputEmail" class="col-sm-12 control-label">Email</label>
                                                     <div class="col-sm-12">

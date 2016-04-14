@@ -8,7 +8,7 @@
         <hr>
     <?php } ?>
 
-    <form role="form" name="login_form" id="login_form" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
+    <form role="form" name="login_form" data-toggle="validator" novalidate="true" id="login_form" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Email</label>
             <div class="col-sm-3">

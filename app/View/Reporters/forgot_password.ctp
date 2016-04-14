@@ -13,11 +13,11 @@
     <?php } ?>
 
     <?php if(!isset($email) || !$email_exist ) { ?>
-    <form role="form" name="forgot_form" id="forgot_form" method="post" action="<?php echo $this->webroot;?>reporters/forgot_password" class="form-horizontal">
+    <form role="form" name="forgot_form" data-toggle="validator" novalidate="true" id="forgot_form" method="post" action="<?php echo $this->webroot;?>reporters/forgot_password" class="form-horizontal">
         <div class="form-group">
             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Email</label>
             <div class="col-sm-3">
-                <input type="text" name="data[Reporter][email]" class="form-control" id="" placeholder="Email">
+                <input type="text" name="data[Reporter][email]" class="form-control" id="" placeholder="Email" required="">
             </div>
         </div>
 
