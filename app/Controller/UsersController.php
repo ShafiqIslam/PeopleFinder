@@ -269,8 +269,8 @@ class UsersController extends AppController {
         $body .= '              <strong style="font-size: 20px;">Hello, Admin </strong>';
         $body .= '              <br><br>';
         $body .= '              <p style="font-size: 15px;">You have new message from: ' . $from_name . ' (' . $from . ')</p>';
-        $body .= '              <br><br>';
-        $body .= '              <p style="font-size: 15px; background: #eee">' . $message . '</p>';
+        $body .= '              <br>';
+        $body .= '              <p style="font-size: 15px; background: #eee; padding: 5px">' . $message . '</p>';
         $body .= '              <br><br>';
         $body .= '              <p style="font-size: 15px;">If you don\'t know anything about this email. Please just ignore it.';
         $body .= '          </div>';
