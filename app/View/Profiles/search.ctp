@@ -34,14 +34,14 @@
 
 		        <div class="form-group">
 		            <div class="col-sm-12 country_selection_box">
-		                <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="BD" data-flags="true">
+		                <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="EG" data-flags="true">
 		                </div>
 		            </div>
 		        </div>
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input type="text" name="missing_city" class="form-control" id="" placeholder="City">
+		                <input type="text" name="missing_city" class="form-control" id="" placeholder="Missing City">
 		            </div>
 		        </div>
 
@@ -89,9 +89,10 @@
 						$name = $first_name . " " . $second_name . " " . $last_name;
 						?>
 						<div class="col-sm-5">
-								<h4><?php echo $name;?></h4>							
+								<h4><?php echo $name;?></h4>
+								<h5 class="p_id">Profile Id : <?php echo $profile['Profile']['id'];?></h5>							
 								<p>
-									<?php echo $profile['Profile']['missing_city'];?>,&nbsp;
+									<?php echo $profile['Profile']['missing_city'];?>&nbsp;
 									<span class="bfh-countries" data-country="<?php echo $profile['Profile']['missing_country'];?>" data-flags="true"></span>.&nbsp;
 								</p>
 								<p>

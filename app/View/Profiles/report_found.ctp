@@ -35,7 +35,7 @@
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Blood Group</label>
             <div class="col-sm-4">
                 <select name="data[Profile][blood_type]" class="form-control">
-                    <option>Select Blood Group</option>
+                    <option selected="true" disabled="disabled">Select Blood Group</option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
                     <option value="B+">B+</option>
@@ -52,7 +52,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Nationality</label>
             <div class="col-sm-4 country_selection_box">
-                <div class="bfh-selectbox bfh-countries" data-name="data[Profile][nationality]"  data-country="BD" data-flags="true">
+                <div class="bfh-selectbox bfh-countries" data-name="data[Profile][nationality]"  data-country="EG" data-flags="true">
                 </div>        
             </div>
         </div>
@@ -74,7 +74,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident Country</label>
             <div class="col-sm-4">
-                <div class="bfh-selectbox bfh-countries" data-name="data[Profile][resident_country]" data-country="BD" data-flags="true">
+                <div class="bfh-selectbox bfh-countries" data-name="data[Profile][resident_country]" data-country="EG" data-flags="true">
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Missing Country</label>
             <div class="col-sm-4">
-                <div class="bfh-selectbox bfh-countries" data-name="data[Profile][missing_country]" data-country="BD" data-flags="true">
+                <div class="bfh-selectbox bfh-countries" data-name="data[Profile][missing_country]" data-country="EG" data-flags="true">
                 </div>
             </div>
         </div>
@@ -118,8 +118,8 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Mental illness</label>
             <div class="col-sm-4">
-                <select name="data[Profile][mental_illness]" class="form-control" required="">
-                    <option value="">Select Mental illness</option>
+                <select name="data[Profile][mental_illness]" class="form-control">
+                    <option selected="true" disabled="disabled">Select Mental illness</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                     <option value="NA">NA</option>
@@ -130,8 +130,8 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Status</label>
             <div class="col-sm-4">
-                <select name="data[Profile][status]" class="form-control" required="">
-                    <option value="">Select Status</option>
+                <select name="data[Profile][status]" class="form-control">
+                    <option selected="true" disabled="disabled">Select Status</option>
                     <option value="Alive">Alive</option>
                     <option value="Dead">Dead</option>
                     <option value="NA">NA</option>
@@ -143,7 +143,7 @@
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Kidnapped</label>
             <div class="col-sm-4">
                 <select name="data[Profile][kidnapped]" class="form-control">
-                    <option>Select Kidnapped</option>
+                    <option selected="true" disabled="disabled">Select Kidnapped</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                     <option value="NA">NA</option>
@@ -154,8 +154,8 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Physical illness</label>
             <div class="col-sm-4">
-                <select name="data[Profile][physical_illness]" class="form-control" required="">
-                    <option value="">Select Physical illness</option>
+                <select name="data[Profile][physical_illness]" class="form-control">
+                    <option selected="true" disabled="disabled">Select Physical illness</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                     <option value="NA">NA</option>

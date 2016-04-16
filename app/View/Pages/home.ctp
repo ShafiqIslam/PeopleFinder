@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
                             <div class="col-sm-4">
-                                <select name="gender" class="form-control" required="">
+                                <select name="gender" class="form-control" required="true">
                                     <option value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -118,7 +118,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-offset-3 col-sm-2 control-label">Country</label>
                             <div class="col-sm-4 country_selection_box">
-                                <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="BD" data-flags="true">
+                                <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="EG" data-flags="true">
                                 </div>
                             </div>
                         </div>
