@@ -80,15 +80,15 @@ $(document).ready(function(){
 		}
 	}
 
-    /*-------------Login popup validation--------------*/
 
-
+/*=========Bootstrap input file upload plaguin Js Code here================*/
 	/*--------------Images search Js Code is Here-------------------*/
 	$("#search_img").fileinput({
         previewFileIcon: '<i class="fa fa-file"></i>',
         allowedPreviewTypes: ['image'], // allow only preview of image files
         uploadAsync : false,
-        maxFileCount : 1,
+        maxFileSize: 100,
+        maxFileCount : 3,
         overwriteInitial : false,
     });
 
@@ -97,6 +97,21 @@ $(document).ready(function(){
         previewFileIcon: '<i class="fa fa-file"></i>',
         allowedPreviewTypes: ['image'], // allow only preview of image files
         uploadAsync : false,
+        allowedFileExtensions : ['jpg', 'png','gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFileCount:3,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+
+    $("#detail_search").fileinput({
+        previewFileIcon: '<i class="fa fa-file"></i>',
+        allowedPreviewTypes: ['image'], // allow only preview of image files
+        uploadAsync : false,
+        maxFileSize: 100,
         maxFileCount : 3,
         overwriteInitial : false,
     });
@@ -152,41 +167,6 @@ $(document).ready(function(){
 });
 
 
-/*---------------Popover of Images---------*/
-/*
-$(document).ready(function(){
-  $('.img_popover_1').popover({ 
-    html : true,
-    placement: 'bottom',
-    trigger: 'click hover',
-    content: function() {
-      return $('#img_popover_1').html();
-    }
-  });
-});
-
-$(document).ready(function(){
-  $('.img_popover_2').popover({ 
-    html : true,
-    placement: 'bottom',
-    trigger: 'click hover',
-    content: function() {
-      return $('#img_popover_2').html();
-    }
-  });
-});
-
-$(document).ready(function(){
-  $('.img_popover_3').popover({ 
-    html : true,
-    placement: 'bottom',
-    trigger: 'click hover',
-    content: function() {
-      return $('#img_popover_3').html();
-    }
-  });
-});
-*/
 /*---------Page reload for map reload---------*/
 
 $('#map_reload').on('shown.bs.tab', function () {
@@ -194,11 +174,6 @@ $('#map_reload').on('shown.bs.tab', function () {
 });
 
 
-/*
-$('#pic_reload').on('shown.bs.tab', function () {
-    $('#photos').event.trigger(window, 'resize', {});
-});
-*/
 
 /*------ Keep current Tab page active after reloading------*/
 $('a[data-toggle="tab"]').click(function (e) {
@@ -254,31 +229,6 @@ $('.image-popup-no-margins').magnificPopup({
             duration: 300 // don't foget to change the duration also in CSS
         }
 });
-
-
-/*
-
-    // You can also share to pinterest and tumblr:
-
-    var options = {
-
-        // Pinterest requires a image to be "pinned"
-
-        pinterest: {
-            media: 'http://example.com/image.jpg',
-            description: 'My lovely picture'
-        },
-
-        // Tumblr takes a name and a description
-
-        tumblr: {
-            name: 'jQuery Social Buttons Plugin!',
-            description: 'There is a new article on tutorialzine.com page! Check out!'
-        }
-    };
-
-*/
-
 
 
 /*------------- Posting a message---------*/

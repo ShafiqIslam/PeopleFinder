@@ -7,7 +7,7 @@
 <div class="container-fluid sign_up_page search_page">
     <h1>Search</h1>
     <hr>
-    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search">
+    <form id="detail_search" role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search">
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
             <div class="col-sm-4">
@@ -101,7 +101,7 @@
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Upload Photos</label>
             <div class="col-sm-offset-2 col-sm-7 upload_img">
                 <!--<p class="info_search">Search by photos</p>-->
-                <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="1">
+                <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3">
                 <input type="hidden" name="search_image">
                 <p>You must upload the photos. Otherwise its will not be uploaded.</p>
             </div>

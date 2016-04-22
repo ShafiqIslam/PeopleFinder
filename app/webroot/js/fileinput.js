@@ -2650,7 +2650,7 @@
         allowedPreviewTypes: null,
         allowedPreviewMimeTypes: null,
         allowedFileTypes: null,
-        allowedFileExtensions: null,
+        allowedFileExtensions: ["jpg", "gif", "png"],
         defaultPreviewContent: null,
         customLayoutTags: {},
         customPreviewTags: {},

@@ -28,7 +28,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Nationality</label>
             <div class="col-sm-4">
-                <div class="bfh-selectbox bfh-countries" data-name="data[Reporter][nationality]" data-country="BD" data-flags="true"></div>
+                <div class="bfh-selectbox bfh-countries" data-name="data[Reporter][nationality]" data-country="EG" data-flags="true"></div>
             </div>
         </div>
 
@@ -46,7 +46,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident Country</label>
             <div class="col-sm-4">
-                <div class="bfh-selectbox bfh-countries" data-name="data[Reporter][resident_country]" data-country="BD" data-flags="true"></div>
+                <div class="bfh-selectbox bfh-countries" data-name="data[Reporter][resident_country]" data-country="EG" data-flags="true"></div>
             </div>
         </div>
 
