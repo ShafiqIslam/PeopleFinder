@@ -58,7 +58,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident City</label>
             <div class="col-sm-4">
-                <input type="text" name="resident_city" class="form-control" id="" placeholder="City">
+                <input type="text" name="resident_city" class="form-control" id="" placeholder="Resident City">
             </div>
         </div>
 
@@ -73,7 +73,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Missing City</label>
             <div class="col-sm-4">
-                <input type="text" name="missing_city" class="form-control" id="" placeholder="City">
+                <input type="text" name="missing_city" class="form-control" id="" placeholder="Missing City">
             </div>
         </div>
 

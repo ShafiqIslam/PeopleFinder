@@ -41,8 +41,9 @@
 				
 				<div class="row">
 					<div class="col-sm-6 pull-left">
+						<h3 class="p_id">Profile Id : <?php echo $profile['Profile']['id'];?></h3>
 						<p class="person_place">
-							<b><?php echo $profile['Profile']['missing_city'];?>, <span class="bfh-countries" data-country="<?php echo $profile['Profile']['missing_country'];?>" data-flags="true"></span></b>
+							<b><?php echo $profile['Profile']['missing_city'];?>&nbsp; <span class="bfh-countries" data-country="<?php echo $profile['Profile']['missing_country'];?>" data-flags="true"></span></b>
 						</p>
 
 						<?php if($profile['Profile']['verified_profile']): ?>
@@ -65,11 +66,21 @@
 
 				<div class="row person_detail_info">
 					<div class="col-sm-5"><h4>Birth Date</h4></div>
-					<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['birthdate'];?></h4></div>
+					<?php 
+						if (empty($profile['Profile']['birthdate'])) { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4 style="color: #FFC516;"><?php echo "No Birthdate Selected.";?></h4></div>
+						<?php } else { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['birthdate'];?></h4></div>
+					<?php } ?>
+					
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4>Blood Group</h4></div>
-					<div class="col-sm-offset-1 col-sm-6"><h4 style="color: red;"><?php echo $profile['Profile']['blood_type'];?></h4></div>
+					<?php if (empty($profile['Profile']['blood_type'])) { ?>
+						<div class="col-sm-offset-1 col-sm-6"><h4 style="color: red;"><?php echo "No Blood Group Selected.";?></h4></div>
+					<?php } else { ?>
+						<div class="col-sm-offset-1 col-sm-6"><h4 style="color: red;"><?php echo $profile['Profile']['blood_type'];?></h4></div>
+					<?php } ?>
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4>Person's Status</h4></div>
@@ -78,11 +89,15 @@
 							<div class="col-sm-offset-1 col-sm-6"><h4 class="<?Php echo "if_found" ?>"><?php echo $profile['Profile']['person_status'];?></h4></div>
 						<?php } else { ?>
 							<div class="col-sm-offset-1 col-sm-6"><h4 class="<?Php echo "if_missing" ?>"><?php echo $profile['Profile']['person_status'];?></h4></div>
-						<?php } ?>
+					<?php } ?>
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4>Nationality</h4></div>
-					<div class="col-sm-offset-1 col-sm-6"><h4><span class="bfh-countries" data-country="<?php echo $profile['Profile']['nationality'];?>" data-flags="true"></span></h4></div>
+					<?php if (empty($profile['Profile']['nationality'])) { ?>
+						<div class="col-sm-offset-1 col-sm-6"><h4 style="color: #FFC516;"><span class="bfh-countries" data-country="<?php echo "Nationatily not Selected.";?>" data-flags="true"></span>
+					<?php } else { ?>
+						<div class="col-sm-offset-1 col-sm-6"><h4><span class="bfh-countries" data-country="<?php echo $profile['Profile']['nationality'];?>" data-flags="true"></span></h4></div>
+					<?php } ?>
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4>Resident Country</h4></div>
@@ -90,27 +105,58 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4>Resident City</h4></div>
-					<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['resident_city'];?></h4></div>
+					<?php
+						if (empty($profile['Profile']['resident_city'])) { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4 style="color: #FFC516;"><?php echo "Resident City Not Selected.";?></h4></div>
+						<?php } else { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['resident_city'];?></h4></div>
+					<?php } ?>
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4>Resident Street</h4></div>
+					<?php 
+						if (empty($profile['Profile']['resident_street'])) { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4 style="color: #FFC516;"><?php echo "Resident Street Not Selected.";?></h4></div>
+						<?php } else { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['resident_street'];?></h4></div>
+					<?php } ?>
 					<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['resident_street'];?></h4></div>
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4>Mental illness</h4></div>
-					<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['mental_illness'];?></h4></div>
+					<?php
+						if (empty($profile['Profile']['mental_illness'])) { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4 style="color: #FFC516;"><?php echo "Mental illness Not Selected.";?></h4></div>
+						<?php } else { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['mental_illness'];?></h4></div>
+					<?php } ?>
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4>Status</h4></div>
-					<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['status'];?></h4></div>
+					<?php
+						if (empty($profile['Profile']['status'])) { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4 style="color: #FFC516;"><?php echo "No Stutus Selected.";?></h4></div>
+						<?php } else { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['status'];?></h4></div>
+					<?php } ?>
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4>Kidnapped</h4></div>
-					<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['kidnapped'];?></h4></div>
+					<?php
+						if (empty($profile['Profile']['kidnapped'])) { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4 style="color: #FFC516;"><?php echo "No Information.";?></h4></div>
+						<?php} else { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['kidnapped'];?></h4></div>
+					<?php } ?>
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4>Physical illness</h4></div>
-					<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['physical_illness'];?></h4></div>
+					<?php
+						if (empty($profile['Profile']['physical_illness'])) { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4 style="color: #FFC516;"><?php echo "No Information.";?></h4></div>
+						<?php } else { ?>
+							<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['physical_illness'];?></h4></div>
+						<?php } ?>
 				</div>
 
 				<?php if($profile['Profile']['reporter_id']!=$logged['id']) { ?>
