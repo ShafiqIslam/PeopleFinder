@@ -144,8 +144,14 @@ class UsersController extends AppController {
 				$data['is_admin'] = true;
                 $data['role'] = $is_exist['User']['role'];
 				$this->Session->write('logged_user', $data);
+                
                 //$this->redirect(array('action' => 'dashboard','admin' => true));
-                return $this->redirect( Router::url( $this->referer(), true ) );//for temporary
+                $ref = explode('/', $this->referer());
+                if($ref[count($ref)-1] == "admin") {
+                    return $this->redirect(array('action' => 'dashboard','admin' => true));
+                } else {
+                    return $this->redirect( Router::url( $this->referer(), true ) );//for temporary
+                }
             } else {
                 $this->Auth->logout();
                 $this->Session->setFlash(__('Incorrect username or password, please try again.'), 'default', array('class' => 'error'));
