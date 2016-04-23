@@ -620,10 +620,10 @@ class ProfilesController extends AppController {
 
 			if($data['Profile']['abuse_counter'] == 1) {
 				$msg = "Your report on <strong>$status</strong> of <strong>$name</strong> has been reported abuse. Please, click on the link below to review the report.";
-				//$this->_send_abuse_mail($profile['Reporter']['email'], $msg, $profile['Profile']['id'], $reporter_name);
+				$this->_send_abuse_mail($profile['Reporter']['email'], $msg, $profile['Profile']['id'], $reporter_name);
 
 				$msg = "The report on <strong>$status</strong> of <strong>$name</strong> by $reporter_name has been reported abuse. Please, click on the link below to review the report.";
-				//$this->_send_abuse_mail($admin_email, $msg, $profile['Profile']['id'], 'Admin');
+				$this->_send_abuse_mail($admin_email, $msg, $profile['Profile']['id'], 'Admin');
 			} else if ($data['Profile']['abuse_counter'] == 200) {
 				$this->Profile->id = $id;
 				$this->Profile->delete();
