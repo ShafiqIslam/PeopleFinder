@@ -85,7 +85,7 @@
         </div>
 
         <div class="form-group adv_draw_map">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Draw Circle on Map</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Search By Location</label>
             <div class="col-sm-offset-2 col-sm-7">
                 <!--<p class="saech_map">Search by Map</p>-->
                 <div id="map-canvas"></div><!-- Drag on google map-->
@@ -103,7 +103,7 @@
                 <!--<p class="info_search">Search by photos</p>-->
                 <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3">
                 <input type="hidden" name="search_image">
-                <p>You must upload the photos. Otherwise its will not be uploaded.</p>
+                <p>** NB: You must click 'Upload' before submitting after adding image.</p>
             </div>
         </div>
 
@@ -118,8 +118,8 @@
 
         <div class="form-group">
             <div class="faceplus_img col-sm-offset-2 col-sm-3">
-                                    <img style="width: 160px;" src="<?php echo $this->webroot;?>img/inside.png" alt="">
-                                </div>
+                <img style="width: 160px;" src="<?php echo $this->webroot;?>img/inside.png" alt="">
+            </div>
             <div class="col-sm-offset-2 col-sm-2 report_found_submit">
                 <button type="submit" class="btn btn-primary btn_search pull-right">Search</button>
             </div>

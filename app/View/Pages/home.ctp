@@ -74,7 +74,7 @@
                             <div class="col-sm-12 upload_img">
                                 <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3">
                                 <input type="hidden" name="search_image">
-                                <p>You must upload the photos. Otherwise its will not be uploaded.</p>
+                                <p>** NB: You must click 'Upload' before submitting after adding image.</p>
                             </div>
                         </div>
                         <script>
