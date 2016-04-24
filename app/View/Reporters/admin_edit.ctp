@@ -57,7 +57,7 @@
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Account Type</label>
                 <div class="col-sm-9">
-                    <?php echo $this->Form->input('account_type',array('label' => false,'class'=>'form-control')); ?>
+                    <?php echo $this->Form->input('account_type',array('label' => false,'class'=>'form-control', 'disabled'=>true)); ?>
                 </div>
             </div>
 
@@ -89,12 +89,13 @@
             </div>
             <?php } ?>
 
-            <?php if(!$this->request->data['Reporter']['account_type'] == 'Rejected') { ?>
+            <?php if($this->request->data['Reporter']['account_type'] == 'Rejected') { ?>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <input class="form-control" style="font-weight: bold" type="text" disabled="disabled" value="This user has submitted an new ID and was rejected.">
-                        <?php //echo $this->Html->Link(__('Accept'), array('action' => 'accept_id_document', $this->request->data['Reporter']['id']), array('class' => 'btn btn-danger')); ?>
+                        <?php echo $this->Html->Link(__('Make it Verified'), array('action' => 'accept_id_document', $this->request->data['Reporter']['id']), array('class' => 'btn btn-danger')); ?>
+                        <?php echo $this->Html->Link(__('Make it Normal'), array('action' => 'accept_id_document', $this->request->data['Reporter']['id'], 0), array('class' => 'btn btn-danger')); ?>
                     </div>
                 </div>
             <?php } ?>

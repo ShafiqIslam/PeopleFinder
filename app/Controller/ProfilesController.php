@@ -162,7 +162,8 @@ class ProfilesController extends AppController {
 			$this->request->data['Profile']['lat'] = $lat_lng['lat'];
 			$this->request->data['Profile']['lng'] = $lat_lng['lng'];
 
-			$this->request->data['Profile']['verified_profile'] = 0;
+			$reporter_obj = new ReportersController();
+			$this->request->data['Profile']['verified_profile'] = $reporter_obj->is_verified($reporter_id);
 			$this->request->data['Profile']['reporter_id'] = $reporter_id;
 			$this->request->data['Profile']['is_admin'] = 0;
 			#AuthComponent::_setTrace($this->request->data);
@@ -186,7 +187,8 @@ class ProfilesController extends AppController {
 			$this->request->data['Profile']['lat'] = $lat_lng['lat'];
 			$this->request->data['Profile']['lng'] = $lat_lng['lng'];
 
-			$this->request->data['Profile']['verified_profile'] = 0;
+			$reporter_obj = new ReportersController();
+			$this->request->data['Profile']['verified_profile'] = $reporter_obj->is_verified($reporter_id);
 			$this->request->data['Profile']['reporter_id'] = $reporter_id;
 			$this->request->data['Profile']['is_admin'] = 0;
 			#AuthComponent::_setTrace($this->request->data);

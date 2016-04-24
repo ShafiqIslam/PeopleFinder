@@ -82,12 +82,17 @@ class ReportersController extends AppController {
 		}
 	}
 
-	public function admin_accept_id_document ($id) {
+	public function admin_accept_id_document ($id, $verified=true) {
 		$this->Reporter->id = $id;
 		if (!$this->Reporter->exists()) {
 			throw new NotFoundException(__('Invalid reporter'));
 		}
-		$data['Reporter']['account_type'] = "Verified";
+
+		if($verified) {
+			$data['Reporter']['account_type'] = "Verified";
+		} else {
+			$data['Reporter']['account_type'] = "Normal";
+		}
 		$this->Reporter->id = $id;
 		if($this->Reporter->save($data)) {
 			$this->Session->setFlash(__('The reporter has been saved.'));
@@ -533,6 +538,20 @@ class ReportersController extends AppController {
 		$reporter = $this->Reporter->find('first', $options);
 
 		return $reporter['Reporter']['is_blacklisted'];
+	}
+
+	public function is_verified($id) {
+		if (!$this->Reporter->exists($id)) {
+			throw new NotFoundException(__('Invalid reporter'));
+		}
+
+		$options = array('conditions' => array('Reporter.id' => $id));
+		$reporter = $this->Reporter->find('first', $options);
+
+		if($reporter['Reporter']['account_type'] == "Verified")
+			return true;
+		else
+			return false;
 	}
 
 	private function _process_images ($data) {
