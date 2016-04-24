@@ -571,8 +571,13 @@ class ReportersController extends AppController {
 	}
 
 	public function upload_image() {
+		$maxsize = 1 * 1024 * 1024;
 		if($this->request->is('post')) {
 			if (!empty($this->request->data['Reporter']['images']['name'])) {
+				if($this->request->data['Profile']['images']['size'] > $maxsize) {
+					die(json_encode(array('error'=>'Maximum file size is 1 MB.')));
+				}
+
 				$file_name = $this->_upload($this->request->data['Reporter']['images'], 'uploads');
 				#AuthComponent::_setTrace($file_name);
 				$res = "Successfully uploaded " . $this->request->data['Reporter']['images']['name'];

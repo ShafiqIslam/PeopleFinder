@@ -794,8 +794,13 @@ class ProfilesController extends AppController {
 	}
 
 	public function upload_image() {
+		$maxsize = 0.5 * 1024 * 1024;
 		if($this->request->is('post')) {
 			if (!empty($this->request->data['Profile']['images']['name'])) {
+				if($this->request->data['Profile']['images']['size'] > $maxsize) {
+					die(json_encode(array('error'=>'Maximum file size is 0.5 MB.')));
+				}
+
 	            $file_name = $this->_upload($this->request->data['Profile']['images'], 'uploads');
 	            #AuthComponent::_setTrace($file_name);
 	            $res = "Successfully uploaded " . $this->request->data['Profile']['images']['name'];
