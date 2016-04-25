@@ -162,7 +162,8 @@ class ProfilesController extends AppController {
 			$this->request->data['Profile']['lat'] = $lat_lng['lat'];
 			$this->request->data['Profile']['lng'] = $lat_lng['lng'];
 
-			$this->request->data['Profile']['verified_profile'] = 0;
+			$reporter_obj = new ReportersController();
+			$this->request->data['Profile']['verified_profile'] = $reporter_obj->is_verified($reporter_id);
 			$this->request->data['Profile']['reporter_id'] = $reporter_id;
 			$this->request->data['Profile']['is_admin'] = 0;
 			#AuthComponent::_setTrace($this->request->data);
@@ -186,7 +187,8 @@ class ProfilesController extends AppController {
 			$this->request->data['Profile']['lat'] = $lat_lng['lat'];
 			$this->request->data['Profile']['lng'] = $lat_lng['lng'];
 
-			$this->request->data['Profile']['verified_profile'] = 0;
+			$reporter_obj = new ReportersController();
+			$this->request->data['Profile']['verified_profile'] = $reporter_obj->is_verified($reporter_id);
 			$this->request->data['Profile']['reporter_id'] = $reporter_id;
 			$this->request->data['Profile']['is_admin'] = 0;
 			#AuthComponent::_setTrace($this->request->data);
@@ -620,10 +622,10 @@ class ProfilesController extends AppController {
 
 			if($data['Profile']['abuse_counter'] == 1) {
 				$msg = "Your report on <strong>$status</strong> of <strong>$name</strong> has been reported abuse. Please, click on the link below to review the report.";
-				//$this->_send_abuse_mail($profile['Reporter']['email'], $msg, $profile['Profile']['id'], $reporter_name);
+				$this->_send_abuse_mail($profile['Reporter']['email'], $msg, $profile['Profile']['id'], $reporter_name);
 
 				$msg = "The report on <strong>$status</strong> of <strong>$name</strong> by $reporter_name has been reported abuse. Please, click on the link below to review the report.";
-				//$this->_send_abuse_mail($admin_email, $msg, $profile['Profile']['id'], 'Admin');
+				$this->_send_abuse_mail($admin_email, $msg, $profile['Profile']['id'], 'Admin');
 			} else if ($data['Profile']['abuse_counter'] == 200) {
 				$this->Profile->id = $id;
 				$this->Profile->delete();
@@ -794,8 +796,13 @@ class ProfilesController extends AppController {
 	}
 
 	public function upload_image() {
+		$maxsize = 0.5 * 1024 * 1024;
 		if($this->request->is('post')) {
 			if (!empty($this->request->data['Profile']['images']['name'])) {
+				if($this->request->data['Profile']['images']['size'] > $maxsize) {
+					die(json_encode(array('error'=>'Maximum file size is 0.5 MB.')));
+				}
+
 	            $file_name = $this->_upload($this->request->data['Profile']['images'], 'uploads');
 	            #AuthComponent::_setTrace($file_name);
 	            $res = "Successfully uploaded " . $this->request->data['Profile']['images']['name'];

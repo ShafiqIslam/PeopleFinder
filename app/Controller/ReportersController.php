@@ -82,12 +82,17 @@ class ReportersController extends AppController {
 		}
 	}
 
-	public function admin_accept_id_document ($id) {
+	public function admin_accept_id_document ($id, $verified=true) {
 		$this->Reporter->id = $id;
 		if (!$this->Reporter->exists()) {
 			throw new NotFoundException(__('Invalid reporter'));
 		}
-		$data['Reporter']['account_type'] = "Verified";
+
+		if($verified) {
+			$data['Reporter']['account_type'] = "Verified";
+		} else {
+			$data['Reporter']['account_type'] = "Normal";
+		}
 		$this->Reporter->id = $id;
 		if($this->Reporter->save($data)) {
 			$this->Session->setFlash(__('The reporter has been saved.'));
@@ -535,6 +540,20 @@ class ReportersController extends AppController {
 		return $reporter['Reporter']['is_blacklisted'];
 	}
 
+	public function is_verified($id) {
+		if (!$this->Reporter->exists($id)) {
+			throw new NotFoundException(__('Invalid reporter'));
+		}
+
+		$options = array('conditions' => array('Reporter.id' => $id));
+		$reporter = $this->Reporter->find('first', $options);
+
+		if($reporter['Reporter']['account_type'] == "Verified")
+			return true;
+		else
+			return false;
+	}
+
 	private function _process_images ($data) {
 		unset($data['Reporter']['images']);
 
@@ -571,8 +590,13 @@ class ReportersController extends AppController {
 	}
 
 	public function upload_image() {
+		$maxsize = 1 * 1024 * 1024;
 		if($this->request->is('post')) {
 			if (!empty($this->request->data['Reporter']['images']['name'])) {
+				if($this->request->data['Profile']['images']['size'] > $maxsize) {
+					die(json_encode(array('error'=>'Maximum file size is 1 MB.')));
+				}
+
 				$file_name = $this->_upload($this->request->data['Reporter']['images'], 'uploads');
 				#AuthComponent::_setTrace($file_name);
 				$res = "Successfully uploaded " . $this->request->data['Reporter']['images']['name'];

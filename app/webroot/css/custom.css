@@ -994,9 +994,9 @@ blockquote .fa{
     padding-left: 10px;
 }
 .upload_img p{
-	font-size: 20px;
-    color: #F57C00;;
-    background: #F6FFFD;
+	font-size: 18px;
+    color: #FFFFFF;
+    background: rgba(191, 31, 31, 0.85);
     padding-left: 10px;
 }
 .sign_up_page .info_search{
