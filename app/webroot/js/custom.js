@@ -13,7 +13,25 @@ $(document).ready(function(){
     $('.flash_close_btn').click(function(){
         $(".flash_message").fadeOut("slow");
     });
+
+    /*--------------Gender input solution for SAFARI Browser----------*/
+    $(".error").hide();
+    $('.search_form').submit(function () {
+        if($(".gender").val()==""){
+            $(".error").fadeIn();
+            //$(".btn").addClass("disabled");
+            return false;
+        }else{
+            $(".error").fadeOut();
+            //$(".btn").removeClass("disabled");
+        }
+        return true;
+    })
+    $(".gender").on("change", function () {
+        $(".error").fadeOut();
+    });
 });
+
 
 
 /*------------Menu bar Drop-down-------------*/

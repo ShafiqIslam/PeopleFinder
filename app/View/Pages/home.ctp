@@ -23,7 +23,7 @@
 
                 <div id="name" class="tab-pane fade in active">
                     <h3>Search By Name</h3>
-                    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search">
+                    <form role="form" method="post" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search">
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
                             <div class="col-sm-4">
@@ -46,13 +46,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
+                            <label for="gender" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
                             <div class="col-sm-4">
-                                <select name="gender" class="form-control" required="true">
+                                <select name="gender" class="form-control gender">
                                     <option value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
+                                <div class="error" style="color:red">Please select gender</div>
                             </div>
                         </div>
 
@@ -61,7 +62,7 @@
                                 <p><a href="<?php echo $this->webroot;?>search">For Advance Search Click Here...<i class="fa fa-external-link"></i></a></p>
                             </div>
                             <div class="col-sm-7">
-                                <button type="submit" class="btn btn-primary btn_search">Search</button>
+                                <button type="submit" name="submit" class="gen_btn btn btn-primary btn_search">Search</button>
                             </div>
                         </div>
                     </form>

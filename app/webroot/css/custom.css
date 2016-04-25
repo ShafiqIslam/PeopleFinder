@@ -13,6 +13,9 @@
 	z-index: 9999;
 	background: url('../img/awesome_loading.gif') 50% 50% no-repeat #31A2E1;
 }
+.disabled{
+	cursor: none;
+}
 /*-------Menu bar Css------*/
 #myNavbar{
 	margin-right: 0px;

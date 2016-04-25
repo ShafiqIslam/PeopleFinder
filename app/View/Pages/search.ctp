@@ -7,7 +7,7 @@
 <div class="container-fluid sign_up_page search_page">
     <h1>Search</h1>
     <hr>
-    <form id="detail_search" role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search">
+    <form id="detail_search" role="form" method="post" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search">
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
             <div class="col-sm-4">
