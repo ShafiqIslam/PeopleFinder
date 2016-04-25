@@ -2,7 +2,7 @@
 <div class="container-fluid sign_up_page report_missing">
     <h1>REPORT A MISSING PERSON</h1>
     <hr>
-    <form role="form" id="signup_form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" enctype="multipart/form-data" action="">
+    <form role="form" id="signup_form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal search_form" enctype="multipart/form-data" action="">
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
             <div class="col-sm-4">
@@ -60,11 +60,12 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
             <div class="col-sm-4">
-                <select name="data[Profile][gender]" class="form-control" required="">
+                <select name="data[Profile][gender]" class="form-control gender">
                     <option value="">Select Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
+                <div class="error" style="color:red">Please select gender</div>
             </div>
         </div>
 

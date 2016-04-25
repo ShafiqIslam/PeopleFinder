@@ -3,7 +3,7 @@
 		<div class="col-sm-3 col-sm-offset-1 sign_up_page search_page search_again pull-right">
 			<h1>Search</h1>
 		    <hr>
-		    <form role="form" method="post" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search">
+		    <form role="form" method="post" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search">
 		        <div class="form-group">
 		            <div class="col-sm-12">
 		                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name">
@@ -24,11 +24,12 @@
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <select name="gender" class="form-control">
+		                <select name="gender" class="form-control gender">
 		                    <option value="">Select Gender</option>
 		                    <option value="Male">Male</option>
 		                    <option value="Female">Female</option>
 		                </select>
+		                <div class="error" style="color:red">Please select gender</div>
 		            </div>
 		        </div>
 
