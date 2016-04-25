@@ -23,7 +23,7 @@
 
                 <div id="name" class="tab-pane fade in active">
                     <h3>Search By Name</h3>
-                    <form role="form" method="post" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search">
+                    <form role="form" method="post" class="form-horizontal by_name_search search_form" action="<?php echo $this->webroot?>profiles/search">
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
                             <div class="col-sm-4">
@@ -70,7 +70,7 @@
 
                 <div id="photos" class="tab-pane fade">
                     <!--<h3>Search By Photos</h3>-->
-                    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" action="<?php echo $this->webroot?>profiles/search" enctype="multipart/form-data">
+                    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="col-sm-12 upload_img">
                                 <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3">
@@ -89,11 +89,12 @@
                             <div class="col-sm-6">
                                 <div class="form-group form-inline gender">
                                     <label for="" class="col-sm-4 control-label">Gender</label>
-                                    <select name="gender" class=" col-sm-8 form-control pull-right" required="">
+                                    <select name="gender" class="form-control gender">
                                         <option value="">Select Gender</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select>
+                                    <div class="error error_left" style="color:red">Please select gender</div>
                                 </div>
                             </div>
                             <div class="col-sm-6">

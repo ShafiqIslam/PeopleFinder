@@ -162,45 +162,7 @@ header ul li a{
 	background-color: #1C2742;
 	color: #fff;
 }
-/*.navbar-right .dropdown-menu {
-    right: 0;
-    left: -1.04px;
-    background-color: rgba(28, 39, 66, 0.76);
-}
-.navbar-nav > li > .dropdown-menu {
-    box-shadow: none;
-    border: none;
-    border-left: 1px solid rgba(140, 140, 140, 0.2);
-    border-bottom: 1px solid rgba(140, 140, 140, 0.2);
-    border-right: 1px solid rgba(140, 140, 140, 0.2);
-}
 
-
-.navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
-    color: #695959;
-    background-color: #fff;
-}
-
-
- .navbar-nav > .active > a,  .navbar-nav > .active > a:hover,  .navbar-nav > .active > a:focus {
-    color: #695959;
-    background-color: #fff;
-}
-
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-    color: #695959;
-    text-decoration: none;
-    background-color: #FFF;
-}
-
-.dropdown-menu > li > a {
-	color: #fff;
-}
-
-.dropdown-menu li{
-	display: block;
-	background-color: #fff;
-}
 */
 /*----------Bootstrap Code Channge----------------*/
 
@@ -342,6 +304,12 @@ header ul li a{
 }
 
 /*------------ Change Password Page-----------------*/
+.by_name_search{
+	margin-top: -20px;
+}
+.error_left{
+	margin-left: 35%;
+}
 .chng_pass_page{
 	padding-top: 3%;
 }
