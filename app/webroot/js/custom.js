@@ -19,16 +19,18 @@ $(document).ready(function(){
     $('.search_form').submit(function () {
         if($(".gender").val()==""){
             $(".error").fadeIn();
-            //$(".btn").addClass("disabled");
+            $(".gender").addClass("gender_error");
             return false;
         }else{
             $(".error").fadeOut();
             //$(".btn").removeClass("disabled");
+            $(".gender").removeClass("gender_error");
         }
         return true;
     })
     $(".gender").on("change", function () {
         $(".error").fadeOut();
+        $(".gender").removeClass("gender_error");
     });
 });
 

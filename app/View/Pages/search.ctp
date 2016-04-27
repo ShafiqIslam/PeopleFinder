@@ -9,47 +9,47 @@
     <hr>
     <form id="detail_search" role="form" data-toggle="validator" novalidate="true" method="post" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search">
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("First Name");?></label>
             <div class="col-sm-4">
-                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name">
+                <input type="text" name="first_name" class="form-control" id="" placeholder="<?php echo __("First Name");?>">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Second Name</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Second Name");?></label>
             <div class="col-sm-4">
-                <input type="text" name="second_name" class="form-control" id="" placeholder="Second Name">
+                <input type="text" name="second_name" class="form-control" id="" placeholder="<?php echo __("Second Name");?>">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Last Name</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Last Name");?></label>
             <div class="col-sm-4">
-                <input type="text" name="last_name" class="form-control" id="" placeholder="Last Name">
+                <input type="text" name="last_name" class="form-control" id="" placeholder="<?php echo __("Last Name");?>">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Gender");?></label>
             <div class="col-sm-4">
                 <select name="gender" class="form-control gender">
-                    <option value="">Select Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value=""><?php echo __("Select Gender");?></option>
+                    <option value="Male"><?php echo __("Male");?></option>
+                    <option value="Female"><?php echo __("Female");?></option>
                 </select>
-                <div class="error" style="color:red">Please select gender</div>
+                <div class="error" style="color:red"><?php echo __("Please select gender");?></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Birth Date</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Birth Date");?></label>
             <div class="col-sm-4" >
-                <input type="text" name="birthdate"  class="form-control" placeholder="Date" id="datepicker">
+                <input type="text" name="birthdate"  class="form-control" placeholder="<?php echo __("Birth Date");?>" id="datepicker">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident Country</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Resident Country");?></label>
             <div class="col-sm-4 country_selection_box">
                 <div class="bfh-selectbox bfh-countries" data-name="resident_country" data-country="" data-flags="true">
                 </div>
@@ -57,14 +57,14 @@
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident City</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Resident City");?></label>
             <div class="col-sm-4">
-                <input type="text" name="resident_city" class="form-control" id="" placeholder="Resident City">
+                <input type="text" name="resident_city" class="form-control" id="" placeholder="<?php echo __("Resident City");?>">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Missing Country</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Missing Country");?></label>
             <div class="col-sm-4 country_selection_box">
                 <div class="bfh-selectbox bfh-countries" data-name="missing_country" data-country="" data-flags="true">
                 </div>
@@ -72,25 +72,25 @@
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Missing City</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Missing City");?></label>
             <div class="col-sm-4">
-                <input type="text" name="missing_city" class="form-control" id="" placeholder="Missing City">
+                <input type="text" name="missing_city" class="form-control" id="" placeholder="<?php echo __("Missing City");?>">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Profile ID</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Profile ID");?></label>
             <div class="col-sm-4">
-                <input name="id" type="text" class="form-control" id="" placeholder="Profile Id">
+                <input name="id" type="text" class="form-control" id="" placeholder="<?php echo __("Profile Id");?>">
             </div>
         </div>
 
         <div class="form-group adv_draw_map">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Search By Location</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Search By Location");?></label>
             <div class="col-sm-offset-2 col-sm-7">
                 <!--<p class="saech_map">Search by Map</p>-->
                 <div id="map-canvas"></div><!-- Drag on google map-->
-                <p>Draw a circle on the map.</p>
+                <p><?php echo __("Draw a circle on the map.");?></p>
             </div>
             <input type="hidden" name="search_lat" value="">
             <input type="hidden" name="search_lng" value="">
@@ -99,12 +99,12 @@
 
 
         <div class="form-group">
-            <label for="" class="col-sm-offset-2 col-sm-3 control-label">Upload Photos</label>
+            <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Upload Photos");?></label>
             <div class="col-sm-offset-2 col-sm-7 upload_img">
                 <!--<p class="info_search">Search by photos</p>-->
                 <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3">
                 <input type="hidden" name="search_image">
-                <p>** NB: You must click 'Upload' before submitting after adding image.</p>
+                <p><?php echo __("** NB: You must click 'Upload' before submitting after adding image.");?></p>
             </div>
         </div>
 
@@ -122,7 +122,7 @@
                 <img style="width: 160px;" src="<?php echo $this->webroot;?>img/inside.png" alt="">
             </div>
             <div class="col-sm-offset-2 col-sm-2 report_found_submit">
-                <button type="submit" class="btn btn-primary btn_search pull-right">Search</button>
+                <button type="submit" class="btn btn-primary btn_search pull-right"><?php echo __("Search");?></button>
             </div>
         </div>
     </form>
