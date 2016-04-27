@@ -1,14 +1,14 @@
 
 <div class="container">
 	<div class="my_report_page result_body">
-		<h1>Report List</h1>
+		<h1><?php echo __("Report List");?></h1>
 		<hr>
 		<?php
 			if (empty($my_profiles)) { ?>
-				<p class="warning" style="font-size : 20px;"><?php echo "You have no profile!"; ?></p>
+				<p class="warning" style="font-size : 20px;"><?php echo __("You have no profile!"); ?></p>
 				<div class="col-sm-6 col-sm-offset-3 ">
-		            <a class="btn btn  btn_service pull-left" href="<?php echo $this->webroot;?>report_found">Report Found</a>
-		            <a class="btn btn btn_service pull-right" href="<?php echo $this->webroot;?>report_missing">Report Missing</a>
+		            <a class="btn btn  btn_service pull-left" href="<?php echo $this->webroot;?>report_found"><?php echo __("Report Found");?></a>
+		            <a class="btn btn btn_service pull-right" href="<?php echo $this->webroot;?>report_missing"><?php echo __("Report Missing");?></a>
 			    </div>
 			<?php }
 		?>
@@ -42,7 +42,7 @@
 						</p>
 						<p>
 							<?php if($item['verified_profile']): ?>
-								<span class="tooltip_check" data-toggle="tooltip" data-placement="top" title="This profile is verified."><i class="fa fa-check-square-o"></i>Verified</span>
+								<span class="tooltip_check" data-toggle="tooltip" data-placement="top" title="This profile is verified."><i class="fa fa-check-square-o"></i><?php echo __("Verified");?></span>
 							<?php endif; ?>
 						</p>
 					</a>

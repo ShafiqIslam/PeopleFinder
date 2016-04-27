@@ -2,16 +2,16 @@
 	<h2>
 		<?php
 			if($success) 
-				echo "THANKS!!";
+				echo __("THANKS!!)";
 			else
-				echo "OOPS!!";
+				echo __("OOPS!!");
 		?>
 	</h2>
 	<p>
 		<?php if($success) { ?>
-			Your mail has been verified. You can <a href="<?php echo $this->webroot;?>login">login now</a>.
+			<?php echo __("Your mail has been verified. You can ");?><a href="<?php echo $this->webroot;?>login"><?php echo __("login now");?></a>.
 		<?php } else { ?>
-			Something daunting has been happened. So, GTFO...
+			<?php echo __("Something daunting has been happened. So, GTFO...");?>
 		<?php } ?>
 	</p>
 </div>

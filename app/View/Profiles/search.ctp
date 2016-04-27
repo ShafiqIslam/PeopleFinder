@@ -1,35 +1,35 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-3 col-sm-offset-1 sign_up_page search_page search_again pull-right">
-			<h1>Search</h1>
+			<h1><?php echo __("Search");?></h1>
 		    <hr>
 		    <form role="form" method="post" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search">
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input type="text" name="first_name" class="form-control" id="" placeholder="First Name">
+		                <input type="text" name="first_name" class="form-control" id="" placeholder="<?php echo __("First Name");?>">
 		            </div>
 		        </div>
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input type="text" name="second_name" class="form-control" id="" placeholder="Second Name">
+		                <input type="text" name="second_name" class="form-control" id="" placeholder="<?php echo __("Second Name");?>">
 		            </div>
 		        </div>
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input type="text" name="last_name" class="form-control" id="" placeholder="Last Name">
+		                <input type="text" name="last_name" class="form-control" id="" placeholder="<?php echo __("Last Name");?>">
 		            </div>
 		        </div>
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
 		                <select name="gender" class="form-control gender">
-		                    <option value="">Select Gender</option>
-		                    <option value="Male">Male</option>
-		                    <option value="Female">Female</option>
+		                    <option value=""><?php echo __("Select Gender");?></option>
+		                    <option value="Male"><?php echo __("Male");?></option>
+		                    <option value="Female"><?php echo __("Female");?></option>
 		                </select>
-		                <div class="error" style="color:red">Please select gender</div>
+		                <div class="error" style="color:red"><?php echo __("Please select gender");?></div>
 		            </div>
 		        </div>
 
@@ -42,28 +42,28 @@
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input type="text" name="missing_city" class="form-control" id="" placeholder="Missing City">
+		                <input type="text" name="missing_city" class="form-control" id="" placeholder="<?php echo __("Missing City");?>">
 		            </div>
 		        </div>
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input name="id" type="text" class="form-control" id="" placeholder="Profile Id">
+		                <input name="id" type="text" class="form-control" id="" placeholder="<?php echo __("Profile Id");?>">
 		            </div>
 		        </div>
 
 
 		        <div class="form-group">
 		            <div class="col-sm-4 col-sm-offset-5 report_found_submit">
-		                <button type="submit" class="btn btn-primary btn_search">Search</button>
+		                <button type="submit" class="btn btn-primary btn_search"><?php echo __("Search");?></button>
 		            </div>
 		        </div>
 		    </form>	
 		</div>
 		<div class="col-sm-8 search_result_wrappper pull-left"> 
-			<h1>Your Search Results :</h1>
+			<h1><?php echo __("Your Search Results :");?></h1>
 			<?php if(!$count) { ?>
-				<p class="no_search_result">No result Found. Sorry. <?php echo $this->Html->link('Try Again.', array('controller'=>'pages', 'action'=>'display', 'search'));?></p>
+				<p class="no_search_result"><?php echo __("No result Found. Sorry. ");?><?php echo $this->Html->link('Try Again.', array('controller'=>'pages', 'action'=>'display', 'search'));?></p>
 			<?php } else { ?>
 			<div class="result_body">
 				<ul>
@@ -91,14 +91,14 @@
 						?>
 						<div class="col-sm-5">
 								<h4><?php echo $name;?></h4>
-								<h5 class="p_id">Profile Id : <?php echo $profile['Profile']['id'];?></h5>							
+								<h5 class="p_id"><?php echo __("Profile Id :");?> <?php echo $profile['Profile']['id'];?></h5>							
 								<p>
 									<?php echo $profile['Profile']['missing_city'];?>&nbsp;
 									<span class="bfh-countries" data-country="<?php echo $profile['Profile']['missing_country'];?>" data-flags="true"></span>.&nbsp;
 								</p>
 								<p>
 									<?php if($profile['Profile']['verified_profile']): ?>
-										<span class="tooltip_check" data-toggle="tooltip" data-placement="top" title="This profile is verified."><i class="fa fa-check-square-o"></i>Verified</span>
+										<span class="tooltip_check" data-toggle="tooltip" data-placement="top" title="This profile is verified."><i class="fa fa-check-square-o"></i><?php echo __("Verified");?></span>
 									<?php endif; ?>
 								</p>
 						</div>
@@ -134,15 +134,15 @@
 					$showing_to = $count;
 			?>
 			<div class="previous_arrow col-sm-3">
-				<a href="<?php echo $prev_link?>" class="btn btn_prv fa fa-long-arrow-left <?php if($prev<0) echo 'disabled_link'?>"><span>prev</span></a>
+				<a href="<?php echo $prev_link?>" class="btn btn_prv fa fa-long-arrow-left <?php if($prev<0) echo 'disabled_link'?>"><span><?php echo __("prev");?></span></a>
 			</div>
 
 			<div class="col-sm-6 search_info">
-				<p>Showing <span><?php echo $showing_from?></span> to <span><?php echo $showing_to?></span> of <span><?php echo $count?></span> results.</p>
+				<p><?php echo __("Showing");?><span><?php echo $showing_from?></span> <?php echo __("to");?><span><?php echo $showing_to?></span> <?php echo __("of");?><span><?php echo $count?></span> <?php echo __("results.");?></p>
 			</div>
 
 			<div class="next_arrow col-sm-3">
-				<a href="<?php echo $next_link?>" class="btn btn_prv fa fa-long-arrow-right pull-right <?php if($next>=$count) echo 'disabled_link'?>"><span>next</span></a>
+				<a href="<?php echo $next_link?>" class="btn btn_prv fa fa-long-arrow-right pull-right <?php if($next>=$count) echo 'disabled_link'?>"><span><?php echo __("next");?></span></a>
 			</div>
 		</div>
 
