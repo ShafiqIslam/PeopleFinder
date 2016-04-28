@@ -203,7 +203,7 @@
                 <p><span><i class="fa fa-check-square"></i></span><?php echo __("Finding missed persons.");?></p>
             </div>
             <div class="col-sm-4 col-sm-offset-4 pull-right service_option">
-                <p><span><i class="fa fa-check-square"></i></span<?php echo __("Reporting missed persons.");?></p>
+                <p><span><i class="fa fa-check-square"></i></span><?php echo __("Reporting missed persons.");?></p>
                 <p><span><i class="fa fa-check-square"></i></span><?php echo __("Reporting found persons.");?></p>
             </div>
         </div>
