@@ -166,24 +166,35 @@
 
         <div class="form-group edit_img">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Currently Used Images");?></label>
-            <div class="col-sm-4">
-                <ul style="list-style: none">
+            <div class="col-sm-4 admin_img_edit_section">
+                <table class="table table-responsive">
+                    <tr>
                     <?php if(!empty($profile['Profile']['image_link_1'])) { ?>
-                    <a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_1'];?>">
-                        <li class=""><img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_1'];?>"></li>
-                    </a>
+                    <td class="">
+                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a class="image-popup-no-margins admin_img_edit" href="<?php echo $profile['Profile']['image_link_1'];?>">
+                            <img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_1'];?>">
+                        </a>
+                    </td>
                     <?php } ?>
                     <?php if(!empty($profile['Profile']['image_link_2'])) { ?>
-                    <a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_2'];?>">
-                        <li class=""><img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_2'];?>"></li>
-                    </a>
+                    <td class="">
+                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a class="image-popup-no-margins admin_img_edit" href="<?php echo $profile['Profile']['image_link_2'];?>">
+                            <img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_2'];?>">
+                        </a>
+                    </td>
                     <?php } ?>
                     <?php if(!empty($profile['Profile']['image_link_3'])) { ?>
-                    <a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_3'];?>">
-                        <li class=""><img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_3'];?>"></li>
-                    </a>
+                    <td class="">
+                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a class="image-popup-no-margins admin_img_edit" href="<?php echo $profile['Profile']['image_link_3'];?>">
+                            <img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_3'];?>">
+                        </a>
+                    </td>
                     <?php } ?>
-                </ul>
+                    </tr>
+                </table>
             </div>
         </div>
 

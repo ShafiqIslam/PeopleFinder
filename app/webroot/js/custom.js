@@ -32,21 +32,18 @@ $(document).ready(function(){
         $(".error").fadeOut();
         $(".gender").removeClass("gender_error");
     });
+
+    /*--------------Language popup overlay Js-----------------*/
+
+    $(document).ready(function () {
+        $('#basic').popup({
+            transition: 'all 0.3s',
+            //scrolllock: true
+        });
+    });
+
 });
 
-
-
-/*------------Menu bar Drop-down-------------*/
-/*
-$(document).ready(function(){
-	$('ul.nav li.dropdown').hover(function() {
-	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-	  $(this).find('.dropdown-menu').addClass(".hover-color");
-	}, function() {
-	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-	});
-});
-*/
 
 /*--------------Menu Bar Shrink Js----------*/
 $(document).on("scroll",function(){

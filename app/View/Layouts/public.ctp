@@ -14,7 +14,7 @@
             //echo $this->Html->css('cake.generic');
             echo $this->Html->css(array('bootstrap', 'bootstrap-datetimepicker', 'jquery-ui', 'bootstrap-formhelpers.min','bootstrapValidator.min','magnific-popup.css', 'fileinput', 'custom'));
 
-            echo $this->Html->script(array('jquery-1.11.3', 'bootstrap.min', 'fileinput', 'jquery-ui', 'bootstrap-formhelpers.min', 'bootstrap-formhelpers-countries', 'validator.min', 'bootstrapValidator.min','count','jquery.slimscroll.min','jquery.magnific-popup.min', 'jquery.messagebox'));
+            echo $this->Html->script(array('jquery-1.11.3', 'bootstrap.min', 'fileinput', 'jquery-ui', 'bootstrap-formhelpers.min','jquery.popupoverlay', 'bootstrap-formhelpers-countries', 'validator.min', 'bootstrapValidator.min','count','jquery.slimscroll.min','jquery.magnific-popup.min', 'jquery.messagebox'));
         ?>
         
         <?php
@@ -120,8 +120,31 @@
                         </ul>
                     </div>   
                 </div>
-            </nav>
+                <div style="clear: both;"></div>
+                <div class="multi_lg">
+                    <div class="pull-right"><a class="basic_open" href="#basic"><span>GLOBAL LANGUAGE</span><i class="fa fa-globe" aria-hidden="true"></i></a></div>
+                </div>
+                <!-- Add content to the popup -->
+                
 
+                <div id="basic" class="well">
+                    <h4>Basic example</h4>
+                    <div class="popup_body">
+                        <form role='form' class="form-inline ">
+                            <div class="form-group col-sm-12">
+                                <label class="control-label col-sm-4">Language</label>
+                                <select class="form-control col-sm-8">
+                                    <option>English</option>
+                                    <option>Bangla</option>
+                                    <option>Ababic</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <button class="basic_close btn btn-default">Close</button>
+                </div>
+  
+            </nav>
            <!-- <div class="container-fluid bdr_btm_header"></div>-->
         </header><!--Menubar End-->
 

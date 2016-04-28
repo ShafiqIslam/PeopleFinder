@@ -506,6 +506,10 @@ h2{
 	min-height: 550px;
 }
 
+.form-group .control-label{
+	text-align: left;
+}
+
 .slide-btn .btn-primary:hover{
 	 background-color: #0ea54f;
     background-position: 0 0px;
@@ -916,4 +920,46 @@ table td.actions a.d_d {
     font-size: 18px;
     text-transform: uppercase;
     color: #2972A5;
+}
+
+.admin_img_edit img{
+	max-width: 150px;
+    height: 150px;
+    min-width: 150px;
+}
+.admin_img_edit_section .fa-trash-o{
+	top: 6.6%;
+    margin-left: 21.5%;
+    color: rgba(255, 0, 0, 0.50);
+    background: #fff;
+    padding: 4px;
+    font-size: 30px;
+    position: absolute;
+    transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+.fa-trash-o:hover{
+	color: red;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+
+.display_none{
+	display: none;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+
+.admin_img_edit_section table td:hover .fa-trash-o{
+	display: block;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
 }

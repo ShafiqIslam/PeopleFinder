@@ -23,8 +23,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
     echo $this->fetch('meta');
     echo $this->fetch('css');
-    echo $this->Html->css(array('bootstrap.min.admin', 'bootstrap-theme', 'bootstrap-formhelpers.min', 'bootstrapValidator.min', 'fileinput', 'style_admin', 'redactor'));
-    echo $this->Html->script(array('jquery-1.8.2.min', 'fileinput', 'bootstrap-formhelpers.min', 'validator.min', 'bootstrapValidator.min', 'bootstrap-formhelpers-countries'));
+    echo $this->Html->css(array('bootstrap.min.admin', 'bootstrap-theme','magnific-popup', 'bootstrap-formhelpers.min', 'bootstrapValidator.min', 'fileinput', 'style_admin', 'redactor'));
+    echo $this->Html->script(array('jquery-1.11.3', 'fileinput', 'bootstrap-formhelpers.min', 'validator.min', 'bootstrapValidator.min', 'bootstrap-formhelpers-countries','jquery.magnific-popup.min','admin'));
 
     echo $this->fetch('script');
     ?>
@@ -49,5 +49,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 </div>
 <?php echo $this->element('sql_dump'); ?>
+
 </body>
 </html>

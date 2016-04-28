@@ -120,7 +120,7 @@
 						<?php } else { ?>
 							<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['resident_street'];?></h4></div>
 					<?php } ?>
-					<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['resident_street'];?></h4></div>
+					
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4><?php echo __("Mental illness");?></h4></div>
@@ -145,9 +145,9 @@
 					<?php
 						if (empty($profile['Profile']['kidnapped'])) { ?>
 							<div class="col-sm-offset-1 col-sm-6"><h4 style="color: #FFC516;"><?php echo __("No Information.");?></h4></div>
-						<?php} else { ?>
+						<?php } else { ?>
 							<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['kidnapped'];?></h4></div>
-					<?php } ?>
+						<?php } ?>
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><h4><?php echo __("Physical illness");?></h4></div>

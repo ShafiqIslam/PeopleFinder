@@ -306,6 +306,32 @@ header ul li a{
 	margin-top: 5%;
 }
 
+.multi_lg{
+	position: absolute;
+    right: 0;
+    padding: 7px;
+    width: 100%;
+    background: rgba(255,255,255,0.6);
+	background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(55,76,129,0.6) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(255,255,255,0.6)), color-stop(100%, rgba(55,76,129,1)));
+	background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(55,76,129,0.6) 100%);
+	background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(55,76,129,0.6) 100%);
+	background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(55,76,129,0.6) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(55,76,129,0.6) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#374c81', GradientType=1 );
+}
+.multi_lg a{
+	color: #fff;
+	text-decoration: none;
+}
+.multi_lg a span{
+	margin-right: 10px;
+	text-shadow: 1px 1px 1px black;
+    font-weight: bold;
+}
+.popup_body{
+	width: 400px;
+}
 /*------------ Change Password Page-----------------*/
 .by_name_search{
 	margin-top: -20px;
@@ -1649,7 +1675,7 @@ input, textarea{
 	margin: 0px;
 	position: fixed;
 	right: -119px;
-	top:130px;
+	top:190px;
 	width: 200px;
 	z-index: 3;
 }
@@ -1705,7 +1731,7 @@ input, textarea{
 /* -------------Edit Page-------------*/
 
 .edit_img ul li .img-responsive{
-	max-width: 135px;
+	max-width: 123px;
 	height: 128px;
 	float: left;
 	margin: 5px;
@@ -1826,4 +1852,49 @@ header ul li a:active, header ul li a:focus {
 .disabled_link {
 	pointer-events: none;
 	cursor: default;
+}
+
+.admin_img_edit img{
+	max-width: 115px;
+    height: 126px;
+    min-width: 125px;
+}
+
+
+.admin_img_edit_section .fa-trash-o{
+	top: 6.6%;
+    margin-left: 21.5%;
+    color: rgba(255, 0, 0, 0.50);
+    background: #fff;
+    padding: 4px;
+    font-size: 30px;
+    position: absolute;
+    transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+
+.fa-trash-o:hover{
+	color: red;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+
+.display_none{
+	display: none;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+
+.admin_img_edit_section table td:hover .fa-trash-o{
+	display: block;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
 }

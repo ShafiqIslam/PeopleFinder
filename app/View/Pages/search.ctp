@@ -81,14 +81,13 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Profile ID");?></label>
             <div class="col-sm-4">
-                <input name="id" type="text" class="form-control" id="" placeholder="<?php echo __("Profile Id");?>">
+                <input name="id" type="number" class="form-control" id="" placeholder="<?php echo __("Profile Id");?>">
             </div>
         </div>
 
         <div class="form-group adv_draw_map">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Search By Location");?></label>
             <div class="col-sm-offset-2 col-sm-7">
-                <!--<p class="saech_map">Search by Map</p>-->
                 <div id="map-canvas"></div><!-- Drag on google map-->
                 <p><?php echo __("Draw a circle on the map.");?></p>
             </div>
@@ -101,7 +100,6 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Upload Photos");?></label>
             <div class="col-sm-offset-2 col-sm-7 upload_img">
-                <!--<p class="info_search">Search by photos</p>-->
                 <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3">
                 <input type="hidden" name="search_image">
                 <p><?php echo __("** NB: You must click 'Upload' before submitting after adding image.");?></p>

@@ -52,28 +52,39 @@
 
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Currently Used ID");?></label>
-            <div class="col-sm-4 edit_img">
-                <ul style="list-style: none">
+            <div class="col-sm-4 edit_img admin_img_edit_section">
+                <table class="table table-responsive">
+                    <tr>
                     <?php $img_flag = 0; ?>
                     <?php if(!empty($this->request->data['Reporter']['id_image_link_1'])) { ?>
-                    <a class="image-popup-no-margins" href="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>">
-                        <li class="search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>"></li>
-                    </a>
+                    <td>
+                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>">
+                            <img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>">
+                        </a>
+                    </td>
                         <?php $img_flag = 1; ?>
                     <?php } ?>
                     <?php if(!empty($this->request->data['Reporter']['id_image_link_2'])) { ?>
-                    <a class="image-popup-no-margins" href="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>">
-                        <li class="search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>"></li>
-                    </a>
+                    <td>
+                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>">
+                            <img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>">
+                        </a>
+                    </td>
                         <?php $img_flag = 1; ?>
                     <?php } ?>
                     <?php if(!empty($this->request->data['Reporter']['id_image_link_3'])) { ?>
-                    <a class="image-popup-no-margins" href="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>">
-                        <li class="search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>"></li>
-                    </a>
+                    <td>
+                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>">
+                            <img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>">
+                        </a>
+                    </td>
                         <?php $img_flag = 1; ?>
                     <?php } ?>
-                </ul>
+                    </tr>
+                </table>
                 <?php if(!$img_flag) { ?>
                     <input type="text" class="form-control" disabled value="<?php echo __("You do not have any IDs uploaded.");?>">
                 <?php } ?>
