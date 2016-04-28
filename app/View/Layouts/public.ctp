@@ -87,7 +87,7 @@
                                     <ul class="dropdown-menu dropdown_menu_modal">
                                         <span class="glyphicon glyphicon-triangle-top"></span>
                                         <li>
-                                            <form role="form" data-toggle="validator" novalidate="true"  name="login_form" enctype="multipart/form-data" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
+                                            <form role="form" data-toggle="validator" novalidate="true" name="login_form" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
                                                 <div class="form-group">
                                                     <label for="inputEmail" class="col-sm-12 control-label"><?php echo __("Email");?></label>
                                                     <div class="col-sm-12">
@@ -122,7 +122,7 @@
                 </div>
                 <div style="clear: both;"></div>
                 <div class="multi_lg">
-                    <div class="pull-right"><a class="basic_open" href="#basic"><span>GLOBAL LANGUAGE</span><i class="fa fa-globe" aria-hidden="true"></i></a></div>
+                    <div class="pull-right"><a class="basic_open" href="#basic"><span><?php echo __("CHANGE LANGUAGE");?></span><i class="fa fa-globe" aria-hidden="true"></i></a></div>
                 </div>
                 <!-- Add content to the popup -->
                 
