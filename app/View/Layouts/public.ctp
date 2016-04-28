@@ -188,7 +188,7 @@
                 <?php } ?>
 
                 <div class="col-sm-4 pull-right">
-                    <p class="pull-right"><a href="http://www.xorcoder.com" target="_blank"><?php echo __("Design & Developed by ");?> www.xorcoder.com</a></p>
+                    <p class="pull-right"><?php echo __("Design & Developed by ");?> <a href="http://www.xorcoder.com" target="_blank">www.xorcoder.com</a></p>
                 </div>
             </div>
         </footer>
