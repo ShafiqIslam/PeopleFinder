@@ -33,11 +33,19 @@ class AppController extends Controller {
             )
         )
     );
+
+    var $language, $availableLanguages;
+
+    protected function setLang($lang) {
+        $this->Cookie->write('Config.language', $lang, $encrypt = false, $expires = "90 Days");
+        $this->Session->write('Config.language', $lang); // write our language to session
+        Configure::write('Config.language', $lang); // tell CakePHP that we're using this language
+    }
     
     public function beforeFilter(){
         // set cookie options
-        /*$this->Cookie->key = 'klgjs&*(#fsdfsdfsdf%(54646tqwdsuhf&*^Hjhsdgf5465464';
-        $this->Cookie->httpOnly = true;*/
+        $this->Cookie->key = 'klgjs&*(#fsdfsdfsdf%(54646tqwdsuhf&*^Hjhsdgf5465464';
+        $this->Cookie->httpOnly = true;
         
         if($this->params['admin']){
             $this->layout =  'admin';
@@ -58,7 +66,26 @@ class AppController extends Controller {
                 $this->redirect('/users/logout'); // destroy session & cookie
             }
         }
-        $this->Auth->allow('display');
+        $this->Auth->allow('display', 'change_language');
+
+        /*
+         * For I18n support
+         */
+        parent::beforeFilter();
+        if($this->Session->check('Config.language')) {
+            $this->language = $this->Session->read('Config.language');
+        } else {
+            if($this->Cookie->check('Config.language')) {
+                $this->language = $this->Cookie->read('Config.language');
+            } else {
+                $this->language = Configure::read('defaultLanguage');
+            }
+        }
+
+        $this->setLang($this->language); // call protected method setLang with the lang shortcode
+        $this->set('language',$this->language); // send $this->language value to the view
+        $this->availableLanguages = Configure::read('availableLanguages'); // get available languages from Config file
+        $this->set('availableLanguages', $this->availableLanguages); // send $this->availableLanguages value to the view
     }
 
     //upload image
@@ -105,9 +132,6 @@ class AppController extends Controller {
 	}
 
     public function upload_to_cloud($sample_paths, $tags = "basic") {
-        /*App::import('Vendor', 'CloudinaryPHP', array('file' => 'CloudinaryPHP' . DS . 'src' . DS . 'Cloudinary.php'));
-        App::import('Vendor', 'CloudinaryPHP', array('file' => 'CloudinaryPHP' . DS . 'src' . DS . 'Uploader.php'));
-*/
         // api configeration
         \Cloudinary::config(array(
             "cloud_name" => $this->_cloudinary_cloud_name,
@@ -115,7 +139,7 @@ class AppController extends Controller {
             "api_secret" => $this->_cloudinary_api_secret
         ));
 
-        $default_upload_options = array("tags" => "basic_sample");
+        $default_upload_options = array("tags" => $tags);
         $eager_params = array("width" => 200, "height" => 150, "crop" => "scale");
         $files = array();
           
@@ -126,19 +150,6 @@ class AppController extends Controller {
             array_push($files, $upload_link['url']);
             unlink($path);
         }
-
-        # Same image, uploaded with a public_id
-        /*$files["named_local"] = \Cloudinary\Uploader::upload($sample_paths["pizza"],
-        array_merge($default_upload_options, array("public_id" => "custom_name")));*/
-
-        # Eager transformations are applied as soon as the file is uploaded, instead of waiting
-        # for a user to request them. 
-        /*$files["eager"] = \Cloudinary\Uploader::upload($sample_paths["lake"],
-            array_merge($default_upload_options, array(
-              "public_id" => "eager_custom_name",
-              "eager" => $eager_params,
-            )
-        ));*/
 
         return $files;
     }
