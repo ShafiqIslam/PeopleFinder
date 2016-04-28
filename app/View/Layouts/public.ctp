@@ -128,7 +128,7 @@
                 
 
                 <div id="basic" class="well">
-                    <h4>Basic example</h4>
+                    <h4><?php echo __("Change To Your Preferred Language");?></h4>
                     <div class="popup_body">
                         <form role='form' class="form-inline ">
                             <div class="form-group col-sm-12">
@@ -141,6 +141,7 @@
                             </div>
                         </form>
                     </div>
+                    <h4><?php echo __("This feature uses Cookie. By clicking on these links, you agree on our cookie terms. And we'll assume that you are happy to receive all cookies from this website.");?></h4>
                     <button class="basic_close btn btn-default">Close</button>
                 </div>
   
