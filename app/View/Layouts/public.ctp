@@ -181,8 +181,17 @@
             </div>
             <div class="container developer_link">
                 <div class="col-sm-4 pull-left">
-                    <p><?php echo __("&copy; 2016 Face Finder. All Rights Reserved.");?></p>
+                    <?php $copyright_year = auto_copyright('2016');?>
+                    <p><?php echo __("&copy; %s Face Finder. All Rights Reserved.", $copyright_year);?></p>
                 </div>
+
+                <?php function auto_copyright($year = 'auto'){ ?>
+                    <?php if(intval($year) == 'auto'){ $year = date('Y'); } ?>
+                    <?php if(intval($year) == date('Y')){ return intval($year); } ?>
+                    <?php if(intval($year) < date('Y')){ return intval($year) . ' - ' . date('Y'); } ?>
+                    <?php if(intval($year) > date('Y')){ return date('Y'); } ?>
+                <?php } ?>
+
                 <div class="col-sm-4 pull-right">
                     <p class="pull-right"><a href="http://www.xorcoder.com" target="_blank"><?php echo __("Design & Developed by ");?> www.xorcoder.com</a></p>
                 </div>
