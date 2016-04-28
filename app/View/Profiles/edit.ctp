@@ -65,7 +65,6 @@
                     <option value="Male" <?php if($profile['Profile']['gender']=="Male") echo "selected";?>><?php echo __("Male");?></option>
                     <option value="Female" <?php if($profile['Profile']['gender']=="Female") echo "selected";?>><?php echo __("Female");?></option>
                 </select>
-                <div class="error" style="color:red"><?php echo __("Please select gender");?></div>
             </div>
         </div>
 

@@ -65,7 +65,6 @@
                     <option value="Male"><?php echo __("Male");?></option>
                     <option value="Female"><?php echo __("Female");?></option>
                 </select>
-                <div class="error" style="color:red; display: none"><?php echo __("Please select gender");?></div>
             </div>
         </div>
 
