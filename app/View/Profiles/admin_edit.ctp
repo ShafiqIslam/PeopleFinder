@@ -2,7 +2,7 @@
 <div class="cmsUsers col-md-10 col-sm-10 index">
 	<div class="white">
 		<div class="profiles form">
-			<form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" enctype="multipart/form-data">
+			<form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal search_form" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="" class="col-sm-offset-1 col-sm-3 control-label"><?php echo __("First Name"); ?></label>
 					<div class="col-sm-6">

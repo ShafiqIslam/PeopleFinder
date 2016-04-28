@@ -52,7 +52,6 @@
                                     <option value="Male"><?php echo __("Male");?></option>
                                     <option value="Female"><?php echo __("Female");?></option>
                                 </select>
-                                <div class="error" style="color:red;"><?php echo __("Please select gender");?></div>
                             </div>
                         </div>
 
@@ -93,7 +92,6 @@
                                         <option value="Male"><?php echo __("Male");?></option>
                                         <option value="Female"><?php echo __("Female");?></option>
                                     </select>
-                                    <div class="error error_left" style="color:red"><?php echo __("Please select gender");?></div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
