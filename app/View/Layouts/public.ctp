@@ -91,14 +91,14 @@
                                                 <div class="form-group">
                                                     <label for="inputEmail" class="col-sm-12 control-label"><?php echo __("Email");?></label>
                                                     <div class="col-sm-12">
-                                                        <input type="email" name="data[Reporter][email]" class="form-control" id="" placeholder="Email" required>
+                                                        <input type="email" name="data[Reporter][email]" class="form-control" id="" placeholder="<?php echo __('Email');?>" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="inputPassword" class="col-sm-12 control-label"><?php echo __("Password");?></label>
                                                     <div class="col-sm-12">
-                                                        <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="passward" required>
+                                                        <input type="password" class="form-control" id="inputPassword3" name="data[Reporter][password]" placeholder="<?php echo __('Password');?>" required>
                                                     </div>
                                                 </div>
 
@@ -184,7 +184,7 @@
                     <p><?php echo __("&copy; 2016 Face Finder. All Rights Reserved.");?></p>
                 </div>
                 <div class="col-sm-4 pull-right">
-                    <p class="pull-right"><a href="http://www.xorcoder.com" target="_blank">Design&developed by www.xorcoder.com</a></p>
+                    <p class="pull-right"><a href="http://www.xorcoder.com" target="_blank"><?php echo __("Design & Developed by ");?> www.xorcoder.com</a></p>
                 </div>
             </div>
         </footer>

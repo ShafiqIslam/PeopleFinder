@@ -204,7 +204,7 @@
                 <p><span><i class="fa fa-check-square"></i></span><?php echo __("Finding missed persons.");?></p>
             </div>
             <div class="col-sm-4 col-sm-offset-4 pull-right service_option">
-                <p><span><i class="fa fa-check-square"></i></span<?php echo __(">Reporting missed persons.");?></p>
+                <p><span><i class="fa fa-check-square"></i></span<?php echo __("Reporting missed persons.");?></p>
                 <p><span><i class="fa fa-check-square"></i></span><?php echo __("Reporting found persons.");?></p>
             </div>
         </div>
@@ -311,8 +311,8 @@
                     <strong style="font-size:18px;"><?php echo __("Face Finder");?></strong><br>
                     <?php echo __("ABC Road, CDEF City");?><br>
                     <?php echo __("CDEF City-123456, XYZ Country");?><br>
-                    <p><span><i class="fa fa-phone"></i></span> : <a><?php echo __("456-7890");?></a></p>
-                    <p><span><i class="fa fa-envelope-o"></i></span> : <a href="mailto:#"><?php echo __("mailus@peoplefinder.com");?></a></p>
+                    <p><span><i class="fa fa-phone"></i></span> : <a href="tel:456-7890">456-7890</a></p>
+                    <p><span><i class="fa fa-envelope-o"></i></span> : <a href="mailto:mailus@gmail.com">mailus@gmail.com</a></p>
                 </address>    
             </div>
 
@@ -335,7 +335,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="email"><?php echo __("Email:");?></label>
                         <div class="col-sm-9">
-                            <input type="email" name="email" data-error="Bruh, that email address is invalid" class="form-control email" id="email" placeholder="<?php echo __("Enter Email");?>" required="">
+                            <input type="email" name="email" data-error="<?php echo __('Bruh, that email address is invalid');?>" class="form-control email" id="email" placeholder="<?php echo __("Enter Email");?>" required="">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>

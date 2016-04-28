@@ -170,10 +170,10 @@ class ProfilesController extends AppController {
 			if($this->Profile->save($this->request->data)) {
 				$this->request->data['Profile']['id'] = $this->Profile->id;
 				$this->_facepp_upload($this->request->data);
-				$this->Session->setFlash('Your Report has been saved.', 'default', array('class'=>'success_msg'), 'flash');
+				$this->Session->setFlash(__('Your Report has been saved.'), 'default', array('class'=>'success_msg'), 'flash');
 				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
 			} else {
-				$this->Session->setFlash('Your Report can\'t be saved. Try again later.', 'default', array('class'=>'error_msg'), 'flash');
+				$this->Session->setFlash(__('Your Report can\'t be saved. Try again later.'), 'default', array('class'=>'error_msg'), 'flash');
 			}
 		}
 	}
@@ -196,10 +196,10 @@ class ProfilesController extends AppController {
 			if($this->Profile->save($this->request->data)) {
 				$this->request->data['Profile']['id'] = $this->Profile->id;
 				$this->_facepp_upload($this->request->data);
-				$this->Session->setFlash('Your Report has been saved.', 'default', array('class'=>'success_msg'), 'flash');
+				$this->Session->setFlash(__('Your Report has been saved.'), 'default', array('class'=>'success_msg'), 'flash');
 				return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
 			} else {
-				$this->Session->setFlash('Your Report can\'t be saved. Try again later.', 'default', array('class'=>'error_msg'), 'flash');
+				$this->Session->setFlash(__('Your Report can\'t be saved. Try again later.'), 'default', array('class'=>'error_msg'), 'flash');
 			}
 		}
 	}
@@ -253,10 +253,10 @@ class ProfilesController extends AppController {
 			if($this->Profile->save($this->request->data)) {
 				$this->request->data['Profile']['id'] = $id;
 				$this->_facepp_upload($this->request->data);
-				$this->Session->setFlash('Your Report has been updated.', 'default', array('class'=>'success_msg'), 'flash');
+				$this->Session->setFlash(__('Your Report has been updated.'), 'default', array('class'=>'success_msg'), 'flash');
 			}
 			else
-				$this->Session->setFlash('Your Report can\'t be saved right now. Try again later.', 'default', array('class'=>'error_msg'), 'flash');
+				$this->Session->setFlash(__('Your Report can\'t be saved right now. Try again later.'), 'default', array('class'=>'error_msg'), 'flash');
 
 			return $this->redirect(array('action' => 'edit', $id));
 		}
@@ -283,9 +283,9 @@ class ProfilesController extends AppController {
 			$removed['RemovedProfiles'] = $profile['Profile'];
 			$this->loadModel('RemovedProfiles');
 			$this->RemovedProfiles->save($removed);
-			$this->Session->setFlash('The profile has been deleted.', 'default', array('class'=>'success_msg'), 'flash');
+			$this->Session->setFlash(__('The profile has been deleted.'), 'default', array('class'=>'success_msg'), 'flash');
 		} else {
-			$this->Session->setFlash('The profile could not be deleted. Please, try again.', 'default', array('class'=>'error_msg'), 'flash');
+			$this->Session->setFlash(__('The profile could not be deleted. Please, try again.'), 'default', array('class'=>'error_msg'), 'flash');
 		}
 		return $this->redirect(array('controller' => 'reporters', 'action' => 'my_reports'));
 	}
@@ -532,7 +532,7 @@ class ProfilesController extends AppController {
 		$this->Profile->id = $id;
 		$this->Profile->save($data);
 
-		$this->Session->setFlash('Profile Updated. And Notified The Reporter', 'default', array('class'=>'success_msg'), 'flash');
+		$this->Session->setFlash(__('Profile Updated. And Notified The Reporter'), 'default', array('class'=>'success_msg'), 'flash');
 		return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
 	}
 
@@ -588,7 +588,7 @@ class ProfilesController extends AppController {
 			}
 		}
 
-		$this->Session->setFlash('Profile Reverted To Missing. And Logged The Found Claimer as Abuse.', 'default', array('class'=>'error_msg'), 'flash');
+		$this->Session->setFlash(__('Profile Reverted To Missing. And Logged The Found Claimer as Abuse.'), 'default', array('class'=>'error_msg'), 'flash');
 		return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
 	}
 
@@ -665,7 +665,7 @@ class ProfilesController extends AppController {
 			$this->Log->create();
 			$this->Log->save($log);
 
-			$this->Session->setFlash('Profile reported as Abuse. ' . $deleted_msg, 'default', array('class'=>'error_msg'), 'flash');
+			$this->Session->setFlash(__('Profile reported as Abuse. %s', $deleted_msg), 'default', array('class'=>'error_msg'), 'flash');
 			return $this->redirect(array('controller'=>'profiles', 'action' => 'full_profile', $id));
 		
 		}

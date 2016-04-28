@@ -363,12 +363,12 @@ class ReportersController extends AppController {
 		if($this->request->is('post')) {
 			$old_password = $this->Auth->password($this->request->data['Reporter']['password_old']);
 			if($reporter['Reporter']['password'] != $old_password) {
-				$this->Session->setFlash('Oops! Your Old Password doesn\'t match.', 'default', array('class'=>'error_msg'), 'flash');
+				$this->Session->setFlash(__('Oops! Your Old Password doesn\'t match.'), 'default', array('class'=>'error_msg'), 'flash');
 			} else {
 				$this->request->data['Reporter']['password'] = $this->Auth->password($this->request->data['Reporter']['password']);
 				$this->Reporter->id = $id;
 				$this->Reporter->save($this->request->data);
-				$this->Session->setFlash('Password Changed.', 'default', array('class'=>'success_msg'), 'flash');
+				$this->Session->setFlash(__('Password Changed.'), 'default', array('class'=>'success_msg'), 'flash');
 			}
 		}
 	}
@@ -401,10 +401,10 @@ class ReportersController extends AppController {
 					$this->_send_notification_mail($admin_email, 'Admin', $id);
 				}
 
-				$this->Session->setFlash('Account Changed.', 'default', array('class'=>'success_msg'), 'flash');
+				$this->Session->setFlash(__('Account Changed.'), 'default', array('class'=>'success_msg'), 'flash');
 				return $this->redirect(array('action' => 'change_account'));
 			} else {
-				$this->Session->setFlash('Password Changed.', 'default', array('class'=>'error_msg'), 'flash');
+				$this->Session->setFlash(__('Account can\'t be changed right now. Try again.'), 'default', array('class'=>'error_msg'), 'flash');
 				return $this->redirect(array('action' => 'change_account'));
 			}
 		}
