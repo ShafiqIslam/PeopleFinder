@@ -135,7 +135,7 @@
 					<div class="col-sm-5"><h4><?php echo __("Status");?></h4></div>
 					<?php
 						if (empty($profile['Profile']['status'])) { ?>
-							<div class="col-sm-offset-1 col-sm-6"><h4 style="color: #FFC516;"><?php echo __("No Stutus Selected.");?></h4></div>
+							<div class="col-sm-offset-1 col-sm-6"><h4 style="color: #FFC516;"><?php echo __("No Status Selected.");?></h4></div>
 						<?php } else { ?>
 							<div class="col-sm-offset-1 col-sm-6"><h4><?php echo $profile['Profile']['status'];?></h4></div>
 					<?php } ?>

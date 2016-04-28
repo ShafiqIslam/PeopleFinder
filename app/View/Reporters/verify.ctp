@@ -2,7 +2,7 @@
 	<h2>
 		<?php
 			if($success) 
-				echo __("THANKS!!)";
+				echo __("THANKS!!");
 			else
 				echo __("OOPS!!");
 		?>
