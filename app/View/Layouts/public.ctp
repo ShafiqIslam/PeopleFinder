@@ -130,16 +130,10 @@
                 <div id="basic" class="well">
                     <h4><?php echo __("Change To Your Preferred Language");?></h4>
                     <div class="popup_body">
-                        <form role='form' class="form-inline ">
-                            <div class="form-group col-sm-12">
-                                <label class="control-label col-sm-4">Language</label>
-                                <select class="form-control col-sm-8">
-                                    <option>English</option>
-                                    <option>Bangla</option>
-                                    <option>Ababic</option>
-                                </select>
-                            </div>
-                        </form>
+                        <ul>
+                            <li class="selected_language"><a href="#">English</a></li>
+                            <li><a href="#">Bengali</a></li>
+                        </ul>
                     </div>
                     <h4><?php echo __("This feature uses Cookie. By clicking on these links, you agree on our cookie terms. And we'll assume that you are happy to receive all cookies from this website.");?></h4>
                     <button class="basic_close btn btn-default">Close</button>
