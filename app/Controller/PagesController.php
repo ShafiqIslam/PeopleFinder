@@ -46,6 +46,7 @@ class PagesController extends AppController {
  * @throws NotFoundException When the view file could not be found
  *	or MissingViewException in debug mode.
  */
+
 	public function display() {
 		$this->layout = "public";
 		$path = func_get_args();
@@ -86,5 +87,16 @@ class PagesController extends AppController {
 			}
 			throw new NotFoundException();
 		}
+	}
+
+	public function change_language($lng) {
+		if(isset($this->availableLanguages[$lng])) { // If we support this language (see /app/Config/global.php)
+			parent::setLang($lng); // call setLang() from AppController
+			$this->Session->setFlash(__('The language has been changed to %s', $this->availableLanguages[$lng]), 'default', array('class'=>'success_msg'), 'flash'); // Send a success flash message
+		} else {
+			$this->Session->setFlash(__('Language %s is not supported', $lng), 'default', array('class'=>'error_msg'), 'flash'); // Throw a not found exception
+		}
+
+		$this->redirect($this->referer());
 	}
 }

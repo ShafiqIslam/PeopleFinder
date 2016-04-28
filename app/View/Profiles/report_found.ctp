@@ -2,7 +2,7 @@
 <div class="container-fluid sign_up_page report_found">
     <h1><?php echo __("REPORT A FOUND PERSON");?></h1>
     <hr>
-    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal search_form" enctype="multipart/form-data">
+    <form role="form" method="post" data-toggle="validator" novalidate="novalidate" class="form-horizontal search_form" enctype="multipart/form-data">
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("First Name");?></label>
             <div class="col-sm-4">
@@ -35,7 +35,7 @@
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Blood Group");?></label>
             <div class="col-sm-4">
                 <select name="data[Profile][blood_type]" class="form-control">
-                    <option selected="true" disabled="disabled"><?php echo __("Select Blood Group");?></option>
+                    <option selected disabled="disabled"><?php echo __("Select Blood Group");?></option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
                     <option value="B+">B+</option>
@@ -65,6 +65,7 @@
                     <option value="Male"><?php echo __("Male");?></option>
                     <option value="Female"><?php echo __("Female");?></option>
                 </select>
+                <div class="error" style="color:red; display: none"><?php echo __("Please select gender");?></div>
             </div>
         </div>
 
@@ -96,8 +97,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Missing Country");?></label>
             <div class="col-sm-4">
-                <div class="bfh-selectbox bfh-countries" data-name="data[Profile][missing_country]" data-country="EG" data-flags="true">
-                </div>
+                <div class="bfh-selectbox bfh-countries" data-name="data[Profile][missing_country]" data-country="EG" data-flags="true"></div>
             </div>
         </div>
 
@@ -112,7 +112,7 @@
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Mental illness");?></label>
             <div class="col-sm-4">
                 <select name="data[Profile][mental_illness]" class="form-control">
-                    <option selected="true" disabled="disabled"><?php echo __("Select Mental illness");?></option>
+                    <option selected disabled="disabled"><?php echo __("Select Mental illness");?></option>
                     <option value="Yes"><?php echo __("Yes");?></option>
                     <option value="No"><?php echo __("No");?></option>
                     <option value="NA"><?php echo __("NA");?></option>
@@ -124,7 +124,7 @@
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Status");?></label>
             <div class="col-sm-4">
                 <select name="data[Profile][status]" class="form-control">
-                    <option selected="true" disabled="disabled"><?php echo __("Select Status");?></option>
+                    <option selected disabled="disabled"><?php echo __("Select Status");?></option>
                     <option value="Alive"><?php echo __("Alive");?></option>
                     <option value="Dead"><?php echo __("Dead");?></option>
                     <option value="NA"><?php echo __("NA");?></option>
@@ -136,7 +136,7 @@
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Kidnapped");?></label>
             <div class="col-sm-4">
                 <select name="data[Profile][kidnapped]" class="form-control">
-                    <option selected="true" disabled="disabled"><?php echo __("Select Kidnapped");?></option>
+                    <option selected disabled="disabled"><?php echo __("Select Kidnapped");?></option>
                     <option value="Yes"><?php echo __("Yes");?></option>
                     <option value="No"><?php echo __("No");?></option>
                     <option value="NA"><?php echo __("NA");?></option>
@@ -148,7 +148,7 @@
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Physical illness");?></label>
             <div class="col-sm-4">
                 <select name="data[Profile][physical_illness]" class="form-control">
-                    <option selected="true" disabled="disabled"><?php echo __("Select Physical illness");?></option>
+                    <option selected disabled="disabled"><?php echo __("Select Physical illness");?></option>
                     <option value="Yes"><?php echo __("Yes");?></option>
                     <option value="No"><?php echo __("No");?></option>
                     <option value="NA"><?php echo __("NA");?></option>
