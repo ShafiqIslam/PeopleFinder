@@ -350,7 +350,11 @@ header ul li a{
 	margin: 0 auto;
 	max-height: 180px;
 	overflow-x: hidden;
-	//overflow-y: scroll; 
+	border: 1px solid rgba(193, 193, 193, 0.58);
+    padding: 10px;
+}
+.popup_body ul{
+	margin: 0px 0px 0px -40px;
 }
 .popup_body ul li{
 	list-style: none;

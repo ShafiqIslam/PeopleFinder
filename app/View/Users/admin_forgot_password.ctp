@@ -4,14 +4,14 @@
             <?php echo $this->Form->create('User',array('class'=>'form-group'));?>
             <fieldset>
                 <h2>
-                    Face Finder <span>Dashboard</span> 
-                    <span class="pull-right" style="color:#820605">Forgot Password</span>
+                    Face Finder <span><?php echo __("Dashboard"); ?></span> 
+                    <span class="pull-right" style="color:#820605"><?php echo __("Forgot Password"); ?></span>
                 </h2>
                 
                 <?php
                 echo $this->Form->input('email', array('class'=>'form-control','label'=>false,'placeholder'=>'Email','div'=>array('class'=>'form-group')));?>
 
-                <button type="submit" class="btn btn-primary pull-right">RECOVER</button>
+                <button type="submit" class="btn btn-primary pull-right"><?php echo __("RECOVER"); ?></button>
                 <?php echo $this->Form->end(); ?>
             </fieldset>
         </div>

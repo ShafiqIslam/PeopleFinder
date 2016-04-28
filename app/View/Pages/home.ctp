@@ -21,7 +21,7 @@
 
             <div class="tab-content">
                 <div id="name" class="tab-pane fade in active">
-                    <h3>Search By Name<?php echo __("Map");?></h3>
+                    <h3><?php echo __("Search By Name");?></h3>
                     <form role="form" method="post" class="form-horizontal by_name_search search_form" action="<?php echo $this->webroot?>profiles/search">
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("First Name");?></label>

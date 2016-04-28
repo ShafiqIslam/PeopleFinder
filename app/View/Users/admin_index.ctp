@@ -35,7 +35,7 @@
 
         <div class="form-horizontal">
             <div class="form-group">
-                <label for="inputEmail3" class="col-sm-1 control-label">Keyword</label>
+                <label for="inputEmail3" class="col-sm-1 control-label"><?php echo __("Keyword"); ?></label>
                 <div class="col-sm-3">
                     <?php echo $this->Form->input('titlex', array('id' => 'keyword', 'label' => false,'class'=>'form-control')); ?>
                 </div>

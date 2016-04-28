@@ -2,40 +2,40 @@
 <div class="cmsUsers col-md-10 col-sm-10 index">
 	<div class="white">
 		<div class="profiles form">
-			<form role="form" id="signup_form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal" enctype="multipart/form-data" action="">
+			<form role="form" id="signup_form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal search_form" enctype="multipart/form-data" action="">
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">First Name</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("First Name") ?></label>
 					<div class="col-sm-4">
-						<input type="text" name="data[Profile][first_name]" class="form-control" id="" placeholder="First Name" required="">
+						<input type="text" name="data[Profile][first_name]" class="form-control" id="" placeholder="<?php echo __("First Name") ?>" required="">
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Second Name</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Second Name") ?></label>
 					<div class="col-sm-4">
-						<input type="text" name="data[Profile][second_name]" class="form-control" id="" placeholder="Second Name">
+						<input type="text" name="data[Profile][second_name]" class="form-control" id="" placeholder="<?php echo __("Second Name") ?>">
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Last Name</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Last Name") ?></label>
 					<div class="col-sm-4">
-						<input type="text" name="data[Profile][last_name]" class="form-control" id="" placeholder="Last Name" required="">
+						<input type="text" name="data[Profile][last_name]" class="form-control" id="" placeholder="<?php echo __("Last Name") ?>" required="">
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Birthdate</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Date of Birth<?php echo __("Date of Birth") ?></label>
 					<div class="col-sm-4">
-						<input type="date" name="data[Profile][birthdate]" class="form-control" id="" placeholder="date">
+						<input type="date" name="data[Profile][birthdate]" class="form-control" id="" placeholder="<?php echo __("Date of Birth") ?>">
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Blood Group</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Blood Group") ?></label>
 					<div class="col-sm-4">
 						<select name="data[Profile][blood_type]" class="form-control">
-							<option>Select Blood Group</option>
+							<option selected="true" disabled="disabled"><?php echo __("Select Blood Group") ?></option>
 							<option value="A+">A+</option>
 							<option value="A-">A-</option>
 							<option value="B+">B+</option>
@@ -50,7 +50,7 @@
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Nationality</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Nationality") ?></label>
 					<div class="col-sm-4 country_selection_box">
 						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][nationality]"  data-country="BD" data-flags="true">
 						</div>
@@ -58,29 +58,29 @@
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Gender</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Gender") ?></label>
 					<div class="col-sm-4">
-						<select name="data[Profile][gender]" class="form-control" required="">
-							<option value="">Select Gender</option>
-							<option value="Male">Male</option>
-							<option value="Female">Female</option>
-						</select>
+						<select name="gender" class="form-control gender">
+	                        <option value=""><?php echo __("Select Gender");?></option>
+	                        <option value="Male"><?php echo __("Male");?></option>
+	                        <option value="Female"><?php echo __("Female");?></option>
+	                    </select>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Person Status</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Person Status") ?></label>
 					<div class="col-sm-4">
-						<select name="data[Profile][person_status]" class="form-control" required="">
-							<option value="Missing">Missing</option>
-							<option value="Found">Found</option>
+						<select name="data[Profile][person_status]" class="form-control">
+							<option value="Missing"><?php echo __("Missing") ?></option>
+							<option value="Found"><?php echo __("Found") ?></option>
 						</select>
 					</div>
 				</div>
 		
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident Country</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Resident Country") ?></label>
 					<div class="col-sm-4">
 						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][resident_country]" data-country="BD" data-flags="true">
 						</div>
@@ -88,21 +88,21 @@
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident City</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Resident City") ?></label>
 					<div class="col-sm-4">
-						<input type="text" name="data[Profile][resident_city]" class="form-control" id="" placeholder="Resident City">
+						<input type="text" name="data[Profile][resident_city]" class="form-control" id="" placeholder="<?php echo __("Resident City") ?>">
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Resident Street</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Resident Street") ?></label>
 					<div class="col-sm-4">
-						<input type="text" name="data[Profile][resident_street]" class="form-control" id="" placeholder="Resident Street">
+						<input type="text" name="data[Profile][resident_street]" class="form-control" id="" placeholder="<?php echo __("Resident Street") ?>">
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Missing Country</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Missing Country") ?></label>
 					<div class="col-sm-4">
 						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][missing_country]" data-country="BD" data-flags="true">
 						</div>
@@ -110,62 +110,62 @@
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Missing City</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Missing City") ?></label>
 					<div class="col-sm-4">
-						<input type="text" name="data[Profile][missing_city]" class="form-control" id="" placeholder="Correct City">
+						<input type="text" name="data[Profile][missing_city]" class="form-control" id="" placeholder="<?php echo __("Missing City") ?>">
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Mental illness</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Mental illness") ?></label>
 					<div class="col-sm-4">
-						<select name="data[Profile][mental_illness]" class="form-control" required="">
-							<option value="">Select Mental illness</option>
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-							<option value="NA">NA</option>
+						<select name="data[Profile][mental_illness]" class="form-control">
+							<option selected="true" disabled="disabled"><?php echo __("Select Mental illness");?></option>
+		                    <option value="Yes"><?php echo __("Yes");?></option>
+		                    <option value="No"><?php echo __("No");?></option>
+		                    <option value="NA"><?php echo __("NA");?></option>
 						</select>
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Status</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Status") ?></label>
 					<div class="col-sm-4">
-						<select name="data[Profile][status]" class="form-control" required="">
-							<option value="">Select Status</option>
-							<option value="Alive">Alive</option>
-							<option value="Dead">Dead</option>
-							<option value="NA">NA</option>
+						<select name="data[Profile][status]" class="form-control">
+							<option selected="true" disabled="disabled"><?php echo __("Select Status");?></option>
+		                    <option value="Alive"><?php echo __("Alive");?></option>
+		                    <option value="Dead"><?php echo __("Dead");?></option>
+		                    <option value="NA"><?php echo __("NA");?></option>
 						</select>
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Kidnapped</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Kidnapped") ?></label>
 					<div class="col-sm-4">
 						<select name="data[Profile][kidnapped]" class="form-control">
-							<option>Select Kidnapped</option>
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-							<option value="NA">NA</option>
+		                    <option selected="true" disabled="disabled"><?php echo __("Select Kidnapped");?></option>
+		                    <option value="Yes"><?php echo __("Yes");?></option>
+		                    <option value="No"><?php echo __("No");?></option>
+		                    <option value="NA"><?php echo __("NA");?></option>
 						</select>
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Physical illness</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Physical illness") ?></label>
 					<div class="col-sm-4">
-						<select name="data[Profile][physical_illness]" class="form-control" required="">
-							<option value="">Select Physical illness</option>
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-							<option value="NA">NA</option>
+						<select name="data[Profile][physical_illness]" class="form-control">
+							<option selected="true" disabled="disabled"><?php echo __("Select Physical illness");?></option>
+		                    <option value="Yes"><?php echo __("Yes");?></option>
+		                    <option value="No"><?php echo __("No");?></option>
+		                    <option value="NA"><?php echo __("NA");?></option>
 						</select>
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="" class="col-sm-offset-2 col-sm-3 control-label">Description</label>
+					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Description") ?></label>
 					<div class="col-sm-4">
 						<textarea name="data[Profile][description]" class="form-control"></textarea>
 					</div>
@@ -183,7 +183,7 @@
 		
 				<div class="form-group">
 					<div class="col-sm-offset-7 col-sm-5 report_found_submit">
-						<button type="submit" class="btn btn-primary btn_search">Submit</button>
+						<button type="submit" class="btn btn-primary btn_search"><?php echo __("Submit") ?></button>
 					</div>
 				</div>
 		

@@ -6,7 +6,7 @@
             <div class="col-md-3 col-sm-3">
                 <a href="<?php echo $this->Html->url(array('controller' => 'profiles', 'action' => 'index')) ?>">
                     <div class="realtime t-color">
-                        <span>Profiles</span>
+                        <span><?php echo __("Profiles") ?></span>
 
                         <div class="all-desc">
                             <div class="pull-right">
@@ -21,7 +21,7 @@
             <div class="col-md-3 col-sm-3">
                 <a href="<?php echo $this->Html->url(array('controller' => 'reporters', 'action' => 'index')) ?>">
                     <div class="realtime t-color">
-                        <span>Reporters</span>
+                        <span><?php echo __("Reporters") ?></span>
 
                         <div class="all-desc">
                             <div class="pull-right">
@@ -36,7 +36,7 @@
             <div class="col-md-3 col-sm-3">
                 <a href="<?php echo $this->Html->url(array('controller' => 'testimonials', 'action' => 'index')) ?>">
                     <div class="realtime t-color">
-                        <span>Testimonials</span>
+                        <span><?php echo __("Testimonials") ?></span>
 
                         <div class="all-desc">
                             <div class="pull-right">
@@ -51,7 +51,7 @@
             <div class="col-md-3 col-sm-3">
                 <a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'index', 'admin' => true, 'settings')) ?>">
                     <div class="realtime t-color">
-                        <span>Admin Settings</span>
+                        <span><?php echo __("Admin Settings") ?></span>
 
                         <div class="all-desc">
                             <div class="pull-right">
