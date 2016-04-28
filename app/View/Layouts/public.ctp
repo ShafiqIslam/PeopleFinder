@@ -122,21 +122,22 @@
                 </div>
                 <div style="clear: both;"></div>
                 <div class="multi_lg">
-                    <div class="pull-right"><a class="basic_open" href="#basic"><span><?php echo __("CHANGE LANGUAGE");?></span><i class="fa fa-globe" aria-hidden="true"></i></a></div>
+                    <div class="pull-right"><a class="basic_open" href="#basic"><span><?php echo __("CHANGE LANGUAGE");?></span></i><img src="<?php echo $this->webroot; ?>img/globe.gif"></a></div>
                 </div>
                 <!-- Add content to the popup -->
                 
 
                 <div id="basic" class="well">
-                    <h4><?php echo __("Change To Your Preferred Language");?></h4>
+                    <button class="basic_close btn btn-default pull-right">Close</button>
+                    <h3><?php echo __("Change To Your Preferred Language");?></h3>
                     <div class="popup_body">
                         <ul>
-                            <li class="selected_language"><a href="#">English</a></li>
-                            <li><a href="#">Bengali</a></li>
+                            <li class="selected_language"><a href="#"><i class="fa fa-language" aria-hidden="true"></i></i>English</a></li>
+                            <li><a href="#"><i class="fa fa-language" aria-hidden="true"></i></i>Bengali</a></li>
                         </ul>
                     </div>
                     <h4><?php echo __("This feature uses Cookie. By clicking on these links, you agree on our cookie terms. And we'll assume that you are happy to receive all cookies from this website.");?></h4>
-                    <button class="basic_close btn btn-default">Close</button>
+                    
                 </div>
   
             </nav>

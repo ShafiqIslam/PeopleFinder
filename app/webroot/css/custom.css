@@ -309,7 +309,7 @@ header ul li a{
 .multi_lg{
 	position: absolute;
     right: 0;
-    padding: 7px;
+    padding: 3px;
     width: 100%;
     background: rgba(255,255,255,0.6);
 	background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(55,76,129,0.6) 100%);
@@ -328,10 +328,62 @@ header ul li a{
 	margin-right: 10px;
 	text-shadow: 1px 1px 1px black;
     font-weight: bold;
+    line-height: 20px;
+}
+.multi_lg a img{
+	width: 20px;
+	height: 20px;
+	margin-top: -2px;
+    margin-right: 8px;
+}
+
+#basic{
+	width: 50%;
+	text-align: center;
+	background: #fff;
+}
+#basic h3, #basic h4{
+	text-align: center;
 }
 .popup_body{
-	width: 400px;
+	width: 40%;
+	margin: 0 auto;
+	max-height: 180px;
+	overflow-x: hidden;
+	//overflow-y: scroll; 
 }
+.popup_body ul li{
+	list-style: none;
+	width: 100%;
+    background: rgba(37, 37, 138, 0.82);
+    border-bottom: 1px solid #fff;
+}
+.popup_body ul li a{
+	font-size: 18px;
+	text-decoration: none;
+	color: #fff;
+    //margin-left: 15px;
+    line-height: 25px;
+    padding: 5px 15px;
+    display: block;
+    transition: all .4s;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -o-transition: all .4s;
+}
+.popup_body ul li a:hover{
+	background: rgba(37, 37, 138, 0.5);
+	transition: all .4s;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -o-transition: all .4s;
+}
+.popup_body ul li a .fa{
+	margin-right: 12px;
+}
+
+
+
 /*------------ Change Password Page-----------------*/
 .by_name_search{
 	margin-top: -20px;
