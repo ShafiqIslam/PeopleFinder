@@ -393,6 +393,9 @@ header ul li a{
 	margin-right: 12px;
 }
 
+.selected_lang {
+	background: rgba(37, 37, 138, 1) !important;
+}
 
 
 /*------------ Change Password Page-----------------*/

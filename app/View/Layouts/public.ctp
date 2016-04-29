@@ -138,12 +138,14 @@
                     <h3><?php echo __("Change To Your Preferred Language");?></h3>
                     <div class="popup_body">
                         <ul>
-                            <li class="selected_language"><a href="#"><i class="fa fa-language" aria-hidden="true"></i>English</a></li>
-                            <li><a href="#"><i class="fa fa-language" aria-hidden="true"></i>Bengali</a></li>
-                            <li class="selected_language"><a href="#"><i class="fa fa-language" aria-hidden="true"></i>English</a></li>
-                            <li><a href="#"><i class="fa fa-language" aria-hidden="true"></i>Bengali</a></li>
-                            <li class="selected_language"><a href="#"><i class="fa fa-language" aria-hidden="true"></i>English</a></li>
-                            <li><a href="#"><i class="fa fa-language" aria-hidden="true"></i>Bengali</a></li>
+                            <?php foreach($availableLanguages as $key => $value) { ?>
+                            <?php $link = $this->webroot . 'pages/changeLanguage/' . $key; ?>
+                            <li class="<?php echo ($key == $language) ? 'selected_lang' : ''?>">
+                                <a href="<?php echo $link?>">
+                                    <i class="fa fa-language" aria-hidden="true"></i><?php echo $value?>
+                                </a>
+                            </li>
+                            <?php } ?>
                         </ul>
                     </div>
                     <p><i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i><?php echo __("This feature uses Cookie. By clicking on these links, you agree on our cookie terms. And we'll assume that you are happy to receive all cookies from this website.");?></p>
