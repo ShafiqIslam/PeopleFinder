@@ -31,7 +31,7 @@
         <![endif]-->
     </head>
     <body>
-        <div class=""></div>
+        <div class="loader"></div>
 
         <?php $logged = $this->Session->read('logged_user'); ?>
 
@@ -134,15 +134,19 @@
                 
 
                 <div id="basic" class="well">
-                    <button class="basic_close btn btn-default pull-right">Close</button>
+                    <button class="basic_close btn btn-default pull-right"><i class="fa fa-times fa-2x" aria-hidden="true"></i></button>
                     <h3><?php echo __("Change To Your Preferred Language");?></h3>
                     <div class="popup_body">
                         <ul>
                             <li class="selected_language"><a href="#"><i class="fa fa-language" aria-hidden="true"></i>English</a></li>
                             <li><a href="#"><i class="fa fa-language" aria-hidden="true"></i>Bengali</a></li>
+                            <li class="selected_language"><a href="#"><i class="fa fa-language" aria-hidden="true"></i>English</a></li>
+                            <li><a href="#"><i class="fa fa-language" aria-hidden="true"></i>Bengali</a></li>
+                            <li class="selected_language"><a href="#"><i class="fa fa-language" aria-hidden="true"></i>English</a></li>
+                            <li><a href="#"><i class="fa fa-language" aria-hidden="true"></i>Bengali</a></li>
                         </ul>
                     </div>
-                    <h4><?php echo __("This feature uses Cookie. By clicking on these links, you agree on our cookie terms. And we'll assume that you are happy to receive all cookies from this website.");?></h4>
+                    <p><i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i><?php echo __("This feature uses Cookie. By clicking on these links, you agree on our cookie terms. And we'll assume that you are happy to receive all cookies from this website.");?></p>
                     
                 </div>
   

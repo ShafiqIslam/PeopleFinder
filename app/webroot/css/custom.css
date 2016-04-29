@@ -11,7 +11,7 @@
 	width: 100%;
 	height: 100%;
 	z-index: 9999;
-	background: url('../img/awesome_loading.gif') 50% 50% no-repeat #31A2E1;
+	background: url('../img/window_loader.gif') 50% 50% no-repeat rgba(144, 144, 144, 1);
 }
 .gender_error{
 	border-color: #a94442;
@@ -342,12 +342,20 @@ header ul li a{
 	text-align: center;
 	background: #fff;
 }
-#basic h3, #basic h4{
+#basic h3{
 	text-align: center;
+	font-size: 30px;
+    font-weight: bold;
+    text-shadow: 1.5px 1.5px 1.5px #BDBDBD;
+}
+#basic p{
+	text-align: justify;
+    color: #C10000;
+    font-size: 15px;
 }
 .popup_body{
 	width: 40%;
-	margin: 0 auto;
+	margin: 30px auto;
 	max-height: 180px;
 	overflow-x: hidden;
 	border: 1px solid rgba(193, 193, 193, 0.58);

@@ -2,12 +2,14 @@
 $(document).ready(function(){
     $(window).load(function(){
         $(".loader").fadeOut("slow");
+        setTimeout( "$('.loader').hide();", 10000);
     });
 
     $('.btn_search').click(function(){
         if (!$(this).hasClass('disabled')) {
           $(".loader").fadeIn("slow");  
         }
+        setTimeout( "$('.loader').hide();", 10000);
     });
 
     $('.flash_close_btn').click(function(){
