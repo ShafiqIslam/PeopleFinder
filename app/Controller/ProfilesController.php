@@ -415,7 +415,7 @@ class ProfilesController extends AppController {
 		return $this->redirect(array('action' => 'edit', $profile_id));
 	}
 
-	public function search($offset = 0, $limit = 2) {
+	public function search($offset = 0, $limit = 10) {
 		set_time_limit(0);
 		$page = $subpage = $title_for_layout = "search";
 		$this->set(compact('page', 'subpage', 'title_for_layout'));

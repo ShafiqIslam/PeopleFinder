@@ -217,27 +217,30 @@
 </div>
 
         <!--===========Counter Section=============-->
-<div id="first_result" class="container-fluid count_wrapper parallax">
-    <div class="container count_wrapper_body">
-        <div class="col-sm-4 col-sm-offset-1">
-            <div class="counter_bg counter_found">
-                <div class="inner_counter">
-                    <h2 class="timer count-title counter_found_text" id="count-number" data-to="<?php echo $profile_count['found'];?>" data-speed="1500"></h2>
+<div class="count_wrapper parallax">
+    <div id="first_result" class="container-fluid count_wrapper_bg">
+        <div class="container count_wrapper_body container-fluid">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="counter_bg counter_found">
+                    <div class="inner_counter">
+                        <h2 class="timer count-title counter_found_text" id="count-number" data-to="<?php echo $profile_count['found'];?>" data-speed="1500"></h2>
+                    </div>
                 </div>
+                <h3 class="found_h3_counter"><?php echo __("Found People");?></h3>
             </div>
-            <h3 class="found_h3_counter"><?php echo __("Found People");?></h3>
-        </div>
-        
-        <div class="col-sm-offset-2 col-sm-4">
-            <div class="counter_bg counter_add">
-            <div class="inner_counter">
-                <h2 class="timer count-title counter_add_text" id="count-number" data-to="<?php echo $profile_count['total'];?>" data-speed="1500"></h2> 
+            
+            <div class="col-sm-offset-2 col-sm-4">
+                <div class="counter_bg counter_add">
+                <div class="inner_counter">
+                    <h2 class="timer count-title counter_add_text" id="count-number" data-to="<?php echo $profile_count['total'];?>" data-speed="1500"></h2> 
+                </div>
+                </div>
+                <h3 class="added_h3_counter"><?php echo __("Added Profile");?></h3>
             </div>
-            </div>
-            <h3 class="added_h3_counter"><?php echo __("Added Profile");?></h3>
         </div>
     </div>
 </div>
+
 
 <!--Carousel-->
 <!--<div class="container-fluid slider_wrapper">-->
