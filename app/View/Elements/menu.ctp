@@ -4,6 +4,7 @@
     //$method = $this->params['pass'][0];
 
     $logged_user = $this->Session->read('logged_user');
+    #AuthComponent::_setTrace($logged_user);
 ?>
 
 <div class="actions col-md-2 col-sm-2">

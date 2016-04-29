@@ -67,7 +67,13 @@
 				$last_name = !empty($reporter['Reporter']['last_name']) ? $reporter['Reporter']['last_name'] : "";
 				$name = $first_name . " " . $second_name . " " . $last_name;
 
-                if(!empty($reporter['Reporter']['id_image_link_1']) && $reporter['Reporter']['account_type'] == 'Normal') {
+                if( !empty($reporter['Reporter']['id_image_link_1']) || !empty($reporter['Reporter']['id_image_link_2']) || !empty($reporter['Reporter']['id_image_link_3']) ) {
+                    $has_id = true;
+                } else {
+                    $has_id = false;
+                }
+
+                if($has_id && $reporter['Reporter']['account_type'] == 'Normal') {
                     $tr_style = "background: rgba(169, 142, 66, 0.65);border-bottom:1px solid #000";
                     $td_style = "color: #000; font-weight: bold;";
                 } else {
