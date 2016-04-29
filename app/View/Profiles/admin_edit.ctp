@@ -72,7 +72,7 @@
 				<div class="form-group">
 					<label for="" class="col-sm-offset-1 col-sm-3 control-label"><?php echo __("Verified Profile"); ?></label>
 					<div class="col-sm-6">
-						<input type="checkbox" name="data[Profile][verified_profile]" <?php if($this->request->data['Profile']['verified_profile']) echo "checked=\"true\"";?>>
+						<input type="checkbox" name="data[Profile][verified_profile]" <?php echo ($this->request->data['Profile']['verified_profile']) ? "checked" : "";?> value="1">
 						<?php echo __("Verified"); ?>
 					</div>
 				</div>
@@ -174,29 +174,39 @@
 					<div class="col-sm-6 search_result_img admin_img_edit_section">
 						<table class="table table-responsive">
 							<tr>
+							<?php $image_avail = 0; ?>
 							<?php if(!empty($this->request->data['Profile']['image_link_1'])) { ?>
 								<td>
-									<a href=""><i class="fa fa-trash-o display_none"></i></a>
+									<a href="<?php echo $this->webroot."admin/profiles/remove_image/".$this->request->data['Profile']['id']."/1";?>">
+										<i class="fa fa-trash-o display_none"></i>
+									</a>
 									<a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Profile']['image_link_1'];?>">
 										<img class="img-responsive img_popover_1" src="<?php echo $this->request->data['Profile']['image_link_1'];?>">
 									</a>
 								</td>
+								<?php $image_avail++; ?>
 							<?php } ?>
 							<?php if(!empty($this->request->data['Profile']['image_link_2'])) { ?>
 								<td>
-									<a href=""><i class="fa fa-trash-o display_none"></i></a>
+									<a href="<?php echo $this->webroot."admin/profiles/remove_image/".$this->request->data['Profile']['id']."/2";?>">
+										<i class="fa fa-trash-o display_none"></i>
+									</a>
 									<a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Profile']['image_link_2'];?>">
 										<img class="img-responsive img_popover_1" src="<?php echo $this->request->data['Profile']['image_link_2'];?>">
 									</a>
 								</td>
+								<?php $image_avail++; ?>
 							<?php } ?>
 							<?php if(!empty($this->request->data['Profile']['image_link_3'])) { ?>
 								<td>
-									<a href=""><i class="fa fa-trash-o display_none"></i></a>
+									<a href="<?php echo $this->webroot."admin/profiles/remove_image/".$this->request->data['Profile']['id']."/3";?>">
+										<i class="fa fa-trash-o display_none"></i>
+									</a>
 									<a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Profile']['image_link_3'];?>">
 										<img class="img-responsive img_popover_1" src="<?php echo $this->request->data['Profile']['image_link_3'];?>">
 									</a>
 								</td>
+								<?php $image_avail++; ?>
 							<?php } ?>
 							</tr>
 						</table>
@@ -206,7 +216,7 @@
 
 				<div class="form-group">
 					<div class="col-sm-offset-1 col-sm-9">
-						<input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3" data-min-file-count="1" enctype="multipart/form-data">
+						<input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="<?php echo 3-$image_avail;?>" data-min-file-count="1" enctype="multipart/form-data">
 					</div>
 				</div>
 
@@ -224,6 +234,8 @@
 					$('#adv_search_img').on('fileuploaded', function(event, data, previewId, index) {
 						var response = data.response.response;
 						var filename = data.response.filename;
+
+						console.log(data.response);
 
 						if(!$("input[name='data[Profile][image_links_1]']").val()) {
 							$("input[name='data[Profile][image_links_1]']").val(filename);

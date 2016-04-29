@@ -92,9 +92,24 @@ class ProfilesController extends AppController {
 		if (!$this->Profile->exists($id)) {
 			throw new NotFoundException(__('Invalid profile'));
 		}
+
+		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
+		$profile = $this->Profile->find('first', $options);
+
 		if ($this->request->is(array('post', 'put'))) {
-			if(!empty($this->request->data['Profile']['image_links_1']))
-				$this->request->data = $this->_process_images($this->request->data);
+			if(empty($this->request->data['Profile']['verified_profile'])) {
+				$this->request->data['Profile']['verified_profile'] = 0;
+			}
+
+			$update_face_pp = false;
+			if(!empty($this->request->data['Profile']['image_links_1'])) {
+				$update_face_pp = true;
+			}
+
+			//$this->request->data = $this->_refine_images($this->request->data, $profile);
+			$this->request->data = $this->_process_images($this->request->data);
+			//$this->request->data = $this->_refine_images_2($this->request->data, $profile);
+			$data_for_fpp = $this->request->data;
 
 			if($this->request->data['Profile']['image_link_1']=='')
 				$this->request->data['Profile']['image_link_1'] = $profile['Profile']['image_link_1'];
@@ -110,16 +125,18 @@ class ProfilesController extends AppController {
 
 			$this->Profile->id = $id;
 			if($this->Profile->save($this->request->data)) {
-				$this->request->data['Profile']['id'] = $id;
-				$this->_facepp_upload($this->request->data);
+				$data_for_fpp['Profile']['id'] = $id;
+				if($update_face_pp) {
+					$this->_facepp_upload($data_for_fpp, true);
+				}
+
 				$this->Session->setFlash(__('The profile has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'edit', $id));
 			} else {
 				$this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
-			$this->request->data = $this->Profile->find('first', $options);
+			$this->request->data = $profile;
 		}
 	}
 
@@ -128,13 +145,45 @@ class ProfilesController extends AppController {
 		if (!$this->Profile->exists()) {
 			throw new NotFoundException(__('Invalid profile'));
 		}
+
+		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
+		$profile = $this->Profile->find('first', $options);
+
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Profile->delete()) {
+			$removed['RemovedProfiles'] = $profile['Profile'];
+			$this->loadModel('RemovedProfiles');
+			$this->RemovedProfiles->save($removed);
+
+			$images_to_delete = array(
+				$profile['Profile']['image_link_1'],
+				$profile['Profile']['image_link_2'],
+				$profile['Profile']['image_link_3']
+			);
+			$this->delete_from_cloud($images_to_delete);
+			$this->facepp_delete_person($id);
+
 			$this->Session->setFlash(__('The profile has been deleted.'));
 		} else {
 			$this->Session->setFlash(__('The profile could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+	public function admin_remove_image($profile_id, $image_no) {
+		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $profile_id));
+		$profile = $this->Profile->find('first', $options);
+
+		$image_col_name = 'image_link_' . $image_no;
+		$data['Profile'][$image_col_name] = null;
+		$this->Profile->id = $profile_id;
+		if($this->Profile->save($data)) {
+			$this->delete_from_cloud(array($profile['Profile'][$image_col_name]));
+			$this->Session->setFlash(__('The profile has been saved.'));
+		} else {
+			$this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
+		}
+		return $this->redirect(array('action' => 'edit', $profile_id));
 	}
 
 	/*
@@ -249,7 +298,7 @@ class ProfilesController extends AppController {
 			if($this->request->data['Profile']['image_link_2']=='')
 				$this->request->data['Profile']['image_link_2'] = $profile['Profile']['image_link_2'];
 			if($this->request->data['Profile']['image_link_3']=='')
-				$this->request->data['Profile']['image_link_3'] = $profile['Profile']['image_link_3'];
+				$this->request->data['Profile']['image_link_3'] = $this->request->data['Profile']['image_link_3'];
 
 			$address = $this->request->data['Profile']['missing_city'] . ', ' . $this->request->data['Profile']['missing_country'];
 			$lat_lng = $this->lat_lng($address);
@@ -259,6 +308,14 @@ class ProfilesController extends AppController {
 			$this->Profile->id = $id;
 			if($this->Profile->save($this->request->data)) {
 				$this->request->data['Profile']['id'] = $id;
+
+				if($this->request->data['Profile']['image_link_1']==$profile['Profile']['image_link_1'])
+					unset($this->request->data['Profile']['image_link_1']);
+				if($this->request->data['Profile']['image_link_2']==$profile['Profile']['image_link_2'])
+					unset($this->request->data['Profile']['image_link_2']);
+				if($this->request->data['Profile']['image_link_3']==$profile['Profile']['image_link_3'])
+					unset($this->request->data['Profile']['image_link_3']);
+
 				$this->_facepp_upload($this->request->data);
 				$this->Session->setFlash(__('Your Report has been updated.'), 'default', array('class'=>'success_msg'), 'flash');
 			}
@@ -290,11 +347,36 @@ class ProfilesController extends AppController {
 			$removed['RemovedProfiles'] = $profile['Profile'];
 			$this->loadModel('RemovedProfiles');
 			$this->RemovedProfiles->save($removed);
+
+			$images_to_delete = array(
+				$profile['Profile']['image_link_1'],
+				$profile['Profile']['image_link_2'],
+				$profile['Profile']['image_link_3']
+			);
+			$this->delete_from_cloud($images_to_delete);
+			$this->facepp_delete_person($id);
+
 			$this->Session->setFlash(__('The profile has been deleted.'), 'default', array('class'=>'success_msg'), 'flash');
 		} else {
 			$this->Session->setFlash(__('The profile could not be deleted. Please, try again.'), 'default', array('class'=>'error_msg'), 'flash');
 		}
 		return $this->redirect(array('controller' => 'reporters', 'action' => 'my_reports'));
+	}
+
+	public function remove_image($profile_id, $image_no) {
+		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $profile_id));
+		$profile = $this->Profile->find('first', $options);
+
+		$image_col_name = 'image_link_' . $image_no;
+		$data['Profile'][$image_col_name] = null;
+		$this->Profile->id = $profile_id;
+		if($this->Profile->save($data)) {
+			$this->delete_from_cloud(array($profile['Profile'][$image_col_name]));
+			$this->Session->setFlash(__('The profile has been saved.'));
+		} else {
+			$this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
+		}
+		return $this->redirect(array('action' => 'edit', $profile_id));
 	}
 
 	public function search($offset = 0, $limit = 10) {
@@ -678,22 +760,103 @@ class ProfilesController extends AppController {
 		}
 	}
 
+	private function _refine_images ($data, $profile) {
+		if(!empty($data['Profile']['image_links_1'])) {
+			if (empty($profile['Profile']['image_link_1'])) {
+
+			} else if (empty($profile['Profile']['image_link_2'])) {
+				$data['Profile']['image_links_2'] = $data['Profile']['image_links_1'];
+				unset($data['Profile']['image_links_1']);
+			} else if (empty($profile['Profile']['image_link_3'])) {
+				$data['Profile']['image_links_3'] = $data['Profile']['image_links_1'];
+				unset($data['Profile']['image_links_1']);
+			}
+		}
+
+		if(!empty($data['Profile']['image_links_2'])) {
+			if (empty($profile['Profile']['image_link_1'])) {
+				$data['Profile']['image_links_1'] = $data['Profile']['image_links_2'];
+				unset($data['Profile']['image_links_2']);
+			} else if (empty($profile['Profile']['image_link_2'])) {
+
+			} else if (empty($profile['Profile']['image_link_3'])) {
+				$data['Profile']['image_links_3'] = $data['Profile']['image_links_2'];
+				unset($data['Profile']['image_links_2']);
+			}
+		}
+
+		if(!empty($data['Profile']['image_links_3'])) {
+			if (empty($profile['Profile']['image_link_1'])) {
+				$data['Profile']['image_links_1'] = $data['Profile']['image_links_3'];
+				unset($data['Profile']['image_links_3']);
+			} else if (empty($profile['Profile']['image_link_2'])) {
+				$data['Profile']['image_links_2'] = $data['Profile']['image_links_3'];
+				unset($data['Profile']['image_links_3']);
+			} else if (empty($profile['Profile']['image_link_3'])) {
+
+			}
+		}
+
+		return $data;
+	}
+
+	private function _refine_images_2 ($data, $profile) {
+		if(!empty($data['Profile']['image_link_1'])) {
+			if (empty($profile['Profile']['image_link_1'])) {
+
+			} else if (empty($profile['Profile']['image_link_2'])) {
+				$data['Profile']['image_link_2'] = $data['Profile']['image_link_1'];
+				$data['Profile']['image_link_1'] = "";
+			} else if (empty($profile['Profile']['image_link_3'])) {
+				$data['Profile']['image_link_3'] = $data['Profile']['image_link_1'];
+				$data['Profile']['image_link_1'] = "";
+			}
+		}
+
+		if(!empty($data['Profile']['image_link_2'])) {
+			if (empty($profile['Profile']['image_link_1'])) {
+				$data['Profile']['image_link_1'] = $data['Profile']['image_link_2'];
+				$data['Profile']['image_link_2'] = "";
+			} else if (empty($profile['Profile']['image_link_2'])) {
+
+			} else if (empty($profile['Profile']['image_link_3'])) {
+				$data['Profile']['image_link_3'] = $data['Profile']['image_link_2'];
+				$data['Profile']['image_link_2'] = "";
+			}
+		}
+
+		if(!empty($data['Profile']['image_link_3'])) {
+			if (empty($profile['Profile']['image_link_1'])) {
+				$data['Profile']['image_link_1'] = $data['Profile']['image_link_3'];
+				$data['Profile']['image_link_3'] = "";
+			} else if (empty($profile['Profile']['image_link_2'])) {
+				$data['Profile']['image_link_2'] = $data['Profile']['image_link_3'];
+				$data['Profile']['image_link_3'] = "";
+			} else if (empty($profile['Profile']['image_link_3'])) {
+
+			}
+		}
+
+		return $data;
+	}
+
 	private function _process_images ($data) {
 		unset($data['Profile']['images']);
 
 		// process image and upload to cloudinary
 		$files = array();
-		if(!empty($data['Profile']['image_links_1'])) {
+		if(!empty($data['Profile']['image_links_1']) && ( strpos($data['Profile']['image_links_1'], 'http://') == false ) ) {
 			array_push($files, $data['Profile']['image_links_1']);
 		}
-		if(!empty($data['Profile']['image_links_2'])) {
+		if(!empty($data['Profile']['image_links_2']) && ( strpos($data['Profile']['image_links_2'], 'http://') == false ) ) {
 			array_push($files, $data['Profile']['image_links_2']);
 		}
-		if(!empty($data['Profile']['image_links_3'])) {
+		if(!empty($data['Profile']['image_links_3']) && ( strpos($data['Profile']['image_links_3'], 'http://') == false ) ) {
 			array_push($files, $data['Profile']['image_links_3']);
 		}
 		if(!empty($files)) {
 			$links = $this->upload_to_cloud($files, $data['Profile']['gender']);
+
 			if(!empty($links)) {
 				$data['Profile']['image_link_1'] = empty($links[0]) ? '' : $links[0];
 				$data['Profile']['image_link_2'] = empty($links[1]) ? '' : $links[1];
@@ -713,7 +876,7 @@ class ProfilesController extends AppController {
 		return $data;
 	}
 
-	private function _facepp_upload($data) {
+	private function _facepp_upload($data, $update=false) {
 		// do facepp job here
 		$group = $data['Profile']['gender'];
 		$person = $data['Profile']['id'];
@@ -724,7 +887,7 @@ class ProfilesController extends AppController {
 			array_push($images, $data['Profile']['image_link_2']);
 		if(!empty($data['Profile']['image_link_3']) || $data['Profile']['image_link_3']!='')
 			array_push($images, $data['Profile']['image_link_3']);
-		$this->facepp_add_to_group($group, $person, $images);
+		$this->facepp_add_to_group($group, $person, $images, $update);
 		return true;
 	}
 

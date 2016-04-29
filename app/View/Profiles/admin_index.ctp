@@ -6,7 +6,11 @@
 		});
 
 		$("input[name=spammed_only]").on('change', function () {
-			$('#keyword').val("spammed");
+			if($("input[name=spammed_only]").is(":checked")) {
+				$('#keyword').val("spammed");
+			} else {
+				$('#keyword').val("");
+			}
 			$("#go").click();
 		});
 	});

@@ -127,9 +127,9 @@ class AppController extends Controller {
         $default_upload_options = array("tags" => $tags);
         $eager_params = array("width" => 200, "height" => 150, "crop" => "scale");
         $files = array();
-          
+
         foreach ($sample_paths as $key => $path) {
-            $path = getcwd() . DS . 'files' . DS . 'uploads' . DS . $path;        
+            $path = getcwd() . DS . 'files' . DS . 'uploads' . DS . $path;
             # public_id will be generated on Cloudinary's backend.
             $upload_link = \Cloudinary\Uploader::upload($path, $default_upload_options);
             array_push($files, $upload_link['url']);
@@ -137,6 +137,23 @@ class AppController extends Controller {
         }
 
         return $files;
+    }
+
+    public function delete_from_cloud($links) {
+        // api configuration
+        \Cloudinary::config(array(
+            "cloud_name" => $this->_cloudinary_cloud_name,
+            "api_key" => $this->_cloudinary_api_key,
+            "api_secret" => $this->_cloudinary_api_secret
+        ));
+
+        foreach ($links as $key => $link) {
+            $link_ex = explode('/', $link);
+            $public_id = explode('.', $link_ex[count($link_ex)-1]);
+            $deleted = \Cloudinary\Uploader::destroy($public_id[0]);
+        }
+
+        return true;
     }
 
     public function random_string($len, $num=0, $alpha=0, $spec_char=0) {
@@ -206,13 +223,15 @@ class AppController extends Controller {
         return true;
     }
 
-    public function facepp_add_to_group($group_name, $person_id, $person_images){
+    public function facepp_add_to_group($group_name, $person_id, $person_images, $edit=false){
         set_time_limit(0);
         $facepp_api = new FacePPClientDemo($this->_facepp_api_key, $this->_facepp_api_secret);
 
         // first create the person
-        $facepp_api->person_delete($person_id);
-        $facepp_api->person_create($person_id);
+        if(!$edit) {
+            $facepp_api->person_delete($person_id);
+            $facepp_api->person_create($person_id);
+        }
 
         foreach($person_images as $person_image) {
             // detect faces in this photo
@@ -229,7 +248,9 @@ class AppController extends Controller {
         }
 
         // then add the person to group
-        $facepp_api->group_add_person($person_id, $group_name);
+        if(!$edit) {
+            $facepp_api->group_add_person($person_id, $group_name);
+        }
 
         // immediately run the training on group
         $session = $facepp_api->train_identify($group_name);
@@ -280,6 +301,12 @@ class AppController extends Controller {
         }
         arsort($result_data);
         return $result_data;
+    }
+
+    public function facepp_delete_person($person_id){
+        $facepp_api = new FacePPClientDemo($this->_facepp_api_key, $this->_facepp_api_secret);
+        $facepp_api->person_delete($person_id);
+        return true;
     }
 
     public function lat_lng($address = null) {
