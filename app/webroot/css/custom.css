@@ -11,7 +11,7 @@
 	width: 100%;
 	height: 100%;
 	z-index: 9999;
-	background: url('../img/window_loader.gif') 50% 50% no-repeat rgba(144, 144, 144, 1);
+	background: url('../img/window_loader.gif') 50% 50% no-repeat rgba(245, 245, 245, 1);
 }
 .gender_error{
 	border-color: #a94442;
@@ -166,7 +166,6 @@ header ul li a{
 	color: #fff;
 }
 
-*/
 /*----------Bootstrap Code Channge----------------*/
 
 /*-------Modal class-----------*/

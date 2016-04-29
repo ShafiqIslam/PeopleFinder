@@ -8,7 +8,7 @@ class ReportersController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout', 'myaccount', 'my_reports', 'change_account', 'change_pass', 'upload_image');
+        $this->Auth->allow('signup', 'login', 'verify', 'is_mail_exist', 'forgot_password', 'recover_password', 'logout', 'myaccount', 'remove_image', 'my_reports', 'change_account', 'change_pass', 'upload_image');
 
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -44,26 +44,6 @@ class ReportersController extends AppController {
         $this->set('reporters', $this->Paginator->paginate());
         $this->set('keyword', $keyword);
 	}
-
-	/*public function admin_view($id = null) {
-		if (!$this->Reporter->exists($id)) {
-			throw new NotFoundException(__('Invalid reporter'));
-		}
-		$options = array('conditions' => array('Reporter.' . $this->Reporter->primaryKey => $id));
-		$this->set('reporter', $this->Reporter->find('first', $options));
-	}
-
-	public function admin_add() {
-		if ($this->request->is('post')) {
-			$this->Reporter->create();
-			if ($this->Reporter->save($this->request->data)) {
-				$this->Session->setFlash(__('The reporter has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The reporter could not be saved. Please, try again.'));
-			}
-		}
-	}*/
 
 	public function admin_edit($id = null) {
 		if (!$this->Reporter->exists($id)) {
@@ -383,7 +363,9 @@ class ReportersController extends AppController {
 		}
 
 		$id = $logged_user['id'];
+		$this->move_images_to_last($id);
 		$this->Reporter->recursive = 0;
+		$reporter = $this->Reporter->findById($id);
 
 		if($this->request->is('post')) {
 			$verified = 0;
@@ -391,6 +373,13 @@ class ReportersController extends AppController {
 			if(is_array($processed_data)) {
 				$verified = 1;
 				$this->request->data = $processed_data;
+
+				if($this->request->data['Reporter']['id_image_link_1']=='')
+					$this->request->data['Reporter']['id_image_link_1'] = $reporter['Reporter']['id_image_link_1'];
+				if($this->request->data['Reporter']['id_image_link_2']=='')
+					$this->request->data['Reporter']['id_image_link_2'] = $reporter['Reporter']['id_image_link_2'];
+				if($this->request->data['Reporter']['id_image_link_3']=='')
+					$this->request->data['Reporter']['id_image_link_3'] = $reporter['Reporter']['id_image_link_3'];
 			}
 
 			$this->Reporter->id = $id;
@@ -409,7 +398,34 @@ class ReportersController extends AppController {
 			}
 		}
 
-		$this->request->data = $this->Reporter->findById($id);
+		$this->request->data = $reporter;
+	}
+
+	public function remove_image($reporter_id, $image_no) {
+		$options = array('conditions' => array('Reporter.' . $this->Reporter->primaryKey => $reporter_id));
+		$profile = $this->Reporter->find('first', $options);
+
+		$to_delete = $profile['Reporter']['id_image_link_'.$image_no];
+
+		if($image_no == 3) {
+			$data['Reporter']['id_image_link_3'] = $profile['Reporter']['id_image_link_2'];
+			$data['Reporter']['id_image_link_2'] = $profile['Reporter']['id_image_link_1'];
+			$data['Reporter']['id_image_link_1'] = null;
+		} else if($image_no == 2) {
+			$data['Reporter']['id_image_link_2'] = $profile['Reporter']['id_image_link_1'];
+			$data['Reporter']['id_image_link_1'] = null;
+		} else if($image_no == 1) {
+			$data['Reporter']['id_image_link_1'] = null;
+		}
+
+		$this->Reporter->id = $reporter_id;
+		if($this->Reporter->save($data)) {
+			$this->delete_from_cloud(array($to_delete));
+			$this->Session->setFlash(__('Account Changed.'), 'default', array('class'=>'success_msg'), 'flash');
+		} else {
+			$this->Session->setFlash(__('Account can\'t be changed right now. Try again.'), 'default', array('class'=>'error_msg'), 'flash');
+		}
+		return $this->redirect(array('action' => 'change_account'));
 	}
 
 	/*
@@ -569,7 +585,7 @@ class ReportersController extends AppController {
 			array_push($files, $data['Reporter']['image_links_3']);
 		}
 		if(!empty($files)) {
-			$links = $this->upload_to_cloud($files, $data['Reporter']['gender']);
+			$links = $this->upload_to_cloud($files, 'id');
 			if(!empty($links)) {
 				$data['Reporter']['id_image_link_1'] = empty($links[0]) ? '' : $links[0];
 				$data['Reporter']['id_image_link_2'] = empty($links[1]) ? '' : $links[1];
@@ -587,6 +603,30 @@ class ReportersController extends AppController {
 		}
 
 		return $data;
+	}
+
+	private function move_images_to_last ($id) {
+		$options = array('conditions' => array('Reporter.' . $this->Reporter->primaryKey => $id));
+		$profile = $this->Reporter->find('first', $options);
+
+		if(empty($profile['Reporter']['id_image_link_3']) && (!empty($profile['Reporter']['id_image_link_1']) || !empty($profile['Reporter']['id_image_link_2']))) {
+			if(!empty($profile['Reporter']['id_image_link_1']) && empty($profile['Reporter']['id_image_link_2'])) {
+				$data['Reporter']['id_image_link_3'] = $profile['Reporter']['id_image_link_1'];
+				$data['Reporter']['id_image_link_2'] = null;
+				$data['Reporter']['id_image_link_1'] = null;
+			} else {
+				$data['Reporter']['id_image_link_3'] = $profile['Reporter']['id_image_link_2'];
+				$data['Reporter']['id_image_link_2'] = $profile['Reporter']['id_image_link_1'];
+				$data['Reporter']['id_image_link_1'] = null;
+			}
+
+		} else if(!empty($profile['Reporter']['id_image_link_3']) && empty($profile['Reporter']['id_image_link_2'])) {
+			$data['Reporter']['id_image_link_2'] = $profile['Reporter']['id_image_link_1'];
+			$data['Reporter']['id_image_link_1'] = null;
+		}
+
+		$this->Reporter->id = $id;
+		$this->Reporter->save($data);
 	}
 
 	public function upload_image() {

@@ -9,7 +9,7 @@ class ProfilesController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted', 'search', 'full_profile', 'edit', 'delete', 'test', 'found', 'maybe_found', 'missing', 'abuse');
+        $this->Auth->allow('report_missing', 'report_found', 'upload_image', 'blacklisted', 'search', 'full_profile', 'edit', 'remove_image', 'delete', 'test', 'found', 'maybe_found', 'missing', 'abuse');
 
         if(!$this->params['admin']){
             $page = $subpage = $title_for_layout = "report";
@@ -93,6 +93,8 @@ class ProfilesController extends AppController {
 			throw new NotFoundException(__('Invalid profile'));
 		}
 
+		$this->move_images_to_last($id);
+
 		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
 		$profile = $this->Profile->find('first', $options);
 
@@ -174,11 +176,22 @@ class ProfilesController extends AppController {
 		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $profile_id));
 		$profile = $this->Profile->find('first', $options);
 
-		$image_col_name = 'image_link_' . $image_no;
-		$data['Profile'][$image_col_name] = null;
+		$to_delete = $profile['Profile']['image_link_'.$image_no];
+
+		if($image_no == 3) {
+			$data['Profile']['image_link_3'] = $profile['Profile']['image_link_2'];
+			$data['Profile']['image_link_2'] = $profile['Profile']['image_link_1'];
+			$data['Profile']['image_link_1'] = null;
+		} else if($image_no == 2) {
+			$data['Profile']['image_link_2'] = $profile['Profile']['image_link_1'];
+			$data['Profile']['image_link_1'] = null;
+		} else if($image_no == 1) {
+			$data['Profile']['image_link_1'] = null;
+		}
+
 		$this->Profile->id = $profile_id;
 		if($this->Profile->save($data)) {
-			$this->delete_from_cloud(array($profile['Profile'][$image_col_name]));
+			$this->delete_from_cloud(array($to_delete));
 			$this->Session->setFlash(__('The profile has been saved.'));
 		} else {
 			$this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
@@ -284,6 +297,8 @@ class ProfilesController extends AppController {
 			throw new NotFoundException(__('Invalid profile'));
 		}
 
+		$this->move_images_to_last($id);
+
 		$profile = $this->Profile->findById($id);
 		if($profile['Profile']['reporter_id'] != $logged_user['id']) {
 			return $this->redirect(array('controller'=>'reporters', 'action' => 'my_reports'));
@@ -298,7 +313,7 @@ class ProfilesController extends AppController {
 			if($this->request->data['Profile']['image_link_2']=='')
 				$this->request->data['Profile']['image_link_2'] = $profile['Profile']['image_link_2'];
 			if($this->request->data['Profile']['image_link_3']=='')
-				$this->request->data['Profile']['image_link_3'] = $this->request->data['Profile']['image_link_3'];
+				$this->request->data['Profile']['image_link_3'] = $profile['Profile']['image_link_3'];
 
 			$address = $this->request->data['Profile']['missing_city'] . ', ' . $this->request->data['Profile']['missing_country'];
 			$lat_lng = $this->lat_lng($address);
@@ -367,14 +382,25 @@ class ProfilesController extends AppController {
 		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $profile_id));
 		$profile = $this->Profile->find('first', $options);
 
-		$image_col_name = 'image_link_' . $image_no;
-		$data['Profile'][$image_col_name] = null;
+		$to_delete = $profile['Profile']['image_link_'.$image_no];
+
+		if($image_no == 3) {
+			$data['Profile']['image_link_3'] = $profile['Profile']['image_link_2'];
+			$data['Profile']['image_link_2'] = $profile['Profile']['image_link_1'];
+			$data['Profile']['image_link_1'] = null;
+		} else if($image_no == 2) {
+			$data['Profile']['image_link_2'] = $profile['Profile']['image_link_1'];
+			$data['Profile']['image_link_1'] = null;
+		} else if($image_no == 1) {
+			$data['Profile']['image_link_1'] = null;
+		}
+
 		$this->Profile->id = $profile_id;
 		if($this->Profile->save($data)) {
-			$this->delete_from_cloud(array($profile['Profile'][$image_col_name]));
-			$this->Session->setFlash(__('The profile has been saved.'));
+			$this->delete_from_cloud(array($to_delete));
+			$this->Session->setFlash(__('Your Report has been updated.'), 'default', array('class'=>'success_msg'), 'flash');
 		} else {
-			$this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
+			$this->Session->setFlash(__('Your Report can\'t be saved right now. Try again later.'), 'default', array('class'=>'error_msg'), 'flash');
 		}
 		return $this->redirect(array('action' => 'edit', $profile_id));
 	}
@@ -838,6 +864,26 @@ class ProfilesController extends AppController {
 		}
 
 		return $data;
+	}
+
+	private function move_images_to_last ($id) {
+		$options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
+		$profile = $this->Profile->find('first', $options);
+
+		if(empty($profile['Profile']['image_link_3']) && (!empty($profile['Profile']['image_link_1']) || !empty($profile['Profile']['image_link_2']))) {
+			if(!empty($profile['Profile']['image_link_1']) && empty($profile['Profile']['image_link_2'])) {
+				$data['Profile']['image_link_3'] = $profile['Profile']['image_link_1'];
+				$data['Profile']['image_link_2'] = null;
+				$data['Profile']['image_link_1'] = null;
+			} else {
+				$data['Profile']['image_link_3'] = $profile['Profile']['image_link_2'];
+				$data['Profile']['image_link_2'] = $profile['Profile']['image_link_1'];
+				$data['Profile']['image_link_1'] = null;
+			}
+
+			$this->Profile->id = $id;
+			$this->Profile->save($data);
+		}
 	}
 
 	private function _process_images ($data) {
