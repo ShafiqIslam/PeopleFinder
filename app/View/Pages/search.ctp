@@ -1,13 +1,11 @@
 
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=drawing"></script>
-<?php
-    echo $this->Html->script(array('app'));
-?>
+<?php echo $this->Html->script(array('app')); ?>
 <!--==================Sign Up Section========================-->
 <div class="container-fluid sign_up_page search_page">
     <h1>Search</h1>
     <hr>
-    <form id="detail_search" role="form" data-toggle="validator" novalidate="true" method="post" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search">
+    <form id="detail_search" role="form" data-toggle="validator" novalidate="novalidate" method="post" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search"  enctype="multipart/form-data">
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("First Name");?></label>
             <div class="col-sm-4">
@@ -99,11 +97,12 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Upload Photos");?></label>
             <div class="col-sm-offset-2 col-sm-7 upload_img">
-                <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3">
-                <input type="hidden" name="search_image">
+                <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="1">
                 <p><?php echo __("** NB: You must click 'Upload' before submitting after adding image.");?></p>
             </div>
         </div>
+
+        <input type="hidden" name="search_image">
 
         <script>
             $('#adv_search_img').on('fileuploaded', function(event, data, previewId, index) {

@@ -125,14 +125,14 @@ $(document).ready(function(){
         }
     });
 
-    $("#detail_search").fileinput({
+    /*$("#detail_search").fileinput({
         previewFileIcon: '<i class="fa fa-file"></i>',
         allowedPreviewTypes: ['image'], // allow only preview of image files
         uploadAsync : false,
         maxFileSize: 100,
         maxFileCount : 3,
         overwriteInitial : false,
-    });
+    });*/
 });
 
 
