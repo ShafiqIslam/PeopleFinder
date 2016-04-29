@@ -1,0 +1,29 @@
+1. Unzip the archive file in your server root folder.
+2. In root, find db\peoplefinder.sql. Import this file to your database.
+3. Go to app\Config\database.php
+
+find and change the configeration:
+----------------------------------
+class DATABASE_CONFIG {
+	public $default = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'YOUR_HOST_NAME',
+		'login' => 'YOUR_MYSQL_USER_NAME',
+		'password' => 'YOUR_MYSQL_PASSWORD',
+		'database' => 'YOUR_DATABASE_NAME',
+		'prefix' => '',
+		//'encoding' => 'utf8',
+	);
+}
+
+4. Everything should be up and going now. 
+
+
+** After doing above tasks, still if some problem arises then:
+
+Find app/Config/core.php
+
+Find Configure::write('debug', 0); and replace with: Configure::write('debug', 2);
+Everything will be perfect now.
+Then revert the line Configure::write('debug', 2); to Configure::write('debug', 0); again..

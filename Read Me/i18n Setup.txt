@@ -1,0 +1,31 @@
+1. Find app/Locale/default.pot
+   This is the template file of transation. It contains all the sentences used in the project.
+2. Download PoEdit from https://poedit.net/.
+3. Using this software you can translate to any of your desired language. Translate the sentences.
+4. Save the file in /app/Locale/{language-short-code}/LC_MESSAGES/default.po
+   ex: app/Locale/ben/LC_MESSAGES/default.po for Bengali (We've done that for you).
+5. Open app/Config/global.php
+	Add your language to $config['availableLanguages'] array in this format '{language-short-code}' => 'Language Name'
+
+	Example:
+	Initially the array contains two languages. And looks like this:
+		$config['availableLanguages'] = array(
+			'eng' => 'English',
+			'ben' => 'Bengali'
+		);
+	If you want to add Spanish in your list, then the array will be:
+		$config['availableLanguages'] = array(
+			'eng' => 'English',
+			'ben' => 'Bengali',
+			'spa' => 'Spanish'
+		);
+6. You can also change the default language. For that, change $config['defaultLanguage'] = '{language-short-code}';
+7. Everything should be ok. If not, delete all the tmp files from /app/tmp/cache/persistent/*.* . Anyway, working fine, or not, delete the files (if any).
+
+
+Important:
+==========
+Try to follow ISO 639-3 standard for language codes. I'll encourage to strictly follow it. You can find a list here:
+https://en.wikipedia.org/wiki/List_of_ISO_639-3_codes
+
+And Remember, the {language-short-code} on the array must be same as {language-short-code} folder name in Locale directory. 
