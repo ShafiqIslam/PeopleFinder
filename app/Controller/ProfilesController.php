@@ -157,11 +157,16 @@ class ProfilesController extends AppController {
 			$this->loadModel('RemovedProfiles');
 			$this->RemovedProfiles->save($removed);
 
-			$images_to_delete = array(
-				$profile['Profile']['image_link_1'],
-				$profile['Profile']['image_link_2'],
-				$profile['Profile']['image_link_3']
-			);
+			$images_to_delete = array();
+			if(!empty($profile['Profile']['image_link_1'])) {
+				array_push($images_to_delete, $profile['Profile']['image_link_1']);
+			}
+			if(!empty($profile['Profile']['image_link_2'])) {
+				array_push($images_to_delete, $profile['Profile']['image_link_2']);
+			}
+			if(!empty($profile['Profile']['image_link_3'])) {
+				array_push($images_to_delete, $profile['Profile']['image_link_3']);
+			}
 			$this->delete_from_cloud($images_to_delete);
 			$this->facepp_delete_person($id);
 
@@ -363,11 +368,16 @@ class ProfilesController extends AppController {
 			$this->loadModel('RemovedProfiles');
 			$this->RemovedProfiles->save($removed);
 
-			$images_to_delete = array(
-				$profile['Profile']['image_link_1'],
-				$profile['Profile']['image_link_2'],
-				$profile['Profile']['image_link_3']
-			);
+			$images_to_delete = array();
+			if(!empty($profile['Profile']['image_link_1'])) {
+				array_push($images_to_delete, $profile['Profile']['image_link_1']);
+			}
+			if(!empty($profile['Profile']['image_link_2'])) {
+				array_push($images_to_delete, $profile['Profile']['image_link_2']);
+			}
+			if(!empty($profile['Profile']['image_link_3'])) {
+				array_push($images_to_delete, $profile['Profile']['image_link_3']);
+			}
 			$this->delete_from_cloud($images_to_delete);
 			$this->facepp_delete_person($id);
 

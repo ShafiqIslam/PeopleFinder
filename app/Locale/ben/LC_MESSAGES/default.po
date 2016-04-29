@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"PO-Revision-Date: 2016-04-29 15:40+0600\n"
+"PO-Revision-Date: 2016-04-30 02:21+0600\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "MIME-Version: 1.0\n"
@@ -86,8 +86,7 @@ msgstr "প্রোফাইল আপডেট করা হয়েছে. এ�
 #: Controller/ProfilesController.php:598
 msgid "Profile Reverted To Missing. And Logged The Found Claimer as Abuse."
 msgstr ""
-"প্রোফাইলের Missing প্রত্যাবর্তন করেছে. এবং  Claimer কে আপত্তিজনক হিসেবে নেওয়া "
-"হয়েছে ."
+"প্রোফাইলের Missing প্রত্যাবর্তন করেছে. এবং  Claimer কে আপত্তিজনক হিসেবে নেওয়া হয়েছে ."
 
 #: Controller/ProfilesController.php:675
 msgid "Profile reported as Abuse. %s"
@@ -296,8 +295,7 @@ msgid "Login"
 msgstr "লগইন"
 
 #: View/Layouts/public.ctp:98;100 View/Pages/signup.ctp:84
-#: View/Profiles/full_profile.ctp:179;220
-#: View/Reporters/change_account.ctp:124
+#: View/Profiles/full_profile.ctp:179;220 View/Reporters/change_account.ctp:124
 #: View/Reporters/forgot_password.ctp:18;20 View/Reporters/login.ctp:13;15
 #: View/Users/admin_add.ctp:9 View/Users/admin_edit.ctp:10
 msgid "Email"
@@ -323,12 +321,11 @@ msgstr "আপনার পছন্দের ভাষা পরিবর্ত
 
 #: View/Layouts/public.ctp:145
 msgid ""
-"This feature uses Cookie. By clicking on these links, you agree on our "
-"cookie terms. And we'll assume that you are happy to receive all cookies "
-"from this website."
+"This feature uses Cookie. By clicking on these links, you agree on our cookie "
+"terms. And we'll assume that you are happy to receive all cookies from this website."
 msgstr ""
-"এই বৈশিষ্ট্যটি কুকি ব্যবহার করে. এই লিঙ্ক এ ক্লিক করে, আপনি আমাদের কুকি শর্তে একমত. "
-"এবং আমরা অনুমান করেছি যে আপনি খুশি হয়েছেন এই ওয়েবসাইট থেকে সব কুকি পেয়ে। "
+"এই বৈশিষ্ট্যটি কুকি ব্যবহার করে. এই লিঙ্ক এ ক্লিক করে, আপনি আমাদের কুকি শর্তে একমত. এবং "
+"আমরা অনুমান করেছি যে আপনি খুশি হয়েছেন এই ওয়েবসাইট থেকে সব কুকি পেয়ে। "
 
 #: View/Layouts/public.ctp:167
 msgid "Follow Us on Social Links"
@@ -336,7 +333,7 @@ msgstr "সামাজিক লিংক উপর আমাদের অন�
 
 #: View/Layouts/public.ctp:187
 msgid "&copy; %s Face Finder. All Rights Reserved."
-msgstr "©%s এর ফেস আবিষ্কর্তা. সর্বস্বত্ব সংরক্ষিত."
+msgstr "©%s এর Face Finder. সর্বস্বত্ব সংরক্ষিত."
 
 #: View/Layouts/public.ctp:198
 msgid "Design & Developed by "
@@ -346,23 +343,21 @@ msgstr "ডিজাইন ও নির্মাতা"
 msgid "Admin Add Log"
 msgstr "এডমিন লগিন যোগ"
 
-#: View/Logs/admin_add.ctp:12 View/Logs/admin_edit.ctp:13
-#: View/Pages/signup.ctp:109 View/Profiles/admin_add.ctp:186
-#: View/Profiles/admin_edit.ctp:219 View/Profiles/edit.ctp:212
-#: View/Profiles/report_found.ctp:179 View/Profiles/report_missing.ctp:180
-#: View/RemovedProfiles/admin_add.ctp:40
+#: View/Logs/admin_add.ctp:12 View/Logs/admin_edit.ctp:13 View/Pages/signup.ctp:109
+#: View/Profiles/admin_add.ctp:186 View/Profiles/admin_edit.ctp:219
+#: View/Profiles/edit.ctp:212 View/Profiles/report_found.ctp:179
+#: View/Profiles/report_missing.ctp:180 View/RemovedProfiles/admin_add.ctp:40
 #: View/RemovedProfiles/admin_edit.ctp:41 View/Reporters/admin_add.ctp:19
 #: View/Reporters/change_account.ctp:133 View/Reporters/change_pass.ctp:31
-#: View/Reporters/forgot_password.ctp:26
-#: View/Reporters/recover_password.ctp:32 View/Testimonials/add.ctp:13
-#: View/Users/admin_add.ctp:31 View/Users/admin_edit.ctp:35
+#: View/Reporters/forgot_password.ctp:26 View/Reporters/recover_password.ctp:32
+#: View/Testimonials/add.ctp:13 View/Users/admin_add.ctp:31
+#: View/Users/admin_edit.ctp:35
 msgid "Submit"
 msgstr "জমা দিন"
 
 #: View/Logs/admin_add.ctp:15 View/Logs/admin_edit.ctp:16
 #: View/Logs/admin_index.ctp:13;56 View/Profiles/admin_index.ctp:71
-#: View/RemovedProfiles/admin_add.ctp:43
-#: View/RemovedProfiles/admin_edit.ctp:44
+#: View/RemovedProfiles/admin_add.ctp:43 View/RemovedProfiles/admin_edit.ctp:44
 #: View/RemovedProfiles/admin_index.ctp:67 View/Reporters/admin_add.ctp:22
 #: View/Reporters/admin_index.ctp:59 View/Testimonials/admin_index.ctp:57
 #: View/Users/admin_index.ctp:56
@@ -413,10 +408,10 @@ msgid "Admin Edit Log"
 msgstr "এডমিন লগিন সম্পাদনা"
 
 #: View/Logs/admin_edit.ctp:19 View/Logs/admin_index.ctp:35
-#: View/RemovedProfiles/admin_edit.ctp:47
-#: View/RemovedProfiles/admin_index.ctp:89 View/Reporters/admin_index.ctp:87
-#: View/Reporters/my_reports.ctp:65 View/Testimonials/admin_index.ctp:74
-#: View/Users/admin_edit.ctp:37 View/Users/admin_index.ctp:67
+#: View/RemovedProfiles/admin_edit.ctp:47 View/RemovedProfiles/admin_index.ctp:89
+#: View/Reporters/admin_index.ctp:87 View/Reporters/my_reports.ctp:65
+#: View/Testimonials/admin_index.ctp:74 View/Users/admin_edit.ctp:37
+#: View/Users/admin_index.ctp:67
 msgid "Delete"
 msgstr "ডিলিট"
 
@@ -490,27 +485,27 @@ msgstr "প্রোফাইল আইডি"
 msgid "Search By Name"
 msgstr "নাম অনুসারে অনুসন্ধান"
 
-#: View/Pages/home.ctp:27;29 View/Pages/search.ctp:12;14
-#: View/Pages/signup.ctp:7;9 View/Profiles/admin_add.ctp:7;9
-#: View/Profiles/admin_edit.ctp:7;9 View/Profiles/edit.ctp:8;10
-#: View/Profiles/report_found.ctp:7;9 View/Profiles/report_missing.ctp:7;9
-#: View/Profiles/search.ctp:9 View/Reporters/change_account.ctp:7;9
+#: View/Pages/home.ctp:27;29 View/Pages/search.ctp:12;14 View/Pages/signup.ctp:7;9
+#: View/Profiles/admin_add.ctp:7;9 View/Profiles/admin_edit.ctp:7;9
+#: View/Profiles/edit.ctp:8;10 View/Profiles/report_found.ctp:7;9
+#: View/Profiles/report_missing.ctp:7;9 View/Profiles/search.ctp:9
+#: View/Reporters/change_account.ctp:7;9
 msgid "First Name"
 msgstr "প্রথম নাম"
 
-#: View/Pages/home.ctp:34;36 View/Pages/search.ctp:19;21
-#: View/Pages/signup.ctp:14;16 View/Profiles/admin_add.ctp:14;16
-#: View/Profiles/admin_edit.ctp:14;16 View/Profiles/edit.ctp:15;17
-#: View/Profiles/report_found.ctp:14;16 View/Profiles/report_missing.ctp:14;16
-#: View/Profiles/search.ctp:15 View/Reporters/change_account.ctp:14;16
+#: View/Pages/home.ctp:34;36 View/Pages/search.ctp:19;21 View/Pages/signup.ctp:14;16
+#: View/Profiles/admin_add.ctp:14;16 View/Profiles/admin_edit.ctp:14;16
+#: View/Profiles/edit.ctp:15;17 View/Profiles/report_found.ctp:14;16
+#: View/Profiles/report_missing.ctp:14;16 View/Profiles/search.ctp:15
+#: View/Reporters/change_account.ctp:14;16
 msgid "Second Name"
 msgstr "দ্বিতীয় নাম"
 
-#: View/Pages/home.ctp:41;43 View/Pages/search.ctp:26;28
-#: View/Pages/signup.ctp:21;23 View/Profiles/admin_add.ctp:21;23
-#: View/Profiles/admin_edit.ctp:21;23 View/Profiles/edit.ctp:22;24
-#: View/Profiles/report_found.ctp:21;23 View/Profiles/report_missing.ctp:21;23
-#: View/Profiles/search.ctp:21 View/Reporters/change_account.ctp:21;23
+#: View/Pages/home.ctp:41;43 View/Pages/search.ctp:26;28 View/Pages/signup.ctp:21;23
+#: View/Profiles/admin_add.ctp:21;23 View/Profiles/admin_edit.ctp:21;23
+#: View/Profiles/edit.ctp:22;24 View/Profiles/report_found.ctp:21;23
+#: View/Profiles/report_missing.ctp:21;23 View/Profiles/search.ctp:21
+#: View/Reporters/change_account.ctp:21;23
 msgid "Last Name"
 msgstr "নামের শেষাংশ"
 
@@ -680,8 +675,8 @@ msgstr "Missing দেশ"
 
 #: View/Pages/search.ctp:74;76 View/Profiles/admin_add.ctp:113;115
 #: View/Profiles/admin_edit.ctp:111;113 View/Profiles/edit.ctp:105;107
-#: View/Profiles/report_found.ctp:104;106
-#: View/Profiles/report_missing.ctp:105;107 View/Profiles/search.ctp:45
+#: View/Profiles/report_found.ctp:104;106 View/Profiles/report_missing.ctp:105;107
+#: View/Profiles/search.ctp:45
 msgid "Missing City"
 msgstr "অনুপস্থিত শহর"
 
@@ -803,16 +798,14 @@ msgstr "মানসিক অসুখ"
 msgid "Select Mental illness"
 msgstr "মানসিক অসুস্থতা নির্বাচন"
 
-#: View/Profiles/admin_add.ctp:124;148;160
-#: View/Profiles/admin_edit.ctp:122;146;158 View/Profiles/edit.ctp:116;140;152
-#: View/Profiles/report_found.ctp:115;139;151
+#: View/Profiles/admin_add.ctp:124;148;160 View/Profiles/admin_edit.ctp:122;146;158
+#: View/Profiles/edit.ctp:116;140;152 View/Profiles/report_found.ctp:115;139;151
 #: View/Profiles/report_missing.ctp:116;140;152
 msgid "Yes"
 msgstr "হাঁ"
 
-#: View/Profiles/admin_add.ctp:125;149;161
-#: View/Profiles/admin_edit.ctp:123;147;159 View/Profiles/edit.ctp:117;141;153
-#: View/Profiles/report_found.ctp:116;140;152
+#: View/Profiles/admin_add.ctp:125;149;161 View/Profiles/admin_edit.ctp:123;147;159
+#: View/Profiles/edit.ctp:117;141;153 View/Profiles/report_found.ctp:116;140;152
 #: View/Profiles/report_missing.ctp:117;141;153
 msgid "No"
 msgstr "না"
@@ -1071,8 +1064,7 @@ msgstr "ফলাফল."
 msgid "Admin Add Removed Profile"
 msgstr "এডমিন যোগ করা হয়েছে  প্রোফাইল সরানো হয়েছে।  "
 
-#: View/RemovedProfiles/admin_add.ctp:46
-#: View/RemovedProfiles/admin_edit.ctp:48
+#: View/RemovedProfiles/admin_add.ctp:46 View/RemovedProfiles/admin_edit.ctp:48
 msgid "List Removed Profiles"
 msgstr "সরানো প্রোফাইল তালিকা "
 
@@ -1162,21 +1154,19 @@ msgstr "আপনার অ্যাকাউন্ট পুনরুদ্ধ�
 
 #: View/Reporters/forgot_password.ctp:10
 msgid ""
-"Sorry, we dont recognise the email.<br>Try Again.<br>Or, Check again your "
-"email for verification. We don't recongnise your email until it's verified."
+"Sorry, we dont recognise the email.<br>Try Again.<br>Or, Check again your email for "
+"verification. We don't recongnise your email until it's verified."
 msgstr ""
-"দুঃখিত, আমরা ইমেল চিনতে পারিনি. <br> আবার চেষ্টা কর. <br> বা, আবার যাচাইয়ের "
-"জন্য আপনার ইমেইল চেক করুন. আমরা আপনার ইমেইল চিনতে পারব না যতক্ষন আপনি ভেরিফাই "
-"না করবেন। "
+"দুঃখিত, আমরা ইমেল চিনতে পারিনি. <br> আবার চেষ্টা কর. <br> বা, আবার যাচাইয়ের জন্য আপনার "
+"ইমেইল চেক করুন. আমরা আপনার ইমেইল চিনতে পারব না যতক্ষন আপনি ভেরিফাই না করবেন। "
 
 #: View/Reporters/login.ctp:7
 msgid ""
-"Incorrect Username and Password.<br>Try Again.<br>Or, Check again your email "
-"for verification. We don't recongnise your email until it's verified."
+"Incorrect Username and Password.<br>Try Again.<br>Or, Check again your email for "
+"verification. We don't recongnise your email until it's verified."
 msgstr ""
-"ব্যবহারকারীর নাম ও পাসওয়ার্ড ভুল . <br> আবার চেষ্টা কর. <br> বা, আবার যাচাইয়ের "
-"জন্য আপনার ইমেইল চেক করুন. আমরা আপনার ইমেইল চিনতে পারব না যতক্ষন আপনি ভেরিফাই "
-"না করবেন। "
+"ব্যবহারকারীর নাম ও পাসওয়ার্ড ভুল . <br> আবার চেষ্টা কর. <br> বা, আবার যাচাইয়ের জন্য "
+"আপনার ইমেইল চেক করুন. আমরা আপনার ইমেইল চিনতে পারব না যতক্ষন আপনি ভেরিফাই না করবেন। "
 
 #: View/Reporters/login.ctp:34
 msgid "Forgot Your Password?"
@@ -1272,11 +1262,11 @@ msgstr "কিছু কঠিন ঘটোনা ঘটেছে . সুতর
 
 #: View/Testimonials/add.ctp:2
 msgid ""
-"Thanks for using our service. We really appreciate if you say something "
-"about our service."
+"Thanks for using our service. We really appreciate if you say something about our "
+"service."
 msgstr ""
-"আমাদের সেবা ব্যবহার করার জন্য ধন্যবাদ. আমরা সত্যিই কৃতজ্ঞ যদি আপনি আমাদের সেবা "
-"সম্পর্কে কিছু বলতেন ."
+"আমাদের সেবা ব্যবহার করার জন্য ধন্যবাদ. আমরা সত্যিই কৃতজ্ঞ যদি আপনি আমাদের সেবা সম্পর্কে কিছু "
+"বলতেন ."
 
 #: View/Testimonials/add.ctp:5
 msgid "Testimonial"

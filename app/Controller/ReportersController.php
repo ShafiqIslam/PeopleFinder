@@ -102,8 +102,22 @@ class ReportersController extends AppController {
 		if (!$this->Reporter->exists()) {
 			throw new NotFoundException(__('Invalid reporter'));
 		}
+		$reporter = $this->Reporter->findById($id);
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Reporter->delete()) {
+
+			$images_to_delete = array();
+			if(!empty($reporter['Reporter']['id_image_link_1'])) {
+				array_push($images_to_delete, $reporter['Reporter']['id_image_link_1']);
+			}
+			if(!empty($reporter['Reporter']['id_image_link_2'])) {
+				array_push($images_to_delete, $reporter['Reporter']['id_image_link_2']);
+			}
+			if(!empty($reporter['Reporter']['id_image_link_3'])) {
+				array_push($images_to_delete, $reporter['Reporter']['id_image_link_3']);
+			}
+			$this->delete_from_cloud($images_to_delete);
+
 			$this->Session->setFlash(__('The reporter has been deleted.'));
 		} else {
 			$this->Session->setFlash(__('The reporter could not be deleted. Please, try again.'));
