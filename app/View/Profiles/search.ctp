@@ -3,7 +3,7 @@
 		<div class="col-sm-3 col-sm-offset-1 sign_up_page search_page search_again pull-right">
 			<h1><?php echo __("Search");?></h1>
 		    <hr>
-		    <form role="form" method="post" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search">
+		    <form role="form" method="post" data-toggle="validator" novalidate="novalidate" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search">
 		        <div class="form-group">
 		            <div class="col-sm-12">
 		                <input type="text" name="first_name" class="form-control" id="" placeholder="<?php echo __("First Name");?>">
@@ -54,7 +54,7 @@
 
 		        <div class="form-group">
 		            <div class="col-sm-4 col-sm-offset-5 report_found_submit">
-		                <button type="submit" class="btn btn-primary btn_search"><?php echo __("Search");?></button>
+		                <button type="submit" class="btn btn-primary btn_search btn_valid"><?php echo __("Search");?></button>
 		            </div>
 		        </div>
 		    </form>	
