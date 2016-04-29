@@ -25,13 +25,13 @@ $(document).ready(function(){
             return false;
         }else{
             $(".gender").removeClass("gender_error");
-            $(".btn_search").removeClass("disabled")
+            $(".btn_valid").removeClass("disabled")
         }
         return true;
     })
     $(".gender").on("change", function () {
         $(".gender").removeClass("gender_error");
-        $(".btn_search").removeClass("disabled")
+        $(".btn_valid").removeClass("disabled")
     });
 
     /*--------------Language popup overlay Js-----------------*/

@@ -54,9 +54,9 @@
 					?>
 				</div>
 
-				<div class="col-sm-4 pull-right" style="text-align: right">
-					<input style="margin-top: 11px" type="checkbox" name="spammed_only" <?php echo ($keyword=="spammed") ? "checked" : "";?> id="spammed_only">
-					<label for="inputEmail3" style="text-align: right" class="col-sm-11 control-label"><?php echo __("Spammed Profiles") ?></label>
+				<div class="col-sm-3 pull-right spammed">
+					<input class="check_box" id="check_box" style="margin-top: 11px" type="checkbox" name="spammed_only" <?php echo ($keyword=="spammed") ? "checked" : "";?> id="spammed_only">
+					<label for="check_box" class="col-sm-11 control-label"><?php echo __("Spammed Profiles") ?></label>
 				</div>
 			</div>
 		</div>

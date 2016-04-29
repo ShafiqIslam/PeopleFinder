@@ -253,7 +253,7 @@
 				<!--Search Images of the Result Details-->
 				<div class="">
 					<div class="col-sm-12 search_result_img">
-						<h1><?php echo __("Images of ");?><?php echo $name;?></h1>
+						<h1><?php echo __("Images of ");?> <?php echo $name;?></h1>
 							<?php if(!empty($profile['Profile']['image_link_1'])) { ?>
 								<div class=" search_result_Details_img">
 									<a class="image-popup-no-margins" href="<?php echo $profile['Profile']['image_link_1'];?>">
