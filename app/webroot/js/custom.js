@@ -5,7 +5,7 @@ $(document).ready(function(){
         setTimeout( "$('.loader').hide();", 10000);
     });
 
-    $(".btn_search").addClass("disabled")
+    $(".btn_valid").addClass("disabled")
     $('.btn_search').click(function(){
         if (!$(this).hasClass('disabled')) {
           $(".loader").fadeIn("slow");  
