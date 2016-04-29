@@ -68,10 +68,16 @@
                                             <div class="main_account_body row">
                                                 <div class="account_title">
                                                     <h4><?php echo $logged['name'];?></h4>
-                                                    <a href="<?php echo $this->webroot;?>my_reports" class="btn btn_myaccount btn_myaccount_original"><span><i class="fa fa-bell"></i></span><?php echo __("My Reports");?></a>
+                                                    <?php if($logged['is_admin']) { ?>
+                                                        <a href="<?php echo $this->webroot;?>admin/users/dashboard" class="btn btn_myaccount btn_myaccount_original"><span><i class="fa fa-external-link-square"></i></span><?php echo __("Back To Admin Panel");?></a>
+                                                    <?php } else { ?>
+                                                        <a href="<?php echo $this->webroot;?>my_reports" class="btn btn_myaccount btn_myaccount_original"><span><i class="fa fa-bell"></i></span><?php echo __("My Reports");?></a>
+                                                    <?php } ?>
                                                 </div>
                                                 <div class="my_account_options">
-                                                    <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount"><span><i class="fa fa-server"></i></span><?php echo __("My Account");?></a>
+                                                    <?php if(!$logged['is_admin']) { ?>
+                                                        <a href="<?php echo $this->webroot;?>myaccount" class="btn btn_myaccount"><span><i class="fa fa-server"></i></span><?php echo __("My Account");?></a>
+                                                    <?php } ?>
                                                     <a href="<?php echo $this->webroot;?>reporters/logout" class="btn btn_sign_out"><span><i class="fa fa-sign-out fa-lg"></i></span><?php echo __("Signout");?></a>
                                                 </div>
                                             </div>
@@ -87,7 +93,7 @@
                                     <ul class="dropdown-menu dropdown_menu_modal">
                                         <span class="glyphicon glyphicon-triangle-top"></span>
                                         <li>
-                                            <form role="form" data-toggle="validator" novalidate="true" name="login_form" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
+                                            <form role="form" data-toggle="validator" novalidate="novalidate" name="login_form" method="post" action="<?php echo $this->webroot;?>reporters/login" class="form-horizontal">
                                                 <div class="form-group">
                                                     <label for="inputEmail" class="col-sm-12 control-label"><?php echo __("Email");?></label>
                                                     <div class="col-sm-12">
@@ -122,7 +128,7 @@
                 </div>
                 <div style="clear: both;"></div>
                 <div class="multi_lg">
-                    <div class="pull-right"><a class="basic_open" href="#basic"><span><?php echo __("CHANGE LANGUAGE");?></span></i><img src="<?php echo $this->webroot; ?>img/globe.gif"></a></div>
+                    <div class="pull-right"><a class="basic_open" href="#basic"><span><?php echo __("CHANGE LANGUAGE");?></span><img src="<?php echo $this->webroot; ?>img/globe.gif"></a></div>
                 </div>
                 <!-- Add content to the popup -->
                 
@@ -132,8 +138,8 @@
                     <h3><?php echo __("Change To Your Preferred Language");?></h3>
                     <div class="popup_body">
                         <ul>
-                            <li class="selected_language"><a href="#"><i class="fa fa-language" aria-hidden="true"></i></i>English</a></li>
-                            <li><a href="#"><i class="fa fa-language" aria-hidden="true"></i></i>Bengali</a></li>
+                            <li class="selected_language"><a href="#"><i class="fa fa-language" aria-hidden="true"></i>English</a></li>
+                            <li><a href="#"><i class="fa fa-language" aria-hidden="true"></i>Bengali</a></li>
                         </ul>
                     </div>
                     <h4><?php echo __("This feature uses Cookie. By clicking on these links, you agree on our cookie terms. And we'll assume that you are happy to receive all cookies from this website.");?></h4>

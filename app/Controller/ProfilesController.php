@@ -31,18 +31,25 @@ class ProfilesController extends AppController {
 		if(!empty($this->request->params['named']['keyword'])) {
 			$keyword = $this->request->params['named']['keyword'];
 			if (!empty($keyword)) {
-				$conditions = am($conditions, array(
-						'OR' => array(
-							'Profile.first_name LIKE' => '%' . $keyword . '%',
-							'Profile.second_name LIKE' => '%' . $keyword . '%',
-							'Profile.last_name LIKE' => '%' . $keyword . '%',
-							'Profile.missing_country LIKE' => '%' . $keyword . '%',
-							'Profile.missing_city LIKE' => '%' . $keyword . '%',
-							'Profile.gender LIKE' => '%' . $keyword . '%',
-							'Profile.person_status LIKE' => '%' . $keyword . '%'
+				if($keyword=="spammed") {
+					$conditions = am($conditions, array(
+							'Profile.abuse_counter > ' => 0
 						)
-					)
-				);
+					);
+				} else {
+					$conditions = am($conditions, array(
+							'OR' => array(
+								'Profile.first_name LIKE' => '%' . $keyword . '%',
+								'Profile.second_name LIKE' => '%' . $keyword . '%',
+								'Profile.last_name LIKE' => '%' . $keyword . '%',
+								'Profile.missing_country LIKE' => '%' . $keyword . '%',
+								'Profile.missing_city LIKE' => '%' . $keyword . '%',
+								'Profile.gender LIKE' => '%' . $keyword . '%',
+								'Profile.person_status LIKE' => '%' . $keyword . '%'
+							)
+						)
+					);
+				}
 			}
 		}
 

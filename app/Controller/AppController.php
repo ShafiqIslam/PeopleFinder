@@ -50,22 +50,7 @@ class AppController extends Controller {
         if($this->params['admin']){
             $this->layout =  'admin';
         }
-        if (!$this->Auth->loggedIn() && $this->Cookie->read('remember_me_cookie')) {
-            $cookie = $this->Cookie->read('remember_me_cookie');
-            //print_r($cookie); exit;
-            $this->loadModel('User');
-            $user = $this->User->find('first', array(
-                'conditions' => array(
-                    'User.username' => $cookie['username'],
-                    'User.password' => $cookie['password'],
-                    //'User.role' => 'admin'
-                )
-            ));
 
-            if ($user && !$this->Auth->login($user['User'])) {
-                $this->redirect('/users/logout'); // destroy session & cookie
-            }
-        }
         $this->Auth->allow('display', 'change_language');
 
         /*

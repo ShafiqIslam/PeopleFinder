@@ -3,7 +3,12 @@
 		$("#go").on('click', function () {
 			var keyword = $.trim($('#keyword').val());
 			location.href = ROOT+ 'admin/profiles/index/keyword:' + keyword;
-		})
+		});
+
+		$("input[name=spammed_only]").on('change', function () {
+			$('#keyword').val("spammed");
+			$("#go").click();
+		});
 	});
 </script>
 
@@ -37,12 +42,17 @@
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-1 control-label"><?php echo __("Keyword") ?></label>
 				<div class="col-sm-3">
-					<?php echo $this->Form->input('titlex', array('id' => 'keyword', 'label' => false,'class'=>'form-control')); ?>
+					<?php echo $this->Form->input('titlex', array('id' => 'keyword', 'label' => false,'class'=>'form-control', 'value'=>$keyword)); ?>
 				</div>
 				<div class="col-sm-1">
 					<?php
 					echo $this->Form->input('Go', array('id' => 'go','class'=>'btn btn-info', 'type' => 'button', 'label' => false));
 					?>
+				</div>
+
+				<div class="col-sm-4 pull-right" style="text-align: right">
+					<input style="margin-top: 11px" type="checkbox" name="spammed_only" <?php echo ($keyword=="spammed") ? "checked" : "";?> id="spammed_only">
+					<label for="inputEmail3" style="text-align: right" class="col-sm-11 control-label"><?php echo __("Spammed Profiles") ?></label>
 				</div>
 			</div>
 		</div>

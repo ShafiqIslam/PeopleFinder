@@ -123,6 +123,10 @@ class UsersController extends AppController {
 	}
 
 	public function admin_login(){
+        if ($this->Auth->loggedIn()) {
+            return $this->redirect(array('action' => 'dashboard','admin' => true));
+        }
+        
         if($this->request->is('post')){
             $password = AuthComponent::password($this->request->data['User']['password']);
             $query = array(
@@ -142,12 +146,13 @@ class UsersController extends AppController {
                 }*/
                 $data['id'] = $is_exist['User']['id'];
 				$data['is_admin'] = true;
+                $data['name'] = "Admin";
                 $data['role'] = $is_exist['User']['role'];
 				$this->Session->write('logged_user', $data);
                 
                 //$this->redirect(array('action' => 'dashboard','admin' => true));
                 $ref = explode('/', $this->referer());
-                if($ref[count($ref)-1] == "admin") {
+                if($ref[count($ref)-1] == "admin" || $ref[count($ref)-2] == "admin") {
                     return $this->redirect(array('action' => 'dashboard','admin' => true));
                 } else {
                     return $this->redirect( Router::url( $this->referer(), true ) );//for temporary
