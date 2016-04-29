@@ -37,7 +37,7 @@
 					<a href="<?php echo $this->webroot;?>profiles/full_profile/<?php echo $item['id'];?>/0">
 						<h4><?php echo $name;?></h4>							
 						<p>
-							<?php echo $item['missing_city'];?>,&nbsp;
+							<?php echo $item['missing_city'];?>&nbsp;
 							<span class="bfh-countries" data-country="<?php echo $item['missing_country'];?>" data-flags="true"></span>.&nbsp;
 						</p>
 						<p>
