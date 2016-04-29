@@ -68,7 +68,7 @@
 
                 <div id="photos" class="tab-pane fade">
                     <!--<h3>Search By Photos</h3>-->
-                    <form role="form" method="post" data-toggle="validator" novalidate="true" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search" enctype="multipart/form-data">
+                    <form role="form" method="post" data-toggle="validator" novalidate="novalidate" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="col-sm-12 upload_img">
                                 <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3">
