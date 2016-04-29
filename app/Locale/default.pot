@@ -41,51 +41,51 @@ msgstr ""
 msgid "Language %s is not supported"
 msgstr ""
 
-#: Controller/ProfilesController.php:75;108
+#: Controller/ProfilesController.php:82;115
 msgid "The profile has been saved."
 msgstr ""
 
-#: Controller/ProfilesController.php:78;111
+#: Controller/ProfilesController.php:85;118
 msgid "The profile could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/ProfilesController.php:86;122;228;273;472;510;549;597
+#: Controller/ProfilesController.php:93;129;235;280;479;517;556;604
 msgid "Invalid profile"
 msgstr ""
 
-#: Controller/ProfilesController.php:126;286
+#: Controller/ProfilesController.php:133;293
 msgid "The profile has been deleted."
 msgstr ""
 
-#: Controller/ProfilesController.php:128;288
+#: Controller/ProfilesController.php:135;295
 msgid "The profile could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/ProfilesController.php:173;199
+#: Controller/ProfilesController.php:180;206
 msgid "Your Report has been saved."
 msgstr ""
 
-#: Controller/ProfilesController.php:176;202
+#: Controller/ProfilesController.php:183;209
 msgid "Your Report can't be saved. Try again later."
 msgstr ""
 
-#: Controller/ProfilesController.php:256
+#: Controller/ProfilesController.php:263
 msgid "Your Report has been updated."
 msgstr ""
 
-#: Controller/ProfilesController.php:259
+#: Controller/ProfilesController.php:266
 msgid "Your Report can't be saved right now. Try again later."
 msgstr ""
 
-#: Controller/ProfilesController.php:535
+#: Controller/ProfilesController.php:542
 msgid "Profile Updated. And Notified The Reporter"
 msgstr ""
 
-#: Controller/ProfilesController.php:591
+#: Controller/ProfilesController.php:598
 msgid "Profile Reverted To Missing. And Logged The Found Claimer as Abuse."
 msgstr ""
 
-#: Controller/ProfilesController.php:668
+#: Controller/ProfilesController.php:675
 msgid "Profile reported as Abuse. %s"
 msgstr ""
 
@@ -177,27 +177,27 @@ msgstr ""
 msgid "The user could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:157
+#: Controller/UsersController.php:162
 msgid "Incorrect username or password, please try again."
 msgstr ""
 
-#: Controller/UsersController.php:177
+#: Controller/UsersController.php:182
 msgid "Email address not found."
 msgstr ""
 
-#: Controller/UsersController.php:184
+#: Controller/UsersController.php:189
 msgid "Your password has been sent to "
 msgstr ""
 
-#: Controller/UsersController.php:262
+#: Controller/UsersController.php:267
 msgid "Your message has been sent successfully. We'll get to it soon."
 msgstr ""
 
-#: Controller/UsersController.php:263
+#: Controller/UsersController.php:268
 msgid "Something bad happened!!! Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:264
+#: Controller/UsersController.php:269
 msgid "Invalid Request"
 msgstr ""
 
@@ -207,7 +207,7 @@ msgid "Dashboard"
 msgstr ""
 
 #: View/Elements/menu.ctp:13
-#: View/Profiles/admin_index.ctp:34
+#: View/Profiles/admin_index.ctp:39
 #: View/Users/admin_dashboard.ctp:9
 msgid "Profiles"
 msgstr ""
@@ -277,28 +277,32 @@ msgstr ""
 msgid "Report Missing"
 msgstr ""
 
-#: View/Layouts/public.ctp:64;74
+#: View/Layouts/public.ctp:64;79
 msgid "My Account"
 msgstr ""
 
-#: View/Layouts/public.ctp:71
+#: View/Layouts/public.ctp:72
+msgid "Back To Admin Panel"
+msgstr ""
+
+#: View/Layouts/public.ctp:74
 msgid "My Reports"
 msgstr ""
 
-#: View/Layouts/public.ctp:75
+#: View/Layouts/public.ctp:81
 msgid "Signout"
 msgstr ""
 
-#: View/Layouts/public.ctp:83
+#: View/Layouts/public.ctp:89
 msgid "Sign up"
 msgstr ""
 
-#: View/Layouts/public.ctp:86;107
+#: View/Layouts/public.ctp:92;113
 #: View/Reporters/login.ctp:3;28
 msgid "Login"
 msgstr ""
 
-#: View/Layouts/public.ctp:92;94
+#: View/Layouts/public.ctp:98;100
 #: View/Pages/signup.ctp:84
 #: View/Profiles/full_profile.ctp:179;220
 #: View/Reporters/change_account.ctp:124
@@ -309,7 +313,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: View/Layouts/public.ctp:99;101
+#: View/Layouts/public.ctp:105;107
 #: View/Pages/signup.ctp:92
 #: View/Reporters/login.ctp:20;22
 #: View/Users/admin_add.ctp:15
@@ -317,31 +321,31 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: View/Layouts/public.ctp:112
+#: View/Layouts/public.ctp:118
 msgid "Forgot your password?"
 msgstr ""
 
-#: View/Layouts/public.ctp:125
+#: View/Layouts/public.ctp:131
 msgid "CHANGE LANGUAGE"
 msgstr ""
 
-#: View/Layouts/public.ctp:132
+#: View/Layouts/public.ctp:138
 msgid "Change To Your Preferred Language"
 msgstr ""
 
-#: View/Layouts/public.ctp:139
+#: View/Layouts/public.ctp:145
 msgid "This feature uses Cookie. By clicking on these links, you agree on our cookie terms. And we'll assume that you are happy to receive all cookies from this website."
 msgstr ""
 
-#: View/Layouts/public.ctp:161
+#: View/Layouts/public.ctp:167
 msgid "Follow Us on Social Links"
 msgstr ""
 
-#: View/Layouts/public.ctp:181
+#: View/Layouts/public.ctp:187
 msgid "&copy; %s Face Finder. All Rights Reserved."
 msgstr ""
 
-#: View/Layouts/public.ctp:192
+#: View/Layouts/public.ctp:198
 msgid "Design & Developed by "
 msgstr ""
 
@@ -373,7 +377,7 @@ msgstr ""
 #: View/Logs/admin_add.ctp:15
 #: View/Logs/admin_edit.ctp:16
 #: View/Logs/admin_index.ctp:13;56
-#: View/Profiles/admin_index.ctp:61
+#: View/Profiles/admin_index.ctp:71
 #: View/RemovedProfiles/admin_add.ctp:43
 #: View/RemovedProfiles/admin_edit.ctp:44
 #: View/RemovedProfiles/admin_index.ctp:67
@@ -455,7 +459,7 @@ msgstr ""
 
 #: View/Logs/admin_edit.ctp:19
 #: View/Logs/admin_index.ctp:35
-#: View/Profiles/admin_index.ctp:78
+#: View/Profiles/admin_index.ctp:88
 #: View/RemovedProfiles/admin_edit.ctp:47
 #: View/RemovedProfiles/admin_index.ctp:89
 #: View/Reporters/admin_index.ctp:87
@@ -1035,7 +1039,7 @@ msgstr ""
 msgid "Currently Used Images"
 msgstr ""
 
-#: View/Profiles/admin_index.ctp:29
+#: View/Profiles/admin_index.ctp:34
 #: View/RemovedProfiles/admin_index.ctp:29
 #: View/Reporters/admin_index.ctp:29
 #: View/Testimonials/admin_index.ctp:29
@@ -1043,11 +1047,15 @@ msgstr ""
 msgid "Showing {:start} to {:end} of {:count} entries"
 msgstr ""
 
-#: View/Profiles/admin_index.ctp:38
+#: View/Profiles/admin_index.ctp:43
 #: View/Reporters/admin_index.ctp:38
 #: View/Testimonials/admin_index.ctp:38
 #: View/Users/admin_index.ctp:38
 msgid "Keyword"
+msgstr ""
+
+#: View/Profiles/admin_index.ctp:55
+msgid "Spammed Profiles"
 msgstr ""
 
 #: View/Profiles/blacklisted.ctp:3
