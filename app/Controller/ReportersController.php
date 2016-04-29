@@ -111,6 +111,33 @@ class ReportersController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
+	public function admin_remove_image($reporter_id, $image_no) {
+		$options = array('conditions' => array('Reporter.' . $this->Reporter->primaryKey => $reporter_id));
+		$profile = $this->Reporter->find('first', $options);
+
+		$to_delete = $profile['Reporter']['id_image_link_'.$image_no];
+
+		if($image_no == 3) {
+			$data['Reporter']['id_image_link_3'] = $profile['Reporter']['id_image_link_2'];
+			$data['Reporter']['id_image_link_2'] = $profile['Reporter']['id_image_link_1'];
+			$data['Reporter']['id_image_link_1'] = null;
+		} else if($image_no == 2) {
+			$data['Reporter']['id_image_link_2'] = $profile['Reporter']['id_image_link_1'];
+			$data['Reporter']['id_image_link_1'] = null;
+		} else if($image_no == 1) {
+			$data['Reporter']['id_image_link_1'] = null;
+		}
+
+		$this->Reporter->id = $reporter_id;
+		if($this->Reporter->save($data)) {
+			$this->delete_from_cloud(array($to_delete));
+			$this->Session->setFlash(__('The reporter has been saved.'));
+		} else {
+			$this->Session->setFlash(__('The reporter could not be saved. Please, try again.'));
+		}
+		return $this->redirect(array('action' => 'edit', $reporter_id));
+	}
+
 	/*
 	*
 	*	Public/Front End Functions

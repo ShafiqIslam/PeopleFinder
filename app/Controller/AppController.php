@@ -150,6 +150,7 @@ class AppController extends Controller {
         foreach ($links as $key => $link) {
             $link_ex = explode('/', $link);
             $public_id = explode('.', $link_ex[count($link_ex)-1]);
+            #AuthComponent::_setTrace($public_id, 0);
             $deleted = \Cloudinary\Uploader::destroy($public_id[0]);
         }
         return true;

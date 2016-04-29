@@ -139,8 +139,8 @@
                     <div class="popup_body">
                         <ul>
                             <?php foreach($availableLanguages as $key => $value) { ?>
-                            <?php $link = $this->webroot . 'pages/changeLanguage/' . $key; ?>
-                            <li class="<?php echo ($key == $language) ? 'selected_lang' : ''?>">
+                            <?php $link = $this->webroot . 'pages/change_language/' . $key; ?>
+                            <li>
                                 <a href="<?php echo $link?>">
                                     <i class="fa fa-language" aria-hidden="true"></i><?php echo $value?>
                                 </a>

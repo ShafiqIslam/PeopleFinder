@@ -170,7 +170,7 @@
                     <tr>
                     <?php if(!empty($profile['Profile']['image_link_1'])) { ?>
                     <td class="">
-                        <a href="<?php echo $this->webroot."profiles/remove_image/".$this->request->data['Profile']['id']."/1";?>">
+                        <a href="<?php echo $this->webroot."profiles/remove_image/".$profile['Profile']['id']."/1";?>">
                             <i class="fa fa-trash-o display_none"></i>
                         </a>
                         <a class="image-popup-no-margins admin_img_edit" href="<?php echo $profile['Profile']['image_link_1'];?>">
@@ -180,7 +180,7 @@
                     <?php } ?>
                     <?php if(!empty($profile['Profile']['image_link_2'])) { ?>
                     <td class="">
-                        <a href="<?php echo $this->webroot."profiles/remove_image/".$this->request->data['Profile']['id']."/2";?>">
+                        <a href="<?php echo $this->webroot."profiles/remove_image/".$profile['Profile']['id']."/2";?>">
                             <i class="fa fa-trash-o display_none"></i>
                         </a>
                         <a class="image-popup-no-margins admin_img_edit" href="<?php echo $profile['Profile']['image_link_2'];?>">
@@ -190,7 +190,7 @@
                     <?php } ?>
                     <?php if(!empty($profile['Profile']['image_link_3'])) { ?>
                     <td class="">
-                        <a href="<?php echo $this->webroot."profiles/remove_image/".$this->request->data['Profile']['id']."/3";?>">
+                        <a href="<?php echo $this->webroot."profiles/remove_image/".$profile['Profile']['id']."/3";?>">
                             <i class="fa fa-trash-o display_none"></i>
                         </a>
                         <a class="image-popup-no-margins admin_img_edit" href="<?php echo $profile['Profile']['image_link_3'];?>">

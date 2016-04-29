@@ -63,22 +63,49 @@
 
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Currently Used Ids</label>
-                <div class="col-sm-9">
-                    <ul style="list-style: none">
+                <div class="col-sm-6 admin_img_edit_section">
+                    <table class="table table-responsive">
+                        <tr>
+                        <?php $has_id = false;?>
                         <?php if(!empty($this->request->data['Reporter']['id_image_link_1'])) { ?>
-                            <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>"></li>
+                            <td>
+                                <a href="<?php echo $this->webroot."admin/reporters/remove_image/".$this->request->data['Reporter']['id']."/1";?>">
+                                    <i class="fa fa-trash-o display_none"></i>
+                                </a>
+                                <a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>">
+                                    <img class="img-responsive fix_img" src="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>">
+                                </a>
+                            </td>
+                            <?php $has_id = true;?>
                         <?php } ?>
                         <?php if(!empty($this->request->data['Reporter']['id_image_link_2'])) { ?>
-                            <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>"></li>
+                            <td>
+                                <a href="<?php echo $this->webroot."admin/reporters/remove_image/".$this->request->data['Reporter']['id']."/2";?>">
+                                    <i class="fa fa-trash-o display_none"></i>
+                                </a>
+                                <a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>">
+                                    <img class="img-responsive fix_img" src="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>">
+                                </a>
+                            </td>
+                            <?php $has_id = true;?>
                         <?php } ?>
                         <?php if(!empty($this->request->data['Reporter']['id_image_link_3'])) { ?>
-                            <li class="col-sm-4 search_result_Details_img"><img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>"></li>
+                            <td>
+                                <a href="<?php echo $this->webroot."admin/reporters/remove_image/".$this->request->data['Reporter']['id']."/3";?>">
+                                    <i class="fa fa-trash-o display_none"></i>
+                                </a>
+                                <a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>">
+                                    <img class="img-responsive fix_img" src="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>">
+                                </a>
+                            </td>
+                            <?php $has_id = true;?>
                         <?php } ?>
-                    </ul>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
-            <?php if(!empty($this->request->data['Reporter']['id_image_link_1']) && $this->request->data['Reporter']['account_type'] == 'Normal') { ?>
+            <?php if($has_id && $this->request->data['Reporter']['account_type'] == 'Normal') { ?>
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label"></label>
                 <div class="col-sm-9">
@@ -100,7 +127,7 @@
                 </div>
             <?php } ?>
 
-            <?php if(!empty($this->request->data['Reporter']['id_image_link_1']) && $this->request->data['Reporter']['account_type'] == 'Verified') { ?>
+            <?php if($has_id && $this->request->data['Reporter']['account_type'] == 'Verified') { ?>
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label"></label>
                 <div class="col-sm-9">

@@ -123,7 +123,8 @@ class UsersController extends AppController {
 	}
 
 	public function admin_login(){
-        if ($this->Auth->loggedIn()) {
+        $logged_user = $this->Session->read('logged_user');
+        if (!empty($logged_user) && $logged_user['is_admin']) {
             return $this->redirect(array('action' => 'dashboard','admin' => true));
         }
         
