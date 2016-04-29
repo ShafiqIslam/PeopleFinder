@@ -1358,9 +1358,12 @@ input, textarea{
 }
 
 .log_section{
-	margin-top: 5%;
+	margin-top: 10%;
 }
-
+.log_section ul{
+	padding: 0;
+	margin-top: 15px;
+}
 /*---------------Testimonial page --------------------*/
 .testimonial_page{
 
@@ -1452,6 +1455,8 @@ input, textarea{
     border-bottom: 1px dotted;
     padding-bottom: 10px;
     list-style: none;
+    width: 90%;
+    margin: 0 auto;
 }
 
 /*----------email check from database-------------*/
@@ -1525,12 +1530,14 @@ input, textarea{
 
 .search_pagination{
 	margin-bottom: 25px;
+	margin-top: 20px;
 }
 
 .search_pagination .search_info p{
 	text-align: center;
 	font-size: 20px;
-	margin-top: 20px;
+	margin-top: 7px;
+	letter-spacing: 1px;
 }
 
 .search_pagination .search_info p span{
@@ -1538,16 +1545,43 @@ input, textarea{
 	font-weight: bold;
 	font-style: italic;
 }
+.search_pagination .btn{
+	background: #1C2742;
+    padding: 6px 12px;
+}
 
-.p_id{
+.search_pagination .fa{
+	line-height: 26px;
+    padding-bottom: 0;
+    margin-top: 2px;
+    font-size: 20px;
+}
+.previous_arrow a{
+	margin-left: 34px;
+}
+
+.search_pagination .disabled_link{
+	opacity: .5;
+}
+.search_pagination a{
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+}
+.search_pagination a:hover{
+	color: #DD4E40;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+}
+
+/*.p_id{
 	font-style: italic;
 	color: blue;
 	font-weight: bold;
-}
+}*/
 
 
 /*----------left arrow-------*/
-.previous_arrow .btn {
+/*.previous_arrow .btn {
 	border: none;
 	color: inherit;
 	background: none;
@@ -1638,10 +1672,10 @@ input, textarea{
 
 .previous_arrow .btn:hover:before {
 	right: 0;
-}
+}*/
 
 /*----------------right arrow--------------*/
-.next_arrow .btn {
+/*.next_arrow .btn {
 	border: none;
 	color: inherit;
 	background: none;
@@ -1732,7 +1766,7 @@ input, textarea{
 
 .next_arrow .btn:hover:before {
 	right: 0;
-}
+}*/
 /*----social Share---------*/
 
 .sticky-container{

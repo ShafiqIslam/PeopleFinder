@@ -118,33 +118,33 @@
 					<?php endforeach; ?>
 				</ul>
 			</div>
+
+			<div class="col-sm-12 search_pagination">
+				<?php
+					$next = $offset+$limit;
+					$prev = $offset-$limit;
+					$next_link = $this->webroot . 'profiles/search/' . $next ;
+					$prev_link = $this->webroot . 'profiles/search/' . $prev ;
+
+					$showing_from = $offset+1;
+					$showing_to = $offset+$limit;
+					if($showing_to > $count)
+						$showing_to = $count;
+				?>
+				<div class="previous_arrow col-sm-3">
+					<a href="<?php echo $prev_link?>" class="btn btn-primary btn_prv <?php if($prev<0) echo 'disabled_link'?>"><span><i class="fa fa-chevron-left" aria-hidden="true"></i></span></a>
+				</div>
+
+				<div class="col-sm-6 search_info">
+					<p><?php echo __("Showing");?> <span><?php echo $showing_from?></span> <?php echo __("to");?> <span><?php echo $showing_to?></span> <?php echo __("of");?> <span><?php echo $count?></span> <?php echo __("results.");?></p>
+				</div>
+
+				<div class="next_arrow col-sm-3 pull-right">
+					<a href="<?php echo $next_link?>" class="btn btn-primary btn_prv pull-right <?php if($next>=$count) echo 'disabled_link'?>"><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
+				</div>
+			</div>
+
+			<?php } ?>
 		</div>
-
-		<div class="col-sm-12 search_pagination">
-			<?php
-				$next = $offset+$limit;
-				$prev = $offset-$limit;
-				$next_link = $this->webroot . 'profiles/search/' . $next ;
-				$prev_link = $this->webroot . 'profiles/search/' . $prev ;
-
-				$showing_from = $offset+1;
-				$showing_to = $offset+$limit;
-				if($showing_to > $count)
-					$showing_to = $count;
-			?>
-			<div class="previous_arrow col-sm-3">
-				<a href="<?php echo $prev_link?>" class="btn btn_prv fa fa-long-arrow-left <?php if($prev<0) echo 'disabled_link'?>"><span><?php echo __("prev");?></span></a>
-			</div>
-
-			<div class="col-sm-6 search_info">
-				<p><?php echo __("Showing");?><span><?php echo $showing_from?></span> <?php echo __("to");?><span><?php echo $showing_to?></span> <?php echo __("of");?><span><?php echo $count?></span> <?php echo __("results.");?></p>
-			</div>
-
-			<div class="next_arrow col-sm-3">
-				<a href="<?php echo $next_link?>" class="btn btn_prv fa fa-long-arrow-right pull-right <?php if($next>=$count) echo 'disabled_link'?>"><span><?php echo __("next");?></span></a>
-			</div>
-		</div>
-
-		<?php } ?>
 	</div>
 </div>
