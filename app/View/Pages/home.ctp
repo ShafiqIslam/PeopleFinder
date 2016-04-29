@@ -60,7 +60,7 @@
                                 <p><a href="<?php echo $this->webroot;?>search"><?php echo __("For Advance Search Click Here...");?><i class="fa fa-external-link"></i></a></p>
                             </div>
                             <div class="col-sm-7">
-                                <button type="submit" name="submit" class="gen_btn btn btn-primary btn_search"><?php echo __("Search");?></button>
+                                <button type="submit" name="submit" class="gen_btn btn btn-primary btn_search btn_valid"><?php echo __("Search");?></button>
                             </div>
                         </div>
                     </form>
@@ -92,6 +92,7 @@
                                         <option value="Male"><?php echo __("Male");?></option>
                                         <option value="Female"><?php echo __("Female");?></option>
                                     </select>
+
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -100,7 +101,7 @@
                                 </div>
                                 <div class="form-group photo_search">
                                     <div class="col-sm-8">
-                                        <button type="submit" class="btn btn-primary btn_search"><?php echo __("Search");?></button>
+                                        <button type="submit" class="btn btn-primary btn_search btn_valid"><?php echo __("Search");?></button>
                                     </div>
                                 </div>
                             </div>

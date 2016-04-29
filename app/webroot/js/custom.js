@@ -5,6 +5,7 @@ $(document).ready(function(){
         setTimeout( "$('.loader').hide();", 10000);
     });
 
+    $(".btn_search").addClass("disabled")
     $('.btn_search').click(function(){
         if (!$(this).hasClass('disabled')) {
           $(".loader").fadeIn("slow");  
@@ -17,22 +18,20 @@ $(document).ready(function(){
     });
 
     /*--------------Gender input solution for SAFARI Browser----------*/
-    $(".error").hide();
+    
     $('.search_form').submit(function () {
         if($(".gender").val()==""){
-            $(".error").fadeIn();
             $(".gender").addClass("gender_error");
             return false;
         }else{
-            $(".error").fadeOut();
-            //$(".btn").removeClass("disabled");
             $(".gender").removeClass("gender_error");
+            $(".btn_search").removeClass("disabled")
         }
         return true;
     })
     $(".gender").on("change", function () {
-        $(".error").fadeOut();
         $(".gender").removeClass("gender_error");
+        $(".btn_search").removeClass("disabled")
     });
 
     /*--------------Language popup overlay Js-----------------*/
