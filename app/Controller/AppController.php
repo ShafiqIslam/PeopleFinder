@@ -152,7 +152,6 @@ class AppController extends Controller {
             $public_id = explode('.', $link_ex[count($link_ex)-1]);
             $deleted = \Cloudinary\Uploader::destroy($public_id[0]);
         }
-
         return true;
     }
 
