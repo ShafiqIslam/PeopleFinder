@@ -58,7 +58,9 @@
                     <?php $img_flag = 0; ?>
                     <?php if(!empty($this->request->data['Reporter']['id_image_link_1'])) { ?>
                     <td>
-                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a href="<?php echo $this->webroot."reporters/remove_image/".$this->request->data['Reporter']['id']."/1";?>">
+                            <i class="fa fa-trash-o display_none"></i>
+                        </a>
                         <a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>">
                             <img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_1'];?>">
                         </a>
@@ -67,7 +69,9 @@
                     <?php } ?>
                     <?php if(!empty($this->request->data['Reporter']['id_image_link_2'])) { ?>
                     <td>
-                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a href="<?php echo $this->webroot."reporters/remove_image/".$this->request->data['Reporter']['id']."/2";?>">
+                            <i class="fa fa-trash-o display_none"></i>
+                        </a>
                         <a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>">
                             <img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_2'];?>">
                         </a>
@@ -76,7 +80,9 @@
                     <?php } ?>
                     <?php if(!empty($this->request->data['Reporter']['id_image_link_3'])) { ?>
                     <td>
-                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a href="<?php echo $this->webroot."reporters/remove_image/".$this->request->data['Reporter']['id']."/3";?>">
+                            <i class="fa fa-trash-o display_none"></i>
+                        </a>
                         <a class="image-popup-no-margins admin_img_edit" href="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>">
                             <img class="img-responsive" src="<?php echo $this->request->data['Reporter']['id_image_link_3'];?>">
                         </a>

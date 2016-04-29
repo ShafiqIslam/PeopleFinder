@@ -170,7 +170,9 @@
                     <tr>
                     <?php if(!empty($profile['Profile']['image_link_1'])) { ?>
                     <td class="">
-                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a href="<?php echo $this->webroot."profiles/remove_image/".$this->request->data['Profile']['id']."/1";?>">
+                            <i class="fa fa-trash-o display_none"></i>
+                        </a>
                         <a class="image-popup-no-margins admin_img_edit" href="<?php echo $profile['Profile']['image_link_1'];?>">
                             <img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_1'];?>">
                         </a>
@@ -178,7 +180,9 @@
                     <?php } ?>
                     <?php if(!empty($profile['Profile']['image_link_2'])) { ?>
                     <td class="">
-                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a href="<?php echo $this->webroot."profiles/remove_image/".$this->request->data['Profile']['id']."/2";?>">
+                            <i class="fa fa-trash-o display_none"></i>
+                        </a>
                         <a class="image-popup-no-margins admin_img_edit" href="<?php echo $profile['Profile']['image_link_2'];?>">
                             <img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_2'];?>">
                         </a>
@@ -186,7 +190,9 @@
                     <?php } ?>
                     <?php if(!empty($profile['Profile']['image_link_3'])) { ?>
                     <td class="">
-                        <a href=""><i class="fa fa-trash-o display_none"></i></a>
+                        <a href="<?php echo $this->webroot."profiles/remove_image/".$this->request->data['Profile']['id']."/3";?>">
+                            <i class="fa fa-trash-o display_none"></i>
+                        </a>
                         <a class="image-popup-no-margins admin_img_edit" href="<?php echo $profile['Profile']['image_link_3'];?>">
                             <img class="img-responsive fix_img" src="<?php echo $profile['Profile']['image_link_3'];?>">
                         </a>
