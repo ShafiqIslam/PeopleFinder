@@ -732,7 +732,7 @@ h3.added_h3_counter {
     font-weight: bold;
     color: #00A708;
     margin: 3% 0%;
-    text-shadow: .5px .5px 0px #3A3434;
+    text-shadow: .5px .5px 0px #3A3434; 
 }
 .about_wrapper p{
 	font-size: 24px;
@@ -750,7 +750,23 @@ h3.added_h3_counter {
 .pull-right p{
 	margin-left: 21px;
 }
+.my_report_btn{
+	background-color: green;
+    color: #fff;
+    width: 30%;
+    font-size: 24px;
+    padding: 15px 0px;
+    margin: 10% 0% 4% 0%;
+    transition: all .3s ease;
+    -webkit-transition: all .5s ease;
+    display: inline-block;
+}
 
+.my_report_btn:hover{
+	background-color: #fff;
+	color:green;
+	border: 1px solid green;
+}
 .report_btn_section{
 	//padding: 10px;
 }

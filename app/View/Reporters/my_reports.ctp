@@ -6,9 +6,9 @@
 		<?php
 			if (empty($my_profiles)) { ?>
 				<p class="warning" style="font-size : 20px;"><?php echo __("You have no profile!"); ?></p>
-				<div class="col-sm-6 col-sm-offset-3 ">
-		            <a class="btn btn  btn_service pull-left" href="<?php echo $this->webroot;?>report_found"><?php echo __("Report Found");?></a>
-		            <a class="btn btn btn_service pull-right" href="<?php echo $this->webroot;?>report_missing"><?php echo __("Report Missing");?></a>
+				<div class="col-sm-10 col-sm-offset-1">
+		            <a class="btn my_report_btn pull-left" href="<?php echo $this->webroot;?>report_found"><?php echo __("Report Found");?></a>
+		            <a class="btn my_report_btn pull-right" href="<?php echo $this->webroot;?>report_missing"><?php echo __("Report Missing");?></a>
 			    </div>
 			<?php }
 		?>
