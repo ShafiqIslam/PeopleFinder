@@ -207,7 +207,7 @@
             </div>
         </div>
     
-        <div class="col-sm-8 col-sm-offset-2">
+        <div class="col-sm-12 report_btn_section">
             <div class="row">
                 <a class="btn btn  btn_service pull-left col-sm-4" href="<?php echo $this->webroot;?>report_found"><?php echo __("Report Found");?></a>
                 <a class="btn btn btn_service pull-right col-smoffset-4 col-sm-4" href="<?php echo $this->webroot;?>report_missing"><?php echo __("Report Missing");?></a>

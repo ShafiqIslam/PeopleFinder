@@ -649,10 +649,7 @@ header ul li a{
 	text-align: center;
 	font-weight: bold;
 	font-size: 40px;
-	color: rgb(255, 255, 255);
-	opacity: 0.85;
-	padding: 25px;
-	margin-top: -5px;
+	color: rgb(179, 179, 179);
 	border-radius: 10px;
 	text-shadow: 3px 5px 2px #1C2742;
 	//box-shadow: 4px 3px 3px #1C2742;
@@ -661,7 +658,8 @@ header ul li a{
 
 h3.found_h3_counter {
 	//background: #4AB4AA;
-	text-shadow: -3px 5px 2px #1C2742;
+	text-shadow: 1px 2px 3px rgb(1, 11, 35);
+	margin-left: -9%;
 	/*box-shadow: -4px 3px 3px #1C2742;
 	-ms-transform: skew(25deg, 10deg);
 	-webkit-transform: skew(25deg, 10deg);
@@ -670,7 +668,8 @@ h3.found_h3_counter {
 
 h3.added_h3_counter {
 	//background: #AD6A63;
-	text-shadow: 3px 5px 2px #1C2742;
+	text-shadow: 1px 2px 3px rgb(1, 11, 35);
+	margin-right: -11%;
 	/*box-shadow: 4px 3px 3px #1C2742;
 	-ms-transform: skew(-25deg, -10deg);
 	-webkit-transform: skew(-25deg, -10deg);
@@ -733,11 +732,13 @@ h3.added_h3_counter {
     font-weight: bold;
     color: #00A708;
     margin: 3% 0%;
+    text-shadow: .5px .5px 0px #3A3434;
 }
 .about_wrapper p{
 	font-size: 24px;
     font-weight: 600;
     color: #00A708;
+    text-shadow: 0px .5px 0px #fff;
 }
 .service_option{
 	margin: 8% 0% 5% 0%;
@@ -750,14 +751,16 @@ h3.added_h3_counter {
 	margin-left: 21px;
 }
 
-
+.report_btn_section{
+	//padding: 10px;
+}
 .btn_service{
 	background-color: green;
     color: #fff;
-    width: 35%;
+    width: 25%;
     font-size: 24px;
     padding: 12px 0px;
-    margin: 12% 0% 0% 0%;
+    margin: 10% 0% 0% 0%;
     transition: all .3s ease;
     -webkit-transition: all .5s ease;
     display: inline-block;

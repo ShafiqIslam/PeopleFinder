@@ -118,7 +118,7 @@
                 <img style="width: 160px;" src="<?php echo $this->webroot;?>img/inside.png" alt="">
             </div>
             <div class="col-sm-offset-2 col-sm-2 report_found_submit">
-                <button type="submit" class="btn btn-primary btn_search pull-right"><?php echo __("Search");?></button>
+                <button type="submit" class="btn btn-primary btn_search pull-right btn_valid"><?php echo __("Search");?></button>
             </div>
         </div>
     </form>
