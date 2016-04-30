@@ -31,7 +31,7 @@
         <![endif]-->
     </head>
     <body>
-        <div class="loader"></div>
+        <!-- <div class="loader"></div> -->
 
         <?php $logged = $this->Session->read('logged_user'); ?>
 
@@ -46,7 +46,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span> 
                             </button>
-                            <a href="<?php echo $this->webroot;?>home"><img class="logo" src="<?php echo $this->webroot;?>img/logo_2.png"/></a>
+                            <a href="<?php echo $this->webroot;?>home"><img class="logo" src="<?php echo $this->webroot;?>img/logo_3.png"/></a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-right">

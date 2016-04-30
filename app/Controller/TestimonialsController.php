@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('ReportersController', 'Controller');
 
 class TestimonialsController extends AppController {
 
@@ -50,7 +51,14 @@ class TestimonialsController extends AppController {
 			throw new NotFoundException(__('Invalid testimonial'));
 		}
 		$options = array('conditions' => array('Testimonial.' . $this->Testimonial->primaryKey => $id));
-		$this->set('testimonial', $this->Testimonial->find('first', $options));
+		$testimonial = $this->Testimonial->find('first', $options);
+		if(!empty($testimonial['Reporter']['id'])) {
+			$reporter = new ReportersController();
+			$name = $reporter->get_name($testimonial['Testimonial']['reporter_id']);	
+		} else {
+			$name = "Reporter deleted";
+		}
+		$this->set(compact('testimonial', 'name'));
 	}
 
 	public function admin_activate($id = null) {

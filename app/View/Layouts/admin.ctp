@@ -38,7 +38,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     <div id="row">
         <div id="header" class="noprint">
             <div id="logo-left" class="">
-                <a href="<?php echo $this->Html-> url('/')?>"><?php echo $this->Html->image('logo.png', array('alt' => 'logo')); ?></a>
+                <a href="<?php echo $this->Html-> url('/')?>"><?php echo $this->Html->image('logo_3.png', array('alt' => 'logo')); ?></a>
             </div>
 
         </div>

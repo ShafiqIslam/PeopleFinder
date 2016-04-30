@@ -60,7 +60,7 @@
 			<tbody>
 				<?php foreach ($testimonials as $testimonial): ?>
 				<tr>
-					<td><?php echo h($testimonial['Reporter']['first_name']); ?>&nbsp;</td>
+					<td><?php echo (!empty($testimonial['Reporter']['id'])) ? h($testimonial['Reporter']['first_name']) : "Deleted Reporter"; ?>&nbsp;</td>
 					<td><?php echo h(mb_substr($testimonial['Testimonial']['testimonial'], 0, 20)); ?>&nbsp;...&nbsp;</td>
 					<td><?php echo h($testimonial['Testimonial']['active']); ?>&nbsp;</td>
 					<td><?php echo date_format(date_create($testimonial['Testimonial']['created']),'d M Y');?>&nbsp;</td>

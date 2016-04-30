@@ -14,27 +14,24 @@ $(document).ready(function(){
             duration: 300 // don't foget to change the duration also in CSS
         }
     });
+
+    //gender validation
+
+    $('.search_form').submit(function () {
+        if($(".gender").val()==""){
+            $(".gender").addClass("gender_error");
+            return false;
+        }else{
+            $(".gender").removeClass("gender_error");
+            $(".btn_valid").removeClass("disabled")
+        }
+        return true;
+    })
+    $(".gender").on("change", function () {
+        $(".gender").removeClass("gender_error");
+        $(".btn_valid").removeClass("disabled")
+    });
+
+
 });
 
-// jQuery.fn.mouseIsOver = function () {
-//     if($(this[0]).is(":hover"))
-//     {
-//         return true;
-//     }
-//     return false;
-// }; 
-
-// setInterval(function(){
-//     var $sample = $('.admin_img_edit');
-//     if($sample.mouseIsOver()) {
-//        $('.fa').removeClass('display_none');
-//     }
-//     else {
-//        $('.fa').addClass('display_none');
-//     }
-// }, 200);
-
-
-// $('.admin_img_edit').hover(function(){
-//     $('.fa').removeClass('display_none');
-// });

@@ -373,9 +373,9 @@ header ul li a{
 	font-size: 18px;
 	text-decoration: none;
 	color: #fff;
-    //margin-left: 15px;
+    text-align: center;
     line-height: 25px;
-    padding: 5px 15px;
+    padding: 10px 0px;
     display: block;
     transition: all .4s;
     -webkit-transition: all .4s;
@@ -383,7 +383,7 @@ header ul li a{
     -o-transition: all .4s;
 }
 .popup_body ul li a:hover{
-	background: rgba(37, 37, 138, 0.5);
+	background: rgb(0, 0, 101);
 	transition: all .4s;
     -webkit-transition: all .4s;
     -moz-transition: all .4s;
@@ -394,7 +394,7 @@ header ul li a{
 }
 
 .selected_lang {
-	background: rgba(37, 37, 138, 1) !important;
+	background: rgb(0, 0, 101) !important
 }
 
 
@@ -1287,15 +1287,14 @@ input, textarea{
 }
 .result_body a{
 	text-decoration: none;
-	//display: block;
 }
 .report_list_name a{
 	display: block;
 }
 .person_status{
-	//margin-top: 30px;
 	float: right;
 	color: green;
+	margin-top: 8px;
 }
 
 .status_mark {
@@ -1596,11 +1595,11 @@ input, textarea{
 	-webkit-transition: all 0.3s;
 }
 
-/*.p_id{
+.p_id{
 	font-style: italic;
 	color: blue;
 	font-weight: bold;
-}*/
+}
 
 
 /*----------left arrow-------*/

@@ -171,7 +171,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Profile ID No.");?></label>
                             <div class="col-sm-4">
-                                <input name="id" type="text" class="form-control" id="" placeholder="<?php echo __("Profile ID No.");?>">
+                                <input name="id" type="number" min="0" class="form-control" id="" placeholder="<?php echo __("Profile ID No.");?>">
                             </div>
                         </div>
 

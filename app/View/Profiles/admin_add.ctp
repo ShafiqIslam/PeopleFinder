@@ -52,7 +52,7 @@
 				<div class="form-group">
 					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Nationality") ?></label>
 					<div class="col-sm-4 country_selection_box">
-						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][nationality]"  data-country="BD" data-flags="true">
+						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][nationality]"  data-country="EG" data-flags="true">
 						</div>
 					</div>
 				</div>
@@ -82,7 +82,7 @@
 				<div class="form-group">
 					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Resident Country") ?></label>
 					<div class="col-sm-4">
-						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][resident_country]" data-country="BD" data-flags="true">
+						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][resident_country]" data-country="EG" data-flags="true">
 						</div>
 					</div>
 				</div>
@@ -104,7 +104,7 @@
 				<div class="form-group">
 					<label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Missing Country") ?></label>
 					<div class="col-sm-4">
-						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][missing_country]" data-country="BD" data-flags="true">
+						<div class="bfh-selectbox bfh-countries" data-name="data[Profile][missing_country]" data-country="EG" data-flags="true">
 						</div>
 					</div>
 				</div>

@@ -51,8 +51,7 @@ th.actions.enable{
 }
 #header{
 	height: 105px;
-	background: #FFFFFF;
-	/*background: #000000;*/
+	background: #1C2742;
 }
 
 img{
@@ -906,6 +905,10 @@ table td.actions a.d_d {
 
 
 /*****************************/
+
+.gender_error{
+	border-color: #a94442;
+}
 
 .dshbrd_img img {
     max-width: 100%;
