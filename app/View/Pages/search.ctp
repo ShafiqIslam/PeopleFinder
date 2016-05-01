@@ -78,7 +78,7 @@
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Profile ID");?></label>
             <div class="col-sm-4">
-                <input name="id" type="number" class="form-control" min="0" id="" placeholder="<?php echo __("Profile Id");?>">
+                <input name="id" type="number" class="form-control" min="1" id="goto_id" placeholder="<?php echo __("Profile Id");?>">
             </div>
         </div>
 

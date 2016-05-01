@@ -2,7 +2,7 @@
 <div class="container-fluid sign_up_page">
     <h1><?php echo __("Sign Up");?></h1>
     <hr>
-    <form role="form" data-toggle="validator" id="signup_form" novalidate="true" enctype="multipart/form-data" class="form-horizontal search_form2" method="post" action="<?php echo $this->webroot;?>reporters/signup">
+    <form role="form" data-toggle="validator" novalidate="true" id="signup_form" enctype="multipart/form-data" class="form-horizontal search_form2" method="post" action="<?php echo $this->webroot;?>reporters/signup">
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("First Name");?></label>
             <div class="col-sm-4">

@@ -6,19 +6,19 @@
 		    <form role="form" method="post" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search">
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input type="text" name="first_name" class="form-control" id="" placeholder="<?php echo __("First Name");?>">
+		                <input type="text" name="first_name" class="form-control" placeholder="<?php echo __("First Name");?>">
 		            </div>
 		        </div>
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input type="text" name="second_name" class="form-control" id="" placeholder="<?php echo __("Second Name");?>">
+		                <input type="text" name="second_name" class="form-control" placeholder="<?php echo __("Second Name");?>">
 		            </div>
 		        </div>
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input type="text" name="last_name" class="form-control" id="" placeholder="<?php echo __("Last Name");?>">
+		                <input type="text" name="last_name" class="form-control" placeholder="<?php echo __("Last Name");?>">
 		            </div>
 		        </div>
 
@@ -41,13 +41,13 @@
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input type="text" name="missing_city" class="form-control" id="" placeholder="<?php echo __("Missing City");?>">
+		                <input type="text" name="missing_city" class="form-control" placeholder="<?php echo __("Missing City");?>">
 		            </div>
 		        </div>
 
 		        <div class="form-group">
 		            <div class="col-sm-12">
-		                <input name="id" type="text" class="form-control" id="" placeholder="<?php echo __("Profile Id");?>">
+		                <input name="id" type="number" class="form-control" min="1" id="goto_id" placeholder="<?php echo __("Profile Id");?>">
 		            </div>
 		        </div>
 

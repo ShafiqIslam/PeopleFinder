@@ -19,6 +19,12 @@ $(document).ready(function(){
     $(".btn_valid").addClass("disabled");
     $('.search_form').submit(function () {
         var $gender = $(this).find(".gender");
+        
+        if($('#goto_id').val()) {
+            $gender.parent().parent().parent().parent().find(".btn_valid").removeClass("disabled");
+            return true;
+        }
+
         if($gender.val()==""){
             $gender.addClass("gender_error");
             //$(this).parent().parent().parent().parent().find(".btn_valid").prop('disabled', true);
@@ -40,6 +46,15 @@ $(document).ready(function(){
             $(this).removeClass("gender_error");
             $(this).parent().parent().parent().parent().find(".btn_valid").removeClass("disabled");
             //$(this).parent().parent().parent().parent().find(".btn_valid").removeAttr('disabled');
+        }
+    });
+
+    $('#goto_id').on('keyup change', function(){
+        if($(this).val()) {
+            $(this).parent().parent().parent().parent().find(".gender").removeClass("gender_error");
+            $(this).parent().parent().parent().parent().find(".btn_valid").removeClass("disabled");                
+        } else {
+            $(this).parent().parent().parent().parent().find(".btn_valid").addClass("disabled");                
         }
     });
 
