@@ -2,7 +2,7 @@
 <div class="container-fluid sign_up_page">
     <h1><?php echo __("Sign Up");?></h1>
     <hr>
-    <form role="form" data-toggle="validator" id="signup_form" novalidate="true" enctype="multipart/form-data" class="form-horizontal search_form" method="post" action="<?php echo $this->webroot;?>reporters/signup">
+    <form role="form" data-toggle="validator" id="signup_form" novalidate="true" enctype="multipart/form-data" class="form-horizontal search_form2" method="post" action="<?php echo $this->webroot;?>reporters/signup">
         <div class="form-group">
             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("First Name");?></label>
             <div class="col-sm-4">
@@ -35,7 +35,7 @@
         <div class="form-group">
             <label for="" class=" col-sm-offset-2 col-sm-3 control-label"><?php echo __("Gender");?></label>
             <div class="col-sm-4">
-                <select name="data[Reporter][gender]" class="form-control gender">
+                <select name="data[Reporter][gender]" class="form-control gender2">
                     <option value=""><?php echo __("Select Gender");?></option>
                     <option value="Male"><?php echo __("Male");?></option>
                     <option value="Female"><?php echo __("Female");?></option>
@@ -105,7 +105,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-7 col-sm-5 report_found_submit">
-                <button type="submit" class="btn btn-primary btn_search"><?php echo __("Submit");?></button>
+                <button type="submit" class="btn btn-primary btn_search btn_valid"><?php echo __("Submit");?></button>
             </div>
         </div>
     </form>       

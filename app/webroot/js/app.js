@@ -6,7 +6,7 @@
     };
 
     function initialize() {
-        console.log(pos);
+        //console.log(pos);
         var mapOptions = {
             center: new google.maps.LatLng(pos.lat, pos.lng),
             zoom: 12
@@ -51,17 +51,16 @@
         }
 
         circle = shape;
-        /*console.log('radius', circle.getRadius());
-        console.log('lat', circle.getCenter().lat());
-        console.log('lng', circle.getCenter().lng());*/
         $('input[name=search_lat]').val(circle.getCenter().lat());
         $('input[name=search_lng]').val(circle.getCenter().lng());
         $('input[name=search_radius]').val(circle.getRadius());
+
+        $(".btn_map_valid").removeAttr("disabled");        
     }
 
     function get_geolocation() {
         // Try HTML5 geolocation.        
-        if (navigator.geolocation) {
+        if (navigator.geolocatin) {
           navigator.geolocation.getCurrentPosition(function(position) {
             //console.log(position);
             pos = {

@@ -3,15 +3,12 @@
 $(document).ready(function(){
     $(window).load(function(){
         $(".loader").fadeOut("slow");
-        setTimeout( "$('.loader').hide();", 10000);
     });
 
-    //$(".btn_valid").addClass("disabled")
     $('.btn_search').click(function(){
         if (!$(this).hasClass('disabled')) {
           $(".loader").fadeIn("slow");  
         }
-        setTimeout( "$('.loader').hide();", 10000);
     });
 
     $('.flash_close_btn').click(function(){
@@ -19,20 +16,57 @@ $(document).ready(function(){
     });
 
     /*--------------Gender input solution for SAFARI Browser----------*/
-    
+    $(".btn_valid").addClass("disabled");
     $('.search_form').submit(function () {
-        if($(".gender").val()==""){
-            $(".gender").addClass("gender_error");
+        var $gender = $(this).find(".gender");
+        if($gender.val()==""){
+            $gender.addClass("gender_error");
+            //$(this).parent().parent().parent().parent().find(".btn_valid").prop('disabled', true);
             return false;
-        }else{
-            $(".gender").removeClass("gender_error");
-            $(".btn_valid").removeClass("disabled")
+        } else {
+            $gender.removeClass("gender_error");
+            $gender.parent().parent().parent().parent().find(".btn_valid").removeClass("disabled");
+            //$(this).parent().parent().parent().parent().find(".btn_valid").removeAttr('disabled');
         }
         return true;
-    })
+    });
+    
     $(".gender").on("change", function () {
-        $(".gender").removeClass("gender_error");
-        $(".btn_valid").removeClass("disabled")
+        if($(this).val()=="") {
+            $(this).addClass("gender_error");
+            $(this).parent().parent().parent().parent().find(".btn_valid").addClass("disabled");
+            //$(this).parent().parent().parent().parent().find(".btn_valid").prop('disabled', true);
+        } else {
+            $(this).removeClass("gender_error");
+            $(this).parent().parent().parent().parent().find(".btn_valid").removeClass("disabled");
+            //$(this).parent().parent().parent().parent().find(".btn_valid").removeAttr('disabled');
+        }
+    });
+
+    $('.search_form2').submit(function () {
+        var $gender = $(this).find(".gender2");
+        if($gender.val()==""){
+            $gender.addClass("gender_error");
+            $(this).parent().parent().parent().parent().find(".btn_valid").prop('disabled', true);
+            return false;
+        } else {
+            $gender.removeClass("gender_error");
+            //$gender.parent().parent().parent().parent().find(".btn_valid").removeClass("disabled");
+            $(this).parent().parent().parent().parent().find(".btn_valid").removeAttr('disabled');
+        }
+        return true;
+    });
+    
+    $(".gender2").on("change", function () {
+        if($(this).val()=="") {
+            $(this).addClass("gender_error");
+            //$(this).parent().parent().parent().parent().find(".btn_valid").addClass("disabled");
+            $(this).parent().parent().parent().parent().find(".btn_valid").prop('disabled', true);
+        } else {
+            $(this).removeClass("gender_error");
+            //$(this).parent().parent().parent().parent().find(".btn_valid").removeClass("disabled");
+            $(this).parent().parent().parent().parent().find(".btn_valid").removeAttr('disabled');
+        }
     });
 
     /*--------------Language popup overlay Js-----------------*/
@@ -70,12 +104,14 @@ $(document).ready(function(){
 					var html = "<ul class=\"list-unstyled\"><li>Whoops, this mail already exist!</li></ul>";
 					$("#email_db_check").parent().find("div.help-block").html(html);
 
-					$('#signup_form').find('button[type=submit]').prop('disabled', true);
+					//$('#signup_form').find('button[type=submit]').prop('disabled', true);
+                    validate_form();
 				} else {
 					$("#email_db_check").parent().parent().removeClass('has-error').removeClass('has-danger');
 					$("#email_db_check").parent().find("div.help-block").html('');
 
-					$('#signup_form').find('button[type=submit]').removeAttr('disabled');	       
+					//$('#signup_form').find('button[type=submit]').removeAttr('disabled');
+                    validate_form();        
 				}
 			}
 	    });
@@ -90,13 +126,18 @@ $(document).ready(function(){
 		$('#signup_form div.form-group').each(function() {
 			if($(this).hasClass('has-error')) {
 				error = 1;
-			    $('#signup_form').find('button[type=submit]').prop('disabled', true);
 			}
 		});
 
+        if($('#signup_form div.form-group').find('.gender2').val()=="") {
+            error = 1;
+        }
+
 		if(!error) {
 			$('#signup_form').find('button[type=submit]').removeAttr('disabled');
-		}
+		} else {
+            $('#signup_form').find('button[type=submit]').prop('disabled', true);
+        }
 	}
 
 

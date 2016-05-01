@@ -209,9 +209,12 @@ class ProfilesController extends AppController {
 	*	Public/Front End Functions
 	*
 	*/
-	private function _check_user() {
+	private function _check_user($back_to=null) {
 		$logged_user = $this->Session->read('logged_user');
 		if(empty($logged_user)) {
+			if(!empty($back_to)) {
+				$this->Session->write('back_to', $back_to);	
+			}
 			return $this->redirect(array('controller'=>'reporters', 'action' => 'login'));
 		}
 
@@ -228,7 +231,7 @@ class ProfilesController extends AppController {
 	}
 
 	public function report_missing() {
-		$reporter_id = $this->_check_user();
+		$reporter_id = $this->_check_user("report_missing");
 		if($this->request->is('post')) {
 			$this->request->data = $this->_process_images($this->request->data);	
 			$address = $this->request->data['Profile']['missing_city'] . ', ' . $this->request->data['Profile']['missing_country'];			
@@ -253,7 +256,7 @@ class ProfilesController extends AppController {
 	}
 
 	public function report_found() {
-		$reporter_id = $this->_check_user();
+		$reporter_id = $this->_check_user("report_found");
 		if($this->request->is('post')) {
 			$this->request->data = $this->_process_images($this->request->data);	
 			$address = $this->request->data['Profile']['missing_city'] . ', ' . $this->request->data['Profile']['missing_country'];			

@@ -2020,3 +2020,9 @@ header ul li a:active, header ul li a:focus {
 	-moz-transition: all 0.3s;
 	-o-transition: all 0.3s;
 }
+
+
+
+.has-error .control-label {
+	color: #1C2742 !important;
+}

@@ -31,7 +31,7 @@
         <![endif]-->
     </head>
     <body>
-        <!-- <div class="loader"></div> -->
+        <div class="loader"></div>
 
         <?php $logged = $this->Session->read('logged_user'); ?>
 

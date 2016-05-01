@@ -68,7 +68,7 @@
 
                 <div id="photos" class="tab-pane fade">
                     <!--<h3>Search By Photos</h3>-->
-                    <form role="form" method="post" data-toggle="validator" novalidate="novalidate" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search" enctype="multipart/form-data">
+                    <form role="form" method="post" class="form-horizontal search_form" action="<?php echo $this->webroot?>profiles/search" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="col-sm-12 upload_img">
                                 <input id="adv_search_img" name="data[Profile][images]" type="file" multiple class="file" data-overwrite-initial="false" data-upload-url="<?php echo $this->webroot;?>profiles/upload_image" data-max-file-count="3">
@@ -85,7 +85,7 @@
                         </script>
                         <div class="col-sm-12" id="gender">
                             <div class="col-sm-6">
-                                <div class="form-group form-inline gender">
+                                <div class="form-group form-inline">
                                     <label for="" class="col-sm-4 control-label"><?php echo __("Gender");?></label>
                                     <select name="gender" class="form-control gender">
                                         <option value=""><?php echo __("Select Gender");?></option>
@@ -142,7 +142,7 @@
 
                 <div id="map" class="tab-pane fade">
                     <!--<h3>Search By Photos</h3>-->
-                    <form class="form-horizontal"  action="<?php echo $this->webroot?>profiles/search" method="post">
+                    <form class="form-horizontal search_map" action="<?php echo $this->webroot?>profiles/search" method="post">
                         <div class="form-group">
                             <div class="draw_map">
                                 <div id="map-canvas"></div><!-- Drag on google map-->
@@ -150,16 +150,16 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="search_lat" value="">
-                        <input type="hidden" name="search_lng" value="">
-                        <input type="hidden" name="search_radius" value="">
+                        <input type="hidden" name="search_lat" value="" required="">
+                        <input type="hidden" name="search_lng" value="" required="">
+                        <input type="hidden" name="search_radius" value="" required="">
 
                         <div class="form-group">
                             <div class="col-sm-9 adv_search_link">
                                 <p><a href="<?php echo $this->webroot;?>search"><?php echo __("For Advance Search Click Here...");?><i class="fa fa-external-link"></i></a></p>
                             </div>
                             <div class="col-sm-3">
-                                <button type="submit" class="btn btn-primary btn_search"><?php echo __("Search");?></button>
+                                <button type="submit" class="btn btn-primary btn_search btn_map_valid" disabled><?php echo __("Search");?></button>
                             </div>
                         </div>
                     </form>
@@ -167,11 +167,11 @@
 
                 <div id="id_search" class="tab-pane fade">
                     <h3><?php echo __("Search By ID");?></h3>
-                    <form class="form-horizontal id_search"  action="<?php echo $this->webroot?>profiles/search" method="post">
+                    <form class="form-horizontal id_search" data-toggle="validator" novalidate="true"  action="<?php echo $this->webroot?>profiles/search" method="post">
                         <div class="form-group">
                             <label for="" class="col-sm-offset-2 col-sm-3 control-label"><?php echo __("Profile ID No.");?></label>
                             <div class="col-sm-4">
-                                <input name="id" type="number" min="0" class="form-control" id="" placeholder="<?php echo __("Profile ID No.");?>">
+                                <input name="id" type="number" min="1" class="form-control" id="" required="" placeholder="<?php echo __("Profile ID No.");?>">
                             </div>
                         </div>
 

@@ -1,5 +1,5 @@
 1. Unzip the archive file in your server root folder.
-2. In root, find db\peoplefinder.sql. Import this file to your database.
+2. In root, find db\peoplefinder.sql. Import this file to your database. You can also use peoplefinder_with_demo_data.sql for testing purpose. peoplefinder.sql is the truncated version and contains only structure. use that file when you are finally deploying.
 3. Go to app\Config\database.php
 
 find and change the configeration:
@@ -18,6 +18,10 @@ class DATABASE_CONFIG {
 }
 
 4. Everything should be up and going now. 
+5. You can find the admin panel by adding /admin with base url.
+	Admin credentials: 
+	Email: admin@gmail.com
+	Password: a
 
 
 ** After doing above tasks, still if some problem arises then:

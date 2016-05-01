@@ -185,7 +185,18 @@ class ReportersController extends AppController {
 				$data['name'] = $name;
 				$data['is_admin'] = false;
 				$this->Session->write('logged_user', $data);
-				return $this->redirect( Router::url( $this->referer(), true ) );
+
+				if($this->Session->check('back_to')) {
+					$back_to = $this->Session->read('back_to');
+					return $this->redirect( Router::url("/".$back_to, true ) );
+				}
+				
+				$ref = explode('/', $this->referer());
+                if($ref[count($ref)-1] == "login" || $ref[count($ref)-2] == "login") {
+					return $this->redirect( Router::url("/", true ) );
+                } else {
+                	return $this->redirect( Router::url( $this->referer(), true ) );
+                }
 			}	
 		}
 	}
