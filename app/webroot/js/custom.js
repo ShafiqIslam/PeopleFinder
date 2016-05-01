@@ -11,7 +11,7 @@ $(document).ready(function(){
         }
     });
 
-    $('.flash_close_btn').click(function(){
+    $('.flash_close_btn, .flash_message').click(function(){
         $(".flash_message").fadeOut("slow");
     });
 
